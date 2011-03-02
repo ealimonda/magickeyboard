@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************************************************************
+ *                                                MagicKeyboard                                                    *
+ *******************************************************************************************************************
+ * File:             SymbolsMini.xml                                                                               *
+ * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+ *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+ *                       the GNU General Public License as published by the Free Software Foundation, either       *
+ *                       version 3 of the License, or (at your option) any later version.                          *
+ *                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+ *                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+ *                   See the GNU General Public License for more details.                                          *
+ *                   You should have received a copy of the GNU General Public License along with this program.    *
+ *                       If not, see <http://www.gnu.org/licenses/>                                                *
+ *******************************************************************************************************************
+ * $Id::                                                                               $: SVN Info                 *
+ * $Date::                                                                             $: Last modification        *
+ * $Author::                                                                           $: Last modification author *
+ * $Revision::                                                                         $: SVN Revision             *
+ **************************************************************************************************************** -->
+<layout>
+	<name>Mini Symbols Keyboard</name>
+	<background filename="SymbolsMini.png" width="480" height="186" />
+	<buttons>
+		<button letter="["      keycode="33"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />
+		<button letter="]"      keycode="30"  xStart="51"  xEnd="92"  yStart="142" yEnd="179" />
+		<button letter="{"      keycode="S33" xStart="99"  xEnd="140" yStart="142" yEnd="179" />
+		<button letter="}"      keycode="S30" xStart="147" xEnd="188" yStart="142" yEnd="179" />
+		<button letter="#"      keycode="S20" xStart="195" xEnd="236" yStart="142" yEnd="179" />
+		<button letter="%"      keycode="S23" xStart="243" xEnd="284" yStart="142" yEnd="179" />
+		<button letter="^"      keycode="S22" xStart="291" xEnd="332" yStart="142" yEnd="179" />
+		<button letter="*"      keycode="S28" xStart="339" xEnd="380" yStart="142" yEnd="179" />
+		<button letter="+"      keycode="S24" xStart="387" xEnd="428" yStart="142" yEnd="179" />
+		<button letter="="      keycode="24"  xStart="435" xEnd="478" yStart="142" yEnd="179"/>
+		<button letter="_"      keycode="S27" xStart="3"   xEnd="44"  yStart="96"  yEnd="133" />
+		<button letter="\"      keycode="42"  xStart="51"  xEnd="92"  yStart="96"  yEnd="133" />
+		<button letter="|"      keycode="S42" xStart="99"  xEnd="140" yStart="96"  yEnd="133" />
+		<button letter="~"      keycode="S50" xStart="147" xEnd="188" yStart="96"  yEnd="133" />
+		<button letter="&lt;"   keycode="S43" xStart="195" xEnd="236" yStart="96"  yEnd="133" />
+		<button letter="&gt;"   keycode="S47" xStart="243" xEnd="284" yStart="96"  yEnd="133" />
+		<button letter="€"      keycode="0"   xStart="291" xEnd="332" yStart="96"  yEnd="133" /> <!-- Missing -->
+		<button letter="£"      keycode="0"   xStart="339" xEnd="380" yStart="96"  yEnd="133" /> <!-- Missing -->
+		<button letter="¥"      keycode="0"   xStart="387" xEnd="428" yStart="96"  yEnd="133" /> <!-- Missing -->
+		<button letter="•"      keycode="0"   xStart="435" xEnd="476" yStart="96"  yEnd="133" /> <!-- Missing -->
+		<button letter="NUMS"   keycode="0"   xStart="3"   xEnd="56"  yStart="50"  yEnd="87"  />
+		<button letter="."      keycode="47"  xStart="75"  xEnd="135" yStart="50"  yEnd="87"  />
+		<button letter=","      keycode="43"  xStart="142" xEnd="202" yStart="50"  yEnd="87"  />
+		<button letter="?"      keycode="S44" xStart="209" xEnd="270" yStart="50"  yEnd="87"  />
+		<button letter="!"      keycode="S18" xStart="277" xEnd="337" yStart="50"  yEnd="87"  />
+		<button letter="&apos;" keycode="39"  xStart="344" xEnd="404" yStart="50"  yEnd="87"  />
+		<button letter="DELETE" keycode="51"  xStart="423" xEnd="476" yStart="50"  yEnd="87"  />
+		<button letter="QWERTY" keycode="0"   xStart="4"   xEnd="91"  yStart="3"   yEnd="41"  />
+		<button letter=" "      keycode="49"  xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
+		<button letter="RETURN" keycode="36"  xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
+	</buttons>
+</layout>

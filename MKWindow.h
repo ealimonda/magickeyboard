@@ -1,10 +1,22 @@
-//
-//  MSWindow.h
-//  MagicKeyboard
-//
-//  Created by Michael Nemat on 10-08-15.
-//  Copyright (c) 2010 Carleton University. All rights reserved.
-//
+/*******************************************************************************************************************
+ *                                     MagicKeyboard :: MKWindow                                                   *
+ *******************************************************************************************************************
+ * File:             MKWindow.h                                                                                    *
+ * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+ *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+ *                       the GNU General Public License as published by the Free Software Foundation, either       *
+ *                       version 3 of the License, or (at your option) any later version.                          *
+ *                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+ *                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+ *                   See the GNU General Public License for more details.                                          *
+ *                   You should have received a copy of the GNU General Public License along with this program.    *
+ *                       If not, see <http://www.gnu.org/licenses/>                                                *
+ *******************************************************************************************************************
+ * $Id::                                                                               $: SVN Info                 *
+ * $Date::                                                                             $: Last modification        *
+ * $Author::                                                                           $: Last modification author *
+ * $Revision::                                                                         $: SVN Revision             *
+ *******************************************************************************************************************/
 
 #import <Cocoa/Cocoa.h>
 
@@ -12,6 +24,5 @@
 @private
     
 }
-- (BOOL)canBecomeMainWindow;
-- (BOOL)canBecomeKeyWindow;
+
 @end

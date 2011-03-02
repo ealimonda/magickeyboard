@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
- *                                     MagicKeyboard :: MagicKeyboardAppDelegate                                   *
+ *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MagicKeyboardAppDelegate.m                                                                    *
+ * File:             MKKeyboard.h                                                                                  *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -18,43 +18,53 @@
  * $Revision::                                                                         $: SVN Revision             *
  *******************************************************************************************************************/
 
-#import "MagicKeyboardAppDelegate.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation MagicKeyboardAppDelegate
+@class MKButton;
+@class MKWindow;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-#pragma unused (aNotification)
-	[window setAcceptsMouseMovedEvents:NO];
-	//CGDisplayHideCursor(kCGDirectMainDisplay);
-	//CGAssociateMouseAndMouseCursorPosition(NO);
-	[window setLevel:NSFloatingWindowLevel];
-	[window setCollectionBehavior:NSWindowCollectionBehaviorStationary];
-	NSStatusItem* statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength]
-			retain];
-	NSImage* statusImage = [NSImage imageNamed:@"TrayIcon.png"];
-	[statusBarItem setImage:statusImage];
-	[statusBarItem setHighlightMode:YES];
-	[statusBarItem setMenu:statusMenu];
-}
+@interface MKKeyboard : NSObject <NSXMLParserDelegate> {
+	NSImage *tap;
+	NSImage *qwertyLayout;
+	NSImage *fullNumLayout;
+	NSImage *modsLayout;
+	NSImage *numbersLayout;
+	NSImage *currentLayout;
+	NSImage *symsLayout;
+	IBOutlet MKWindow *window;
+	IBOutlet NSButton *shiftChk;
+	IBOutlet NSButton *cmdChk;
+	IBOutlet NSButton *ctrlChk;
+	IBOutlet NSButton *altChk;
+	NSMutableDictionary *prefs;
 
-- (IBAction)quitSelector:(id)sender {
-#pragma unused (sender)
-	[[NSApplication sharedApplication] terminate:self];
-}
-
-- (BOOL)acceptsFirstResponder {
-	return NO;
-}
-
-- (IBAction)disableTrackingSelector:(id)sender {
-	[((NSMenuItem*)sender) setState:!((BOOL)[sender state])];
+	IBOutlet NSMenuItem *selQwerty;
+	IBOutlet NSMenuItem *selFullNum;
+	BOOL cmd;
+	BOOL alt;
+	BOOL ctrl;
+	BOOL tracking;
+	NSMutableArray *currentButtons;
+	NSSize mtSize;
+	IBOutlet NSImageView *keyboardImage;
+	BOOL shift;
+	BOOL lastKeyWasModifier;
+	IBOutlet NSView *keyboardView;
 	
-	if( [sender state] )
-		[window orderOut:self];
-	else
-		[window makeKeyAndOrderFront:self];
-
-	[magickeyboard setTracking:![sender state]];
+	NSSound *tapSound;
 }
+
+- (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
+- (void)writePrefs:(NSString *)value forKey:(NSString *)key;
+- (IBAction)switchLayout:(id)sender;
+- (void)getButtonsForXMLFile:(NSString *)fileName;
+
+@property (retain) NSImage *qwertyLayout;
+@property (retain) NSImage *symsLayout;
+@property (retain) NSImage *numbersLayout;
+@property (retain) NSImage *tap;
+@property (retain) NSMutableArray *currentButtons;
+@property (assign) BOOL shift;
+@property (assign,getter=isTracking) BOOL tracking;
 
 @end

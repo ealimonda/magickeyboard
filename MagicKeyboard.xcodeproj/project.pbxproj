@@ -7,25 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16EA1084131A35DC00DAB98D /* NumPadFull.xml */; };
+		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */; };
 		28110E67121870050026AA8D /* AlphaAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110E66121870050026AA8D /* AlphaAnimation.m */; };
 		281EDBD812179D5500CC2197 /* Tock.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBD712179D5500CC2197 /* Tock.aiff */; };
-		281EDBEA1217ABBA00CC2197 /* iqwerty.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBE91217ABBA00CC2197 /* iqwerty.xml */; };
+		281EDBEA1217ABBA00CC2197 /* QwertyMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBE91217ABBA00CC2197 /* QwertyMini.xml */; };
 		281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 281EDBF31217AC9F00CC2197 /* MKButton.m */; };
-		281FF8781233059100A94DB7 /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 281FF8771233059100A94DB7 /* 15.png */; };
-		281FF88712330FA200A94DB7 /* imods.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281FF88612330FA200A94DB7 /* imods.xml */; };
-		2832D7731232D0BE0035EAD1 /* trayicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2832D7721232D0BE0035EAD1 /* trayicon.png */; };
-		28531B111217816C001AB273 /* msView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* msView.m */; };
-		28531BB712178E1C001AB273 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB612178E1C001AB273 /* 12.png */; };
-		28531BB912178EC4001AB273 /* s.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB812178EC4001AB273 /* s.png */; };
-		28554A8B12308D2D0087B886 /* isyms.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28554A8A12308D2D0087B886 /* isyms.xml */; };
-		286EB2801217C30800A7EF01 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286EB27F1217C30800A7EF01 /* Carbon.framework */; };
-		2889546E12303F68004F18F0 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546C12303F68004F18F0 /* 13.png */; };
-		2889546F12303F68004F18F0 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546D12303F68004F18F0 /* 14.png */; };
+		281FF8781233059100A94DB7 /* ModsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 281FF8771233059100A94DB7 /* ModsMini.png */; };
+		281FF88712330FA200A94DB7 /* ModsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281FF88612330FA200A94DB7 /* ModsMini.xml */; };
+		2832D7731232D0BE0035EAD1 /* TrayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2832D7721232D0BE0035EAD1 /* TrayIcon.png */; };
+		28531B111217816C001AB273 /* MKKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* MKKeyboard.m */; };
+		28531BB712178E1C001AB273 /* QwertyMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB612178E1C001AB273 /* QwertyMini.png */; };
+		28531BB912178EC4001AB273 /* Tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB812178EC4001AB273 /* Tap.png */; };
+		28554A8B12308D2D0087B886 /* SymbolsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28554A8A12308D2D0087B886 /* SymbolsMini.xml */; };
+		2889546E12303F68004F18F0 /* NumsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546C12303F68004F18F0 /* NumsMini.png */; };
+		2889546F12303F68004F18F0 /* SymbolsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546D12303F68004F18F0 /* SymbolsMini.png */; };
 		2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2891A6561218670E0058CD9C /* MultitouchSupport.framework */; };
-		289F1F47123074C8005920DD /* inums.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289F1F46123074C8005920DD /* inums.xml */; };
-		28D4F6A812432E1C002EEA7A /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4F6A712432E1C002EEA7A /* 16.png */; };
+		289F1F47123074C8005920DD /* NumsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289F1F46123074C8005920DD /* NumsMini.xml */; };
+		28D4F6A812432E1C002EEA7A /* NumPadFull.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4F6A712432E1C002EEA7A /* NumPadFull.png */; };
 		28D7F72312184CE000D84A57 /* MKWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7F72212184CE000D84A57 /* MKWindow.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -35,7 +36,8 @@
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		16EA1084131A35DC00DAB98D /* NumPadFull.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumPadFull.xml; sourceTree = "<group>"; };
+		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKeyboardAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicKeyboardAppDelegate.m; sourceTree = "<group>"; };
@@ -43,28 +45,25 @@
 		28110E65121870050026AA8D /* AlphaAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaAnimation.h; sourceTree = "<group>"; };
 		28110E66121870050026AA8D /* AlphaAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaAnimation.m; sourceTree = "<group>"; };
 		281EDBD712179D5500CC2197 /* Tock.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Tock.aiff; sourceTree = "<group>"; };
-		281EDBE91217ABBA00CC2197 /* iqwerty.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = iqwerty.xml; sourceTree = "<group>"; };
+		281EDBE91217ABBA00CC2197 /* QwertyMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QwertyMini.xml; sourceTree = "<group>"; };
 		281EDBF21217AC9F00CC2197 /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		281EDBF31217AC9F00CC2197 /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
-		281FF8771233059100A94DB7 /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
-		281FF88612330FA200A94DB7 /* imods.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = imods.xml; sourceTree = "<group>"; };
-		2832D7721232D0BE0035EAD1 /* trayicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trayicon.png; sourceTree = "<group>"; };
-		28531B0F1217816C001AB273 /* msView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = msView.h; sourceTree = "<group>"; };
-		28531B101217816C001AB273 /* msView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = msView.m; sourceTree = "<group>"; };
-		28531BB612178E1C001AB273 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
-		28531BB812178EC4001AB273 /* s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = s.png; sourceTree = "<group>"; };
-		28554A8A12308D2D0087B886 /* isyms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = isyms.xml; sourceTree = "<group>"; };
-		286EB27F1217C30800A7EF01 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
-		2889546C12303F68004F18F0 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
-		2889546D12303F68004F18F0 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		281FF8771233059100A94DB7 /* ModsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModsMini.png; sourceTree = "<group>"; };
+		281FF88612330FA200A94DB7 /* ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ModsMini.xml; sourceTree = "<group>"; };
+		2832D7721232D0BE0035EAD1 /* TrayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrayIcon.png; sourceTree = "<group>"; };
+		28531B0F1217816C001AB273 /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboard.h; sourceTree = "<group>"; };
+		28531B101217816C001AB273 /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
+		28531BB612178E1C001AB273 /* QwertyMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QwertyMini.png; sourceTree = "<group>"; };
+		28531BB812178EC4001AB273 /* Tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tap.png; sourceTree = "<group>"; };
+		28554A8A12308D2D0087B886 /* SymbolsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SymbolsMini.xml; sourceTree = "<group>"; };
+		2889546C12303F68004F18F0 /* NumsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumsMini.png; sourceTree = "<group>"; };
+		2889546D12303F68004F18F0 /* SymbolsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SymbolsMini.png; sourceTree = "<group>"; };
 		2891A6561218670E0058CD9C /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = /System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<absolute>"; };
-		289F1F46123074C8005920DD /* inums.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = inums.xml; sourceTree = "<group>"; };
-		28D4F6A712432E1C002EEA7A /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
+		289F1F46123074C8005920DD /* NumsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumsMini.xml; sourceTree = "<group>"; };
+		28D4F6A712432E1C002EEA7A /* NumPadFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumPadFull.png; sourceTree = "<group>"; };
 		28D7F72112184CE000D84A57 /* MKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWindow.h; sourceTree = "<group>"; };
 		28D7F72212184CE000D84A57 /* MKWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWindow.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* MagicKeyboard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MagicKeyboard-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* MagicKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,7 +74,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				286EB2801217C30800A7EF01 /* Carbon.framework in Frameworks */,
 				2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +84,14 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				28D7F72112184CE000D84A57 /* MKWindow.h */,
+				28D7F72212184CE000D84A57 /* MKWindow.m */,
+				281EDBF21217AC9F00CC2197 /* MKButton.h */,
+				281EDBF31217AC9F00CC2197 /* MKButton.m */,
+				28110E65121870050026AA8D /* AlphaAnimation.h */,
+				28110E66121870050026AA8D /* AlphaAnimation.m */,
+				28531B0F1217816C001AB273 /* MKKeyboard.h */,
+				28531B101217816C001AB273 /* MKKeyboard.m */,
 				256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */,
 			);
@@ -96,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				2891A6561218670E0058CD9C /* MultitouchSupport.framework */,
-				286EB27F1217C30800A7EF01 /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -105,9 +110,6 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -123,19 +125,11 @@
 		29B97314FDCFA39411CA2CEA /* MagicKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				28110E65121870050026AA8D /* AlphaAnimation.h */,
-				28110E66121870050026AA8D /* AlphaAnimation.m */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				28D7F72112184CE000D84A57 /* MKWindow.h */,
-				28D7F72212184CE000D84A57 /* MKWindow.m */,
-				281EDBF21217AC9F00CC2197 /* MKButton.h */,
-				281EDBF31217AC9F00CC2197 /* MKButton.m */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				28531B0F1217816C001AB273 /* msView.h */,
-				28531B101217816C001AB273 /* msView.m */,
 			);
 			name = MagicKeyboard;
 			sourceTree = "<group>";
@@ -152,17 +146,19 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				28D4F6A712432E1C002EEA7A /* 16.png */,
-				2832D7721232D0BE0035EAD1 /* trayicon.png */,
-				28531BB612178E1C001AB273 /* 12.png */,
-				281EDBE91217ABBA00CC2197 /* iqwerty.xml */,
-				2889546C12303F68004F18F0 /* 13.png */,
-				289F1F46123074C8005920DD /* inums.xml */,
-				2889546D12303F68004F18F0 /* 14.png */,
-				28554A8A12308D2D0087B886 /* isyms.xml */,
-				281FF8771233059100A94DB7 /* 15.png */,
-				281FF88612330FA200A94DB7 /* imods.xml */,
-				28531BB812178EC4001AB273 /* s.png */,
+				16F53919131B1678003AE6F1 /* Credits.rtf */,
+				28D4F6A712432E1C002EEA7A /* NumPadFull.png */,
+				16EA1084131A35DC00DAB98D /* NumPadFull.xml */,
+				2832D7721232D0BE0035EAD1 /* TrayIcon.png */,
+				28531BB612178E1C001AB273 /* QwertyMini.png */,
+				281EDBE91217ABBA00CC2197 /* QwertyMini.xml */,
+				2889546C12303F68004F18F0 /* NumsMini.png */,
+				289F1F46123074C8005920DD /* NumsMini.xml */,
+				2889546D12303F68004F18F0 /* SymbolsMini.png */,
+				28554A8A12308D2D0087B886 /* SymbolsMini.xml */,
+				281FF8771233059100A94DB7 /* ModsMini.png */,
+				281FF88612330FA200A94DB7 /* ModsMini.xml */,
+				28531BB812178EC4001AB273 /* Tap.png */,
 				281EDBD712179D5500CC2197 /* Tock.aiff */,
 				8D1107310486CEB800E47090 /* MagicKeyboard-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -229,18 +225,20 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				28531BB712178E1C001AB273 /* 12.png in Resources */,
-				28531BB912178EC4001AB273 /* s.png in Resources */,
+				28531BB712178E1C001AB273 /* QwertyMini.png in Resources */,
+				28531BB912178EC4001AB273 /* Tap.png in Resources */,
 				281EDBD812179D5500CC2197 /* Tock.aiff in Resources */,
-				281EDBEA1217ABBA00CC2197 /* iqwerty.xml in Resources */,
-				2889546E12303F68004F18F0 /* 13.png in Resources */,
-				2889546F12303F68004F18F0 /* 14.png in Resources */,
-				289F1F47123074C8005920DD /* inums.xml in Resources */,
-				28554A8B12308D2D0087B886 /* isyms.xml in Resources */,
-				2832D7731232D0BE0035EAD1 /* trayicon.png in Resources */,
-				281FF8781233059100A94DB7 /* 15.png in Resources */,
-				281FF88712330FA200A94DB7 /* imods.xml in Resources */,
-				28D4F6A812432E1C002EEA7A /* 16.png in Resources */,
+				281EDBEA1217ABBA00CC2197 /* QwertyMini.xml in Resources */,
+				2889546E12303F68004F18F0 /* NumsMini.png in Resources */,
+				2889546F12303F68004F18F0 /* SymbolsMini.png in Resources */,
+				289F1F47123074C8005920DD /* NumsMini.xml in Resources */,
+				28554A8B12308D2D0087B886 /* SymbolsMini.xml in Resources */,
+				2832D7731232D0BE0035EAD1 /* TrayIcon.png in Resources */,
+				281FF8781233059100A94DB7 /* ModsMini.png in Resources */,
+				281FF88712330FA200A94DB7 /* ModsMini.xml in Resources */,
+				28D4F6A812432E1C002EEA7A /* NumPadFull.png in Resources */,
+				16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */,
+				16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +251,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */,
-				28531B111217816C001AB273 /* msView.m in Sources */,
+				28531B111217816C001AB273 /* MKKeyboard.m in Sources */,
 				281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */,
 				28D7F72312184CE000D84A57 /* MKWindow.m in Sources */,
 				28110E67121870050026AA8D /* AlphaAnimation.m in Sources */,
@@ -293,8 +291,6 @@
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_GC = required;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MagicKeyboard_Prefix.pch;
@@ -313,8 +309,6 @@
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
 				);
-				GCC_ENABLE_OBJC_GC = required;
-				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MagicKeyboard_Prefix.pch;
 				INFOPLIST_FILE = "MagicKeyboard-Info.plist";
@@ -329,11 +323,23 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -342,10 +348,22 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
