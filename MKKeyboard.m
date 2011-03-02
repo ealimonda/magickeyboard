@@ -72,28 +72,28 @@ typedef struct {
 } Finger;
 
 typedef struct {
-	uint32 unk_k0; // C8 B3 76 70  on both MagicMouse and MagicTrackpad
-	uint32 unk_k1; // FF 7F 00 00
-	uint32 unk_k2; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
-	uint32 unk_k3; // 01 00 00 00
-	uint32 unk_v0; // 0F 35 00 00, 03 76 00 00 / 03 37 00 00, 03 77 00 00
-	uint32 unk_k4; // 00 00 00 00
-	uint32 unk_v1; // 24 50 40 62 / 40 D8 FD 5E
-	uint32 unk_k5; // 00 00 00 04
+	uint32 unk_v0; // C8 B3 76 70  on both Mouse and Trackpad, but changes on other computers (i.e.: C8 23 FC 70)
+	uint32 unk_k0; // FF 7F 00 00
+	uint32 unk_k1; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
+	uint32 unk_k2; // 01 00 00 00
+	uint32 unk_v1; // 0F 35 00 00, 03 76 00 00, 03 6E 00 00 / 03 37 00 00, 03 77 00 00
+	uint32 unk_k3; // 00 00 00 00
+	uint32 unk_v2; // 24 50 40 62, 92 2E D0 1E / 40 D8 FD 5E
+	uint32 unk_k4; // 00 00 00 04
 	uint32 family; // 70 00 00 00 / 80 00 00 00
-	uint32 unk_v2; // 23 01 00 00 / 49 01 00 00
+	uint32 unk_v3; // 23 01 00 00 / 49 01 00 00
 	uint32 rows; // 0F 00 00 00 / 14 00 00 00
 	uint32 cols; // 0A 00 00 00 / 18 00 00 00
-	uint32 unk_v3; // 20 14 00 00 / C8 32 00 00
-	uint32 unk_v4; // 60 23 00 00 / F8 2A 00 00
-	uint32 unk_k6; // 01 00 00 00
-	uint32 unk_k7; // 00 00 00 00
-	uint32 unk_k8; // 90 04 75 70
-	uint32 unk_k9; // FF 7F 00 00
+	uint32 unk_v4; // 20 14 00 00 / C8 32 00 00
+	uint32 unk_v5; // 60 23 00 00 / F8 2A 00 00
+	uint32 unk_k5; // 01 00 00 00
+	uint32 unk_k6; // 00 00 00 00
+	uint32 unk_v6; // 90 04 75 70, 90 74 FA 70
+	uint32 unk_k7; // FF 7F 00 00
 } MTDeviceX;
 
 const MTDeviceX multiTouchSampleDevice = {
-	0x7076B3C8,
+	0x0,
 	0x00007FFF,
 	0x00011080,
 	0x00000001,
@@ -109,7 +109,7 @@ const MTDeviceX multiTouchSampleDevice = {
 	0x0,
 	0x00000001,
 	0x00000000,
-	0x70750490,
+	0x0,
 	0x00007FFF,
 };
 
@@ -134,44 +134,46 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 #pragma mark Initialization
 
 + (NSString *)getInfoForDevice:(MTDeviceX *)device {
+	if( !device )
+		return @"nil";
 	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
+			"\tunk_v0 = %08x\n"
 			"\tunk_k0 = %08x\n"
 			"\tunk_k1 = %08x\n"
 			"\tunk_k2 = %08x\n"
-			"\tunk_k3 = %08x\n"
-			"\tunk_v0 = %08x\n"
-			"\tunk_k4 = %08x\n"
 			"\tunk_v1 = %08x\n"
-			"\tunk_k5 = %08x\n"
-			"\tfamily = %08x\n"
+			"\tunk_k3 = %08x\n"
 			"\tunk_v2 = %08x\n"
+			"\tunk_k4 = %08x\n"
+			"\tfamily = %08x\n"
+			"\tunk_v3 = %08x\n"
 			"\trows   = %08x\n"
 			"\tcols   = %08x\n"
-			"\tunk_v3 = %08x\n"
 			"\tunk_v4 = %08x\n"
+			"\tunk_v5 = %08x\n"
+			"\tunk_k5 = %08x\n"
 			"\tunk_k6 = %08x\n"
+			"\tunk_v6 = %08x\n"
 			"\tunk_k7 = %08x\n"
-			"\tunk_k8 = %08x\n"
-			"\tunk_k9 = %08x\n"
 			"}",
+			device->unk_v0,
 			device->unk_k0,
 			device->unk_k1,
 			device->unk_k2,
-			device->unk_k3,
-			device->unk_v0,
-			device->unk_k4,
 			device->unk_v1,
-			device->unk_k5,
-			device->family,
+			device->unk_k3,
 			device->unk_v2,
+			device->unk_k4,
+			device->family,
+			device->unk_v3,
 			device->rows,
 			device->cols,
-			device->unk_v3,
 			device->unk_v4,
+			device->unk_v5,
+			device->unk_k5,
 			device->unk_k6,
-			device->unk_k7,
-			device->unk_k8,
-			device->unk_k9
+			device->unk_v6,
+			device->unk_k7
 	];
 }
 
@@ -198,8 +200,8 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		currentLayout = qwertyLayout;
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
-		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", kCFBundleIdentifierKey]
-				cStringUsingEncoding:NSASCIIStringEncoding], 0);
+		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
+				bundleIdentifier]] cStringUsingEncoding:NSASCIIStringEncoding], 0);
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
@@ -207,7 +209,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		// if the file was there, we got all the informati
 		// FIXME: use CFPreferences / NSUserDefaults
 		prefs = [[NSDictionary alloc] initWithContentsOfFile:[[kPreferencesFolder
-				stringByAppendingPathComponent:(NSString *)kCFBundleIdentifierKey]
+				stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
 				stringByExpandingTildeInPath]];
 		if( prefs ) {
 			NSString *layout = [prefs objectForKey:kLayout];
@@ -232,7 +234,8 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [[self class] getInfoForDevice:thisDevice]);
 #endif
-		if( thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
+		if( !thisDevice
+		   		|| thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
 				|| thisDevice->unk_k1 != multiTouchSampleDevice.unk_k1
 				|| thisDevice->unk_k2 != multiTouchSampleDevice.unk_k2
 				|| thisDevice->unk_k3 != multiTouchSampleDevice.unk_k3
@@ -240,11 +243,11 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 				|| thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
 				|| thisDevice->unk_k6 != multiTouchSampleDevice.unk_k6
 				|| thisDevice->unk_k7 != multiTouchSampleDevice.unk_k7
-				|| thisDevice->unk_k8 != multiTouchSampleDevice.unk_k8
-				|| thisDevice->unk_k9 != multiTouchSampleDevice.unk_k9
 				) {
-			NSLog(@"Unrecognized device (#%d), please report.\nDevice info: %@", [[self class]
+			NSLog(@"Unrecognized device (#%d), please report.\nDevice info: %@", i, [[self class]
 					getInfoForDevice:thisDevice]);
+			if( !thisDevice )
+				continue;
 		}
 		switch( thisDevice->family ) {
 		case 0x00000070:
@@ -498,8 +501,8 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 - (void) writePrefs:(NSString *)value forKey:(NSString *)key {
 	[prefs setObject:value forKey:key];
 	// FIXME: Use CFPreferences / NSUserDefaults
-	[prefs writeToFile:[[kPreferencesFolder stringByAppendingPathComponent:(NSString *)kCFBundleIdentifierKey]
-			    stringByExpandingTildeInPath] atomically:YES];
+	[prefs writeToFile:[[kPreferencesFolder stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
+			stringByExpandingTildeInPath] atomically:YES];
 }
 
 #pragma mark window and layout
