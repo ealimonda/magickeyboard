@@ -22,6 +22,49 @@
 
 @implementation MKButton
 
+- (id)init {
+	self = [super init];
+	if( self ) {
+		letter = nil;
+		keycode = nil;
+		xStart = 0;
+		xEnd = 0;
+		yStart = 0;
+		yEnd = 0;
+	}
+	return self;
+}
+
+- (id)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeycode xStart:(int)aXStart xEnd:(int)aXEnd
+		yStart:(int)aYStart yEnd:(int)aYEnd {
+	self = [self init];
+	if( self ) {
+		letter = [aLetter retain];
+		keycode = [aKeycode retain];
+		xStart = aXStart;
+		xEnd = aXEnd;
+		yStart = aYStart;
+		yEnd = aYEnd;
+	}
+	return self;
+}
+
+- (void)dealloc {
+	[letter release];
+	[keycode release];
+	[super dealloc];
+}
+
++ (id)button {
+	return [[[[self class] alloc] init] autorelease];
+}
+
++ (id)buttonWithLetter:(NSString *)aLetter keycode:(NSString *)aKeycode xStart:(int)aXStart xEnd:(int)aXEnd
+		yStart:(int)aYStart yEnd:(int)aYEnd {
+	return [[[[self class] alloc] initWithLetter:aLetter keycode:aKeycode xStart:aXStart xEnd:aXEnd yStart:aYStart
+			yEnd:aYEnd] autorelease];
+}
+
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize {
 	if( [letter isEqualToString:@"q"] ) {
 #if 0
@@ -38,26 +81,6 @@
 		return YES;
 	}
 	return NO;
-}
-
-- (MKButton*)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeycode xStart:(int)aXStart xEnd:(int)aXEnd
-		yStart:(int)aYStart yEnd:(int)aYEnd {
-	self = [super init];
-	if( self ) {
-		letter = [aLetter retain];
-		keycode = [aKeycode retain];
-		xStart = aXStart;
-		xEnd = aXEnd;
-		yStart = aYStart;
-		yEnd = aYEnd;
-	}
-	return self;
-}
-
-- (void)dealloc {
-	[letter release];
-	[keycode release];
-	[super dealloc];
 }
 
 @synthesize xStart;

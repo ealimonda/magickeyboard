@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164F53AF1323F6EA00F4AB0F /* MKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 164F53AE1323F6EA00F4AB0F /* MKLayout.m */; };
 		16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16EA1084131A35DC00DAB98D /* NumPadFull.xml */; };
 		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -36,6 +37,8 @@
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		164F53AD1323F6EA00F4AB0F /* MKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLayout.h; sourceTree = "<group>"; };
+		164F53AE1323F6EA00F4AB0F /* MKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLayout.m; sourceTree = "<group>"; };
 		16EA1084131A35DC00DAB98D /* NumPadFull.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumPadFull.xml; sourceTree = "<group>"; };
 		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -94,6 +97,8 @@
 				28531B101217816C001AB273 /* MKKeyboard.m */,
 				256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */,
+				164F53AD1323F6EA00F4AB0F /* MKLayout.h */,
+				164F53AE1323F6EA00F4AB0F /* MKLayout.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */,
 				28D7F72312184CE000D84A57 /* MKWindow.m in Sources */,
 				28110E67121870050026AA8D /* AlphaAnimation.m in Sources */,
+				164F53AF1323F6EA00F4AB0F /* MKLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

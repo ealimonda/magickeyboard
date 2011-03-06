@@ -43,7 +43,7 @@
 	return NO;
 }
 
--(BOOL)acceptsFirstResponder {
+- (BOOL)acceptsFirstResponder {
 	return NO;
 }
 

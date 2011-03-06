@@ -21,6 +21,7 @@
 #import "MKKeyboard.h"
 #import "AlphaAnimation.h"
 #import "MKButton.h"
+#import "MKLayout.h"
 
 #pragma mark Global Variables
 // FIXME: Eww, globals
@@ -46,6 +47,8 @@ NSString * const kSymbolsMini = @"SymbolsMini";
 NSString * const kModsMini = @"ModsMini";
 
 NSString * const kPreferencesFolder = @"~/Library/Preferences";
+
+NSString * const kDefaultLayout = @"QwertyMini";
 
 #pragma mark -
 @interface MKKeyboard ()
@@ -181,11 +184,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	self = [super init];
 	if( self ) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
-		qwertyLayout = [[NSImage imageNamed:@"QwertyMini.png"] retain];
-		numbersLayout = [[NSImage imageNamed:@"NumsMini.png"] retain];
-		symsLayout = [[NSImage imageNamed:@"SymbolsMini.png"] retain];
-		modsLayout = [[NSImage imageNamed:@"ModsMini.png"] retain];
-		fullNumLayout = [[NSImage imageNamed:@"NumPadFull.png"] retain];
 		mtSize = NSZeroSize;
 		mtSize.height = 311;
 		mtSize.width = 368;
@@ -195,9 +193,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		ctrl = NO;
 		shift = NO;
 		lastKeyWasModifier = NO;
-		currentButtons = [[NSMutableArray alloc] init];
-		[self getButtonsForXMLFile:kQwertyMini];
-		currentLayout = qwertyLayout;
+		currentLayout = [[MKLayout layoutWithName:kDefaultLayout] retain];
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
 		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
@@ -268,21 +264,16 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		
 	[keyboardView setAcceptsTouchEvents:NO];
 	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:[keyboardView frame]
-			options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow owner:self userInfo:nil] autorelease];
+			options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow owner:keyboardView userInfo:nil] autorelease];
 	[keyboardView addTrackingArea:trackingArea];
 	[keyboardView becomeFirstResponder];
 }
 
 - (void)dealloc {
-	[currentButtons release];
 	dispatch_release(myQueue);
 	[tapSound release];
 	[tap release];
-	[qwertyLayout release];
-	[numbersLayout release];
-	[symsLayout release];
-	[modsLayout release];
-	[fullNumLayout release];
+	[currentLayout release];
 	[prefs release];
 	[super dealloc];
 }
@@ -334,39 +325,31 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 	//NSLog([NSString stringWithFormat:@"%f",aPoint.y]);
 	imgBox.size.width=33;
 	imgBox.size.height=34;
-	for( NSUInteger i = 0; i < [currentButtons count] ; i++ ) {
-		MKButton *button = [currentButtons objectAtIndex:i];
+	for( NSUInteger i = 0; i < [[currentLayout currentButtons] count] ; i++ ) {
+		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
 		if( ![button containsPoint:aPoint size:imgBox.size] )
 			continue;
 		//NSLog([button letter]);
 		BOOL doSend = YES;
 		int keycode = 0;
 		if( [[button letter]isEqualToString:keyNUMS] ) {
-			[keyboardImage setImage:numbersLayout];
-			currentLayout = numbersLayout;
-			[currentButtons removeAllObjects];
-			[self getButtonsForXMLFile:kNumsMini];
+			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
+			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else if( [[button letter]isEqualToString:keyQWERTY] ) {
-			[keyboardImage setImage:qwertyLayout];
-			currentLayout = qwertyLayout;
-			[currentButtons removeAllObjects];
-			[self getButtonsForXMLFile:kQwertyMini];
+			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
+			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else if( [[button letter] isEqualToString:keySYMS] ) {
-			[keyboardImage setImage:symsLayout];
-			currentLayout = symsLayout;
-			[currentButtons removeAllObjects];
-			[self getButtonsForXMLFile:kSymbolsMini];
+			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
+			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else if( [[button letter] isEqualToString:keyMODIFIERS] ) {
-			[keyboardImage setImage:modsLayout];
-			currentLayout = modsLayout;
-			[currentButtons removeAllObjects];
-			[self getButtonsForXMLFile:kModsMini];
+			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
+			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else {
-			if( currentLayout == qwertyLayout ) {
+			if( [[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"] ) { // FIXME: String
 				if( [[button letter] isEqualToString:keySHIFT] ) {
 					shift = !shift;
 					[shiftChk setState:shift];
@@ -376,8 +359,9 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 					keycode = (CGKeyCode)[[button keycode] integerValue];
 					lastKeyWasModifier = NO;
 				}
-			} else if( currentLayout == numbersLayout || currentLayout == symsLayout
-					|| currentLayout == modsLayout ) {
+			} else if( [[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
+					|| [[currentLayout layoutName] isEqualToString:@"Mini Symbols Keyboard"]
+					|| [[currentLayout layoutName] isEqualToString:@"Mini Modifiers Keyboard"] ) {
 				if( [[button letter] isEqualToString:keyCTRL] ) {
 					ctrl = !ctrl;
 					[ctrlChk setState:ctrl];
@@ -408,7 +392,7 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 				} else {
 					keycode = (CGKeyCode)[[button keycode] integerValue];
 				}
-			} else if( currentLayout == fullNumLayout ) {
+			} else if( [[currentLayout layoutName] isEqualToString:@"Full Numeric Keypad"] ) { // FIXME: String
 				lastKeyWasModifier = NO;
 				keycode = (CGKeyCode)[[button keycode] integerValue];
 			}
@@ -534,26 +518,16 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 		[selQwerty setState:1];
 		[selFullNum setState:0];
 		[self writePrefs:kQwertyMini forKey:kLayout];
-		NSSize newSize = NSZeroSize;
-		newSize.width = 480;
-		newSize.height = 186;
-		[self resizeWindowOnSpotWithSize:newSize];
-		[keyboardImage setImage:qwertyLayout];
-		currentLayout = qwertyLayout;
-		[currentButtons removeAllObjects];
-		[self getButtonsForXMLFile:kQwertyMini];
+		[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
+		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
+		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	} else if( sender == selFullNum ) {
 		[selQwerty setState:0];
 		[selFullNum setState:1];
 		[self writePrefs:kNumPadFull forKey:kLayout];
-		NSSize newSize = NSZeroSize;
-		newSize.width = 480;
-		newSize.height = 360;
-		[self resizeWindowOnSpotWithSize:newSize];
-		[keyboardImage setImage:fullNumLayout];
-		currentLayout = fullNumLayout;
-		[currentButtons removeAllObjects];
-		[self getButtonsForXMLFile:kNumPadFull];
+		[self setCurrentLayout:[MKLayout layoutWithName:kNumPadFull]];
+		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
+		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	}
 }
 
@@ -568,76 +542,11 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 	return NO;
 }
 
-#pragma mark XML Parser
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
-		qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
-#pragma unused (parser, namespaceURI, qualifiedName)
-	if( [elementName isEqualToString:@"button"] ) {
-		NSString *letter = [attributeDict valueForKey:@"letter"];
-		NSString *keycode = [attributeDict valueForKey:@"keycode"];
-		int xStart = [[attributeDict valueForKey:@"xStart"] intValue];
-		int yStart = [[attributeDict valueForKey:@"yStart"] intValue];
-		int xEnd = [[attributeDict valueForKey:@"xEnd"] intValue];
-		int yEnd = [[attributeDict valueForKey:@"yEnd"] intValue];
-		MKButton *newButton = [[[MKButton alloc] initWithLetter:letter keycode:keycode xStart:xStart xEnd:xEnd
-				yStart:yStart yEnd:yEnd] autorelease];
-		[currentButtons addObject:newButton];
-	} else {
-		NSLog(@"Found: %@", elementName);
-	}
-
-}
-
-// sent when the parser begins parsing of the document.
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-#pragma unused (parser)
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
-}
-
-// sent when the parser has completed parsing. If this is encountered, the parse was successful.
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-#pragma unused (parser)
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
-}
-
-/// ...and this reports a fatal error to the delegate. The parser will stop parsing.
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
-	NSLog(@"Parse Error at line %d: %@", [parser lineNumber], parseError);
-}
-
-/// If validation is on, this will report a fatal validation error to the delegate. The parser will stop parsing.
-- (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError {
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
-	NSLog(@"Validation Error at line %d: %@", [parser lineNumber], validationError);
-}
-
-- (void)getButtonsForXMLFile:(NSString *)xmlFileName {
-	// Create a parser
-	NSLog(@"Parsing: %@", xmlFileName);
-	NSData *d = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:xmlFileName ofType:@"xml"]];
-	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:d] autorelease];
-	[parser setDelegate:self];
-	// Do the parse
-	[parser parse];
-}
-
 #pragma mark -
 #pragma mark Properties
-@synthesize symsLayout;
-@synthesize numbersLayout;
-@synthesize qwertyLayout;
 @synthesize tap;
-@synthesize currentButtons;
 @synthesize shift;
 @synthesize tracking;
+@synthesize currentLayout;
 
 @end

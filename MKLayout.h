@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
- *                                     MagicKeyboard :: MKKeyboard                                                 *
+ *                                     MagicKeyboard :: MKLayout                                                   *
  *******************************************************************************************************************
- * File:             MKKeyboard.h                                                                                  *
+ * File:             MKLayout.h                                                                                    *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -20,42 +20,24 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class MKWindow;
-@class MKLayout;
-
-@interface MKKeyboard : NSObject {
-	NSImage *tap;
-	IBOutlet MKWindow *window;
-	IBOutlet NSButton *shiftChk;
-	IBOutlet NSButton *cmdChk;
-	IBOutlet NSButton *ctrlChk;
-	IBOutlet NSButton *altChk;
-	NSMutableDictionary *prefs;
-
-	IBOutlet NSMenuItem *selQwerty;
-	IBOutlet NSMenuItem *selFullNum;
-	BOOL cmd;
-	BOOL alt;
-	BOOL ctrl;
-	BOOL tracking;
-	NSSize mtSize;
-	IBOutlet NSImageView *keyboardImage;
-	BOOL shift;
-	BOOL lastKeyWasModifier;
-	IBOutlet NSView *keyboardView;
-	
-	NSSound *tapSound;
-	
-	MKLayout *currentLayout;
+@interface MKLayout : NSObject <NSXMLParserDelegate> {
+	NSString *layoutName;
+	NSSize layoutSize;
+	NSImage *keyboardImage;
+	NSMutableArray *currentButtons;
+	BOOL valid;
 }
 
-- (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
-- (void)writePrefs:(NSString *)value forKey:(NSString *)key;
-- (IBAction)switchLayout:(id)sender;
+- (id)initWithName:(NSString *)loadName;
++ (id)layout;
++ (id)layoutWithName:(NSString *)loadName;
 
-@property (retain) NSImage *tap;
-@property (assign) BOOL shift;
-@property (assign,getter=isTracking) BOOL tracking;
-@property (retain) MKLayout *currentLayout;
+- (void)loadXML:(NSString *)fileName;
+
+@property (retain) NSString *layoutName;
+@property (assign) NSSize layoutSize;
+@property (retain) NSImage *keyboardImage;
+@property (readonly,retain) NSMutableArray *currentButtons;
+@property (assign,getter=isValid) BOOL valid;
 
 @end

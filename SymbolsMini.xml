@@ -18,8 +18,7 @@
  * $Author::                                                                           $: Last modification author *
  * $Revision::                                                                         $: SVN Revision             *
  **************************************************************************************************************** -->
-<layout>
-	<name>Mini Symbols Keyboard</name>
+<layout name="Mini Symbols Keyboard">
 	<background filename="SymbolsMini.png" width="480" height="186" />
 	<buttons>
 		<button letter="["      keycode="33"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />

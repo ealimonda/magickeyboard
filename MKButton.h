@@ -29,7 +29,11 @@
 	NSString *letter;
 }
 
-- (MKButton*)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode xStart:(int)aXStart xEnd:(int)aXEnd
+- (id)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode xStart:(int)aXStart xEnd:(int)aXEnd
+		yStart:(int)aYStart yEnd:(int)aYEnd;
+
++ (id)button;
++ (id)buttonWithLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode xStart:(int)aXStart xEnd:(int)aXEnd
 		yStart:(int)aYStart yEnd:(int)aYEnd;
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;

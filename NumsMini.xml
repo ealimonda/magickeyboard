@@ -18,8 +18,7 @@
  * $Author::                                                                           $: Last modification author *
  * $Revision::                                                                         $: SVN Revision             *
  **************************************************************************************************************** -->
-<layout>
-	<name>Mini Numbers Keyboard</name>
+<layout name="Mini Numbers Keyboard">
 	<background filename="NumsMini.png" width="480" height="186" />
 	<buttons>
 		<button letter="1"      keycode="18"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />

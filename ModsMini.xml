@@ -18,8 +18,7 @@
  * $Author::                                                                           $: Last modification author *
  * $Revision::                                                                         $: SVN Revision             *
  **************************************************************************************************************** -->
-<layout>
-	<name>Mini Modifiers Keyboard</name>
+<layout name="Mini Modifiers Keyboard">
 	<background filename="ModsMini.png" width="480" height="186" />
 	<buttons>
 		<button letter="ESC"    keycode="53"  xStart="8"   xEnd="59"  yStart="129" yEnd="177" />

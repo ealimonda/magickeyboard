@@ -18,9 +18,8 @@
  * $Author::                                                                           $: Last modification author *
  * $Revision::                                                                         $: SVN Revision             *
  **************************************************************************************************************** -->
-<layout>
-	<name>Full Numeric Keypad</name>
-	<background filename="NumsPadFull.png" width="480" height="360" />
+<layout name="Full Numeric Keypad">
+	<background filename="NumPadFull.png" width="480" height="360" />
 	<buttons>
 		<button letter="0"      keycode="82"  xStart="95"  xEnd="240" yStart="5"   yEnd="73"  />
 		<button letter="."      keycode="65"  xStart="247" xEnd="315" yStart="5"   yEnd="73"  />
