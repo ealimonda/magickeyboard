@@ -66,16 +66,16 @@
 }
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize {
-	if( [letter isEqualToString:@"q"] ) {
 #if 0
+	if( [letter isEqualToString:@"q"] ) {
 		NSLog(letter);
 		NSLog(shift);
 		NSLog([NSString stringWithFormat:@"%d", xStart]);
 		NSLog([NSString stringWithFormat:@"%d", xEnd]);
 		NSLog([NSString stringWithFormat:@"%d", yStart]);
 		NSLog([NSString stringWithFormat:@"%d", yEnd]);
-#endif // 0
 	}
+#endif // 0
 	if( aPoint.x >= (xStart - (circleSize.width/2)) && (aPoint.x + (circleSize.width /2)) <= xEnd
 			&& aPoint.y >= (yStart - (circleSize.height/2)) && (aPoint.y+(circleSize.height/2)) <=yEnd ) {
 		return YES;

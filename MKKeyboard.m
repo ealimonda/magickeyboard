@@ -282,15 +282,10 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 int callback( int device, Finger *data, int nFingers, double timestamp, int frame ) {
 #pragma unused (device, timestamp, frame)
-#if 0
-	for (int i=0; i<nFingers; i++) {
-		Finger *f = &data[i];
-	}
-#endif // 0
 	// This is to avoid leaks
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
-	if( nFingers == 1 ) {
-		Finger *f = &data[0];
+	for (int i=0; i<nFingers; i++) {
+		Finger *f = &data[i];
 		[refToSelf processTouch:f];
 	}
 	// Time to release... or drain now.
@@ -299,9 +294,14 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 }
 
 - (void)processTouch:(Finger *)finger {
-	if( finger->state != 7 || ![self isTracking] )
+	if( (finger->state != 7 /*&& finger->state != 1*/) || ![self isTracking] )
 		return;
+
 #if 0
+	NSLog(@"Frame %7d: TS:%6.3f ID:%d St:%d foo3:%d foo4:%d norm.pos: [%6.3f,%6.3f] sz: %6.3f unk2:%6.3f\n",
+		finger->frame, finger->timestamp, finger->identifier, finger->state, finger->foo3, finger->foo4,
+		finger->normalized.pos.x, finger->normalized.pos.y, finger->size, finger->unk2);
+
 	NSLog([NSString stringWithFormat:@"Frame %7d: Angle %6.2f, ellipse %6.3f x%6.3f; "
 			"position (%6.3f,%6.3f) vel (%6.3f,%6.3f) "
 			"ID %d, state %d [%d %d?] size %6.3f, %6.3f?",
