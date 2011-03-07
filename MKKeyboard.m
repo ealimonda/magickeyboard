@@ -54,11 +54,11 @@ NSString * const kDefaultLayout = @"QwertyMini";
 @interface MKKeyboard ()
 #pragma mark Private methods and properties
 typedef struct {
-	float x,y;
+	float x, y;
 } mtPoint;
 
 typedef struct {
-	mtPoint pos,vel;
+	mtPoint pos, vel;
 } mtReadout;
 
 typedef struct {
@@ -72,28 +72,29 @@ typedef struct {
 	mtReadout mm;
 	int zero2[2];
 	float unk2;
-} Finger;
+} Touch;
 
-typedef struct {
+struct MTDeviceX {
 	uint32 unk_v0; // C8 B3 76 70  on both Mouse and Trackpad, but changes on other computers (i.e.: C8 23 FC 70)
 	uint32 unk_k0; // FF 7F 00 00
 	uint32 unk_k1; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
-	uint32 unk_k2; // 01 00 00 00
+	uint32 unk_k2; // 01 00 00 00 - Could be Endianness
 	uint32 unk_v1; // 0F 35 00 00, 03 76 00 00, 03 6E 00 00 / 03 37 00 00, 03 77 00 00
 	uint32 unk_k3; // 00 00 00 00
-	uint32 unk_v2; // 24 50 40 62, 92 2E D0 1E / 40 D8 FD 5E
-	uint32 unk_k4; // 00 00 00 04
-	uint32 family; // 70 00 00 00 / 80 00 00 00
-	uint32 unk_v3; // 23 01 00 00 / 49 01 00 00
-	uint32 rows; // 0F 00 00 00 / 14 00 00 00
-	uint32 cols; // 0A 00 00 00 / 18 00 00 00
-	uint32 unk_v4; // 20 14 00 00 / C8 32 00 00
-	uint32 unk_v5; // 60 23 00 00 / F8 2A 00 00
-	uint32 unk_k5; // 01 00 00 00
+	uint32 address; // Last 4 bytes of the device address (or serial number?), as reported by the System Profiler Bluetooth tab
+	uint32 unk_k4; // 00 00 00 04 - Last byte might be Parser Options?
+		// (uint64)address = Multitouch ID
+	uint32 family; // Family ID
+	uint32 bcdver; // bcdVersion
+	uint32 rows; // Sensor Rows
+	uint32 cols; // Sensor Columns
+	uint32 width; // Sensor Surface Width
+	uint32 height; // Sensor Surface Height
+	uint32 unk_k5; // 01 00 00 00 - Could be Endianness
 	uint32 unk_k6; // 00 00 00 00
-	uint32 unk_v6; // 90 04 75 70, 90 74 FA 70
+	uint32 unk_v2; // 90 04 75 70, 90 74 FA 70
 	uint32 unk_k7; // FF 7F 00 00
-} MTDeviceX;
+};
 
 const MTDeviceX multiTouchSampleDevice = {
 	0x0,
@@ -118,11 +119,11 @@ const MTDeviceX multiTouchSampleDevice = {
 
 - (void)sendKeycode:(CGKeyCode)keycode;
 - (void)animateImage:(NSImageView *)image;
-- (void)processTouch:(Finger *)f;
+- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)deviceInfo;
 typedef void *MTDeviceRef;
-typedef int (*MTContactCallbackFunction)(int, Finger *, int, double, int);
+typedef int (*MTContactCallbackFunction)(int, Touch *, int, double, int);
 
-int callback( int device, Finger *data, int nFingers, double timestamp, int frame );
+int callback( int device, Touch *data, int nTouches, double timestamp, int frame );
 
 #pragma mark Apple Private Frameworks
 MTDeviceRef MTDeviceCreateDefault();
@@ -140,24 +141,24 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	if( !device )
 		return @"nil";
 	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
-			"\tunk_v0 = %08x\n"
-			"\tunk_k0 = %08x\n"
-			"\tunk_k1 = %08x\n"
-			"\tunk_k2 = %08x\n"
-			"\tunk_v1 = %08x\n"
-			"\tunk_k3 = %08x\n"
-			"\tunk_v2 = %08x\n"
-			"\tunk_k4 = %08x\n"
+			"\t unk_v0 = %08x\n"
+			"\t unk_k0 = %08x\n"
+			"\t unk_k1 = %08x\n"
+			"\t unk_k2 = %08x\n"
+			"\t unk_v1 = %08x\n"
+			"\t unk_k3 = %08x\n"
+			"\taddress= %08x\n"
+			"\t unk_k4 = %08x\n"
 			"\tfamily = %08x\n"
-			"\tunk_v3 = %08x\n"
+			"\tbcdver = %08x\n"
 			"\trows   = %08x\n"
 			"\tcols   = %08x\n"
-			"\tunk_v4 = %08x\n"
-			"\tunk_v5 = %08x\n"
-			"\tunk_k5 = %08x\n"
-			"\tunk_k6 = %08x\n"
-			"\tunk_v6 = %08x\n"
-			"\tunk_k7 = %08x\n"
+			"\twidth  = %08x\n"
+			"\theight = %08x\n"
+			"\t unk_k5 = %08x\n"
+			"\t unk_k6 = %08x\n"
+			"\t unk_v2 = %08x\n"
+			"\t unk_k7 = %08x\n"
 			"}",
 			device->unk_v0,
 			device->unk_k0,
@@ -165,17 +166,17 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 			device->unk_k2,
 			device->unk_v1,
 			device->unk_k3,
-			device->unk_v2,
+			device->address,
 			device->unk_k4,
 			device->family,
-			device->unk_v3,
+			device->bcdver,
 			device->rows,
 			device->cols,
-			device->unk_v4,
-			device->unk_v5,
+			device->width,
+			device->height,
 			device->unk_k5,
 			device->unk_k6,
-			device->unk_v6,
+			device->unk_v2,
 			device->unk_k7
 	];
 }
@@ -198,6 +199,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
 		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
 				bundleIdentifier]] cStringUsingEncoding:NSASCIIStringEncoding], 0);
+		devices = [[NSMutableArray alloc] init];
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
@@ -226,7 +228,12 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 - (void)awakeFromNib {
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
 	for( NSUInteger i = 0; i < [deviceList count]; i++) {
-		MTDeviceX *thisDevice = (MTDeviceX*)[deviceList objectAtIndex:i];
+		MTDeviceX *thisDevice = (MTDeviceX *)[deviceList objectAtIndex:i];
+		NSMutableData *mkDeviceData = [NSMutableData dataWithLength:sizeof(MKDevice)];
+		MKDevice *mkDeviceInfo = [mkDeviceData mutableBytes];
+		mkDeviceInfo->dev_id = i;
+		mkDeviceInfo->state = NO;
+		mkDeviceInfo->device = thisDevice;
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [[self class] getInfoForDevice:thisDevice]);
 #endif
@@ -257,6 +264,8 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 			NSLog(@"Device info: %@", [[self class] getInfoForDevice:thisDevice]);
 			continue;
 		}
+		mkDeviceInfo->state = YES;
+		[[self devices] addObject:mkDeviceData];
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
@@ -274,60 +283,87 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	[tapSound release];
 	[tap release];
 	[currentLayout release];
+	[devices release];
 	[prefs release];
 	[super dealloc];
 }
 
 #pragma mark Touch handling
 
-int callback( int device, Finger *data, int nFingers, double timestamp, int frame ) {
+int callback( int device, Touch *data, int nTouches, double timestamp, int frame ) {
 #pragma unused (device, timestamp, frame)
 	// This is to avoid leaks
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
-	for (int i=0; i<nFingers; i++) {
-		Finger *f = &data[i];
-		[refToSelf processTouch:f];
+	for (int i = 0; i < nTouches; i++) {
+		Touch *t = &data[i];
+		MKDevice *thisDevice = nil;
+		NSUInteger j = 0;
+		for( j = 0; j < [[refToSelf devices] count]; j++ ) {
+			thisDevice = (MKDevice *)[[[refToSelf devices] objectAtIndex:j] mutableBytes];
+			if( (int)(long)(thisDevice->device) == device )
+				break;
+		}
+		if( j >= [[refToSelf devices] count] ) {
+			NSLog(@"Device (%x) not found.  Ignoring touch.", device);
+			continue;
+		}
+		[refToSelf processTouch:t onDevice:thisDevice];
 	}
 	// Time to release... or drain now.
 	[thePool drain];
 	return 0;
 }
 
-- (void)processTouch:(Finger *)finger {
-	if( (finger->state != 7 /*&& finger->state != 1*/) || ![self isTracking] )
+- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)deviceInfo {
+	if( /*(touch->state != 7 && touch->state != 1) ||*/ ![self isTracking] )
 		return;
-
+	if( touch->identifier > kMultitouchFingers || touch->identifier <= 0 ) // Sanity check
+		return;
 #if 0
 	NSLog(@"Frame %7d: TS:%6.3f ID:%d St:%d foo3:%d foo4:%d norm.pos: [%6.3f,%6.3f] sz: %6.3f unk2:%6.3f\n",
-		finger->frame, finger->timestamp, finger->identifier, finger->state, finger->foo3, finger->foo4,
-		finger->normalized.pos.x, finger->normalized.pos.y, finger->size, finger->unk2);
-
+		touch->frame, touch->timestamp, touch->identifier, touch->state, touch->foo3, touch->foo4,
+		touch->normalized.pos.x, touch->normalized.pos.y, touch->size, touch->unk2);
+#endif // 0
+#if 0
 	NSLog([NSString stringWithFormat:@"Frame %7d: Angle %6.2f, ellipse %6.3f x%6.3f; "
 			"position (%6.3f,%6.3f) vel (%6.3f,%6.3f) "
 			"ID %d, state %d [%d %d?] size %6.3f, %6.3f?",
-			finger->frame,
-			finger->angle * 90 / atan2(1,0),
-			finger->majorAxis,
-			finger->minorAxis,
-			finger->normalized.pos.x,
-			finger->normalized.pos.y,
-			finger->normalized.vel.x,
-			finger->normalized.vel.y,
-			finger->identifier, finger->state, finger->foo3, finger->foo4,
-			finger->size, finger->unk2]);
+			touch->frame,
+			touch->angle * 90 / atan2(1,0),
+			touch->majorAxis,
+			touch->minorAxis,
+			touch->normalized.pos.x,
+			touch->normalized.pos.y,
+			touch->normalized.vel.x,
+			touch->normalized.vel.y,
+			touch->identifier, touch->state, touch->foo3, touch->foo4,
+			touch->size, touch->unk2]);
 #endif // 0
-	NSRect imgBox;
-	NSPoint aPoint = NSMakePoint((CGFloat)((mtSize.width*(finger->normalized.pos.x))*1.25),
-			(CGFloat)((mtSize.height*(finger->normalized.pos.y))*1.10));
-	imgBox.origin.x = aPoint.x;
-	imgBox.origin.y = aPoint.y;
-	//NSLog([NSString stringWithFormat:@"%f",aPoint.x]);
-	//NSLog([NSString stringWithFormat:@"%f",aPoint.y]);
-	imgBox.size.width=33;
-	imgBox.size.height=34;
+
+	NSRect imgBox = NSMakeRect((CGFloat)((mtSize.width*(touch->normalized.pos.x))*1.25),
+			(CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
+			33, 34);
+
+	switch( touch->state ) {
+	case 1: // FIXME: Constants
+		deviceInfo->fingers[touch->identifier-1].state = YES;
+		deviceInfo->fingers[touch->identifier-1].tapView = [[NSImageView alloc] initWithFrame:imgBox];
+		[deviceInfo->fingers[touch->identifier-1].tapView setImage:tap];
+		[keyboardView addSubview:deviceInfo->fingers[touch->identifier-1].tapView];
+		return;
+	case 7:
+		deviceInfo->fingers[touch->identifier-1].state = NO;
+		[deviceInfo->fingers[touch->identifier-1].tapView removeFromSuperview];
+		[deviceInfo->fingers[touch->identifier-1].tapView autorelease];
+		deviceInfo->fingers[touch->identifier-1].tapView = nil;
+		break;
+	default:
+		[deviceInfo->fingers[touch->identifier-1].tapView setFrame:imgBox];
+		return;
+	}
 	for( NSUInteger i = 0; i < [[currentLayout currentButtons] count] ; i++ ) {
 		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
-		if( ![button containsPoint:aPoint size:imgBox.size] )
+		if( ![button containsPoint:imgBox.origin size:imgBox.size] )
 			continue;
 		//NSLog([button letter]);
 		BOOL doSend = YES;
@@ -548,5 +584,6 @@ int callback( int device, Finger *data, int nFingers, double timestamp, int fram
 @synthesize shift;
 @synthesize tracking;
 @synthesize currentLayout;
+@synthesize devices;
 
 @end

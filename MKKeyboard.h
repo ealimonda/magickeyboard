@@ -20,8 +20,23 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define kMultitouchFingers 11
+
 @class MKWindow;
 @class MKLayout;
+typedef struct MTDeviceX MTDeviceX;
+
+typedef struct {
+	BOOL state;
+	NSImageView *tapView;
+} MKFinger;
+
+typedef struct {
+	NSUInteger dev_id;
+	BOOL state;
+	struct MTDeviceX *device;
+	MKFinger fingers[kMultitouchFingers];
+} MKDevice;
 
 @interface MKKeyboard : NSObject {
 	NSImage *tap;
@@ -43,10 +58,12 @@
 	BOOL shift;
 	BOOL lastKeyWasModifier;
 	IBOutlet NSView *keyboardView;
-	
+
 	NSSound *tapSound;
-	
+
 	MKLayout *currentLayout;
+
+	NSMutableArray *devices;
 }
 
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
@@ -57,5 +74,6 @@
 @property (assign) BOOL shift;
 @property (assign,getter=isTracking) BOOL tracking;
 @property (retain) MKLayout *currentLayout;
+@property (retain) NSMutableArray *devices;
 
 @end
