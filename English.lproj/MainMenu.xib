@@ -1472,6 +1472,14 @@
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
+					<object class="NSMenuItem" id="488510288">
+						<reference key="NSMenu" ref="671178036"/>
+						<string key="NSTitle">Submit Feedback…</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
 					<object class="NSMenuItem" id="209598383">
 						<reference key="NSMenu" ref="671178036"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -2362,6 +2370,14 @@
 						<reference key="destination" ref="520595333"/>
 					</object>
 					<int key="connectionID">624</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">submitFeedback:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="488510288"/>
+					</object>
+					<int key="connectionID">626</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3426,6 +3442,7 @@
 							<reference ref="442810260"/>
 							<reference ref="358651450"/>
 							<reference ref="520595333"/>
+							<reference ref="488510288"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -3559,6 +3576,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">623</int>
 						<reference key="object" ref="520595333"/>
+						<reference key="parent" ref="671178036"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">625</int>
+						<reference key="object" ref="488510288"/>
 						<reference key="parent" ref="671178036"/>
 					</object>
 				</object>
@@ -3822,6 +3844,7 @@
 					<string>584.IBPluginDependency</string>
 					<string>607.IBPluginDependency</string>
 					<string>623.IBPluginDependency</string>
+					<string>625.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>72.ImportedFromIB2</string>
 					<string>73.IBPluginDependency</string>
@@ -4069,7 +4092,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{543, 642}, {211, 103}}</string>
+					<string>{{543, 622}, {211, 123}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4111,6 +4134,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{769, 672}, {222, 43}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4161,7 +4185,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">624</int>
+			<int key="maxID">626</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4283,9 +4307,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>disableTrackingSelector:</string>
 							<string>quitSelector:</string>
+							<string>submitFeedback:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -4296,6 +4322,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>disableTrackingSelector:</string>
 							<string>quitSelector:</string>
+							<string>submitFeedback:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -4305,6 +4332,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">quitSelector:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">submitFeedback:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

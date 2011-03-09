@@ -1,8 +1,9 @@
-#!/bin/bash
+#!/bin/sh
+
 #*******************************************************************************************************************
-#*                                     MagicKeyboard :: UpdateRevision                                             *
+#*                                     MagicKeyboard :: FeedbackReporter                                           *
 #*******************************************************************************************************************
-#* File:             UpdateRevision.sh                                                                             *
+#* File:             FRFeedbackReporter.sh                                                                         *
 #* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
 #*                   This software is free software: you can redistribute it and/or modify it under the terms of   *
 #*                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -19,9 +20,5 @@
 #* $Revision::                                                                         $: SVN Revision             *
 #*******************************************************************************************************************
 
-BASEVERNUM=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "${INFOPLIST_FILE}" | sed 's/,/, /g')
-REV=$(svnversion -nc | /usr/bin/sed -e 's/^[^:]*://;s/[A-Za-z]//')
-SVNDATE=$(LC_ALL=C svn info | awk '/^Last Changed Date:/ {print $4,$5}')
-/usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BASEVERNUM.$REV" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
-/usr/libexec/PlistBuddy -c "Set :BuildDateString $SVNDATE" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
-
+pwd
+system_profiler SPLogsDataType|grep -A 30 'class AppleMultitouchDevice,'|grep -B 25 '| }'

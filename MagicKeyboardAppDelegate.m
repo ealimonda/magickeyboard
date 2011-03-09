@@ -19,22 +19,25 @@
  *******************************************************************************************************************/
 
 #import "MagicKeyboardAppDelegate.h"
+#import <FeedbackReporter/FRFeedbackReporter.h>
 
 @implementation MagicKeyboardAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #pragma unused (aNotification)
+	[[FRFeedbackReporter sharedReporter] setDelegate:self];
 	[window setAcceptsMouseMovedEvents:NO];
 	//CGDisplayHideCursor(kCGDirectMainDisplay);
 	//CGAssociateMouseAndMouseCursorPosition(NO);
 	[window setLevel:NSFloatingWindowLevel];
 	[window setCollectionBehavior:NSWindowCollectionBehaviorStationary];
-	NSStatusItem* statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength]
+	NSStatusItem *statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength]
 			retain];
-	NSImage* statusImage = [NSImage imageNamed:@"TrayIcon.png"];
+	NSImage *statusImage = [NSImage imageNamed:@"TrayIcon.png"];
 	[statusBarItem setImage:statusImage];
 	[statusBarItem setHighlightMode:YES];
 	[statusBarItem setMenu:statusMenu];
+	[[FRFeedbackReporter sharedReporter] reportIfCrash];
 }
 
 - (IBAction)quitSelector:(id)sender {
@@ -47,7 +50,7 @@
 }
 
 - (IBAction)disableTrackingSelector:(id)sender {
-	[((NSMenuItem*)sender) setState:!((BOOL)[sender state])];
+	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
 	
 	if( [sender state] )
 		[window orderOut:self];
@@ -55,6 +58,19 @@
 		[window makeKeyAndOrderFront:self];
 
 	[magickeyboard setTracking:![sender state]];
+}
+
+- (IBAction)submitFeedback:(id)sender {
+#pragma unused (sender)
+	[[FRFeedbackReporter sharedReporter] reportFeedback];
+}
+
+- (NSDictionary *)customParametersForFeedbackReport {
+	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:@"None found" forKey:@"Devices"];
+
+	if( magickeyboard )
+		[dict setObject:[magickeyboard deviceInfoList] forKey:@"Devices"];
+	return dict;
 }
 
 @end

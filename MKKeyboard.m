@@ -376,7 +376,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
 		if( ![button containsPoint:imgBox.origin size:imgBox.size] )
 			continue;
-		//NSLog([button letter]);
 		BOOL doSend = YES;
 		int keycode = 0;
 		if( [[button letter]isEqualToString:keyNUMS] ) {
@@ -588,6 +587,19 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 - (BOOL)acceptsFirstResponder {
 	return NO;
+}
+
+- (NSArray *)deviceInfoList {
+	NSMutableArray *devs = [NSMutableArray array];
+	for( NSMutableData *eachDeviceData in [self devices] ) {
+		MKDevice *eachDevice = [eachDeviceData mutableBytes];
+		NSDictionary *thisDeviceInfo = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
+				[NSNumber numberWithBool:eachDevice->state],
+				[[self class] getInfoForDevice:eachDevice->device], nil]
+				forKeys:[NSArray arrayWithObjects:@"State", @"Info", nil]];
+		[devs addObject:thisDeviceInfo];
+	}
+	return devs;
 }
 
 #pragma mark -

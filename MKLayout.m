@@ -131,25 +131,21 @@ NSString * const kXmlYEnd = @"yEnd";
 
 /// ...and this reports a fatal error to the delegate. The parser will stop parsing.
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
 	NSLog(@"Parse Error at line %d: %@", [parser lineNumber], parseError);
 	[self setValid:NO];
 }
 
 /// If validation is on, this will report a fatal validation error to the delegate. The parser will stop parsing.
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError {
-#ifdef __DEBUGGING__
-	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-#endif // __DEBUGGING__
 	NSLog(@"Validation Error at line %d: %@", [parser lineNumber], validationError);
 	[self setValid:NO];
 }
 
 - (void)loadXML:(NSString *)xmlFileName {
 	// Create a parser
+#ifdef __DEBUGGING__
 	NSLog(@"Parsing: %@", xmlFileName);
+#endif // __DEBUGGING__
 	NSData *xmlData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:xmlFileName ofType:@"xml"]];
 	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:xmlData] autorelease];
 	[parser setDelegate:self];

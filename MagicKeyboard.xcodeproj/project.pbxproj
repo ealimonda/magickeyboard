@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		164F53AF1323F6EA00F4AB0F /* MKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 164F53AE1323F6EA00F4AB0F /* MKLayout.m */; };
+		16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
+		16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
+		16AB15EB1327F63F00B3D18E /* FRFeedbackReporter.sh in Resources */ = {isa = PBXBuildFile; fileRef = 16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */; };
 		16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16EA1084131A35DC00DAB98D /* NumPadFull.xml */; };
 		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -34,11 +37,26 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		16AB15E21327ED0000B3D18E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		164F53AD1323F6EA00F4AB0F /* MKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLayout.h; sourceTree = "<group>"; };
 		164F53AE1323F6EA00F4AB0F /* MKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLayout.m; sourceTree = "<group>"; };
+		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
+		16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FRFeedbackReporter.sh; sourceTree = "<group>"; };
 		16EA1084131A35DC00DAB98D /* NumPadFull.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumPadFull.xml; sourceTree = "<group>"; };
 		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -78,6 +96,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */,
+				16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +125,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */,
 				2891A6561218670E0058CD9C /* MultitouchSupport.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -168,6 +188,7 @@
 				8D1107310486CEB800E47090 /* MagicKeyboard-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -192,6 +213,7 @@
 				165FB5271327843C00BAA9F4 /* Run Version Script */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				16AB15E21327ED0000B3D18E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -245,6 +267,7 @@
 				28D4F6A812432E1C002EEA7A /* NumPadFull.png in Resources */,
 				16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */,
 				16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */,
+				16AB15EB1327F63F00B3D18E /* FRFeedbackReporter.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +335,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -332,6 +356,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = MagicKeyboard_Prefix.pch;

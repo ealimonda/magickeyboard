@@ -39,7 +39,7 @@
 	return NO;
 }
 
-- (BOOL)canBecomeMainWindow{
+- (BOOL)canBecomeMainWindow {
 	return NO;
 }
 

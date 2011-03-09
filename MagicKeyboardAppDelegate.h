@@ -19,9 +19,10 @@
  *******************************************************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import <FeedbackReporter/FRFeedbackReporter.h>
 #import "MKKeyboard.h"
 
-@interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate> {
+@interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate, FRFeedbackReporterDelegate> {
 	IBOutlet NSWindow *window;
 	IBOutlet NSMenu* statusMenu;
 	IBOutlet MKKeyboard* magickeyboard;
@@ -29,5 +30,6 @@
 
 - (IBAction)disableTrackingSelector:(id)sender;
 - (IBAction)quitSelector:(id)sender;
+- (IBAction)submitFeedback:(id)sender;
 
 @end

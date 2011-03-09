@@ -70,6 +70,7 @@ typedef struct {
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
 - (void)writePrefs:(NSString *)value forKey:(NSString *)key;
 - (IBAction)switchLayout:(id)sender;
+- (NSArray *)deviceInfoList;
 
 @property (retain) NSImage *tap;
 @property (assign) BOOL shift;
