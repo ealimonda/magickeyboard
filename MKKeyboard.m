@@ -50,6 +50,8 @@ NSString * const kPreferencesFolder = @"~/Library/Preferences";
 
 NSString * const kDefaultLayout = @"QwertyMini";
 
+const double kSamplingInterval = 0.02;
+
 #pragma mark -
 @interface MKKeyboard ()
 #pragma mark Private methods and properties
@@ -346,18 +348,27 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 	switch( touch->state ) {
 	case 1: // FIXME: Constants
+		if( deviceInfo->fingers[touch->identifier-1].state )
+			return;
+		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
 		deviceInfo->fingers[touch->identifier-1].state = YES;
 		deviceInfo->fingers[touch->identifier-1].tapView = [[NSImageView alloc] initWithFrame:imgBox];
 		[deviceInfo->fingers[touch->identifier-1].tapView setImage:tap];
 		[keyboardView addSubview:deviceInfo->fingers[touch->identifier-1].tapView];
 		return;
 	case 7:
+		if( !deviceInfo->fingers[touch->identifier-1].state )
+			return;
 		deviceInfo->fingers[touch->identifier-1].state = NO;
+		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
 		[deviceInfo->fingers[touch->identifier-1].tapView removeFromSuperview];
 		[deviceInfo->fingers[touch->identifier-1].tapView autorelease];
 		deviceInfo->fingers[touch->identifier-1].tapView = nil;
 		break;
 	default:
+		if( touch->timestamp < deviceInfo->fingers[touch->identifier-1].last + kSamplingInterval )
+			return;
+		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
 		[deviceInfo->fingers[touch->identifier-1].tapView setFrame:imgBox];
 		return;
 	}
@@ -452,6 +463,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 			ctrl = NO;
 			[ctrlChk setState:0];
 		}
+		break;
 	}
 }
 

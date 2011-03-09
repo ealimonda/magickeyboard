@@ -29,6 +29,7 @@ typedef struct MTDeviceX MTDeviceX;
 typedef struct {
 	BOOL state;
 	NSImageView *tapView;
+	double last;
 } MKFinger;
 
 typedef struct {
