@@ -34,5 +34,15 @@
 	<string></string>
 	<key>FRFeedbackReporter.targetURL</key>
 	<string>http://alimonda.com/feedback/submit.php?project=${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>MKdsa_pub.pem</string>
+	<key>SUEnableSystemProfiling</key>
+	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>http://alimonda.com/projects/magickeyboard/appcast.php</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>7200</integer>
 </dict>
 </plist>
