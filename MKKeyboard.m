@@ -19,6 +19,7 @@
  *******************************************************************************************************************/
 
 #import "MKKeyboard.h"
+#import <FeedbackReporter/FRFeedbackReporter.h>
 #import "AlphaAnimation.h"
 #import "MKButton.h"
 #import "MKLayout.h"
@@ -272,6 +273,23 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
+	if( [[self devices] count] < 1 ) {
+		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
+				@"We couldn't detect any compatible multitouch device connected to your system.\n"
+				"If a multitouch devie is connected but not detected, please inform us, so that it'll "
+				"be supported soon.\n\n"
+				"Do you want to send us feedback about an incompatible device?",
+				@"Send Feedback", @"Cancel", nil);
+		switch( theResponse ) {
+		case NSAlertDefaultReturn:    /* "Send Feedback" */
+			[[FRFeedbackReporter sharedReporter] reportFeedback];
+			break;
+		case NSAlertAlternateReturn:  /* "Cancel" */
+			break;
+		case NSAlertErrorReturn:      /* an error occurred */
+			break;
+		}
+	}
 		
 	[keyboardView setAcceptsTouchEvents:NO];
 	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:[keyboardView frame]

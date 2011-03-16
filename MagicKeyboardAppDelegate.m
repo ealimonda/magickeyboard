@@ -23,6 +23,19 @@
 
 @implementation MagicKeyboardAppDelegate
 
+- (id)init {
+	self = [super init];
+	if( self ) {
+		statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength] retain];
+	}
+	return self;
+}
+
+- (void)dealloc {
+	[statusBarItem release];
+	[super dealloc];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #pragma unused (aNotification)
 	[[FRFeedbackReporter sharedReporter] setDelegate:self];
@@ -31,10 +44,8 @@
 	//CGAssociateMouseAndMouseCursorPosition(NO);
 	[window setLevel:NSFloatingWindowLevel];
 	[window setCollectionBehavior:NSWindowCollectionBehaviorStationary];
-	NSStatusItem *statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength]
-			retain];
-	NSImage *statusImage = [NSImage imageNamed:@"TrayIcon.png"];
-	[statusBarItem setImage:statusImage];
+	[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
+	[statusBarItem setAlternateImage:[NSImage imageNamed:@"MagicKeyboardMenuAlt.png"]];
 	[statusBarItem setHighlightMode:YES];
 	[statusBarItem setMenu:statusMenu];
 	[[FRFeedbackReporter sharedReporter] reportIfCrash];
@@ -52,10 +63,13 @@
 - (IBAction)disableTrackingSelector:(id)sender {
 	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
 	
-	if( [sender state] )
+	if( [sender state] ) {
 		[window orderOut:self];
-	else
+		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
+	} else {
 		[window makeKeyAndOrderFront:self];
+		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
+	}
 
 	[magickeyboard setTracking:![sender state]];
 }

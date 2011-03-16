@@ -26,6 +26,7 @@
 	IBOutlet NSWindow *window;
 	IBOutlet NSMenu* statusMenu;
 	IBOutlet MKKeyboard* magickeyboard;
+	NSStatusItem *statusBarItem;
 }
 
 - (IBAction)disableTrackingSelector:(id)sender;
