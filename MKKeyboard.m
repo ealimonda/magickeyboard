@@ -80,12 +80,12 @@ typedef struct {
 struct MTDeviceX {
 	uint32 unk_v0; // C8 B3 76 70  on both Mouse and Trackpad, but changes on other computers (i.e.: C8 23 FC 70)
 	uint32 unk_k0; // FF 7F 00 00
-	uint32 unk_k1; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
-	uint32 unk_k2; // 01 00 00 00 - Could be Endianness
-	uint32 unk_v1; // 0F 35 00 00, 03 76 00 00, 03 6E 00 00 / 03 37 00 00, 03 77 00 00
-	uint32 unk_k3; // 00 00 00 00
+	uint32 unk_v1; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
+	uint32 unk_k1; // 01 00 00 00 - Could be Endianness
+	uint32 unk_v2; // 0F 35 00 00, 03 76 00 00, 03 6E 00 00 / 03 37 00 00, 03 77 00 00
+	uint32 unk_k2; // 00 00 00 00
 	uint32 address; // Last 4 bytes of the device address (or serial number?), as reported by the System Profiler Bluetooth tab
-	uint32 unk_k4; // 00 00 00 04 - Last byte might be Parser Options?
+	uint32 unk_v3; // 00 00 00 04, some times 00 00 00 03 - Last byte might be Parser Options?
 		// (uint64)address = Multitouch ID
 	uint32 family; // Family ID
 	uint32 bcdver; // bcdVersion
@@ -93,21 +93,21 @@ struct MTDeviceX {
 	uint32 cols; // Sensor Columns
 	uint32 width; // Sensor Surface Width
 	uint32 height; // Sensor Surface Height
-	uint32 unk_k5; // 01 00 00 00 - Could be Endianness
-	uint32 unk_k6; // 00 00 00 00
-	uint32 unk_v2; // 90 04 75 70, 90 74 FA 70
-	uint32 unk_k7; // FF 7F 00 00
+	uint32 unk_k3; // 01 00 00 00 - Could be Endianness
+	uint32 unk_k4; // 00 00 00 00
+	uint32 unk_v4; // 90 04 75 70, 90 74 FA 70
+	uint32 unk_k5; // FF 7F 00 00
 };
 
 const MTDeviceX multiTouchSampleDevice = {
 	0x0,
 	0x00007FFF,
-	0x00011080,
+	0x0,
 	0x00000001,
 	0x0,
 	0x00000000,
 	0x0,
-	0x04000000,
+	0x0,
 	0x0,
 	0x0,
 	0x0,
@@ -146,41 +146,41 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
 			"\t unk_v0 = %08x\n"
 			"\t unk_k0 = %08x\n"
-			"\t unk_k1 = %08x\n"
-			"\t unk_k2 = %08x\n"
 			"\t unk_v1 = %08x\n"
-			"\t unk_k3 = %08x\n"
+			"\t unk_k1 = %08x\n"
+			"\t unk_v2 = %08x\n"
+			"\t unk_k2 = %08x\n"
 			"\taddress= %08x\n"
-			"\t unk_k4 = %08x\n"
+			"\t unk_v3 = %08x\n"
 			"\tfamily = %08x\n"
 			"\tbcdver = %08x\n"
 			"\trows   = %08x\n"
 			"\tcols   = %08x\n"
 			"\twidth  = %08x\n"
 			"\theight = %08x\n"
+			"\t unk_k3 = %08x\n"
+			"\t unk_k4 = %08x\n"
+			"\t unk_v4 = %08x\n"
 			"\t unk_k5 = %08x\n"
-			"\t unk_k6 = %08x\n"
-			"\t unk_v2 = %08x\n"
-			"\t unk_k7 = %08x\n"
 			"}",
 			device->unk_v0,
 			device->unk_k0,
-			device->unk_k1,
-			device->unk_k2,
 			device->unk_v1,
-			device->unk_k3,
+			device->unk_k1,
+			device->unk_v2,
+			device->unk_k2,
 			device->address,
-			device->unk_k4,
+			device->unk_v3,
 			device->family,
 			device->bcdver,
 			device->rows,
 			device->cols,
 			device->width,
 			device->height,
-			device->unk_k5,
-			device->unk_k6,
-			device->unk_v2,
-			device->unk_k7
+			device->unk_k3,
+			device->unk_k4,
+			device->unk_v4,
+			device->unk_k5
 	];
 }
 
@@ -247,8 +247,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 				|| thisDevice->unk_k3 != multiTouchSampleDevice.unk_k3
 				|| thisDevice->unk_k4 != multiTouchSampleDevice.unk_k4
 				|| thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
-				|| thisDevice->unk_k6 != multiTouchSampleDevice.unk_k6
-				|| thisDevice->unk_k7 != multiTouchSampleDevice.unk_k7
 				) {
 			NSLog(@"Unrecognized device (#%d), please report.\nDevice info: %@", i, [[self class]
 					getInfoForDevice:thisDevice]);
@@ -256,6 +254,9 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 				continue;
 		}
 		switch( thisDevice->family ) {
+		case 0x00000062:
+			NSLog(@"Detected MacBook (Pro?) trackpad (#%d).", i);
+			continue;
 		case 0x00000070:
 			NSLog(@"Detected Magic Mouse (#%d).  Ignoring it.", i);
 			continue;
