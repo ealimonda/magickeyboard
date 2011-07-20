@@ -13,15 +13,25 @@
 #*                   You should have received a copy of the GNU General Public License along with this program.    *
 #*                       If not, see <http://www.gnu.org/licenses/>                                                *
 #*******************************************************************************************************************
-#* $Id::                                                                               $: SVN Info                 *
-#* $Date::                                                                             $: Last modification        *
-#* $Author::                                                                           $: Last modification author *
-#* $Revision::                                                                         $: SVN Revision             *
-#*******************************************************************************************************************
 
+# Temporary, it may change later 
+# http://www.icodeblog.com/2011/03/23/using-git-versioning-inside-your-xcode-project/
+
+# Base version from the plist
 BASEVERNUM=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "${INFOPLIST_FILE}" | sed 's/,/, /g')
-REV=$(svnversion -nc | /usr/bin/sed -e 's/^[^:]*://;s/[A-Za-z]//')
-SVNDATE=$(LC_ALL=C svn info | awk '/^Last Changed Date:/ {print $4,$5}')
+
+# SVN Revision
+#REV=$(svnversion -nc | /usr/bin/sed -e 's/^[^:]*://;s/[A-Za-z]//')
+
+# Git last commit timestamp
+REV=$(git show --format=format:%ci|cut -d' ' -f'1,2'|sed 's/[-:]//g'|sed 's/[- :]/./g')
+
+# SVN commit date
+#SVNDATE=$(LC_ALL=C svn info | awk '/^Last Changed Date:/ {print $4,$5}')
+
+# Git commit date
+SVNDATE=$(git show --format=format:%ci|cut -d' ' -f'1,2')
+
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BASEVERNUM.$REV" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
 /usr/libexec/PlistBuddy -c "Set :BuildDateString $SVNDATE" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
 

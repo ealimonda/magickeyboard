@@ -14,11 +14,6 @@
 #*                   You should have received a copy of the GNU General Public License along with this program.    *
 #*                       If not, see <http://www.gnu.org/licenses/>                                                *
 #*******************************************************************************************************************
-#* $Id::                                                                               $: SVN Info                 *
-#* $Date::                                                                             $: Last modification        *
-#* $Author::                                                                           $: Last modification author *
-#* $Revision::                                                                         $: SVN Revision             *
-#*******************************************************************************************************************
 
 pwd
 system_profiler SPLogsDataType|grep -A 30 'class AppleMultitouchDevice,'|grep -B 25 '| }'

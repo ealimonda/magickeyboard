@@ -12,11 +12,6 @@
  *                   See the GNU General Public License for more details.                                          *
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
- *******************************************************************************************************************
- * $Id::                                                                               $: SVN Info                 *
- * $Date::                                                                             $: Last modification        *
- * $Author::                                                                           $: Last modification author *
- * $Revision::                                                                         $: SVN Revision             *
  **************************************************************************************************************** -->
 <layout name="Mini Numbers Keyboard">
 	<background filename="NumsMini.png" width="480" height="186" />
