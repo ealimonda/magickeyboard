@@ -48,9 +48,7 @@ NSString * const kDefaultLayout = @"QwertyMini";
 
 const double kSamplingInterval = 0.02;
 
-#pragma mark -
-@interface MKKeyboard ()
-#pragma mark Private methods and properties
+#pragma mark Private structures
 typedef struct {
 	float x, y;
 } mtPoint;
@@ -81,7 +79,7 @@ struct MTDeviceX {
 	uint32 unk_k2; // 00 00 00 00
 	uint32 address; // Last 4 bytes of the device address (or serial number?), as reported by the System Profiler Bluetooth tab
 	uint32 unk_v3; // 00 00 00 04, some times 00 00 00 03 - Last byte might be Parser Options?
-		// (uint64)address = Multitouch ID
+	// (uint64)address = Multitouch ID
 	uint32 family; // Family ID
 	uint32 bcdver; // bcdVersion
 	uint32 rows; // Sensor Rows
@@ -114,6 +112,10 @@ const MTDeviceX multiTouchSampleDevice = {
 	0x0,
 	0x00007FFF,
 };
+
+#pragma mark -
+@interface MKKeyboard ()
+#pragma mark Private methods and properties
 
 - (void)sendKeycode:(CGKeyCode)keycode;
 - (void)animateImage:(NSImageView *)image;
@@ -243,23 +245,23 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 				|| thisDevice->unk_k4 != multiTouchSampleDevice.unk_k4
 				|| thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
 				) {
-			NSLog(@"Unrecognized device (#%d), please report.\nDevice info: %@", i, [[self class]
+			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [[self class]
 					getInfoForDevice:thisDevice]);
 			if( !thisDevice )
 				continue;
 		}
 		switch( thisDevice->family ) {
 		case 0x00000062:
-			NSLog(@"Detected MacBook (Pro?) trackpad (#%d).", i);
-			continue;
+			NSLog(@"Detected MacBook Pro trackpad (#%lu).", i);
+			break;
 		case 0x00000070:
-			NSLog(@"Detected Magic Mouse (#%d).  Ignoring it.", i);
+			NSLog(@"Detected Magic Mouse (#%lu).  Ignoring it.", i);
 			continue;
 		case 0x00000080:
-			NSLog(@"Detected Magic Trackpad (#%d).", i);
+			NSLog(@"Detected Magic Trackpad (#%lu).", i);
 			break;
 		default:
-			NSLog(@"Detected device (#%d) family %d.  Ignoring it.", i, thisDevice->family);
+			NSLog(@"Detected device (#%lu) family %d.  Ignoring it.", i, thisDevice->family);
 			NSLog(@"Device info: %@", [[self class] getInfoForDevice:thisDevice]);
 			continue;
 		}

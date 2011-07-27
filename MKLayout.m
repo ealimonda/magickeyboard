@@ -126,13 +126,13 @@ NSString * const kXmlYEnd = @"yEnd";
 
 /// ...and this reports a fatal error to the delegate. The parser will stop parsing.
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	NSLog(@"Parse Error at line %d: %@", [parser lineNumber], parseError);
+	NSLog(@"Parse Error at line %ld: %@", [parser lineNumber], parseError);
 	[self setValid:NO];
 }
 
 /// If validation is on, this will report a fatal validation error to the delegate. The parser will stop parsing.
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError {
-	NSLog(@"Validation Error at line %d: %@", [parser lineNumber], validationError);
+	NSLog(@"Validation Error at line %ld: %@", [parser lineNumber], validationError);
 	[self setValid:NO];
 }
 

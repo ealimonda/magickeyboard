@@ -10,3 +10,12 @@
 # Specific exclude paths
 /build/*.build
 /build/Debug
+/DerivedData/MagicKeyboard/FileMaps
+/DerivedData/MagicKeyboard/Index
+/DerivedData/MagicKeyboard/Logs
+/DerivedData/MagicKeyboard/info.plist
+/DerivedData/MagicKeyboard/Build/FileMaps
+/DerivedData/MagicKeyboard/Build/Intermediates
+/DerivedData/MagicKeyboard/Build/LatestTargetBuildLogs
+/DerivedData/MagicKeyboard/Build/PrecompiledHeaders
+/DerivedData/MagicKeyboard/Build/Products/Debug
