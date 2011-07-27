@@ -24,13 +24,13 @@ BASEVERNUM=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "${INFOPLIST_FI
 #REV=$(svnversion -nc | /usr/bin/sed -e 's/^[^:]*://;s/[A-Za-z]//')
 
 # Git last commit timestamp
-REV=$(git show --format=format:%ci|cut -d' ' -f'1,2'|sed 's/[-:]//g'|sed 's/[- :]/./g')
+REV=$(git show --format=format:%ci|head -n 1|cut -d' ' -f'1,2'|sed 's/[-:]//g'|sed 's/[- :]/./g')
 
 # SVN commit date
 #SVNDATE=$(LC_ALL=C svn info | awk '/^Last Changed Date:/ {print $4,$5}')
 
 # Git commit date
-SVNDATE=$(git show --format=format:%ci|cut -d' ' -f'1,2')
+SVNDATE=$(git show --format=format:%ci|head -n 1|cut -d' ' -f'1,2')
 
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BASEVERNUM.$REV" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
 /usr/libexec/PlistBuddy -c "Set :BuildDateString $SVNDATE" "${TARGET_BUILD_DIR}"/${INFOPLIST_PATH}
