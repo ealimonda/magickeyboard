@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************************************************************
+ *                                                MagicKeyboard                                                    *
+ *******************************************************************************************************************
+ * File:             QwertyMini.xml                                                                                *
+ * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+ *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+ *                       the GNU General Public License as published by the Free Software Foundation, either       *
+ *                       version 3 of the License, or (at your option) any later version.                          *
+ *                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+ *                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+ *                   See the GNU General Public License for more details.                                          *
+ *                   You should have received a copy of the GNU General Public License along with this program.    *
+ *                       If not, see <http://www.gnu.org/licenses/>                                                *
+ **************************************************************************************************************** -->
+<layout name="Mini QWERTY Keyboard">
+	<background filename="QwertyMini.png" width="480" height="186" />
+	<buttons>
+		<button letter="q"         keycode="12" xStart="3"   xEnd="44"  yStart="143" yEnd="181" />
+		<button letter="w"         keycode="13" xStart="51"  xEnd="92"  yStart="143" yEnd="181" />
+		<button letter="e"         keycode="14" xStart="99"  xEnd="140" yStart="143" yEnd="181" />
+		<button letter="r"         keycode="15" xStart="147" xEnd="188" yStart="143" yEnd="181" />
+		<button letter="t"         keycode="17" xStart="195" xEnd="236" yStart="143" yEnd="181" />
+		<button letter="y"         keycode="16" xStart="243" xEnd="284" yStart="143" yEnd="181" />
+		<button letter="u"         keycode="32" xStart="291" xEnd="332" yStart="143" yEnd="181" />
+		<button letter="i"         keycode="34" xStart="339" xEnd="380" yStart="143" yEnd="181" />
+		<button letter="o"         keycode="31" xStart="348" xEnd="428" yStart="143" yEnd="181" />
+		<button letter="p"         keycode="35" xStart="435" xEnd="476" yStart="143" yEnd="181" />
+		<button letter="a"         keycode="0"  xStart="27"  xEnd="68"  yStart="96"  yEnd="134" />
+		<button letter="s"         keycode="1"  xStart="75"  xEnd="116" yStart="96"  yEnd="134" />
+		<button letter="d"         keycode="2"  xStart="123" xEnd="164" yStart="96"  yEnd="134" />
+		<button letter="f"         keycode="3"  xStart="171" xEnd="212" yStart="96"  yEnd="134" />
+		<button letter="g"         keycode="5"  xStart="219" xEnd="260" yStart="96"  yEnd="134" />
+		<button letter="h"         keycode="4"  xStart="267" xEnd="308" yStart="96"  yEnd="134" />
+		<button letter="j"         keycode="38" xStart="315" xEnd="356" yStart="96"  yEnd="134" />
+		<button letter="k"         keycode="40" xStart="363" xEnd="404" yStart="96"  yEnd="134" />
+		<button letter="l"         keycode="37" xStart="411" xEnd="452" yStart="96"  yEnd="134" />
+		<button letter="SHIFT"     keycode="56" xStart="3"   xEnd="59"  yStart="50"  yEnd="88"  />
+		<button letter="z"         keycode="6"  xStart="75"  xEnd="116" yStart="50"  yEnd="88"  />
+		<button letter="x"         keycode="7"  xStart="123" xEnd="164" yStart="50"  yEnd="88"  />
+		<button letter="c"         keycode="8"  xStart="171" xEnd="212" yStart="50"  yEnd="88"  />
+		<button letter="v"         keycode="9"  xStart="219" xEnd="260" yStart="50"  yEnd="88"  />
+		<button letter="b"         keycode="11" xStart="267" xEnd="308" yStart="50"  yEnd="88"  />
+		<button letter="n"         keycode="45" xStart="315" xEnd="356" yStart="50"  yEnd="88"  />
+		<button letter="m"         keycode="46" xStart="363" xEnd="404" yStart="50"  yEnd="88"  />
+		<button letter="DELETE"    keycode="51" xStart="420" xEnd="476" yStart="50"  yEnd="88"  />
+		<button letter="NUMS"      keycode="0"  xStart="4"   xEnd="43"  yStart="3"   yEnd="41"  />
+		<button letter="MODIFIERS" keycode="0"  xStart="52"  xEnd="91"  yStart="3"   yEnd="41"  />
+		<button letter=" "         keycode="49" xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
+		<button letter="RETURN"    keycode="36" xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
+	</buttons>
+</layout>
