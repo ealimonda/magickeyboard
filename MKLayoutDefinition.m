@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
- *                                     MagicKeyboard :: MKLayout                                                   *
+ *                                     MagicKeyboard :: MKLayoutDefinition                                         *
  *******************************************************************************************************************
- * File:             MKLayout.m                                                                                    *
+ * File:             MKLayoutDefinition.m                                                                          *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -13,34 +13,36 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  *******************************************************************************************************************/
 
-#import "MKLayout.h"
 #import "MKLayoutDefinition.h"
 #import "MKButton.h"
 
-NSString * const kUntitledLayout = @"Untitled Layout";
+NSString * const kUntitledLayoutDefinition = @"Untitled Layout Definition";
 
-NSString * const kXmlLayoutLayout = @"layout";
-NSString * const kXmlLayoutName = @"name";
-NSString * const kXmlLayoutDefinition = @"definition";
-NSString * const kXmlLayoutFilename = @"filename";
-NSString * const kXmlLayoutKeys = @"keys";
-NSString * const kXmlLayoutKey = @"key";
-NSString * const kXmlLayoutLetter = @"letter";
-NSString * const kXmlLayoutKeycode = @"keycode";
-NSString * const kXmlLayoutButton = @"button";
+NSString * const kXmlDefinitionDefinition = @"definition";
+NSString * const kXmlDefinitionName = @"name";
+NSString * const kXmlDefinitionBackground = @"background";
+NSString * const kXmlDefinitionFilename = @"filename";
+NSString * const kXmlDefinitionHeight = @"height";
+NSString * const kXmlDefinitionWidth = @"width";
+NSString * const kXmlDefinitionButtons = @"buttons";
+NSString * const kXmlDefinitionButton = @"button";
+NSString * const kXmlDefinitionId = @"id";
+NSString * const kXmlDefinitionXStart = @"xStart";
+NSString * const kXmlDefinitionYStart = @"yStart";
+NSString * const kXmlDefinitionXEnd = @"xEnd";
+NSString * const kXmlDefinitionYEnd = @"yEnd";
 
-@implementation MKLayout
+@implementation MKLayoutDefinition
 
 #pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if( self ) {
-		layoutName = [[NSString alloc] initWithString:kUntitledLayout];
+		layoutDefinitionName = [[NSString alloc] initWithString:kUntitledLayoutDefinition];
 		layoutSize = NSMakeSize(0, 0);
 		keyboardImage = nil;
 		currentButtons = [[NSMutableArray alloc] init];
 		valid = NO;
-		layoutDefinition = nil;
 	}
 	return self;
 }
@@ -54,19 +56,18 @@ NSString * const kXmlLayoutButton = @"button";
 }
 
 - (void)dealloc {
-	[layoutName release];
+	[layoutDefinitionName release];
 	[keyboardImage release];
 	[currentButtons release];
-	[layoutDefinition release];
 
 	[super dealloc];
 }
 
-+ (id)layout {
++ (id)layoutDefinition {
 	return [[[[self class] alloc] init] autorelease];
 }
 
-+ (id)layoutWithName:(NSString *)loadName {
++ (id)layoutDefinitionWithName:(NSString *)loadName {
 	return [[[[self class] alloc] initWithName:loadName] autorelease];
 }
 
@@ -74,35 +75,35 @@ NSString * const kXmlLayoutButton = @"button";
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
 		qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
 #pragma unused (parser, namespaceURI, qualifiedName)
-	if( [elementName isEqualToString:kXmlLayoutKey] ) {
-		if( !layoutDefinition ) {
-			NSLog(@"Invalid entry, no layout definition loaded.");
+	if( [elementName isEqualToString:kXmlDefinitionButton] ) {
+		int buttonID = [[attributeDict valueForKey:kXmlDefinitionId] intValue];
+		if( buttonID < 1 ) {
+			NSLog(@"Invalid button definition ID: %d", buttonID);
 			return;
 		}
-		int buttonID = [[attributeDict valueForKey:kXmlLayoutButton] intValue];
-		NSString *letter = [attributeDict valueForKey:kXmlLayoutLetter];
-		NSString *keycode = [attributeDict valueForKey:kXmlLayoutKeycode];
 		for( MKButton *eachButton in currentButtons ) {
 			if( [eachButton buttonID] == buttonID ) {
-				NSLog(@"Duplicate key button ID: %d", buttonID);
+				NSLog(@"Duplicate button definition ID: %d", buttonID);
 				return;
 			}
 		}
-		MKButton *button = [layoutDefinition buttonWithID:buttonID];
-		if( !button) {
-			NSLog(@"Invalid key, button %d does not exist", buttonID);
-			return;
-		}
-		[currentButtons addObject:[MKButton buttonWithButton:button letter:letter keycode:keycode]];
-	} else if( [elementName isEqualToString:kXmlLayoutLayout] ) {
-		[self setLayoutName:[attributeDict valueForKey:kXmlLayoutName]];
-		[self loadLayoutDefinition:[attributeDict valueForKey:kXmlLayoutDefinition]];
-	} else if( [elementName isEqualToString:kXmlLayoutKeys] ) {
+		int xStart = [[attributeDict valueForKey:kXmlDefinitionXStart] intValue];
+		int yStart = [[attributeDict valueForKey:kXmlDefinitionYStart] intValue];
+		int xEnd = [[attributeDict valueForKey:kXmlDefinitionXEnd] intValue];
+		int yEnd = [[attributeDict valueForKey:kXmlDefinitionYEnd] intValue];
+		MKButton *newButton = [MKButton buttonWithID:buttonID xStart:xStart xEnd:xEnd yStart:yStart yEnd:yEnd];
+		[currentButtons addObject:newButton];
+	} else if( [elementName isEqualToString:kXmlDefinitionDefinition] ) {
+		[self setLayoutDefinitionName:[attributeDict valueForKey:kXmlDefinitionName]];
+	} else if( [elementName isEqualToString:kXmlDefinitionBackground] ) {
+		[self setKeyboardImage:[NSImage imageNamed:[attributeDict valueForKey:kXmlDefinitionFilename]]];
+		[self setLayoutSize:NSMakeSize([[attributeDict valueForKey:kXmlDefinitionWidth] integerValue],
+				[[attributeDict valueForKey:kXmlDefinitionHeight] integerValue])];
+	} else if( [elementName isEqualToString:kXmlDefinitionButtons] ) {
 		// Skip
 	} else {
-		NSLog(@"Found invalid element %@ during layout parsing", elementName);
+		NSLog(@"Found invalid element %@ during layout definition parsing", elementName);
 	}
-	
 }
 
 // sent when the parser begins parsing of the document.
@@ -120,12 +121,13 @@ NSString * const kXmlLayoutButton = @"button";
 	//#ifdef __DEBUGGING__
 	//	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
 	//#endif // __DEBUGGING__
-	if( ![self layoutName] )
-		[self setLayoutName:kUntitledLayout];
-	if( ![self layoutDefinition] || ![[self layoutDefinition] isValid] ) {
+	if( ![self layoutDefinitionName] )
+		[self setLayoutDefinitionName:kUntitledLayoutDefinition];
+	if( ![self keyboardImage] )
 		[self setValid:NO];
-		return;
-	}
+	NSSize size = [self layoutSize];
+	if( size.height <= 0 || size.width <= 0 )
+		[self setValid:NO];
 }
 
 /// ...and this reports a fatal error to the delegate. The parser will stop parsing.
@@ -152,23 +154,18 @@ NSString * const kXmlLayoutButton = @"button";
 	[parser parse];
 }
 
-- (void)loadLayoutDefinition:(NSString *)definitionName {
-	[self setLayoutDefinition:[MKLayoutDefinition layoutDefinitionWithName:definitionName]];
-	if( [self layoutDefinition] && ![[self layoutDefinition] isValid] )
-		[self setLayoutDefinition:nil];
-	if( ![self layoutDefinition] ) {
-		[self setValid:NO];
-		return;
+- (MKButton *)buttonWithID:(int)buttonID {
+	for( MKButton *eachButton in currentButtons ) {
+		if( [eachButton buttonID] == buttonID )
+			return eachButton;
 	}
-	[self setLayoutSize:[[self layoutDefinition] layoutSize]];
-	[self setKeyboardImage:[[self layoutDefinition] keyboardImage]];
+	return nil;
 }
 
-@synthesize layoutName;
+@synthesize layoutDefinitionName;
 @synthesize layoutSize;
 @synthesize keyboardImage;
 @synthesize currentButtons;
 @synthesize valid;
-@synthesize layoutDefinition;
 
 @end

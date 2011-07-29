@@ -30,12 +30,12 @@
 	return self;
 }
 
-- (id)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeycode xStart:(int)aXStart xEnd:(int)aXEnd
-		yStart:(int)aYStart yEnd:(int)aYEnd {
+- (id)initWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd {
 	self = [self init];
 	if( self ) {
-		letter = [aLetter retain];
-		keycode = [aKeycode retain];
+		letter = nil;
+		keycode = nil;
+		buttonID = aButtonID;
 		xStart = aXStart;
 		xEnd = aXEnd;
 		yStart = aYStart;
@@ -54,10 +54,21 @@
 	return [[[[self class] alloc] init] autorelease];
 }
 
-+ (id)buttonWithLetter:(NSString *)aLetter keycode:(NSString *)aKeycode xStart:(int)aXStart xEnd:(int)aXEnd
-		yStart:(int)aYStart yEnd:(int)aYEnd {
-	return [[[[self class] alloc] initWithLetter:aLetter keycode:aKeycode xStart:aXStart xEnd:aXEnd yStart:aYStart
-			yEnd:aYEnd] autorelease];
++ (id)buttonWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd {
+	return [[[[self class] alloc] initWithID:aButtonID xStart:aXStart xEnd:aXEnd yStart:aYStart yEnd:aYEnd]
+			autorelease];
+}
+
++ (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode {
+	MKButton *thisButton = [aButton copy];
+	[thisButton assignLetter:aLetter keycode:aKeycode];
+	return [thisButton autorelease];
+}
+
+- (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode {
+	[self setLetter:aLetter];
+	[self setKeycode:aKeyCode];
+	return self;
 }
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize {

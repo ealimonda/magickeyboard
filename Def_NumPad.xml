@@ -2,7 +2,7 @@
 <!-- ***************************************************************************************************************
  *                                                MagicKeyboard                                                    *
  *******************************************************************************************************************
- * File:             ModsMini.xml                                                                                  *
+ * File:             Def_NumPad.xml                                                                                *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -13,29 +13,25 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Mini Modifiers Keyboard" definition="Def_ModsMini">
-	<keys>
-		<key button="1"  letter="ESC"    keycode="53"  />
-		<key button="2"  letter="F1"     keycode="122" />
-		<key button="3"  letter="F2"     keycode="120" />
-		<key button="4"  letter="F3"     keycode="99"  />
-		<key button="5"  letter="F4"     keycode="118" />
-		<key button="6"  letter="F5"     keycode="96"  />
-		<key button="7"  letter="F6"     keycode="97"  />
-		<key button="8"  letter="F7"     keycode="98"  />
-		<key button="9"  letter="F8"     keycode="100" />
-		<key button="10" letter="F9"     keycode="101" />
-		<key button="11" letter="F10"    keycode="109" />
-		<key button="12" letter="F11"    keycode="103" />
-		<key button="13" letter="F12"    keycode="111" />
-		<key button="14" letter="QWERTY" keycode="0"   />
-		<key button="15" letter="CTRL"   keycode="59"  />
-		<key button="16" letter="ALT"    keycode="58"  />
-		<key button="17" letter="CMD"    keycode="55"  />
-		<key button="18" letter="TAB"    keycode="48"  />
-		<key button="19" letter="UP"     keycode="126" />
-		<key button="20" letter="DOWN"   keycode="125" />
-		<key button="21" letter="LEFT"   keycode="123" />
-		<key button="22" letter="RIGHT"  keycode="124" />
-	</keys>
+<layout name="Full Numeric Keypad Layout">
+	<background filename="Def_NumPad.png" width="480" height="360" />
+	<buttons>
+		<button id="1"  xStart="95"  xEnd="240" yStart="5"   yEnd="73"  />
+		<button id="2"  xStart="247" xEnd="315" yStart="5"   yEnd="73"  />
+		<button id="3"  xStart="95"  xEnd="162" yStart="78"  yEnd="144" />
+		<button id="4"  xStart="172" xEnd="240" yStart="78"  yEnd="144" />
+		<button id="5"  xStart="247" xEnd="315" yStart="78"  yEnd="144" />
+		<button id="6"  xStart="95"  xEnd="162" yStart="149" yEnd="215" />
+		<button id="7"  xStart="172" xEnd="240" yStart="149" yEnd="215" />
+		<button id="8"  xStart="247" xEnd="315" yStart="149" yEnd="215" />
+		<button id="9"  xStart="95"  xEnd="162" yStart="220" yEnd="286" />
+		<button id="10" xStart="172" xEnd="240" yStart="220" yEnd="286" />
+		<button id="11" xStart="247" xEnd="315" yStart="220" yEnd="286" />
+		<button id="12" xStart="323" xEnd="391" yStart="5"   yEnd="144" />
+		<button id="13" xStart="323" xEnd="391" yStart="149" yEnd="286" />
+		<button id="14" xStart="323" xEnd="391" yStart="289" yEnd="355" />
+		<button id="15" xStart="247" xEnd="315" yStart="289" yEnd="355" />
+		<button id="16" xStart="172" xEnd="240" yStart="289" yEnd="355" />
+		<button id="17" xStart="95"  xEnd="162" yStart="289" yEnd="355" />
+	</buttons>
 </layout>

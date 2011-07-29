@@ -13,25 +13,24 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Full Numeric Keypad">
-	<background filename="NumPadFull.png" width="480" height="360" />
-	<buttons>
-		<button letter="0"      keycode="82"  xStart="95"  xEnd="240" yStart="5"   yEnd="73"  />
-		<button letter="."      keycode="65"  xStart="247" xEnd="315" yStart="5"   yEnd="73"  />
-		<button letter="1"      keycode="83"  xStart="95"  xEnd="162" yStart="78"  yEnd="144" />
-		<button letter="2"      keycode="84"  xStart="172" xEnd="240" yStart="78"  yEnd="144" />
-		<button letter="3"      keycode="85"  xStart="247" xEnd="315" yStart="78"  yEnd="144" />
-		<button letter="4"      keycode="86"  xStart="95"  xEnd="162" yStart="149" yEnd="215" />
-		<button letter="5"      keycode="87"  xStart="172" xEnd="240" yStart="149" yEnd="215" />
-		<button letter="6"      keycode="88"  xStart="247" xEnd="315" yStart="149" yEnd="215" />
-		<button letter="7"      keycode="89"  xStart="95"  xEnd="162" yStart="220" yEnd="286" />
-		<button letter="8"      keycode="91"  xStart="172" xEnd="240" yStart="220" yEnd="286" />
-		<button letter="9"      keycode="92"  xStart="247" xEnd="315" yStart="220" yEnd="286" />
-		<button letter="RETURN" keycode="76"  xStart="323" xEnd="391" yStart="5"   yEnd="144" />
-		<button letter="+"      keycode="69"  xStart="323" xEnd="391" yStart="149" yEnd="286" />
-		<button letter="-"      keycode="78"  xStart="323" xEnd="391" yStart="289" yEnd="355" />
-		<button letter="*"      keycode="67"  xStart="247" xEnd="315" yStart="289" yEnd="355" />
-		<button letter="/"      keycode="75"  xStart="172" xEnd="240" yStart="289" yEnd="355" />
-		<button letter="CLEAR"  keycode="71"  xStart="95"  xEnd="162" yStart="289" yEnd="355" />
-	</buttons>
+<layout name="Full Numeric Keypad" definition="Def_NumPad">
+	<keys>
+		<key button="1"  letter="0"      keycode="82"  />
+		<key button="2"  letter="."      keycode="65"  />
+		<key button="3"  letter="1"      keycode="83"  />
+		<key button="4"  letter="2"      keycode="84"  />
+		<key button="5"  letter="3"      keycode="85"  />
+		<key button="6"  letter="4"      keycode="86"  />
+		<key button="7"  letter="5"      keycode="87"  />
+		<key button="8"  letter="6"      keycode="88"  />
+		<key button="9"  letter="7"      keycode="89"  />
+		<key button="10" letter="8"      keycode="91"  />
+		<key button="11" letter="9"      keycode="92"  />
+		<key button="12" letter="RETURN" keycode="76"  />
+		<key button="13" letter="+"      keycode="69"  />
+		<key button="14" letter="-"      keycode="78"  />
+		<key button="15" letter="*"      keycode="67"  />
+		<key button="16" letter="/"      keycode="75"  />
+		<key button="17" letter="CLEAR"  keycode="71"  />
+	</keys>
 </layout>

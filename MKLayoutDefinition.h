@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
- *                                     MagicKeyboard :: MKLayout                                                   *
+ *                                     MagicKeyboard :: MKLayoutDefinition                                         *
  *******************************************************************************************************************
- * File:             MKLayout.h                                                                                    *
+ * File:             MKLayoutDefinition.h                                                                          *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -14,31 +14,28 @@
  *******************************************************************************************************************/
 
 #import <Cocoa/Cocoa.h>
-#import "MKLayoutDefinition.h"
+#import "MKButton.h"
 
-@interface MKLayout : NSObject <NSXMLParserDelegate> {
-	NSString *layoutName;
+@interface MKLayoutDefinition : NSObject <NSXMLParserDelegate> {
+	NSString *layoutDefinitionName;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
 	NSMutableArray *currentButtons;
 	BOOL valid;
-	MKLayoutDefinition *layoutDefinition;
 }
 
 - (id)initWithName:(NSString *)loadName;
-+ (id)layout;
-+ (id)layoutWithName:(NSString *)loadName;
++ (id)layoutDefinition;
++ (id)layoutDefinitionWithName:(NSString *)loadName;
 
 - (void)loadXML:(NSString *)fileName;
 
-- (void)loadLayoutDefinition:(NSString *)definitionName;
+- (MKButton *)buttonWithID:(int)buttonID;
 
-
-@property (retain) NSString *layoutName;
+@property (retain) NSString *layoutDefinitionName;
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;
 @property (readonly,retain) NSMutableArray *currentButtons;
 @property (assign,getter=isValid) BOOL valid;
-@property (retain) MKLayoutDefinition *layoutDefinition;
 
 @end

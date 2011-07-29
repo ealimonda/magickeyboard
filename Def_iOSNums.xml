@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************************************************************
+ *                                                MagicKeyboard                                                    *
+ *******************************************************************************************************************
+ * File:             Def_iOSNums.xml                                                                               *
+ * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+ *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+ *                       the GNU General Public License as published by the Free Software Foundation, either       *
+ *                       version 3 of the License, or (at your option) any later version.                          *
+ *                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+ *                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+ *                   See the GNU General Public License for more details.                                          *
+ *                   You should have received a copy of the GNU General Public License along with this program.    *
+ *                       If not, see <http://www.gnu.org/licenses/>                                                *
+ **************************************************************************************************************** -->
+<layout name="iOS Numeric Layout">
+	<background filename="Def_iOSNums.png" width="480" height="186" />
+	<buttons>
+		<button id="1"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />
+		<button id="2"  xStart="50"  xEnd="92"  yStart="142" yEnd="179" />
+		<button id="3"  xStart="99"  xEnd="140" yStart="142" yEnd="179" />
+		<button id="4"  xStart="147" xEnd="188" yStart="142" yEnd="179" />
+		<button id="5"  xStart="195" xEnd="236" yStart="142" yEnd="179" />
+		<button id="6"  xStart="243" xEnd="284" yStart="142" yEnd="179" />
+		<button id="7"  xStart="291" xEnd="332" yStart="142" yEnd="179" />
+		<button id="8"  xStart="339" xEnd="380" yStart="142" yEnd="179" />
+		<button id="9"  xStart="387" xEnd="428" yStart="142" yEnd="179" />
+		<button id="10"  xStart="435" xEnd="476" yStart="142" yEnd="179" />
+		<button id="11"  xStart="3"   xEnd="44"  yStart="96"  yEnd="133" />
+		<button id="12"  xStart="50"  xEnd="92"  yStart="96"  yEnd="133" />
+		<button id="13"  xStart="99"  xEnd="140" yStart="96"  yEnd="133" />
+		<button id="14"  xStart="147" xEnd="188" yStart="96"  yEnd="133" />
+		<button id="15"  xStart="195" xEnd="236" yStart="96"  yEnd="133" />
+		<button id="16"  xStart="243" xEnd="284" yStart="96"  yEnd="133" />
+		<button id="17"  xStart="291" xEnd="332" yStart="96"  yEnd="133" />
+		<button id="18"  xStart="339" xEnd="380" yStart="96"  yEnd="133" />
+		<button id="19"  xStart="387" xEnd="428" yStart="96"  yEnd="133" />
+		<button id="20"  xStart="435" xEnd="476" yStart="96"  yEnd="133" />
+		<button id="21"  xStart="3"   xEnd="56"  yStart="50"  yEnd="87"  />
+		<button id="22"  xStart="75"  xEnd="135" yStart="50"  yEnd="87"  />
+		<button id="23"  xStart="142" xEnd="202" yStart="50"  yEnd="87"  />
+		<button id="24"  xStart="209" xEnd="270" yStart="50"  yEnd="87"  />
+		<button id="25"  xStart="277" xEnd="337" yStart="50"  yEnd="87"  />
+		<button id="26"  xStart="344" xEnd="404" yStart="50"  yEnd="87"  />
+		<button id="27"  xStart="423" xEnd="476" yStart="50"  yEnd="87"  />
+		<button id="28"  xStart="4"   xEnd="91"  yStart="3"   yEnd="41"  />
+		<button id="29"  xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
+		<button id="30"  xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
+	</buttons>
+</layout>

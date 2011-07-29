@@ -16,6 +16,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MKButton : NSObject <NSCopying> {
+	int buttonID;
 	int xStart;
 	int xEnd;
 	int yStart;
@@ -24,15 +25,17 @@
 	NSString *letter;
 }
 
-- (id)initWithLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode xStart:(int)aXStart xEnd:(int)aXEnd
-		yStart:(int)aYStart yEnd:(int)aYEnd;
+- (id)initWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd;
 
 + (id)button;
-+ (id)buttonWithLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode xStart:(int)aXStart xEnd:(int)aXEnd
-		yStart:(int)aYStart yEnd:(int)aYEnd;
++ (id)buttonWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd;
++ (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode;
+
+- (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode;
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;
 
+@property (assign) int buttonID;
 @property (assign) int xStart;
 @property (assign) int xEnd;
 @property (assign) int yStart;

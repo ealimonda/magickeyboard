@@ -20,23 +20,29 @@
 		16C96C3C1328DBB0007A69C3 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C96C301328DB85007A69C3 /* Sparkle.framework */; };
 		16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16EA1084131A35DC00DAB98D /* NumPadFull.xml */; };
 		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
+		16FFCB3C13E253F200ACE2D4 /* MKLayoutDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FFCB3B13E253F200ACE2D4 /* MKLayoutDefinition.m */; };
+		16FFCB4413E257B800ACE2D4 /* Def_iOSMain.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */; };
+		16FFCB4613E26B0D00ACE2D4 /* Def_iOSMain.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */; };
+		16FFCB4813E2717F00ACE2D4 /* Def_iOSNums.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */; };
+		16FFCB5013E2795400ACE2D4 /* Def_iOSNums.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */; };
+		16FFCB5113E2795400ACE2D4 /* Def_iOSSym.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */; };
+		16FFCB5213E2795400ACE2D4 /* Def_iOSSym.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */; };
+		16FFCB5313E2795400ACE2D4 /* Def_ModsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */; };
+		16FFCB5413E2795400ACE2D4 /* Def_ModsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */; };
+		16FFCB5513E2795400ACE2D4 /* Def_NumPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */; };
+		16FFCB5613E2795400ACE2D4 /* Def_NumPad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */; };
 		28110E67121870050026AA8D /* AlphaAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110E66121870050026AA8D /* AlphaAnimation.m */; };
 		281EDBD812179D5500CC2197 /* Tock.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBD712179D5500CC2197 /* Tock.aiff */; };
 		281EDBEA1217ABBA00CC2197 /* QwertyMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBE91217ABBA00CC2197 /* QwertyMini.xml */; };
 		281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 281EDBF31217AC9F00CC2197 /* MKButton.m */; };
-		281FF8781233059100A94DB7 /* ModsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 281FF8771233059100A94DB7 /* ModsMini.png */; };
 		281FF88712330FA200A94DB7 /* ModsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281FF88612330FA200A94DB7 /* ModsMini.xml */; };
 		28531B111217816C001AB273 /* MKKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* MKKeyboard.m */; };
-		28531BB712178E1C001AB273 /* QwertyMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB612178E1C001AB273 /* QwertyMini.png */; };
 		28531BB912178EC4001AB273 /* Tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB812178EC4001AB273 /* Tap.png */; };
 		28554A8B12308D2D0087B886 /* SymbolsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28554A8A12308D2D0087B886 /* SymbolsMini.xml */; };
-		2889546E12303F68004F18F0 /* NumsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546C12303F68004F18F0 /* NumsMini.png */; };
-		2889546F12303F68004F18F0 /* SymbolsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 2889546D12303F68004F18F0 /* SymbolsMini.png */; };
 		2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2891A6561218670E0058CD9C /* MultitouchSupport.framework */; };
 		289F1F47123074C8005920DD /* NumsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 289F1F46123074C8005920DD /* NumsMini.xml */; };
-		28D4F6A812432E1C002EEA7A /* NumPadFull.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4F6A712432E1C002EEA7A /* NumPadFull.png */; };
 		28D7F72312184CE000D84A57 /* MKWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7F72212184CE000D84A57 /* MKWindow.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -72,6 +78,18 @@
 		16C96C301328DB85007A69C3 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		16EA1084131A35DC00DAB98D /* NumPadFull.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumPadFull.xml; sourceTree = "<group>"; };
 		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		16FFCB3A13E253F200ACE2D4 /* MKLayoutDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLayoutDefinition.h; sourceTree = "<group>"; };
+		16FFCB3B13E253F200ACE2D4 /* MKLayoutDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLayoutDefinition.m; sourceTree = "<group>"; };
+		16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSMain.xml; sourceTree = "<group>"; };
+		16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSMain.png; sourceTree = "<group>"; };
+		16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSNums.png; sourceTree = "<group>"; };
+		16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSNums.xml; sourceTree = "<group>"; };
+		16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSSym.png; sourceTree = "<group>"; };
+		16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSSym.xml; sourceTree = "<group>"; };
+		16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_ModsMini.png; sourceTree = "<group>"; };
+		16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_ModsMini.xml; sourceTree = "<group>"; };
+		16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_NumPad.png; sourceTree = "<group>"; };
+		16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_NumPad.xml; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKeyboardAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicKeyboardAppDelegate.m; sourceTree = "<group>"; };
@@ -82,18 +100,13 @@
 		281EDBE91217ABBA00CC2197 /* QwertyMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = QwertyMini.xml; sourceTree = "<group>"; };
 		281EDBF21217AC9F00CC2197 /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		281EDBF31217AC9F00CC2197 /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
-		281FF8771233059100A94DB7 /* ModsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ModsMini.png; sourceTree = "<group>"; };
 		281FF88612330FA200A94DB7 /* ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ModsMini.xml; sourceTree = "<group>"; };
 		28531B0F1217816C001AB273 /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboard.h; sourceTree = "<group>"; };
 		28531B101217816C001AB273 /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
-		28531BB612178E1C001AB273 /* QwertyMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QwertyMini.png; sourceTree = "<group>"; };
 		28531BB812178EC4001AB273 /* Tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tap.png; sourceTree = "<group>"; };
 		28554A8A12308D2D0087B886 /* SymbolsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SymbolsMini.xml; sourceTree = "<group>"; };
-		2889546C12303F68004F18F0 /* NumsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumsMini.png; sourceTree = "<group>"; };
-		2889546D12303F68004F18F0 /* SymbolsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SymbolsMini.png; sourceTree = "<group>"; };
 		2891A6561218670E0058CD9C /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = /System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<absolute>"; };
 		289F1F46123074C8005920DD /* NumsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NumsMini.xml; sourceTree = "<group>"; };
-		28D4F6A712432E1C002EEA7A /* NumPadFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NumPadFull.png; sourceTree = "<group>"; };
 		28D7F72112184CE000D84A57 /* MKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKWindow.h; sourceTree = "<group>"; };
 		28D7F72212184CE000D84A57 /* MKWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKWindow.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +132,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				16FFCB3A13E253F200ACE2D4 /* MKLayoutDefinition.h */,
+				16FFCB3B13E253F200ACE2D4 /* MKLayoutDefinition.m */,
 				28D7F72112184CE000D84A57 /* MKWindow.h */,
 				28D7F72212184CE000D84A57 /* MKWindow.m */,
 				281EDBF21217AC9F00CC2197 /* MKButton.h */,
@@ -185,21 +200,26 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */,
+				16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */,
+				16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */,
+				16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */,
+				16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */,
+				16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */,
+				16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */,
+				16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */,
+				16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */,
 				165ECD061330415B00AD0A0D /* MagicKeyboard.icns */,
 				16A01DB3132B106D00116980 /* MKdsa_pub.pem */,
 				16F53919131B1678003AE6F1 /* Credits.rtf */,
 				165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */,
 				165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */,
 				165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */,
-				28D4F6A712432E1C002EEA7A /* NumPadFull.png */,
 				16EA1084131A35DC00DAB98D /* NumPadFull.xml */,
-				28531BB612178E1C001AB273 /* QwertyMini.png */,
 				281EDBE91217ABBA00CC2197 /* QwertyMini.xml */,
-				2889546C12303F68004F18F0 /* NumsMini.png */,
+				16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */,
 				289F1F46123074C8005920DD /* NumsMini.xml */,
-				2889546D12303F68004F18F0 /* SymbolsMini.png */,
 				28554A8A12308D2D0087B886 /* SymbolsMini.xml */,
-				281FF8771233059100A94DB7 /* ModsMini.png */,
 				281FF88612330FA200A94DB7 /* ModsMini.xml */,
 				28531BB812178EC4001AB273 /* Tap.png */,
 				281EDBD712179D5500CC2197 /* Tock.aiff */,
@@ -274,17 +294,12 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				28531BB712178E1C001AB273 /* QwertyMini.png in Resources */,
 				28531BB912178EC4001AB273 /* Tap.png in Resources */,
 				281EDBD812179D5500CC2197 /* Tock.aiff in Resources */,
 				281EDBEA1217ABBA00CC2197 /* QwertyMini.xml in Resources */,
-				2889546E12303F68004F18F0 /* NumsMini.png in Resources */,
-				2889546F12303F68004F18F0 /* SymbolsMini.png in Resources */,
 				289F1F47123074C8005920DD /* NumsMini.xml in Resources */,
 				28554A8B12308D2D0087B886 /* SymbolsMini.xml in Resources */,
-				281FF8781233059100A94DB7 /* ModsMini.png in Resources */,
 				281FF88712330FA200A94DB7 /* ModsMini.xml in Resources */,
-				28D4F6A812432E1C002EEA7A /* NumPadFull.png in Resources */,
 				16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */,
 				16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */,
 				16AB15EB1327F63F00B3D18E /* FRFeedbackReporter.sh in Resources */,
@@ -293,6 +308,16 @@
 				165ECD101330420000AD0A0D /* MagicKeyboardMenu.png in Resources */,
 				165ECD111330420000AD0A0D /* MagicKeyboardMenuAlt.png in Resources */,
 				165ECD121330420000AD0A0D /* MagicKeyboardMenuDis.png in Resources */,
+				16FFCB4413E257B800ACE2D4 /* Def_iOSMain.xml in Resources */,
+				16FFCB4613E26B0D00ACE2D4 /* Def_iOSMain.png in Resources */,
+				16FFCB4813E2717F00ACE2D4 /* Def_iOSNums.png in Resources */,
+				16FFCB5013E2795400ACE2D4 /* Def_iOSNums.xml in Resources */,
+				16FFCB5113E2795400ACE2D4 /* Def_iOSSym.png in Resources */,
+				16FFCB5213E2795400ACE2D4 /* Def_iOSSym.xml in Resources */,
+				16FFCB5313E2795400ACE2D4 /* Def_ModsMini.png in Resources */,
+				16FFCB5413E2795400ACE2D4 /* Def_ModsMini.xml in Resources */,
+				16FFCB5513E2795400ACE2D4 /* Def_NumPad.png in Resources */,
+				16FFCB5613E2795400ACE2D4 /* Def_NumPad.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +352,7 @@
 				28D7F72312184CE000D84A57 /* MKWindow.m in Sources */,
 				28110E67121870050026AA8D /* AlphaAnimation.m in Sources */,
 				164F53AF1323F6EA00F4AB0F /* MKLayout.m in Sources */,
+				16FFCB3C13E253F200ACE2D4 /* MKLayoutDefinition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

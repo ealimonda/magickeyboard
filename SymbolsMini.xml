@@ -13,38 +13,37 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Mini Symbols Keyboard">
-	<background filename="SymbolsMini.png" width="480" height="186" />
-	<buttons>
-		<button letter="["      keycode="33"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />
-		<button letter="]"      keycode="30"  xStart="51"  xEnd="92"  yStart="142" yEnd="179" />
-		<button letter="{"      keycode="S33" xStart="99"  xEnd="140" yStart="142" yEnd="179" />
-		<button letter="}"      keycode="S30" xStart="147" xEnd="188" yStart="142" yEnd="179" />
-		<button letter="#"      keycode="S20" xStart="195" xEnd="236" yStart="142" yEnd="179" />
-		<button letter="%"      keycode="S23" xStart="243" xEnd="284" yStart="142" yEnd="179" />
-		<button letter="^"      keycode="S22" xStart="291" xEnd="332" yStart="142" yEnd="179" />
-		<button letter="*"      keycode="S28" xStart="339" xEnd="380" yStart="142" yEnd="179" />
-		<button letter="+"      keycode="S24" xStart="387" xEnd="428" yStart="142" yEnd="179" />
-		<button letter="="      keycode="24"  xStart="435" xEnd="478" yStart="142" yEnd="179"/>
-		<button letter="_"      keycode="S27" xStart="3"   xEnd="44"  yStart="96"  yEnd="133" />
-		<button letter="\"      keycode="42"  xStart="51"  xEnd="92"  yStart="96"  yEnd="133" />
-		<button letter="|"      keycode="S42" xStart="99"  xEnd="140" yStart="96"  yEnd="133" />
-		<button letter="~"      keycode="S50" xStart="147" xEnd="188" yStart="96"  yEnd="133" />
-		<button letter="&lt;"   keycode="S43" xStart="195" xEnd="236" yStart="96"  yEnd="133" />
-		<button letter="&gt;"   keycode="S47" xStart="243" xEnd="284" yStart="96"  yEnd="133" />
-		<button letter="€"      keycode="0"   xStart="291" xEnd="332" yStart="96"  yEnd="133" /> <!-- Missing -->
-		<button letter="£"      keycode="0"   xStart="339" xEnd="380" yStart="96"  yEnd="133" /> <!-- Missing -->
-		<button letter="¥"      keycode="0"   xStart="387" xEnd="428" yStart="96"  yEnd="133" /> <!-- Missing -->
-		<button letter="•"      keycode="0"   xStart="435" xEnd="476" yStart="96"  yEnd="133" /> <!-- Missing -->
-		<button letter="NUMS"   keycode="0"   xStart="3"   xEnd="56"  yStart="50"  yEnd="87"  />
-		<button letter="."      keycode="47"  xStart="75"  xEnd="135" yStart="50"  yEnd="87"  />
-		<button letter=","      keycode="43"  xStart="142" xEnd="202" yStart="50"  yEnd="87"  />
-		<button letter="?"      keycode="S44" xStart="209" xEnd="270" yStart="50"  yEnd="87"  />
-		<button letter="!"      keycode="S18" xStart="277" xEnd="337" yStart="50"  yEnd="87"  />
-		<button letter="&apos;" keycode="39"  xStart="344" xEnd="404" yStart="50"  yEnd="87"  />
-		<button letter="DELETE" keycode="51"  xStart="423" xEnd="476" yStart="50"  yEnd="87"  />
-		<button letter="QWERTY" keycode="0"   xStart="4"   xEnd="91"  yStart="3"   yEnd="41"  />
-		<button letter=" "      keycode="49"  xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
-		<button letter="RETURN" keycode="36"  xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
-	</buttons>
+<layout name="Mini Symbols Keyboard" definition="Def_iOSSym">
+	<keys>
+		<key button="1"  letter="["      keycode="33"  />
+		<key button="2"  letter="]"      keycode="30"  />
+		<key button="3"  letter="{"      keycode="S33" />
+		<key button="4"  letter="}"      keycode="S30" />
+		<key button="5"  letter="#"      keycode="S20" />
+		<key button="6"  letter="%"      keycode="S23" />
+		<key button="7"  letter="^"      keycode="S22" />
+		<key button="8"  letter="*"      keycode="S28" />
+		<key button="9"  letter="+"      keycode="S24" />
+		<key button="10" letter="="      keycode="24"  />
+		<key button="11" letter="_"      keycode="S27" />
+		<key button="12" letter="\"      keycode="42"  />
+		<key button="13" letter="|"      keycode="S42" />
+		<key button="14" letter="~"      keycode="S50" />
+		<key button="15" letter="&lt;"   keycode="S43" />
+		<key button="16" letter="&gt;"   keycode="S47" />
+		<key button="17" letter="€"      keycode="0"   /> <!-- Missing -->
+		<key button="18" letter="£"      keycode="0"   /> <!-- Missing -->
+		<key button="19" letter="¥"      keycode="0"   /> <!-- Missing -->
+		<key button="20" letter="•"      keycode="0"   /> <!-- Missing -->
+		<key button="21" letter="NUMS"   keycode="0"   />
+		<key button="22" letter="."      keycode="47"  />
+		<key button="23" letter=","      keycode="43"  />
+		<key button="24" letter="?"      keycode="S44" />
+		<key button="25" letter="!"      keycode="S18" />
+		<key button="26" letter="&apos;" keycode="39"  />
+		<key button="27" letter="DELETE" keycode="51"  />
+		<key button="28" letter="QWERTY" keycode="0"   />
+		<key button="29" letter=" "      keycode="49"  />
+		<key button="30" letter="RETURN" keycode="36"  />
+	</keys>
 </layout>

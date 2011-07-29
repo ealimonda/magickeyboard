@@ -13,40 +13,39 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Mini QWERTY Keyboard">
-	<background filename="QwertyMini.png" width="480" height="186" />
-	<buttons>
-		<button letter="q"         keycode="12" xStart="3"   xEnd="44"  yStart="143" yEnd="181" />
-		<button letter="w"         keycode="13" xStart="51"  xEnd="92"  yStart="143" yEnd="181" />
-		<button letter="e"         keycode="14" xStart="99"  xEnd="140" yStart="143" yEnd="181" />
-		<button letter="r"         keycode="15" xStart="147" xEnd="188" yStart="143" yEnd="181" />
-		<button letter="t"         keycode="17" xStart="195" xEnd="236" yStart="143" yEnd="181" />
-		<button letter="y"         keycode="16" xStart="243" xEnd="284" yStart="143" yEnd="181" />
-		<button letter="u"         keycode="32" xStart="291" xEnd="332" yStart="143" yEnd="181" />
-		<button letter="i"         keycode="34" xStart="339" xEnd="380" yStart="143" yEnd="181" />
-		<button letter="o"         keycode="31" xStart="348" xEnd="428" yStart="143" yEnd="181" />
-		<button letter="p"         keycode="35" xStart="435" xEnd="476" yStart="143" yEnd="181" />
-		<button letter="a"         keycode="0"  xStart="27"  xEnd="68"  yStart="96"  yEnd="134" />
-		<button letter="s"         keycode="1"  xStart="75"  xEnd="116" yStart="96"  yEnd="134" />
-		<button letter="d"         keycode="2"  xStart="123" xEnd="164" yStart="96"  yEnd="134" />
-		<button letter="f"         keycode="3"  xStart="171" xEnd="212" yStart="96"  yEnd="134" />
-		<button letter="g"         keycode="5"  xStart="219" xEnd="260" yStart="96"  yEnd="134" />
-		<button letter="h"         keycode="4"  xStart="267" xEnd="308" yStart="96"  yEnd="134" />
-		<button letter="j"         keycode="38" xStart="315" xEnd="356" yStart="96"  yEnd="134" />
-		<button letter="k"         keycode="40" xStart="363" xEnd="404" yStart="96"  yEnd="134" />
-		<button letter="l"         keycode="37" xStart="411" xEnd="452" yStart="96"  yEnd="134" />
-		<button letter="SHIFT"     keycode="56" xStart="3"   xEnd="59"  yStart="50"  yEnd="88"  />
-		<button letter="z"         keycode="6"  xStart="75"  xEnd="116" yStart="50"  yEnd="88"  />
-		<button letter="x"         keycode="7"  xStart="123" xEnd="164" yStart="50"  yEnd="88"  />
-		<button letter="c"         keycode="8"  xStart="171" xEnd="212" yStart="50"  yEnd="88"  />
-		<button letter="v"         keycode="9"  xStart="219" xEnd="260" yStart="50"  yEnd="88"  />
-		<button letter="b"         keycode="11" xStart="267" xEnd="308" yStart="50"  yEnd="88"  />
-		<button letter="n"         keycode="45" xStart="315" xEnd="356" yStart="50"  yEnd="88"  />
-		<button letter="m"         keycode="46" xStart="363" xEnd="404" yStart="50"  yEnd="88"  />
-		<button letter="DELETE"    keycode="51" xStart="420" xEnd="476" yStart="50"  yEnd="88"  />
-		<button letter="NUMS"      keycode="0"  xStart="4"   xEnd="43"  yStart="3"   yEnd="41"  />
-		<button letter="MODIFIERS" keycode="0"  xStart="52"  xEnd="91"  yStart="3"   yEnd="41"  />
-		<button letter=" "         keycode="49" xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
-		<button letter="RETURN"    keycode="36" xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
-	</buttons>
+<layout name="Mini QWERTY Keyboard" definition="Def_iOSMain">
+	<keys>
+		<key button="1"  letter="q"         keycode="12" />
+		<key button="2"  letter="w"         keycode="13" />
+		<key button="3"  letter="e"         keycode="14" />
+		<key button="4"  letter="r"         keycode="15" />
+		<key button="5"  letter="t"         keycode="17" />
+		<key button="6"  letter="y"         keycode="16" />
+		<key button="7"  letter="u"         keycode="32" />
+		<key button="8"  letter="i"         keycode="34" />
+		<key button="9"  letter="o"         keycode="31" />
+		<key button="10" letter="p"         keycode="35" />
+		<key button="11" letter="a"         keycode="0"  />
+		<key button="12" letter="s"         keycode="1"  />
+		<key button="13" letter="d"         keycode="2"  />
+		<key button="14" letter="f"         keycode="3"  />
+		<key button="15" letter="g"         keycode="5"  />
+		<key button="16" letter="h"         keycode="4"  />
+		<key button="17" letter="j"         keycode="38" />
+		<key button="18" letter="k"         keycode="40" />
+		<key button="19" letter="l"         keycode="37" />
+		<key button="20" letter="SHIFT"     keycode="56" />
+		<key button="21" letter="z"         keycode="6"  />
+		<key button="22" letter="x"         keycode="7"  />
+		<key button="23" letter="c"         keycode="8"  />
+		<key button="24" letter="v"         keycode="9"  />
+		<key button="25" letter="b"         keycode="11" />
+		<key button="26" letter="n"         keycode="45" />
+		<key button="27" letter="m"         keycode="46" />
+		<key button="28" letter="DELETE"    keycode="51" />
+		<key button="29" letter="NUMS"      keycode="0"  />
+		<key button="30" letter="MODIFIERS" keycode="0"  />
+		<key button="31" letter=" "         keycode="49" />
+		<key button="32" letter="RETURN"    keycode="36" />
+	</keys>
 </layout>
