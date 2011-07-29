@@ -204,7 +204,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
 		
-		// if the file was there, we got all the informati
 		// FIXME: use CFPreferences / NSUserDefaults
 		prefs = [[NSDictionary alloc] initWithContentsOfFile:[[kPreferencesFolder
 				stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
@@ -236,7 +235,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		mkDeviceInfo->device = thisDevice;
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [[self class] getInfoForDevice:thisDevice]);
-#endif
+#endif // __DEBUGGING__
 		if( !thisDevice
 		   		|| thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
 				|| thisDevice->unk_k1 != multiTouchSampleDevice.unk_k1
