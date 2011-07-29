@@ -68,6 +68,12 @@
 	return NO;
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+	return [[[self class] allocWithZone:zone] initWithID:[self buttonID] xStart:[self xStart] xEnd:[self xEnd]
+			yStart:[self yStart] yEnd:[self yEnd]];
+}
+
+@synthesize buttonID;
 @synthesize xStart;
 @synthesize xEnd;
 @synthesize yStart;

@@ -15,7 +15,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MKButton : NSObject {
+@interface MKButton : NSObject <NSCopying> {
 	int xStart;
 	int xEnd;
 	int yStart;
