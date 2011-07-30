@@ -13,7 +13,7 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="iOS Symbols Layout">
+<definition name="iOS Symbols Layout">
 	<background filename="Def_iOSSym.png" width="480" height="186" />
 	<buttons>
 		<button id="1"  xStart="3"   xEnd="44"  yStart="142" yEnd="179" />
@@ -47,4 +47,4 @@
 		<button id="29" xStart="100" xEnd="379" yStart="3"   yEnd="41"  />
 		<button id="30" xStart="388" xEnd="475" yStart="3"   yEnd="41"  />
 	</buttons>
-</layout>
+</definition>

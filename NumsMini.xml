@@ -14,7 +14,7 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
 <layout name="Mini Numbers Keyboard" definition="Def_iOSNums">
-	<key>
+	<keys>
 		<key button="1"  letter="1"      keycode="18"  />
 		<key button="2"  letter="2"      keycode="19"  />
 		<key button="3"  letter="3"      keycode="20"  />

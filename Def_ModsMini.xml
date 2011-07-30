@@ -13,7 +13,7 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Mini Modifiers Layout">
+<definition name="Mini Modifiers Layout">
 	<background filename="Def_ModsMini.png" width="480" height="186" />
 	<buttons>
 		<button id="1"  xStart="8"   xEnd="59"  yStart="129" yEnd="177" />
@@ -39,4 +39,4 @@
 		<button id="21" xStart="322" xEnd="370" yStart="2"   yEnd="57"  />
 		<button id="22" xStart="429" xEnd="477" yStart="2"   yEnd="57"  />
 	</buttons>
-</layout>
+</definition>

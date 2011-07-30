@@ -13,7 +13,7 @@
  *                   You should have received a copy of the GNU General Public License along with this program.    *
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  **************************************************************************************************************** -->
-<layout name="Full Numeric Keypad Layout">
+<definition name="Full Numeric Keypad Layout">
 	<background filename="Def_NumPad.png" width="480" height="360" />
 	<buttons>
 		<button id="1"  xStart="95"  xEnd="240" yStart="5"   yEnd="73"  />
@@ -34,4 +34,4 @@
 		<button id="16" xStart="172" xEnd="240" yStart="289" yEnd="355" />
 		<button id="17" xStart="95"  xEnd="162" yStart="289" yEnd="355" />
 	</buttons>
-</layout>
+</definition>
