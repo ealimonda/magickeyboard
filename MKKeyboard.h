@@ -54,6 +54,7 @@ typedef struct {
 	BOOL shift;
 	BOOL lastKeyWasModifier;
 	IBOutlet NSView *keyboardView;
+	NSMutableArray *keyLabels;
 
 	NSSound *tapSound;
 

@@ -195,6 +195,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		shift = NO;
 		lastKeyWasModifier = NO;
 		currentLayout = [[MKLayout layoutWithName:kDefaultLayout] retain];
+		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
 		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
@@ -299,6 +300,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	dispatch_release(myQueue);
 	[tapSound release];
 	[tap release];
+	[keyLabels release];
 	[currentLayout release];
 	[devices release];
 	[prefs release];
@@ -575,6 +577,11 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (IBAction)switchLayout:(id)sender {
 	if( [sender state] )
 		return;
+	while( [keyLabels count] > 0 ) {
+		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
+		[thisLabel removeFromSuperview];
+		[keyLabels removeObject:thisLabel];
+	}
 	
 	if( sender == selQwerty ) {
 		[selQwerty setState:1];
@@ -590,6 +597,11 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[self setCurrentLayout:[MKLayout layoutWithName:kNumPadFull]];
 		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
+	}
+	NSArray *layoutLabels = [[self currentLayout] createLabels];
+	for( NSTextField *eachLabel in layoutLabels) {
+		[keyLabels addObject:eachLabel];
+		[keyboardView addSubview:eachLabel];
 	}
 }
 

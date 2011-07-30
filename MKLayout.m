@@ -164,6 +164,33 @@ NSString * const kXmlLayoutButton = @"button";
 	[self setKeyboardImage:[[self layoutDefinition] keyboardImage]];
 }
 
+- (NSArray *)createLabels {
+	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
+	for( MKButton *eachKey in currentButtons ) {
+		
+		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
+		NSSize labelSize = [[[eachKey letter] uppercaseString]
+				sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
+				NSFontAttributeName, nil]];
+		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
+				(CGFloat)([eachKey yStart] + ([eachKey yEnd]-[eachKey yStart])/2 - labelSize.height/2),
+				(CGFloat)[eachKey xEnd] - [eachKey xStart],
+				(CGFloat)(labelSize.height));
+		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
+		[textField setStringValue:[[eachKey letter] uppercaseString]];
+
+		[textField setEditable:NO];
+		[textField setSelectable:NO];
+// TODO		[textField setTextColor:(NSColor *)];
+		[textField setBackgroundColor:[NSColor clearColor]];
+		[textField setBordered:NO];
+		[textField setFont:font];
+		[textField setAlignment:NSCenterTextAlignment];
+		[keys addObject:textField];
+	}
+	return keys;
+}
+
 @synthesize layoutName;
 @synthesize layoutSize;
 @synthesize keyboardImage;

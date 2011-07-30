@@ -33,6 +33,8 @@
 
 - (void)loadLayoutDefinition:(NSString *)definitionName;
 
+- (NSArray *)createLabels;
+
 
 @property (retain) NSString *layoutName;
 @property (assign) NSSize layoutSize;
