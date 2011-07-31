@@ -15,6 +15,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+#pragma mark Interface
 @interface MKButton : NSObject <NSCopying> {
 	int buttonID;
 	int xStart;
@@ -25,6 +26,7 @@
 	NSString *letter;
 }
 
+#pragma mark Methods
 - (id)initWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd;
 
 + (id)button;
@@ -35,6 +37,7 @@
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;
 
+#pragma mark Properties
 @property (assign) int buttonID;
 @property (assign) int xStart;
 @property (assign) int xEnd;

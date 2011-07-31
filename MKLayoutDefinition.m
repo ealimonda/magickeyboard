@@ -16,6 +16,7 @@
 #import "MKLayoutDefinition.h"
 #import "MKButton.h"
 
+#pragma mark Constants
 NSString * const kUntitledLayoutDefinition = @"Untitled Layout Definition";
 
 NSString * const kXmlDefinitionDefinition = @"definition";
@@ -32,6 +33,8 @@ NSString * const kXmlDefinitionYStart = @"yStart";
 NSString * const kXmlDefinitionXEnd = @"xEnd";
 NSString * const kXmlDefinitionYEnd = @"yEnd";
 
+#pragma mark -
+#pragma mark Implementation
 @implementation MKLayoutDefinition
 
 #pragma mark Initialization
@@ -106,21 +109,15 @@ NSString * const kXmlDefinitionYEnd = @"yEnd";
 	}
 }
 
-// sent when the parser begins parsing of the document.
+/// sent when the parser begins parsing of the document.
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
 #pragma unused (parser)
-	//#ifdef __DEBUGGING__
-	//	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-	//#endif // __DEBUGGING__
 	[self setValid:YES];
 }
 
-// sent when the parser has completed parsing. If this is encountered, the parse was successful.
+/// sent when the parser has completed parsing. If this is encountered, the parse was successful.
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 #pragma unused (parser)
-	//#ifdef __DEBUGGING__
-	//	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-	//#endif // __DEBUGGING__
 	if( ![self layoutDefinitionName] )
 		[self setLayoutDefinitionName:kUntitledLayoutDefinition];
 	if( ![self keyboardImage] )
@@ -154,6 +151,7 @@ NSString * const kXmlDefinitionYEnd = @"yEnd";
 	[parser parse];
 }
 
+#pragma mark Utilities
 - (MKButton *)buttonWithID:(int)buttonID {
 	for( MKButton *eachButton in currentButtons ) {
 		if( [eachButton buttonID] == buttonID )
@@ -162,6 +160,8 @@ NSString * const kXmlDefinitionYEnd = @"yEnd";
 	return nil;
 }
 
+#pragma mark -
+#pragma mark Properties
 @synthesize layoutDefinitionName;
 @synthesize layoutSize;
 @synthesize keyboardImage;

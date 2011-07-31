@@ -16,8 +16,10 @@
 #import "MagicKeyboardAppDelegate.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
 
+#pragma mark Implementation
 @implementation MagicKeyboardAppDelegate
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if( self ) {
@@ -31,6 +33,7 @@
 	[super dealloc];
 }
 
+#pragma mark NSApplicationDelegate
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #pragma unused (aNotification)
 	[[FRFeedbackReporter sharedReporter] setDelegate:self];
@@ -69,6 +72,7 @@
 	[magickeyboard setTracking:![sender state]];
 }
 
+#pragma mark FRFeedbackReportDelegate
 - (IBAction)submitFeedback:(id)sender {
 #pragma unused (sender)
 	[[FRFeedbackReporter sharedReporter] reportFeedback];

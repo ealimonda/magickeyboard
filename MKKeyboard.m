@@ -114,6 +114,7 @@ const MTDeviceX multiTouchSampleDevice = {
 };
 
 #pragma mark -
+#pragma mark Interface (private)
 @interface MKKeyboard ()
 #pragma mark Private methods and properties
 
@@ -134,9 +135,10 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 @end
 
 #pragma mark -
+#pragma mark Implementation
 @implementation MKKeyboard
-#pragma mark Initialization
 
+#pragma mark Initialization
 + (NSString *)getInfoForDevice:(MTDeviceX *)device {
 	if( !device )
 		return @"nil";
@@ -616,6 +618,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	return NO;
 }
 
+#pragma mark Utilities
 - (NSArray *)deviceInfoList {
 	NSMutableArray *devs = [NSMutableArray array];
 	for( NSMutableData *eachDeviceData in [self devices] ) {

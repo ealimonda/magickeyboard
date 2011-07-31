@@ -15,16 +15,20 @@
 
 #import <Cocoa/Cocoa.h>
 
+#pragma mark Constants
 extern NSString * const AAFadeIn;
 extern NSString * const AAFadeOut;
 
+#pragma mark Interface
 @interface AlphaAnimation : NSAnimation {
     NSView          *animatedObject;
     NSString        *effect;
 }
 
+#pragma mark Methods
 - (id)initWithDuration:(NSTimeInterval)duration effect:(NSString *)effect object:(NSView *)object;
 
+#pragma mark Properties
 @property (retain) NSView *animatedObject;
 @property (retain) NSString *effect;
 

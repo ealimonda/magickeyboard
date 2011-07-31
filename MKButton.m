@@ -15,8 +15,10 @@
 
 #import "MKButton.h"
 
+#pragma mark Implementation
 @implementation MKButton
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if( self ) {
@@ -65,12 +67,14 @@
 	return [thisButton autorelease];
 }
 
+#pragma mark Special setters
 - (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode {
 	[self setLetter:aLetter];
 	[self setKeycode:aKeyCode];
 	return self;
 }
 
+#pragma mark Utilities
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize {
 	if( aPoint.x >= (xStart - (circleSize.width/2)) && (aPoint.x + (circleSize.width /2)) <= xEnd
 			&& aPoint.y >= (yStart - (circleSize.height/2)) && (aPoint.y+(circleSize.height/2)) <=yEnd ) {
@@ -79,11 +83,14 @@
 	return NO;
 }
 
+#pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone {
 	return [[[self class] allocWithZone:zone] initWithID:[self buttonID] xStart:[self xStart] xEnd:[self xEnd]
 			yStart:[self yStart] yEnd:[self yEnd]];
 }
 
+#pragma mark -
+#pragma mark Properties
 @synthesize buttonID;
 @synthesize xStart;
 @synthesize xEnd;

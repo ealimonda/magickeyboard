@@ -17,6 +17,7 @@
 #import <FeedbackReporter/FRFeedbackReporter.h>
 #import "MKKeyboard.h"
 
+#pragma mark Interface
 @interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate, FRFeedbackReporterDelegate> {
 	IBOutlet NSWindow *window;
 	IBOutlet NSMenu* statusMenu;
@@ -24,6 +25,7 @@
 	NSStatusItem *statusBarItem;
 }
 
+#pragma mark Methods
 - (IBAction)disableTrackingSelector:(id)sender;
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;

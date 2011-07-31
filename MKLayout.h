@@ -16,6 +16,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MKLayoutDefinition.h"
 
+#pragma mark Interface
 @interface MKLayout : NSObject <NSXMLParserDelegate> {
 	NSString *layoutName;
 	NSSize layoutSize;
@@ -25,6 +26,7 @@
 	MKLayoutDefinition *layoutDefinition;
 }
 
+#pragma mark Methods
 - (id)initWithName:(NSString *)loadName;
 + (id)layout;
 + (id)layoutWithName:(NSString *)loadName;
@@ -35,7 +37,7 @@
 
 - (NSArray *)createLabels;
 
-
+#pragma mark Properties
 @property (retain) NSString *layoutName;
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;

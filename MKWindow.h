@@ -15,6 +15,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+#pragma mark Interface
 @interface MKWindow : NSWindow {
 @private
     

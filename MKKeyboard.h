@@ -15,10 +15,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kMultitouchFingers 11
-
 @class MKWindow;
 @class MKLayout;
+
+#pragma mark Definitions
+#define kMultitouchFingers 11
+
+#pragma mark Private structures
 typedef struct MTDeviceX MTDeviceX;
 
 typedef struct {
@@ -34,6 +37,7 @@ typedef struct {
 	MKFinger fingers[kMultitouchFingers];
 } MKDevice;
 
+#pragma mark Interface
 @interface MKKeyboard : NSObject {
 	NSImage *tap;
 	IBOutlet MKWindow *window;
@@ -63,11 +67,13 @@ typedef struct {
 	NSMutableArray *devices;
 }
 
+#pragma mark Methods
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
 - (void)writePrefs:(NSString *)value forKey:(NSString *)key;
 - (IBAction)switchLayout:(id)sender;
 - (NSArray *)deviceInfoList;
 
+#pragma mark Properties
 @property (retain) NSImage *tap;
 @property (assign) BOOL shift;
 @property (assign,getter=isTracking) BOOL tracking;
