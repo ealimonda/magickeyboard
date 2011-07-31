@@ -15,13 +15,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import <FeedbackReporter/FRFeedbackReporter.h>
-#import "MKKeyboard.h"
+#import "MKController.h"
 
 #pragma mark Interface
 @interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate, FRFeedbackReporterDelegate> {
 	IBOutlet NSWindow *window;
 	IBOutlet NSMenu* statusMenu;
-	IBOutlet MKKeyboard* magickeyboard;
+	IBOutlet MKController* magicKeyboardController;
 	NSStatusItem *statusBarItem;
 }
 

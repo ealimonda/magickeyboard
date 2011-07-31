@@ -38,7 +38,7 @@ typedef struct {
 } MKDevice;
 
 #pragma mark Interface
-@interface MKKeyboard : NSObject {
+@interface MKController : NSObject {
 	NSImage *tap;
 	IBOutlet MKWindow *window;
 	IBOutlet NSButton *shiftChk;

@@ -69,7 +69,7 @@
 		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
 	}
 
-	[magickeyboard setTracking:![sender state]];
+	[magicKeyboardController setTracking:![sender state]];
 }
 
 #pragma mark FRFeedbackReportDelegate
@@ -81,8 +81,8 @@
 - (NSDictionary *)customParametersForFeedbackReport {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:@"None found" forKey:@"Devices"];
 
-	if( magickeyboard )
-		[dict setObject:[magickeyboard deviceInfoList] forKey:@"Devices"];
+	if( magicKeyboardController )
+		[dict setObject:[magicKeyboardController deviceInfoList] forKey:@"Devices"];
 	return dict;
 }
 

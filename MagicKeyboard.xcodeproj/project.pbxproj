@@ -38,7 +38,7 @@
 		281EDBEA1217ABBA00CC2197 /* QwertyMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBE91217ABBA00CC2197 /* QwertyMini.xml */; };
 		281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 281EDBF31217AC9F00CC2197 /* MKButton.m */; };
 		281FF88712330FA200A94DB7 /* ModsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 281FF88612330FA200A94DB7 /* ModsMini.xml */; };
-		28531B111217816C001AB273 /* MKKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* MKKeyboard.m */; };
+		28531B111217816C001AB273 /* MKController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* MKController.m */; };
 		28531BB912178EC4001AB273 /* Tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB812178EC4001AB273 /* Tap.png */; };
 		28554A8B12308D2D0087B886 /* SymbolsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 28554A8A12308D2D0087B886 /* SymbolsMini.xml */; };
 		2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2891A6561218670E0058CD9C /* MultitouchSupport.framework */; };
@@ -101,8 +101,8 @@
 		281EDBF21217AC9F00CC2197 /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		281EDBF31217AC9F00CC2197 /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
 		281FF88612330FA200A94DB7 /* ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ModsMini.xml; sourceTree = "<group>"; };
-		28531B0F1217816C001AB273 /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboard.h; sourceTree = "<group>"; };
-		28531B101217816C001AB273 /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
+		28531B0F1217816C001AB273 /* MKController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MKController.h; sourceTree = "<group>"; };
+		28531B101217816C001AB273 /* MKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKController.m; sourceTree = "<group>"; };
 		28531BB812178EC4001AB273 /* Tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tap.png; sourceTree = "<group>"; };
 		28554A8A12308D2D0087B886 /* SymbolsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SymbolsMini.xml; sourceTree = "<group>"; };
 		2891A6561218670E0058CD9C /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = /System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<absolute>"; };
@@ -140,8 +140,8 @@
 				281EDBF31217AC9F00CC2197 /* MKButton.m */,
 				28110E65121870050026AA8D /* AlphaAnimation.h */,
 				28110E66121870050026AA8D /* AlphaAnimation.m */,
-				28531B0F1217816C001AB273 /* MKKeyboard.h */,
-				28531B101217816C001AB273 /* MKKeyboard.m */,
+				28531B0F1217816C001AB273 /* MKController.h */,
+				28531B101217816C001AB273 /* MKController.m */,
 				256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */,
 				164F53AD1323F6EA00F4AB0F /* MKLayout.h */,
@@ -347,7 +347,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */,
-				28531B111217816C001AB273 /* MKKeyboard.m in Sources */,
+				28531B111217816C001AB273 /* MKController.m in Sources */,
 				281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */,
 				28D7F72312184CE000D84A57 /* MKWindow.m in Sources */,
 				28110E67121870050026AA8D /* AlphaAnimation.m in Sources */,

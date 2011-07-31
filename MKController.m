@@ -13,7 +13,7 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  *******************************************************************************************************************/
 
-#import "MKKeyboard.h"
+#import "MKController.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
 #import "AlphaAnimation.h"
 #import "MKButton.h"
@@ -115,7 +115,7 @@ const MTDeviceX multiTouchSampleDevice = {
 
 #pragma mark -
 #pragma mark Interface (private)
-@interface MKKeyboard ()
+@interface MKController ()
 #pragma mark Private methods and properties
 
 - (void)sendKeycode:(CGKeyCode)keycode;
@@ -136,7 +136,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 #pragma mark -
 #pragma mark Implementation
-@implementation MKKeyboard
+@implementation MKController
 
 #pragma mark Initialization
 + (NSString *)getInfoForDevice:(MTDeviceX *)device {
