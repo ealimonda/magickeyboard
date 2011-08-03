@@ -27,7 +27,7 @@ NSString * const AAFadeOut = @"AAFadeOut";
 - (id)initWithDuration:(NSTimeInterval)aDuration effect:(NSString *)anEffect object:(NSView *)anObject {
 	self = [super initWithDuration:aDuration animationCurve:0];
 
-	if( self ) {
+	if (self) {
 		animatedObject = [anObject retain];
 		effect = [anEffect retain];
 	}
@@ -45,9 +45,9 @@ NSString * const AAFadeOut = @"AAFadeOut";
 - (void)setCurrentProgress:(NSAnimationProgress)progress {
 	[super setCurrentProgress:progress];
 
-	if( [effect isEqualToString:AAFadeIn] )
+	if ([effect isEqualToString:AAFadeIn])
 		[animatedObject setAlphaValue:progress];
-	else if( [effect isEqualToString:AAFadeOut] )
+	else if ([effect isEqualToString:AAFadeOut])
 		[animatedObject setAlphaValue:1 - progress];
 }
 

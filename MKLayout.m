@@ -37,7 +37,7 @@ NSString * const kXmlLayoutButton = @"button";
 #pragma mark Initialization
 - (id)init {
 	self = [super init];
-	if( self ) {
+	if (self) {
 		layoutName = [[NSString alloc] initWithString:kUntitledLayout];
 		layoutSize = NSMakeSize(0, 0);
 		keyboardImage = nil;
@@ -50,7 +50,7 @@ NSString * const kXmlLayoutButton = @"button";
 
 - (id)initWithName:(NSString *)loadName {
 	self = [self init];
-	if( self ) {
+	if (self) {
 		[self loadXML:loadName];
 	}
 	return self;
@@ -151,9 +151,9 @@ NSString * const kXmlLayoutButton = @"button";
 
 - (void)loadLayoutDefinition:(NSString *)definitionName {
 	[self setLayoutDefinition:[MKLayoutDefinition layoutDefinitionWithName:definitionName]];
-	if( [self layoutDefinition] && ![[self layoutDefinition] isValid] )
+	if ([self layoutDefinition] && ![[self layoutDefinition] isValid])
 		[self setLayoutDefinition:nil];
-	if( ![self layoutDefinition] ) {
+	if (![self layoutDefinition]) {
 		[self setValid:NO];
 		return;
 	}
@@ -163,16 +163,16 @@ NSString * const kXmlLayoutButton = @"button";
 
 - (NSArray *)createLabels {
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
-	for( MKButton *eachKey in currentButtons ) {
+	for (MKButton *eachKey in currentButtons) {
 		
 		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
 		NSSize labelSize = [[[eachKey letter] uppercaseString]
-				sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
-				NSFontAttributeName, nil]];
+				    sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
+							NSFontAttributeName, nil]];
 		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
-				(CGFloat)([eachKey yStart] + ([eachKey yEnd]-[eachKey yStart])/2 - labelSize.height/2),
-				(CGFloat)[eachKey xEnd] - [eachKey xStart],
-				(CGFloat)(labelSize.height));
+						(CGFloat)(([eachKey yStart]+[eachKey yEnd]-labelSize.height)/2), // S+(E-S)/2-h/2
+						(CGFloat)[eachKey xEnd] - [eachKey xStart],
+						(CGFloat)(labelSize.height));
 		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
 		[textField setStringValue:[[eachKey letter] uppercaseString]];
 

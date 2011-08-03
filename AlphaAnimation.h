@@ -21,8 +21,8 @@ extern NSString * const AAFadeOut;
 
 #pragma mark Interface
 @interface AlphaAnimation : NSAnimation {
-    NSView          *animatedObject;
-    NSString        *effect;
+	NSView          *animatedObject;
+	NSString        *effect;
 }
 
 #pragma mark Methods

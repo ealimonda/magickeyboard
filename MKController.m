@@ -140,7 +140,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 #pragma mark Initialization
 + (NSString *)getInfoForDevice:(MTDeviceX *)device {
-	if( !device )
+	if (!device)
 		return @"nil";
 	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
 			"\t unk_v0 = %08x\n"
@@ -185,7 +185,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 - (id)init {
 	self = [super init];
-	if( self ) {
+	if (self) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
 		mtSize = NSZeroSize;
 		mtSize.height = 311;
@@ -200,24 +200,25 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
-		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
-				bundleIdentifier]] cStringUsingEncoding:NSASCIIStringEncoding], 0);
+		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue",
+						  [[NSBundle mainBundle] bundleIdentifier]] cStringUsingEncoding:
+						 NSASCIIStringEncoding], 0);
 		devices = [[NSMutableArray alloc] init];
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
 		
 		// FIXME: use CFPreferences / NSUserDefaults
-		prefs = [[NSDictionary alloc] initWithContentsOfFile:[[kPreferencesFolder
-				stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
-				stringByExpandingTildeInPath]];
-		if( prefs ) {
+		prefs = [[NSDictionary alloc] initWithContentsOfFile:
+			 [[kPreferencesFolder stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
+			  stringByExpandingTildeInPath]];
+		if (prefs) {
 			NSString *layout = [prefs objectForKey:kLayout];
 			[selQwerty setState:0];
 			[selFullNum setState:0];
-			if( [layout isEqualToString:kQwertyMini] )
+			if ([layout isEqualToString:kQwertyMini])
 				[self switchLayout:selQwerty];
-			else if( [layout isEqualToString:kNumPadFull] )
+			else if ([layout isEqualToString:kNumPadFull])
 				[self switchLayout:selFullNum];
 		} else {
 			prefs = [[NSMutableDictionary alloc] init];
@@ -229,7 +230,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 - (void)awakeFromNib {
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
-	for( NSUInteger i = 0; i < [deviceList count]; i++) {
+	for (NSUInteger i = 0; i < [deviceList count]; i++) {
 		MTDeviceX *thisDevice = (MTDeviceX *)[deviceList objectAtIndex:i];
 		NSMutableData *mkDeviceData = [NSMutableData dataWithLength:sizeof(MKDevice)];
 		MKDevice *mkDeviceInfo = [mkDeviceData mutableBytes];
@@ -239,20 +240,20 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [[self class] getInfoForDevice:thisDevice]);
 #endif // __DEBUGGING__
-		if( !thisDevice
-		   		|| thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
-				|| thisDevice->unk_k1 != multiTouchSampleDevice.unk_k1
-				|| thisDevice->unk_k2 != multiTouchSampleDevice.unk_k2
-				|| thisDevice->unk_k3 != multiTouchSampleDevice.unk_k3
-				|| thisDevice->unk_k4 != multiTouchSampleDevice.unk_k4
-				|| thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
-				) {
-			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [[self class]
-					getInfoForDevice:thisDevice]);
-			if( !thisDevice )
+		if (!thisDevice
+		    || thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
+		    || thisDevice->unk_k1 != multiTouchSampleDevice.unk_k1
+		    || thisDevice->unk_k2 != multiTouchSampleDevice.unk_k2
+		    || thisDevice->unk_k3 != multiTouchSampleDevice.unk_k3
+		    || thisDevice->unk_k4 != multiTouchSampleDevice.unk_k4
+		    || thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
+		    ) {
+			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i,
+			      [[self class] getInfoForDevice:thisDevice]);
+			if (!thisDevice)
 				continue;
 		}
-		switch( thisDevice->family ) {
+		switch (thisDevice->family) {
 		case 0x00000062:
 			NSLog(@"Detected MacBook Pro trackpad (#%lu).", i);
 			break;
@@ -273,14 +274,14 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
-	if( [[self devices] count] < 1 ) {
+	if ([[self devices] count] < 1) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
 				@"We couldn't detect any compatible multitouch device connected to your system.\n"
 				"If a multitouch devie is connected but not detected, please inform us, so that it'll "
 				"be supported soon.\n\n"
 				"Do you want to send us feedback about an incompatible device?",
 				@"Send Feedback", @"Cancel", nil);
-		switch( theResponse ) {
+		switch (theResponse) {
 		case NSAlertDefaultReturn:    /* "Send Feedback" */
 			[[FRFeedbackReporter sharedReporter] reportFeedback];
 			break;
@@ -292,8 +293,8 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	}
 		
 	[keyboardView setAcceptsTouchEvents:NO];
-	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc] initWithRect:[keyboardView frame]
-			options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow owner:keyboardView userInfo:nil] autorelease];
+	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc]
+					 initWithRect:[keyboardView frame] options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow owner:keyboardView userInfo:nil] autorelease];
 	[keyboardView addTrackingArea:trackingArea];
 	[keyboardView becomeFirstResponder];
 }
@@ -315,16 +316,16 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 #pragma unused (device, timestamp, frame)
 	// This is to avoid leaks
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
-	for (int i = 0; i < nTouches; i++) {
+	for( int i = 0; i < nTouches; i++ ) {
 		Touch *t = &data[i];
 		MKDevice *thisDevice = nil;
 		NSUInteger j = 0;
-		for( j = 0; j < [[refToSelf devices] count]; j++ ) {
+		for (j = 0; j < [[refToSelf devices] count]; j++) {
 			thisDevice = (MKDevice *)[[[refToSelf devices] objectAtIndex:j] mutableBytes];
-			if( (int)(long)(thisDevice->device) == device )
+			if ((int)(long)(thisDevice->device) == device)
 				break;
 		}
-		if( j >= [[refToSelf devices] count] ) {
+		if (j >= [[refToSelf devices] count]) {
 			NSLog(@"Device (%x) not found.  Ignoring touch.", device);
 			continue;
 		}
@@ -336,38 +337,38 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 }
 
 - (void)processTouch:(Touch *)touch onDevice:(MKDevice *)deviceInfo {
-	if( /*(touch->state != 7 && touch->state != 1) ||*/ ![self isTracking] )
+	if (![self isTracking])
 		return;
-	if( touch->identifier > kMultitouchFingers || touch->identifier <= 0 ) // Sanity check
+	if (touch->identifier > kMultitouchFingers || touch->identifier <= 0) // Sanity check
 		return;
 #if 0
 	NSLog(@"Frame %7d: TS:%6.3f ID:%d St:%d foo3:%d foo4:%d norm.pos: [%6.3f,%6.3f] sz: %6.3f unk2:%6.3f\n",
-		touch->frame, touch->timestamp, touch->identifier, touch->state, touch->foo3, touch->foo4,
-		touch->normalized.pos.x, touch->normalized.pos.y, touch->size, touch->unk2);
+	      touch->frame, touch->timestamp, touch->identifier, touch->state, touch->foo3, touch->foo4,
+	      touch->normalized.pos.x, touch->normalized.pos.y, touch->size, touch->unk2);
 #endif // 0
 #if 0
 	NSLog([NSString stringWithFormat:@"Frame %7d: Angle %6.2f, ellipse %6.3f x%6.3f; "
-			"position (%6.3f,%6.3f) vel (%6.3f,%6.3f) "
-			"ID %d, state %d [%d %d?] size %6.3f, %6.3f?",
-			touch->frame,
-			touch->angle * 90 / atan2(1,0),
-			touch->majorAxis,
-			touch->minorAxis,
-			touch->normalized.pos.x,
-			touch->normalized.pos.y,
-			touch->normalized.vel.x,
-			touch->normalized.vel.y,
-			touch->identifier, touch->state, touch->foo3, touch->foo4,
-			touch->size, touch->unk2]);
+	       "position (%6.3f,%6.3f) vel (%6.3f,%6.3f) "
+	       "ID %d, state %d [%d %d?] size %6.3f, %6.3f?",
+	       touch->frame,
+	       touch->angle * 90 / atan2(1,0),
+	       touch->majorAxis,
+	       touch->minorAxis,
+	       touch->normalized.pos.x,
+	       touch->normalized.pos.y,
+	       touch->normalized.vel.x,
+	       touch->normalized.vel.y,
+	       touch->identifier, touch->state, touch->foo3, touch->foo4,
+	       touch->size, touch->unk2]);
 #endif // 0
 
 	NSRect imgBox = NSMakeRect((CGFloat)((mtSize.width*(touch->normalized.pos.x))*1.25),
-			(CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
-			33, 34);
+				   (CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
+				   33, 34);
 
-	switch( touch->state ) {
+	switch (touch->state) {
 	case 1: // FIXME: Constants
-		if( deviceInfo->fingers[touch->identifier-1].state )
+		if (deviceInfo->fingers[touch->identifier-1].state)
 			return;
 		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
 		deviceInfo->fingers[touch->identifier-1].state = YES;
@@ -376,7 +377,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[keyboardView addSubview:deviceInfo->fingers[touch->identifier-1].tapView];
 		return;
 	case 7:
-		if( !deviceInfo->fingers[touch->identifier-1].state )
+		if (!deviceInfo->fingers[touch->identifier-1].state)
 			return;
 		deviceInfo->fingers[touch->identifier-1].state = NO;
 		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
@@ -385,37 +386,37 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		deviceInfo->fingers[touch->identifier-1].tapView = nil;
 		break;
 	default:
-		if( touch->timestamp < deviceInfo->fingers[touch->identifier-1].last + kSamplingInterval )
+		if (touch->timestamp < deviceInfo->fingers[touch->identifier-1].last + kSamplingInterval)
 			return;
 		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
 		[deviceInfo->fingers[touch->identifier-1].tapView setFrame:imgBox];
 		return;
 	}
-	for( NSUInteger i = 0; i < [[currentLayout currentButtons] count] ; i++ ) {
+	for (NSUInteger i = 0; i < [[currentLayout currentButtons] count] ; i++) {
 		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
-		if( ![button containsPoint:imgBox.origin size:imgBox.size] )
+		if (![button containsPoint:imgBox.origin size:imgBox.size])
 			continue;
 		BOOL doSend = YES;
 		int keycode = 0;
-		if( [[button letter]isEqualToString:keyNUMS] ) {
+		if ([[button letter]isEqualToString:keyNUMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if( [[button letter]isEqualToString:keyQWERTY] ) {
+		} else if ([[button letter]isEqualToString:keyQWERTY]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if( [[button letter] isEqualToString:keySYMS] ) {
+		} else if ([[button letter] isEqualToString:keySYMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if( [[button letter] isEqualToString:keyMODIFIERS] ) {
+		} else if ([[button letter] isEqualToString:keyMODIFIERS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else {
-			if( [[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"] ) { // FIXME: String
-				if( [[button letter] isEqualToString:keySHIFT] ) {
+			if ([[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"]) { // FIXME: String
+				if ([[button letter] isEqualToString:keySHIFT]) {
 					shift = !shift;
 					[shiftChk setState:shift];
 					doSend = NO;
@@ -424,20 +425,20 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 					keycode = (CGKeyCode)[[button keycode] integerValue];
 					lastKeyWasModifier = NO;
 				}
-			} else if( [[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
-					|| [[currentLayout layoutName] isEqualToString:@"Mini Symbols Keyboard"]
-					|| [[currentLayout layoutName] isEqualToString:@"Mini Modifiers Keyboard"] ) {
-				if( [[button letter] isEqualToString:keyCTRL] ) {
+			} else if ([[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
+				   || [[currentLayout layoutName] isEqualToString:@"Mini Symbols Keyboard"]
+				   || [[currentLayout layoutName] isEqualToString:@"Mini Modifiers Keyboard"]) {
+				if ([[button letter] isEqualToString:keyCTRL]) {
 					ctrl = !ctrl;
 					[ctrlChk setState:ctrl];
 					doSend = NO;
 					lastKeyWasModifier = YES;
-				} else if( [[button letter] isEqualToString:keyALT] ) {
+				} else if ([[button letter] isEqualToString:keyALT]) {
 					alt = !alt;
 					doSend = NO;
 					[altChk setState:alt];
 					lastKeyWasModifier = YES;
-				} else if( [[button letter] isEqualToString:keyCMD] ) {
+				} else if ([[button letter] isEqualToString:keyCMD]) {
 					cmd = !cmd;
 					[cmdChk setState:cmd];
 					doSend = NO;
@@ -445,24 +446,24 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 				} else {
 					lastKeyWasModifier = NO;
 				}
-				if( !ctrl && !cmd && !alt ) {
+				if (!ctrl && !cmd && !alt) {
 					lastKeyWasModifier = NO;
 				}
-				if( [[button keycode] characterAtIndex:0] == 'S' ) {
+				if ([[button keycode] characterAtIndex:0] == 'S') {
 					// FIXME: Ugly
 					keycode = (CGKeyCode)[[[button keycode]
-							stringByReplacingOccurrencesOfString:@"S"
-							withString:@""] integerValue];
+							       stringByReplacingOccurrencesOfString:@"S"
+							       withString:@""] integerValue];
 					keycode += 300;
 				} else {
 					keycode = (CGKeyCode)[[button keycode] integerValue];
 				}
-			} else if( [[currentLayout layoutName] isEqualToString:@"Full Numeric Keypad"] ) { // FIXME: String
+			} else if ([[currentLayout layoutName] isEqualToString:@"Full Numeric Keypad"]) { // FIXME: String
 				lastKeyWasModifier = NO;
 				keycode = (CGKeyCode)[[button keycode] integerValue];
 			}
 		}
-		if( doSend ) {
+		if (doSend) {
 			[self sendKeycode:keycode];
 		}
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
@@ -473,7 +474,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		});
 		[keyboardView addSubview:tapImageView];
 		tapImageView = nil;
-		if( !lastKeyWasModifier ) {
+		if (!lastKeyWasModifier) {
 			cmd = NO;
 			[cmdChk setState:0];
 			alt = NO;
@@ -489,26 +490,26 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	// TODO: http://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode
 	BOOL needsShift = keycode >= 300;
 	long flags = 0;
-	if( needsShift ){
+	if (needsShift) {
 		keycode -= 300;
 	}
-	if( shift || needsShift ) {
+	if (shift || needsShift) {
 		flags |= kCGEventFlagMaskShift;
 	}	
-	if( cmd ) {
+	if (cmd) {
 		flags |= kCGEventFlagMaskCommand;
 	}
-	if( alt ) {
+	if (alt) {
 		flags |= kCGEventFlagMaskAlternate;
 	}
-	if( ctrl ) {
+	if (ctrl) {
 		flags |= kCGEventFlagMaskControl;
 	}
 	//NSLog([NSString stringWithFormat:@"%d",keycode]);
 	CGEventRef event1, event2;
 	event1 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, YES); //'z' keydown event
 	event2 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, NO);
-	if( flags > 0 ) {
+	if (flags > 0) {
 		CGEventSetFlags(event1, flags);//set shift key down for above event
 		CGEventSetFlags(event2, flags);//set shift key down for above event
 	} else {
@@ -521,25 +522,25 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	CGEventPost(kCGHIDEventTap, event2);//post event
 	CFRelease(event2);
 	usleep(50);
-	if( shift || needsShift ) {
+	if (shift || needsShift) {
 		CGEventRef shiftUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)56, NO);//'z' keydown event
 		CGEventPost(kCGHIDEventTap, shiftUp);//post event
 		CFRelease(shiftUp);
 		usleep(50);
 	}
-	if( cmd ) {
+	if (cmd) {
 		CGEventRef cmdUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)55, NO);//'z' keydown event
 		CGEventPost(kCGHIDEventTap, cmdUp);//post event
 		CFRelease(cmdUp);
 		usleep(50);
 	}
-	if( alt ) {
+	if (alt) {
 		CGEventRef altUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)58, NO);//'z' keydown event
 		CGEventPost(kCGHIDEventTap, altUp);//post event
 		CFRelease(altUp);
 		usleep(50);
 	}
-	if( ctrl ) {
+	if (ctrl) {
 		CGEventRef ctrlUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)59, NO);//'z' keydown event
 		CGEventPost(kCGHIDEventTap, ctrlUp);//post event
 		CFRelease(ctrlUp);
@@ -552,7 +553,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	[prefs setObject:value forKey:key];
 	// FIXME: Use CFPreferences / NSUserDefaults
 	[prefs writeToFile:[[kPreferencesFolder stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
-			stringByExpandingTildeInPath] atomically:YES];
+			    stringByExpandingTildeInPath] atomically:YES];
 }
 
 #pragma mark window and layout
@@ -568,31 +569,35 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize {
 	NSRect originalWindow = [window frame];
 	NSRect originalView = [keyboardImage frame];
-	NSRect delta = NSMakeRect(originalView.size.width - newSize.width, originalView.size.height - newSize.height,
-			newSize.width - originalView.size.width, newSize.height - originalView.size.height);
+	NSRect delta = NSMakeRect(originalView.size.width - newSize.width,
+				  originalView.size.height - newSize.height,
+				  newSize.width - originalView.size.width,
+				  newSize.height - originalView.size.height);
 
-	NSRect newRect = NSMakeRect(originalWindow.origin.x + delta.origin.x, originalWindow.origin.y + delta.origin.y,
-			originalWindow.size.width + delta.size.width, originalWindow.size.height + delta.size.height);
+	NSRect newRect = NSMakeRect(originalWindow.origin.x + delta.origin.x,
+				    originalWindow.origin.y + delta.origin.y,
+				    originalWindow.size.width + delta.size.width,
+				    originalWindow.size.height + delta.size.height);
 	[window setFrame:newRect display:YES animate:YES];
 }
 
 - (IBAction)switchLayout:(id)sender {
-	if( [sender state] )
+	if ([sender state])
 		return;
-	while( [keyLabels count] > 0 ) {
+	while ([keyLabels count] > 0) {
 		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
 		[thisLabel removeFromSuperview];
 		[keyLabels removeObject:thisLabel];
 	}
 	
-	if( sender == selQwerty ) {
+	if (sender == selQwerty) {
 		[selQwerty setState:1];
 		[selFullNum setState:0];
 		[self writePrefs:kQwertyMini forKey:kLayout];
 		[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
-	} else if( sender == selFullNum ) {
+	} else if (sender == selFullNum) {
 		[selQwerty setState:0];
 		[selFullNum setState:1];
 		[self writePrefs:kNumPadFull forKey:kLayout];
@@ -601,14 +606,15 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	}
 	NSArray *layoutLabels = [[self currentLayout] createLabels];
-	for( NSTextField *eachLabel in layoutLabels) {
+	for (NSTextField *eachLabel in layoutLabels) {
 		[keyLabels addObject:eachLabel];
 		[keyboardView addSubview:eachLabel];
 	}
 }
 
 - (void)animateImage:(NSImageView *)imageView {
-	AlphaAnimation *animation = [[[AlphaAnimation alloc] initWithDuration:0.2 effect:AAFadeOut object:imageView] autorelease];
+	AlphaAnimation *animation = [[[AlphaAnimation alloc] initWithDuration:0.2 effect:AAFadeOut object:imageView]
+				     autorelease];
 	[animation setAnimationBlockingMode:NSAnimationBlocking];
 	[animation startAnimation];
 	[imageView removeFromSuperview];
@@ -621,12 +627,12 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 #pragma mark Utilities
 - (NSArray *)deviceInfoList {
 	NSMutableArray *devs = [NSMutableArray array];
-	for( NSMutableData *eachDeviceData in [self devices] ) {
+	for (NSMutableData *eachDeviceData in [self devices]) {
 		MKDevice *eachDevice = [eachDeviceData mutableBytes];
-		NSDictionary *thisDeviceInfo = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:
-				[NSNumber numberWithBool:eachDevice->state],
-				[[self class] getInfoForDevice:eachDevice->device], nil]
-				forKeys:[NSArray arrayWithObjects:@"State", @"Info", nil]];
+		NSDictionary *thisDeviceInfo = [NSDictionary dictionaryWithObjects:
+						[NSArray arrayWithObjects: [NSNumber numberWithBool:eachDevice->state],
+						 [[self class] getInfoForDevice:eachDevice->device], nil] forKeys:
+						[NSArray arrayWithObjects:@"State", @"Info", nil]];
 		[devs addObject:thisDeviceInfo];
 	}
 	return devs;

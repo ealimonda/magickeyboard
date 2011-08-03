@@ -22,7 +22,7 @@
 #pragma mark Initialization
 - (id)init {
 	self = [super init];
-	if( self ) {
+	if (self) {
 		statusBarItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength] retain];
 	}
 	return self;
@@ -61,7 +61,7 @@
 - (IBAction)disableTrackingSelector:(id)sender {
 	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
 	
-	if( [sender state] ) {
+	if ([sender state]) {
 		[window orderOut:self];
 		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
 	} else {
@@ -81,7 +81,7 @@
 - (NSDictionary *)customParametersForFeedbackReport {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:@"None found" forKey:@"Devices"];
 
-	if( magicKeyboardController )
+	if (magicKeyboardController)
 		[dict setObject:[magicKeyboardController deviceInfoList] forKey:@"Devices"];
 	return dict;
 }
