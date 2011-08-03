@@ -30,7 +30,7 @@
 + (id)layoutDefinition;
 + (id)layoutDefinitionWithName:(NSString *)loadName;
 
-- (void)loadXML:(NSString *)fileName;
+- (void)loadPlist:(NSString *)fileName;
 
 - (MKButton *)buttonWithID:(int)buttonID;
 

@@ -12,6 +12,11 @@
 		165ECD101330420000AD0A0D /* MagicKeyboardMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */; };
 		165ECD111330420000AD0A0D /* MagicKeyboardMenuAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */; };
 		165ECD121330420000AD0A0D /* MagicKeyboardMenuDis.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */; };
+		168D291E13E90E8900906DE6 /* Def_iOSMain.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168D291D13E90E8900906DE6 /* Def_iOSMain.plist */; };
+		168D292313E9114900906DE6 /* Def_iOSNums.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168D291F13E9114900906DE6 /* Def_iOSNums.plist */; };
+		168D292413E9114900906DE6 /* Def_iOSSym.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168D292013E9114900906DE6 /* Def_iOSSym.plist */; };
+		168D292513E9114900906DE6 /* Def_ModsMini.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168D292113E9114900906DE6 /* Def_ModsMini.plist */; };
+		168D292613E9114900906DE6 /* Def_NumPad.plist in Resources */ = {isa = PBXBuildFile; fileRef = 168D292213E9114900906DE6 /* Def_NumPad.plist */; };
 		16A01DB4132B106D00116980 /* MKdsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 16A01DB3132B106D00116980 /* MKdsa_pub.pem */; };
 		16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
 		16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
@@ -21,16 +26,11 @@
 		16EA1085131A35DC00DAB98D /* NumPadFull.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16EA1084131A35DC00DAB98D /* NumPadFull.xml */; };
 		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
 		16FFCB3C13E253F200ACE2D4 /* MKLayoutDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FFCB3B13E253F200ACE2D4 /* MKLayoutDefinition.m */; };
-		16FFCB4413E257B800ACE2D4 /* Def_iOSMain.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */; };
 		16FFCB4613E26B0D00ACE2D4 /* Def_iOSMain.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */; };
 		16FFCB4813E2717F00ACE2D4 /* Def_iOSNums.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */; };
-		16FFCB5013E2795400ACE2D4 /* Def_iOSNums.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */; };
 		16FFCB5113E2795400ACE2D4 /* Def_iOSSym.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */; };
-		16FFCB5213E2795400ACE2D4 /* Def_iOSSym.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */; };
 		16FFCB5313E2795400ACE2D4 /* Def_ModsMini.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */; };
-		16FFCB5413E2795400ACE2D4 /* Def_ModsMini.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */; };
 		16FFCB5513E2795400ACE2D4 /* Def_NumPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */; };
-		16FFCB5613E2795400ACE2D4 /* Def_NumPad.xml in Resources */ = {isa = PBXBuildFile; fileRef = 16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */; };
 		28110E67121870050026AA8D /* AlphaAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110E66121870050026AA8D /* AlphaAnimation.m */; };
@@ -72,6 +72,11 @@
 		165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagicKeyboardMenu.png; sourceTree = "<group>"; };
 		165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagicKeyboardMenuAlt.png; sourceTree = "<group>"; };
 		165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagicKeyboardMenuDis.png; sourceTree = "<group>"; };
+		168D291D13E90E8900906DE6 /* Def_iOSMain.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Def_iOSMain.plist; sourceTree = "<group>"; };
+		168D291F13E9114900906DE6 /* Def_iOSNums.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Def_iOSNums.plist; sourceTree = "<group>"; };
+		168D292013E9114900906DE6 /* Def_iOSSym.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Def_iOSSym.plist; sourceTree = "<group>"; };
+		168D292113E9114900906DE6 /* Def_ModsMini.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Def_ModsMini.plist; sourceTree = "<group>"; };
+		168D292213E9114900906DE6 /* Def_NumPad.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Def_NumPad.plist; sourceTree = "<group>"; };
 		16A01DB3132B106D00116980 /* MKdsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKdsa_pub.pem; sourceTree = "<group>"; };
 		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
 		16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FRFeedbackReporter.sh; sourceTree = "<group>"; };
@@ -80,16 +85,11 @@
 		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		16FFCB3A13E253F200ACE2D4 /* MKLayoutDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLayoutDefinition.h; sourceTree = "<group>"; };
 		16FFCB3B13E253F200ACE2D4 /* MKLayoutDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLayoutDefinition.m; sourceTree = "<group>"; };
-		16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSMain.xml; sourceTree = "<group>"; };
 		16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSMain.png; sourceTree = "<group>"; };
 		16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSNums.png; sourceTree = "<group>"; };
-		16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSNums.xml; sourceTree = "<group>"; };
 		16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_iOSSym.png; sourceTree = "<group>"; };
-		16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_iOSSym.xml; sourceTree = "<group>"; };
 		16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_ModsMini.png; sourceTree = "<group>"; };
-		16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_ModsMini.xml; sourceTree = "<group>"; };
 		16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Def_NumPad.png; sourceTree = "<group>"; };
-		16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Def_NumPad.xml; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* MagicKeyboardAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKeyboardAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicKeyboardAppDelegate.m; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		281EDBF21217AC9F00CC2197 /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		281EDBF31217AC9F00CC2197 /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
 		281FF88612330FA200A94DB7 /* ModsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ModsMini.xml; sourceTree = "<group>"; };
-		28531B0F1217816C001AB273 /* MKController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MKController.h; sourceTree = "<group>"; };
+		28531B0F1217816C001AB273 /* MKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKController.h; sourceTree = "<group>"; };
 		28531B101217816C001AB273 /* MKController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKController.m; sourceTree = "<group>"; };
 		28531BB812178EC4001AB273 /* Tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tap.png; sourceTree = "<group>"; };
 		28554A8A12308D2D0087B886 /* SymbolsMini.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SymbolsMini.xml; sourceTree = "<group>"; };
@@ -200,13 +200,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				16FFCB4913E2795400ACE2D4 /* Def_iOSNums.xml */,
+				168D291D13E90E8900906DE6 /* Def_iOSMain.plist */,
+				168D291F13E9114900906DE6 /* Def_iOSNums.plist */,
+				168D292013E9114900906DE6 /* Def_iOSSym.plist */,
+				168D292113E9114900906DE6 /* Def_ModsMini.plist */,
+				168D292213E9114900906DE6 /* Def_NumPad.plist */,
 				16FFCB4A13E2795400ACE2D4 /* Def_iOSSym.png */,
-				16FFCB4B13E2795400ACE2D4 /* Def_iOSSym.xml */,
 				16FFCB4C13E2795400ACE2D4 /* Def_ModsMini.png */,
-				16FFCB4D13E2795400ACE2D4 /* Def_ModsMini.xml */,
 				16FFCB4E13E2795400ACE2D4 /* Def_NumPad.png */,
-				16FFCB4F13E2795400ACE2D4 /* Def_NumPad.xml */,
 				16FFCB4513E26B0D00ACE2D4 /* Def_iOSMain.png */,
 				16FFCB4713E2717F00ACE2D4 /* Def_iOSNums.png */,
 				165ECD061330415B00AD0A0D /* MagicKeyboard.icns */,
@@ -217,7 +218,6 @@
 				165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */,
 				16EA1084131A35DC00DAB98D /* NumPadFull.xml */,
 				281EDBE91217ABBA00CC2197 /* QwertyMini.xml */,
-				16FFCB4313E257B800ACE2D4 /* Def_iOSMain.xml */,
 				289F1F46123074C8005920DD /* NumsMini.xml */,
 				28554A8A12308D2D0087B886 /* SymbolsMini.xml */,
 				281FF88612330FA200A94DB7 /* ModsMini.xml */,
@@ -308,16 +308,16 @@
 				165ECD101330420000AD0A0D /* MagicKeyboardMenu.png in Resources */,
 				165ECD111330420000AD0A0D /* MagicKeyboardMenuAlt.png in Resources */,
 				165ECD121330420000AD0A0D /* MagicKeyboardMenuDis.png in Resources */,
-				16FFCB4413E257B800ACE2D4 /* Def_iOSMain.xml in Resources */,
 				16FFCB4613E26B0D00ACE2D4 /* Def_iOSMain.png in Resources */,
 				16FFCB4813E2717F00ACE2D4 /* Def_iOSNums.png in Resources */,
-				16FFCB5013E2795400ACE2D4 /* Def_iOSNums.xml in Resources */,
 				16FFCB5113E2795400ACE2D4 /* Def_iOSSym.png in Resources */,
-				16FFCB5213E2795400ACE2D4 /* Def_iOSSym.xml in Resources */,
 				16FFCB5313E2795400ACE2D4 /* Def_ModsMini.png in Resources */,
-				16FFCB5413E2795400ACE2D4 /* Def_ModsMini.xml in Resources */,
 				16FFCB5513E2795400ACE2D4 /* Def_NumPad.png in Resources */,
-				16FFCB5613E2795400ACE2D4 /* Def_NumPad.xml in Resources */,
+				168D291E13E90E8900906DE6 /* Def_iOSMain.plist in Resources */,
+				168D292313E9114900906DE6 /* Def_iOSNums.plist in Resources */,
+				168D292413E9114900906DE6 /* Def_iOSSym.plist in Resources */,
+				168D292513E9114900906DE6 /* Def_ModsMini.plist in Resources */,
+				168D292613E9114900906DE6 /* Def_NumPad.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

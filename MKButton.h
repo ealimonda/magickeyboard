@@ -17,20 +17,22 @@
 
 #pragma mark Interface
 @interface MKButton : NSObject <NSCopying> {
-	int buttonID;
-	int xStart;
-	int xEnd;
-	int yStart;
-	int yEnd;
+	NSInteger buttonID;
+	NSInteger xStart;
+	NSInteger xEnd;
+	NSInteger yStart;
+	NSInteger yEnd;
 	NSString *keycode;
 	NSString *letter;
 }
 
 #pragma mark Methods
-- (id)initWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd;
+- (id)initWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
+	    yEnd:(NSInteger)aYEnd;
 
 + (id)button;
-+ (id)buttonWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd;
++ (id)buttonWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
+	      yEnd:(NSInteger)aYEnd;
 + (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode;
 
 - (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode;
@@ -38,11 +40,11 @@
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;
 
 #pragma mark Properties
-@property (assign) int buttonID;
-@property (assign) int xStart;
-@property (assign) int xEnd;
-@property (assign) int yStart;
-@property (assign) int yEnd;
+@property (assign) NSInteger buttonID;
+@property (assign) NSInteger xStart;
+@property (assign) NSInteger xEnd;
+@property (assign) NSInteger yStart;
+@property (assign) NSInteger yEnd;
 @property (retain) NSString *keycode;
 @property (retain) NSString *letter;
 
