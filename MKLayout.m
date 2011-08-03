@@ -17,6 +17,7 @@
 #import "MKLayoutDefinition.h"
 #import "MKButton.h"
 
+#pragma mark Constants
 NSString * const kUntitledLayout = @"Untitled Layout";
 
 NSString * const kXmlLayoutLayout = @"layout";
@@ -29,6 +30,8 @@ NSString * const kXmlLayoutLetter = @"letter";
 NSString * const kXmlLayoutKeycode = @"keycode";
 NSString * const kXmlLayoutButton = @"button";
 
+#pragma mark -
+#pragma mark Implementation
 @implementation MKLayout
 
 #pragma mark Initialization
@@ -105,21 +108,15 @@ NSString * const kXmlLayoutButton = @"button";
 	
 }
 
-// sent when the parser begins parsing of the document.
+/// sent when the parser begins parsing of the document.
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
 #pragma unused (parser)
-	//#ifdef __DEBUGGING__
-	//	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-	//#endif // __DEBUGGING__
 	[self setValid:YES];
 }
 
-// sent when the parser has completed parsing. If this is encountered, the parse was successful.
+/// sent when the parser has completed parsing. If this is encountered, the parse was successful.
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 #pragma unused (parser)
-	//#ifdef __DEBUGGING__
-	//	NSLog(@"%s:%s:%d", __PRETTY_FUNCTION__, __FILE__, __LINE__);
-	//#endif // __DEBUGGING__
 	if( ![self layoutName] )
 		[self setLayoutName:kUntitledLayout];
 	if( ![self layoutDefinition] || ![[self layoutDefinition] isValid] ) {
@@ -164,6 +161,35 @@ NSString * const kXmlLayoutButton = @"button";
 	[self setKeyboardImage:[[self layoutDefinition] keyboardImage]];
 }
 
+- (NSArray *)createLabels {
+	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
+	for( MKButton *eachKey in currentButtons ) {
+		
+		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
+		NSSize labelSize = [[[eachKey letter] uppercaseString]
+				sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
+				NSFontAttributeName, nil]];
+		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
+				(CGFloat)([eachKey yStart] + ([eachKey yEnd]-[eachKey yStart])/2 - labelSize.height/2),
+				(CGFloat)[eachKey xEnd] - [eachKey xStart],
+				(CGFloat)(labelSize.height));
+		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
+		[textField setStringValue:[[eachKey letter] uppercaseString]];
+
+		[textField setEditable:NO];
+		[textField setSelectable:NO];
+// TODO		[textField setTextColor:(NSColor *)];
+		[textField setBackgroundColor:[NSColor clearColor]];
+		[textField setBordered:NO];
+		[textField setFont:font];
+		[textField setAlignment:NSCenterTextAlignment];
+		[keys addObject:textField];
+	}
+	return keys;
+}
+
+#pragma mark -
+#pragma mark Properties
 @synthesize layoutName;
 @synthesize layoutSize;
 @synthesize keyboardImage;

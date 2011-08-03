@@ -16,8 +16,10 @@
 #import "MagicKeyboardAppDelegate.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
 
+#pragma mark Implementation
 @implementation MagicKeyboardAppDelegate
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if( self ) {
@@ -31,6 +33,7 @@
 	[super dealloc];
 }
 
+#pragma mark NSApplicationDelegate
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 #pragma unused (aNotification)
 	[[FRFeedbackReporter sharedReporter] setDelegate:self];
@@ -66,9 +69,10 @@
 		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
 	}
 
-	[magickeyboard setTracking:![sender state]];
+	[magicKeyboardController setTracking:![sender state]];
 }
 
+#pragma mark FRFeedbackReportDelegate
 - (IBAction)submitFeedback:(id)sender {
 #pragma unused (sender)
 	[[FRFeedbackReporter sharedReporter] reportFeedback];
@@ -77,8 +81,8 @@
 - (NSDictionary *)customParametersForFeedbackReport {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:@"None found" forKey:@"Devices"];
 
-	if( magickeyboard )
-		[dict setObject:[magickeyboard deviceInfoList] forKey:@"Devices"];
+	if( magicKeyboardController )
+		[dict setObject:[magicKeyboardController deviceInfoList] forKey:@"Devices"];
 	return dict;
 }
 

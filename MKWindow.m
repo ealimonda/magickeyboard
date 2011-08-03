@@ -15,8 +15,10 @@
 
 #import "MKWindow.h"
 
+#pragma mark Implementation
 @implementation MKWindow
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if( self ) {
@@ -30,6 +32,7 @@
 	[super dealloc];
 }
 
+#pragma mark Reimplemented parent methods
 - (BOOL)canBecomeKeyWindow {
 	return NO;
 }

@@ -15,11 +15,15 @@
 
 #import "AlphaAnimation.h"
 
+#pragma mark Constants
 NSString * const AAFadeIn = @"AAFadeIn";
 NSString * const AAFadeOut = @"AAFadeOut";
 
+#pragma mark -
+#pragma mark Implementation
 @implementation AlphaAnimation 
 
+#pragma mark Initialization
 - (id)initWithDuration:(NSTimeInterval)aDuration effect:(NSString *)anEffect object:(NSView *)anObject {
 	self = [super initWithDuration:aDuration animationCurve:0];
 
@@ -37,6 +41,7 @@ NSString * const AAFadeOut = @"AAFadeOut";
 	[super dealloc];
 }
 
+#pragma mark Utilities
 - (void)setCurrentProgress:(NSAnimationProgress)progress {
 	[super setCurrentProgress:progress];
 
@@ -46,6 +51,8 @@ NSString * const AAFadeOut = @"AAFadeOut";
 		[animatedObject setAlphaValue:1 - progress];
 }
 
+#pragma mark -
+#pragma mark Properties
 @synthesize animatedObject;
 @synthesize effect;
 

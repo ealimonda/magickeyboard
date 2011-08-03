@@ -13,7 +13,7 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  *******************************************************************************************************************/
 
-#import "MKKeyboard.h"
+#import "MKController.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
 #import "AlphaAnimation.h"
 #import "MKButton.h"
@@ -114,7 +114,8 @@ const MTDeviceX multiTouchSampleDevice = {
 };
 
 #pragma mark -
-@interface MKKeyboard ()
+#pragma mark Interface (private)
+@interface MKController ()
 #pragma mark Private methods and properties
 
 - (void)sendKeycode:(CGKeyCode)keycode;
@@ -134,9 +135,10 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 @end
 
 #pragma mark -
-@implementation MKKeyboard
-#pragma mark Initialization
+#pragma mark Implementation
+@implementation MKController
 
+#pragma mark Initialization
 + (NSString *)getInfoForDevice:(MTDeviceX *)device {
 	if( !device )
 		return @"nil";
@@ -195,6 +197,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		shift = NO;
 		lastKeyWasModifier = NO;
 		currentLayout = [[MKLayout layoutWithName:kDefaultLayout] retain];
+		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
 		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue", [[NSBundle mainBundle]
@@ -299,6 +302,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	dispatch_release(myQueue);
 	[tapSound release];
 	[tap release];
+	[keyLabels release];
 	[currentLayout release];
 	[devices release];
 	[prefs release];
@@ -575,6 +579,11 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (IBAction)switchLayout:(id)sender {
 	if( [sender state] )
 		return;
+	while( [keyLabels count] > 0 ) {
+		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
+		[thisLabel removeFromSuperview];
+		[keyLabels removeObject:thisLabel];
+	}
 	
 	if( sender == selQwerty ) {
 		[selQwerty setState:1];
@@ -591,6 +600,11 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	}
+	NSArray *layoutLabels = [[self currentLayout] createLabels];
+	for( NSTextField *eachLabel in layoutLabels) {
+		[keyLabels addObject:eachLabel];
+		[keyboardView addSubview:eachLabel];
+	}
 }
 
 - (void)animateImage:(NSImageView *)imageView {
@@ -604,6 +618,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	return NO;
 }
 
+#pragma mark Utilities
 - (NSArray *)deviceInfoList {
 	NSMutableArray *devs = [NSMutableArray array];
 	for( NSMutableData *eachDeviceData in [self devices] ) {

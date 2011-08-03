@@ -15,11 +15,13 @@
 
 #import "MKButton.h"
 
+#pragma mark Implementation
 @implementation MKButton
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
-	if( self ) {
+	if (self) {
 		letter = nil;
 		keycode = nil;
 		xStart = 0;
@@ -30,9 +32,10 @@
 	return self;
 }
 
-- (id)initWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd {
+- (id)initWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
+	    yEnd:(NSInteger)aYEnd {
 	self = [self init];
-	if( self ) {
+	if (self) {
 		letter = nil;
 		keycode = nil;
 		buttonID = aButtonID;
@@ -54,9 +57,10 @@
 	return [[[[self class] alloc] init] autorelease];
 }
 
-+ (id)buttonWithID:(int)aButtonID xStart:(int)aXStart xEnd:(int)aXEnd yStart:(int)aYStart yEnd:(int)aYEnd {
++ (id)buttonWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
+	      yEnd:(NSInteger)aYEnd {
 	return [[[[self class] alloc] initWithID:aButtonID xStart:aXStart xEnd:aXEnd yStart:aYStart yEnd:aYEnd]
-			autorelease];
+		autorelease];
 }
 
 + (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode {
@@ -65,25 +69,32 @@
 	return [thisButton autorelease];
 }
 
+#pragma mark Special setters
 - (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode {
 	[self setLetter:aLetter];
 	[self setKeycode:aKeyCode];
 	return self;
 }
 
+#pragma mark Utilities
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize {
-	if( aPoint.x >= (xStart - (circleSize.width/2)) && (aPoint.x + (circleSize.width /2)) <= xEnd
-			&& aPoint.y >= (yStart - (circleSize.height/2)) && (aPoint.y+(circleSize.height/2)) <=yEnd ) {
+	if (aPoint.x >= (xStart - (circleSize.width/2))
+	    && (aPoint.x + (circleSize.width /2)) <= xEnd
+	    && aPoint.y >= (yStart - (circleSize.height/2))
+	    && (aPoint.y+(circleSize.height/2)) <=yEnd) {
 		return YES;
 	}
 	return NO;
 }
 
+#pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone {
 	return [[[self class] allocWithZone:zone] initWithID:[self buttonID] xStart:[self xStart] xEnd:[self xEnd]
-			yStart:[self yStart] yEnd:[self yEnd]];
+						      yStart:[self yStart] yEnd:[self yEnd]];
 }
 
+#pragma mark -
+#pragma mark Properties
 @synthesize buttonID;
 @synthesize xStart;
 @synthesize xEnd;

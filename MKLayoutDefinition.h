@@ -16,6 +16,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MKButton.h"
 
+#pragma mark Interface
 @interface MKLayoutDefinition : NSObject <NSXMLParserDelegate> {
 	NSString *layoutDefinitionName;
 	NSSize layoutSize;
@@ -24,14 +25,16 @@
 	BOOL valid;
 }
 
+#pragma mark Methods
 - (id)initWithName:(NSString *)loadName;
 + (id)layoutDefinition;
 + (id)layoutDefinitionWithName:(NSString *)loadName;
 
-- (void)loadXML:(NSString *)fileName;
+- (void)loadPlist:(NSString *)fileName;
 
 - (MKButton *)buttonWithID:(int)buttonID;
 
+#pragma mark Properties
 @property (retain) NSString *layoutDefinitionName;
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;
