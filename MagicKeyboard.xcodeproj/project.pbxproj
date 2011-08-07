@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		164F53AF1323F6EA00F4AB0F /* MKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 164F53AE1323F6EA00F4AB0F /* MKLayout.m */; };
+		1650FC8E13EE4CE900C2C107 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1650FC9013EE4CE900C2C107 /* PreferencesWindow.xib */; };
 		165ECD071330415B00AD0A0D /* MagicKeyboard.icns in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD061330415B00AD0A0D /* MagicKeyboard.icns */; };
 		165ECD101330420000AD0A0D /* MagicKeyboardMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */; };
 		165ECD111330420000AD0A0D /* MagicKeyboardMenuAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */; };
@@ -68,6 +69,7 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		164F53AD1323F6EA00F4AB0F /* MKLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKLayout.h; sourceTree = "<group>"; };
 		164F53AE1323F6EA00F4AB0F /* MKLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLayout.m; sourceTree = "<group>"; };
+		1650FC8F13EE4CE900C2C107 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		165ECD061330415B00AD0A0D /* MagicKeyboard.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MagicKeyboard.icns; sourceTree = "<group>"; };
 		165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagicKeyboardMenu.png; sourceTree = "<group>"; };
 		165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MagicKeyboardMenuAlt.png; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				8D1107310486CEB800E47090 /* MagicKeyboard-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				1650FC9013EE4CE900C2C107 /* PreferencesWindow.xib */,
 				16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */,
 			);
 			name = Resources;
@@ -318,6 +321,7 @@
 				168D292413E9114900906DE6 /* Def_iOSSym.plist in Resources */,
 				168D292513E9114900906DE6 /* Def_ModsMini.plist in Resources */,
 				168D292613E9114900906DE6 /* Def_NumPad.plist in Resources */,
+				1650FC8E13EE4CE900C2C107 /* PreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +369,14 @@
 				089C165DFE840E0CC02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1650FC9013EE4CE900C2C107 /* PreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1650FC8F13EE4CE900C2C107 /* English */,
+			);
+			name = PreferencesWindow.xib;
 			sourceTree = "<group>";
 		};
 		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
