@@ -123,7 +123,7 @@ NSString * const kDefinitionYEnd = @"yEnd";
 		[self setValid:NO];
 }
 
-- (MKButton *)buttonWithID:(int)buttonID {
+- (MKButton *)buttonWithID:(NSInteger)buttonID {
 	for (MKButton *eachButton in currentButtons) {
 		if ([eachButton buttonID] == buttonID)
 			return eachButton;

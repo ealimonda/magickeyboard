@@ -20,15 +20,12 @@
 #pragma mark Constants
 NSString * const kUntitledLayout = @"Untitled Layout";
 
-NSString * const kXmlLayoutLayout = @"layout";
-NSString * const kXmlLayoutName = @"name";
-NSString * const kXmlLayoutDefinition = @"definition";
-NSString * const kXmlLayoutFilename = @"filename";
-NSString * const kXmlLayoutKeys = @"keys";
-NSString * const kXmlLayoutKey = @"key";
-NSString * const kXmlLayoutLetter = @"letter";
-NSString * const kXmlLayoutKeycode = @"keycode";
-NSString * const kXmlLayoutButton = @"button";
+NSString * const kLayoutLayoutName = @"LayoutName";
+NSString * const kLayoutDefinition = @"Definition";
+NSString * const kLayoutKeys = @"Keys";
+NSString * const kLayoutButtonID = @"Button";
+NSString * const kLayoutLetter = @"Letter";
+NSString * const kLayoutKeycode = @"Keycode";
 
 #pragma mark -
 #pragma mark Implementation
@@ -51,7 +48,7 @@ NSString * const kXmlLayoutButton = @"button";
 - (id)initWithName:(NSString *)loadName {
 	self = [self init];
 	if (self) {
-		[self loadXML:loadName];
+		[self loadPlist:loadName];
 	}
 	return self;
 }
@@ -73,80 +70,50 @@ NSString * const kXmlLayoutButton = @"button";
 	return [[[[self class] alloc] initWithName:loadName] autorelease];
 }
 
-#pragma mark XML Parser
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
-		qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
-#pragma unused (parser, namespaceURI, qualifiedName)
-	if( [elementName isEqualToString:kXmlLayoutKey] ) {
-		if( !layoutDefinition ) {
-			NSLog(@"Invalid entry, no layout definition loaded.");
-			return;
-		}
-		int buttonID = [[attributeDict valueForKey:kXmlLayoutButton] intValue];
-		NSString *letter = [attributeDict valueForKey:kXmlLayoutLetter];
-		NSString *keycode = [attributeDict valueForKey:kXmlLayoutKeycode];
-		for( MKButton *eachButton in currentButtons ) {
-			if( [eachButton buttonID] == buttonID ) {
-				NSLog(@"Duplicate key button ID: %d", buttonID);
-				return;
-			}
-		}
-		MKButton *button = [layoutDefinition buttonWithID:buttonID];
-		if( !button) {
-			NSLog(@"Invalid key, button %d does not exist", buttonID);
-			return;
-		}
-		[currentButtons addObject:[MKButton buttonWithButton:button letter:letter keycode:keycode]];
-	} else if( [elementName isEqualToString:kXmlLayoutLayout] ) {
-		[self setLayoutName:[attributeDict valueForKey:kXmlLayoutName]];
-		[self loadLayoutDefinition:[attributeDict valueForKey:kXmlLayoutDefinition]];
-	} else if( [elementName isEqualToString:kXmlLayoutKeys] ) {
-		// Skip
-	} else {
-		NSLog(@"Found invalid element %@ during layout parsing", elementName);
-	}
+#pragma mark Utilities
+- (void)loadPlist:(NSString *)fileName {
+#ifdef __DEBUGGING__
+	NSLog(@"Parsing: %@", fileName);
+#endif // __DEBUGGING__
+	NSDictionary *layout = [[NSDictionary alloc] initWithContentsOfFile:
+				[[NSBundle mainBundle] pathForResource:
+				 [NSString stringWithFormat:@"Lay_%@", fileName] ofType:@"plist"]];
+	if (layout)
+		[self setValid:YES];
 	
-}
-
-/// sent when the parser begins parsing of the document.
-- (void)parserDidStartDocument:(NSXMLParser *)parser {
-#pragma unused (parser)
-	[self setValid:YES];
-}
-
-/// sent when the parser has completed parsing. If this is encountered, the parse was successful.
-- (void)parserDidEndDocument:(NSXMLParser *)parser {
-#pragma unused (parser)
-	if( ![self layoutName] )
-		[self setLayoutName:kUntitledLayout];
-	if( ![self layoutDefinition] || ![[self layoutDefinition] isValid] ) {
+	[self setLayoutName:[layout valueForKey:kLayoutLayoutName]];
+	[self loadLayoutDefinition:[layout valueForKey:kLayoutDefinition]];
+	if (![self layoutDefinition] || ![[self layoutDefinition] isValid]) {
+		NSLog(@"Error: Invalid layout definition specified");
 		[self setValid:NO];
 		return;
 	}
-}
 
-/// ...and this reports a fatal error to the delegate. The parser will stop parsing.
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	NSLog(@"Parse Error at line %ld: %@", [parser lineNumber], parseError);
-	[self setValid:NO];
-}
+	NSDictionary *keys = [layout valueForKey:kLayoutKeys];
+	if (keys) {
+		for (NSDictionary *eachKey in keys) {
+			NSInteger buttonID = [[eachKey valueForKey:kLayoutButtonID] integerValue];
+			for (MKButton *eachButton in currentButtons) {
+				if ([eachButton buttonID] == buttonID) {
+					NSLog(@"Duplicate key button ID: %ld", buttonID);
+					[self setValid:NO];
+					return;
+				}
+			}
+			MKButton *button = [layoutDefinition buttonWithID:buttonID];
+			if (!button) {
+				NSLog(@"Invalid key, button %ld does not exist", buttonID);
+				[self setValid:NO];
+				return;
+			}
+			NSString *letter = [eachKey valueForKey:kLayoutLetter];
+			NSString *keycode = [eachKey valueForKey:kLayoutKeycode];
+			[currentButtons addObject:[MKButton buttonWithButton:button letter:letter keycode:keycode]];
+		}
+	}
 
-/// If validation is on, this will report a fatal validation error to the delegate. The parser will stop parsing.
-- (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validationError {
-	NSLog(@"Validation Error at line %ld: %@", [parser lineNumber], validationError);
-	[self setValid:NO];
-}
-
-- (void)loadXML:(NSString *)xmlFileName {
-	// Create a parser
-#ifdef __DEBUGGING__
-	NSLog(@"Parsing: %@", xmlFileName);
-#endif // __DEBUGGING__
-	NSData *xmlData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:xmlFileName ofType:@"xml"]];
-	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:xmlData] autorelease];
-	[parser setDelegate:self];
-	// Do the parse
-	[parser parse];
+	if (![self layoutName])
+		[self setLayoutName:kUntitledLayout];
 }
 
 - (void)loadLayoutDefinition:(NSString *)definitionName {

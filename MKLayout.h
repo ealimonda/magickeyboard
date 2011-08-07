@@ -17,7 +17,7 @@
 #import "MKLayoutDefinition.h"
 
 #pragma mark Interface
-@interface MKLayout : NSObject <NSXMLParserDelegate> {
+@interface MKLayout : NSObject {
 	NSString *layoutName;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
@@ -31,7 +31,7 @@
 + (id)layout;
 + (id)layoutWithName:(NSString *)loadName;
 
-- (void)loadXML:(NSString *)fileName;
+- (void)loadPlist:(NSString *)fileName;
 
 - (void)loadLayoutDefinition:(NSString *)definitionName;
 

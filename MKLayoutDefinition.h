@@ -17,7 +17,7 @@
 #import "MKButton.h"
 
 #pragma mark Interface
-@interface MKLayoutDefinition : NSObject <NSXMLParserDelegate> {
+@interface MKLayoutDefinition : NSObject {
 	NSString *layoutDefinitionName;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
@@ -32,7 +32,7 @@
 
 - (void)loadPlist:(NSString *)fileName;
 
-- (MKButton *)buttonWithID:(int)buttonID;
+- (MKButton *)buttonWithID:(NSInteger)buttonID;
 
 #pragma mark Properties
 @property (retain) NSString *layoutDefinitionName;

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- ***************************************************************************************************************
+ *                                                MagicKeyboard                                                    *
+ *******************************************************************************************************************
+ * File:             Lay_NumsMini.plist                                                                            *
+ * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+ *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+ *                       the GNU General Public License as published by the Free Software Foundation, either       *
+ *                       version 3 of the License, or (at your option) any later version.                          *
+ *                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+ *                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+ *                   See the GNU General Public License for more details.                                          *
+ *                   You should have received a copy of the GNU General Public License along with this program.    *
+ *                       If not, see <http://www.gnu.org/licenses/>                                                *
+ **************************************************************************************************************** -->
+<plist version="1.0">
+<dict>
+	<key>LayoutName</key>
+	<string>Full Numeric Keypad</string>
+	<key>Definition</key>
+	<string>Def_NumPad</string>
+	<key>Keys</key>
+	<array>
+		<dict>
+			<key>Button</key>
+			<integer>1</integer>
+			<key>Letter</key>
+			<string>0</string>
+			<key>Keycode</key>
+			<integer>82</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>2</integer>
+			<key>Letter</key>
+			<string>.</string>
+			<key>Keycode</key>
+			<integer>65</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>3</integer>
+			<key>Letter</key>
+			<string>1</string>
+			<key>Keycode</key>
+			<integer>83</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>4</integer>
+			<key>Letter</key>
+			<string>2</string>
+			<key>Keycode</key>
+			<integer>84</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>5</integer>
+			<key>Letter</key>
+			<string>3</string>
+			<key>Keycode</key>
+			<integer>85</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>6</integer>
+			<key>Letter</key>
+			<string>4</string>
+			<key>Keycode</key>
+			<integer>86</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>7</integer>
+			<key>Letter</key>
+			<string>5</string>
+			<key>Keycode</key>
+			<integer>87</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>8</integer>
+			<key>Letter</key>
+			<string>6</string>
+			<key>Keycode</key>
+			<integer>88</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>9</integer>
+			<key>Letter</key>
+			<string>7</string>
+			<key>Keycode</key>
+			<integer>89</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>10</integer>
+			<key>Letter</key>
+			<string>8</string>
+			<key>Keycode</key>
+			<integer>91</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>11</integer>
+			<key>Letter</key>
+			<string>9</string>
+			<key>Keycode</key>
+			<integer>92</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>12</integer>
+			<key>Letter</key>
+			<string>RETURN</string>
+			<key>Keycode</key>
+			<integer>76</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>13</integer>
+			<key>Letter</key>
+			<string>+</string>
+			<key>Keycode</key>
+			<integer>69</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>14</integer>
+			<key>Letter</key>
+			<string>-</string>
+			<key>Keycode</key>
+			<integer>78</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>15</integer>
+			<key>Letter</key>
+			<string>*</string>
+			<key>Keycode</key>
+			<integer>67</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>16</integer>
+			<key>Letter</key>
+			<string>/</string>
+			<key>Keycode</key>
+			<integer>75</integer>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>17</integer>
+			<key>Letter</key>
+			<string>CLEAR</string>
+			<key>Keycode</key>
+			<integer>71</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
