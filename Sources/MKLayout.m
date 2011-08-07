@@ -76,8 +76,10 @@ NSString * const kLayoutKeycode = @"Keycode";
 	NSLog(@"Parsing: %@", fileName);
 #endif // __DEBUGGING__
 	NSDictionary *layout = [[NSDictionary alloc] initWithContentsOfFile:
-				[[NSBundle mainBundle] pathForResource:
-				 [NSString stringWithFormat:@"Lay_%@", fileName] ofType:@"plist"]];
+				[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
+							   inDirectory:@"Layouts"]];
+	NSLog(@"Asd%@",[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
+						  inDirectory:@"Layouts"]);
 	if (layout)
 		[self setValid:YES];
 	

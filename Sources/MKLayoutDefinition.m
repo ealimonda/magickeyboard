@@ -77,8 +77,9 @@ NSString * const kDefinitionYEnd = @"yEnd";
 #ifdef __DEBUGGING__
 	NSLog(@"Loading: %@", fileName);
 #endif // __DEBUGGING__
-	NSDictionary *definition = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:
-										 fileName ofType:@"plist"]];
+	NSDictionary *definition = [[NSDictionary alloc] initWithContentsOfFile:
+				    [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
+							       inDirectory:@"Definitions"]];
 	if (definition)
 		[self setValid:YES];
 

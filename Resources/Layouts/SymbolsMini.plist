@@ -3,7 +3,7 @@
 <!-- ***************************************************************************************************************
  *                                                MagicKeyboard                                                    *
  *******************************************************************************************************************
- * File:             Lay_NumsMini.plist                                                                            *
+ * File:             Lay_SymbolsMini.plist                                                                         *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -17,178 +17,178 @@
 <plist version="1.0">
 <dict>
 	<key>LayoutName</key>
-	<string>Mini Numbers Keyboard</string>
+	<string>Mini Symbols Keyboard</string>
 	<key>Definition</key>
-	<string>Def_iOSNums</string>
+	<string>iOSSym</string>
 	<key>Keys</key>
 	<array>
 		<dict>
 			<key>Button</key>
 			<integer>1</integer>
 			<key>Letter</key>
-			<string>1</string>
+			<string>[</string>
 			<key>Keycode</key>
-			<integer>18</integer>
+			<integer>33</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>2</integer>
 			<key>Letter</key>
-			<string>2</string>
+			<string>]</string>
 			<key>Keycode</key>
-			<integer>19</integer>
+			<integer>30</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>3</integer>
 			<key>Letter</key>
-			<string>3</string>
+			<string>{</string>
 			<key>Keycode</key>
-			<integer>20</integer>
+			<integer>S33</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>4</integer>
 			<key>Letter</key>
-			<string>4</string>
+			<string>}</string>
 			<key>Keycode</key>
-			<integer>21</integer>
+			<integer>S30</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>5</integer>
 			<key>Letter</key>
-			<string>5</string>
+			<string>#</string>
 			<key>Keycode</key>
-			<integer>23</integer>
+			<integer>S20</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>6</integer>
 			<key>Letter</key>
-			<string>6</string>
+			<string>%</string>
 			<key>Keycode</key>
-			<integer>22</integer>
+			<integer>S23</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>7</integer>
 			<key>Letter</key>
-			<string>7</string>
+			<string>^</string>
 			<key>Keycode</key>
-			<integer>26</integer>
+			<integer>S22</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>8</integer>
 			<key>Letter</key>
-			<string>8</string>
+			<string>*</string>
 			<key>Keycode</key>
-			<integer>28</integer>
+			<integer>S28</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>9</integer>
 			<key>Letter</key>
-			<string>9</string>
+			<string>+</string>
 			<key>Keycode</key>
-			<integer>25</integer>
+			<integer>S24</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>10</integer>
 			<key>Letter</key>
-			<string>0</string>
+			<string>=</string>
 			<key>Keycode</key>
-			<integer>29</integer>
+			<integer>24</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>11</integer>
 			<key>Letter</key>
-			<string>-</string>
+			<string>_</string>
 			<key>Keycode</key>
-			<integer>27</integer>
+			<integer>S27</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>12</integer>
 			<key>Letter</key>
-			<string>/</string>
+			<string>\</string>
 			<key>Keycode</key>
-			<integer>44</integer>
+			<integer>42</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>13</integer>
 			<key>Letter</key>
-			<string>:</string>
+			<string>|</string>
 			<key>Keycode</key>
-			<integer>S41</integer>
+			<integer>S42</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>14</integer>
 			<key>Letter</key>
-			<string>;</string>
+			<string>~</string>
 			<key>Keycode</key>
-			<integer>41</integer>
+			<integer>S50</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>15</integer>
 			<key>Letter</key>
-			<string>(</string>
+			<string>&lt;</string>
 			<key>Keycode</key>
-			<integer>S25</integer>
+			<integer>S43</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>16</integer>
 			<key>Letter</key>
-			<string>)</string>
+			<string>&gt;</string>
 			<key>Keycode</key>
-			<integer>S29</integer>
+			<integer>S47</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>17</integer>
 			<key>Letter</key>
-			<string>$</string>
+			<string>€</string>
 			<key>Keycode</key>
-			<integer>S21</integer>
+			<integer>0</integer><!-- Missing -->
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>18</integer>
 			<key>Letter</key>
-			<string>&amp;</string>
+			<string>£</string>
 			<key>Keycode</key>
-			<integer>S26</integer>
+			<integer>0</integer><!-- Missing -->
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>19</integer>
 			<key>Letter</key>
-			<string>@</string>
+			<string>¥</string>
 			<key>Keycode</key>
-			<integer>S19</integer>
+			<integer>0</integer><!-- Missing -->
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>20</integer>
 			<key>Letter</key>
-			<string>&quot;</string>
+			<string>•</string>
 			<key>Keycode</key>
-			<integer>S39</integer>
+			<integer>0</integer><!-- Missing -->
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>21</integer>
 			<key>Letter</key>
-			<string>SYMS</string>
+			<string>NUMS</string>
 			<key>Keycode</key>
-			<integer></integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -244,7 +244,7 @@
 			<key>Letter</key>
 			<string>QWERTY</string>
 			<key>Keycode</key>
-			<integer></integer>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>Button</key>
