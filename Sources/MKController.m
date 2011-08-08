@@ -101,22 +101,15 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
 		
-		// FIXME: use CFPreferences / NSUserDefaults
-		prefs = [[NSDictionary alloc] initWithContentsOfFile:
-			 [[kPreferencesFolder stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
-			  stringByExpandingTildeInPath]];
-		if (prefs) {
-			NSString *layout = [prefs objectForKey:kLayout];
-			[selQwerty setState:0];
-			[selFullNum setState:0];
-			if ([layout isEqualToString:kQwertyMini])
-				[self switchLayout:selQwerty];
-			else if ([layout isEqualToString:kNumPadFull])
-				[self switchLayout:selFullNum];
-		} else {
-			prefs = [[NSMutableDictionary alloc] init];
-			[self writePrefs:kQwertyMini forKey:kLayout];
-		}
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys: kQwertyMini, kLayout, nil]];
+		NSString *layout = [defaults stringForKey:kLayout];
+		[selQwerty setState:0];
+		[selFullNum setState:0];
+		if ([layout isEqualToString:kQwertyMini])
+			[self switchLayout:selQwerty];
+		else if ([layout isEqualToString:kNumPadFull])
+			[self switchLayout:selFullNum];
 	}
 	return self;
 }
@@ -186,7 +179,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	[keyLabels release];
 	[currentLayout release];
 	[devices release];
-	[prefs release];
 	[super dealloc];
 }
 
@@ -429,14 +421,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	}
 }
 
-#pragma mark Preferences
-- (void) writePrefs:(NSString *)value forKey:(NSString *)key {
-	[prefs setObject:value forKey:key];
-	// FIXME: Use CFPreferences / NSUserDefaults
-	[prefs writeToFile:[[kPreferencesFolder stringByAppendingPathComponent:[[NSBundle mainBundle] bundleIdentifier]]
-			    stringByExpandingTildeInPath] atomically:YES];
-}
-
 #pragma mark window and layout
 #if 0 // Unused
 + (CGFloat)titleBarHeight {
@@ -474,14 +458,12 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	if (sender == selQwerty) {
 		[selQwerty setState:1];
 		[selFullNum setState:0];
-		[self writePrefs:kQwertyMini forKey:kLayout];
 		[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	} else if (sender == selFullNum) {
 		[selQwerty setState:0];
 		[selFullNum setState:1];
-		[self writePrefs:kNumPadFull forKey:kLayout];
 		[self setCurrentLayout:[MKLayout layoutWithName:kNumPadFull]];
 		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
 		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
@@ -491,6 +473,9 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[keyLabels addObject:eachLabel];
 		[keyboardView addSubview:eachLabel];
 	}
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setValue:[[self currentLayout] layoutName] forKey:kLayout];
+	[defaults synchronize];
 }
 
 - (void)animateImage:(NSImageView *)imageView {

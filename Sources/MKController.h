@@ -26,7 +26,6 @@
 	IBOutlet NSButton *cmdChk;
 	IBOutlet NSButton *ctrlChk;
 	IBOutlet NSButton *altChk;
-	NSMutableDictionary *prefs;
 
 	IBOutlet NSMenuItem *selQwerty;
 	IBOutlet NSMenuItem *selFullNum;
@@ -50,7 +49,6 @@
 
 #pragma mark Methods
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
-- (void)writePrefs:(NSString *)value forKey:(NSString *)key;
 - (IBAction)switchLayout:(id)sender;
 - (NSArray *)deviceInfoList;
 
