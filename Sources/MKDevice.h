@@ -15,8 +15,13 @@
 
 #import <Foundation/Foundation.h>
 
-#pragma mark Definitions
+#pragma mark Definitions and Constants
 #define kMultitouchFingersMax 11
+enum DeviceFamilies {
+	kDeviceFamilyMBPTrackpad   = 0x00000062,
+	kDeviceFamilyMagicMouse    = 0x00000070,
+	kDeviceFamilyMagicTrackpad = 0x00000080,
+};
 
 #pragma mark Private structures
 typedef struct {
@@ -83,6 +88,8 @@ typedef struct MTDeviceInfo MTDeviceInfo;
 + (id)sampleDevice;
 
 - (NSString *)getInfo;
+
+- (BOOL)isValid;
 
 //- (uint32)unk_v0;
 - (uint32)unk_k0;

@@ -122,33 +122,25 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 }
 
 - (void)awakeFromNib {
-	MKDevice *sampleDevice = [MKDevice sampleDevice];
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
 	for (NSUInteger i = 0; i < [deviceList count]; i++) {
 		MKDevice *thisDevice = [MKDevice deviceWithMTDeviceRef:(MTDeviceInfo *)[deviceList objectAtIndex:i] ID:i];
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [thisDevice getInfo]);
 #endif // __DEBUGGING__
-		if (!thisDevice
-		    || [thisDevice unk_k0] != [sampleDevice unk_k0]
-		    || [thisDevice unk_k1] != [sampleDevice unk_k1]
-		    || [thisDevice unk_k2] != [sampleDevice unk_k2]
-		    || [thisDevice unk_k3] != [sampleDevice unk_k3]
-		    || [thisDevice unk_k4] != [sampleDevice unk_k4]
-		    || [thisDevice unk_k5] != [sampleDevice unk_k5]
-		    ) {
+		if (![thisDevice isValid]) {
 			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [thisDevice getInfo]);
 			if (!thisDevice)
 				continue;
 		}
 		switch ([thisDevice family]) {
-		case 0x00000062:
+		case kDeviceFamilyMBPTrackpad:
 			NSLog(@"Detected MacBook Pro trackpad (#%lu).", i);
 			break;
-		case 0x00000070:
+		case kDeviceFamilyMagicMouse:
 			NSLog(@"Detected Magic Mouse (#%lu).  Ignoring it.", i);
 			continue;
-		case 0x00000080:
+		case kDeviceFamilyMagicTrackpad:
 			NSLog(@"Detected Magic Trackpad (#%lu).", i);
 			break;
 		default:

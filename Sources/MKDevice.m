@@ -136,6 +136,20 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	];
 }
 
+- (BOOL)isValid {
+	MKDevice *sampleDevice = [MKDevice sampleDevice];
+	if ([self unk_k0] != [sampleDevice unk_k0]
+	    || [self unk_k1] != [sampleDevice unk_k1]
+	    || [self unk_k2] != [sampleDevice unk_k2]
+	    || [self unk_k3] != [sampleDevice unk_k3]
+	    || [self unk_k4] != [sampleDevice unk_k4]
+	    || [self unk_k5] != [sampleDevice unk_k5]
+	    )
+		return NO;
+	return YES;
+
+}
+
 //- (uint32)unk_v0;
 - (uint32)unk_k0 {
 	return device.unk_k0;
