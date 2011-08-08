@@ -3,7 +3,7 @@
 <!-- ***************************************************************************************************************
  *                                                MagicKeyboard                                                    *
  *******************************************************************************************************************
- * File:             Def_iOSSym.plist                                                                              *
+ * File:             iOSSym.plist                                                                                  *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -21,7 +21,7 @@
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>
-		<string>Def_iOSSym.png</string>
+		<string>iOSSym</string>
 		<key>Width</key>
 		<integer>480</integer>
 		<key>Height</key>

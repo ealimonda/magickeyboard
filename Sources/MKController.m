@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MKKeyboard.m                                                                                  *
+ * File:             MKController.m                                                                                *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -18,6 +18,8 @@
 #import "AlphaAnimation.h"
 #import "MKButton.h"
 #import "MKLayout.h"
+#import "MKDevice.h"
+#import "MKFinger.h"
 
 #pragma mark Global Variables
 // FIXME: Eww, globals
@@ -48,71 +50,6 @@ NSString * const kDefaultLayout = @"QwertyMini";
 
 const double kSamplingInterval = 0.02;
 
-#pragma mark Private structures
-typedef struct {
-	float x, y;
-} mtPoint;
-
-typedef struct {
-	mtPoint pos, vel;
-} mtReadout;
-
-typedef struct {
-	int frame;
-	double timestamp;
-	int identifier, state, foo3, foo4;
-	mtReadout normalized;
-	float size;
-	int zero1;
-	float angle, majorAxis, minorAxis; // ellipsoid
-	mtReadout mm;
-	int zero2[2];
-	float unk2;
-} Touch;
-
-struct MTDeviceX {
-	uint32 unk_v0; // C8 B3 76 70  on both Mouse and Trackpad, but changes on other computers (i.e.: C8 23 FC 70)
-	uint32 unk_k0; // FF 7F 00 00
-	uint32 unk_v1; // 80 0E 01 00, then it changed to 80 10 01 00.  What is this?
-	uint32 unk_k1; // 01 00 00 00 - Could be Endianness
-	uint32 unk_v2; // 0F 35 00 00, 03 76 00 00, 03 6E 00 00 / 03 37 00 00, 03 77 00 00
-	uint32 unk_k2; // 00 00 00 00
-	uint32 address; // Last 4 bytes of the device address (or serial number?), as reported by the System Profiler Bluetooth tab
-	uint32 unk_v3; // 00 00 00 04, some times 00 00 00 03 - Last byte might be Parser Options?
-	// (uint64)address = Multitouch ID
-	uint32 family; // Family ID
-	uint32 bcdver; // bcdVersion
-	uint32 rows; // Sensor Rows
-	uint32 cols; // Sensor Columns
-	uint32 width; // Sensor Surface Width
-	uint32 height; // Sensor Surface Height
-	uint32 unk_k3; // 01 00 00 00 - Could be Endianness
-	uint32 unk_k4; // 00 00 00 00
-	uint32 unk_v4; // 90 04 75 70, 90 74 FA 70
-	uint32 unk_k5; // FF 7F 00 00
-};
-
-const MTDeviceX multiTouchSampleDevice = {
-	0x0,
-	0x00007FFF,
-	0x0,
-	0x00000001,
-	0x0,
-	0x00000000,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x0,
-	0x00000001,
-	0x00000000,
-	0x0,
-	0x00007FFF,
-};
-
 #pragma mark -
 #pragma mark Interface (private)
 @interface MKController ()
@@ -120,7 +57,7 @@ const MTDeviceX multiTouchSampleDevice = {
 
 - (void)sendKeycode:(CGKeyCode)keycode;
 - (void)animateImage:(NSImageView *)image;
-- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)deviceInfo;
+- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)device;
 typedef void *MTDeviceRef;
 typedef int (*MTContactCallbackFunction)(int, Touch *, int, double, int);
 
@@ -139,50 +76,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 @implementation MKController
 
 #pragma mark Initialization
-+ (NSString *)getInfoForDevice:(MTDeviceX *)device {
-	if (!device)
-		return @"nil";
-	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
-			"\t unk_v0 = %08x\n"
-			"\t unk_k0 = %08x\n"
-			"\t unk_v1 = %08x\n"
-			"\t unk_k1 = %08x\n"
-			"\t unk_v2 = %08x\n"
-			"\t unk_k2 = %08x\n"
-			"\taddress= %08x\n"
-			"\t unk_v3 = %08x\n"
-			"\tfamily = %08x\n"
-			"\tbcdver = %08x\n"
-			"\trows   = %08x\n"
-			"\tcols   = %08x\n"
-			"\twidth  = %08x\n"
-			"\theight = %08x\n"
-			"\t unk_k3 = %08x\n"
-			"\t unk_k4 = %08x\n"
-			"\t unk_v4 = %08x\n"
-			"\t unk_k5 = %08x\n"
-			"}",
-			device->unk_v0,
-			device->unk_k0,
-			device->unk_v1,
-			device->unk_k1,
-			device->unk_v2,
-			device->unk_k2,
-			device->address,
-			device->unk_v3,
-			device->family,
-			device->bcdver,
-			device->rows,
-			device->cols,
-			device->width,
-			device->height,
-			device->unk_k3,
-			device->unk_k4,
-			device->unk_v4,
-			device->unk_k5
-	];
-}
-
 - (id)init {
 	self = [super init];
 	if (self) {
@@ -229,31 +122,26 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 }
 
 - (void)awakeFromNib {
+	MKDevice *sampleDevice = [MKDevice sampleDevice];
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
 	for (NSUInteger i = 0; i < [deviceList count]; i++) {
-		MTDeviceX *thisDevice = (MTDeviceX *)[deviceList objectAtIndex:i];
-		NSMutableData *mkDeviceData = [NSMutableData dataWithLength:sizeof(MKDevice)];
-		MKDevice *mkDeviceInfo = [mkDeviceData mutableBytes];
-		mkDeviceInfo->dev_id = i;
-		mkDeviceInfo->state = NO;
-		mkDeviceInfo->device = thisDevice;
+		MKDevice *thisDevice = [MKDevice deviceWithMTDeviceRef:(MTDeviceInfo *)[deviceList objectAtIndex:i] ID:i];
 #ifdef __DEBUGGING__
-		NSLog(@"Checking device: %@", [[self class] getInfoForDevice:thisDevice]);
+		NSLog(@"Checking device: %@", [thisDevice getInfo]);
 #endif // __DEBUGGING__
 		if (!thisDevice
-		    || thisDevice->unk_k0 != multiTouchSampleDevice.unk_k0
-		    || thisDevice->unk_k1 != multiTouchSampleDevice.unk_k1
-		    || thisDevice->unk_k2 != multiTouchSampleDevice.unk_k2
-		    || thisDevice->unk_k3 != multiTouchSampleDevice.unk_k3
-		    || thisDevice->unk_k4 != multiTouchSampleDevice.unk_k4
-		    || thisDevice->unk_k5 != multiTouchSampleDevice.unk_k5
+		    || [thisDevice unk_k0] != [sampleDevice unk_k0]
+		    || [thisDevice unk_k1] != [sampleDevice unk_k1]
+		    || [thisDevice unk_k2] != [sampleDevice unk_k2]
+		    || [thisDevice unk_k3] != [sampleDevice unk_k3]
+		    || [thisDevice unk_k4] != [sampleDevice unk_k4]
+		    || [thisDevice unk_k5] != [sampleDevice unk_k5]
 		    ) {
-			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i,
-			      [[self class] getInfoForDevice:thisDevice]);
+			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [thisDevice getInfo]);
 			if (!thisDevice)
 				continue;
 		}
-		switch (thisDevice->family) {
+		switch ([thisDevice family]) {
 		case 0x00000062:
 			NSLog(@"Detected MacBook Pro trackpad (#%lu).", i);
 			break;
@@ -264,12 +152,12 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 			NSLog(@"Detected Magic Trackpad (#%lu).", i);
 			break;
 		default:
-			NSLog(@"Detected device (#%lu) family %d.  Ignoring it.", i, thisDevice->family);
-			NSLog(@"Device info: %@", [[self class] getInfoForDevice:thisDevice]);
+			NSLog(@"Detected device (#%lu) family %d.  Ignoring it.", i, [thisDevice family]);
+			NSLog(@"Device info: %@", [thisDevice getInfo]);
 			continue;
 		}
-		mkDeviceInfo->state = YES;
-		[[self devices] addObject:mkDeviceData];
+		[thisDevice setEnabled:YES];
+		[[self devices] addObject:thisDevice];
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
@@ -321,8 +209,8 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		MKDevice *thisDevice = nil;
 		NSUInteger j = 0;
 		for (j = 0; j < [[refToSelf devices] count]; j++) {
-			thisDevice = (MKDevice *)[[[refToSelf devices] objectAtIndex:j] mutableBytes];
-			if ((int)(long)(thisDevice->device) == device)
+			thisDevice = (MKDevice *)[[refToSelf devices] objectAtIndex:j];
+			if ([thisDevice devPtr] == device)
 				break;
 		}
 		if (j >= [[refToSelf devices] count]) {
@@ -336,10 +224,10 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	return 0;
 }
 
-- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)deviceInfo {
+- (void)processTouch:(Touch *)touch onDevice:(MKDevice *)device {
 	if (![self isTracking])
 		return;
-	if (touch->identifier > kMultitouchFingers || touch->identifier <= 0) // Sanity check
+	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
 #if 0
 	NSLog(@"Frame %7d: TS:%6.3f ID:%d St:%d foo3:%d foo4:%d norm.pos: [%6.3f,%6.3f] sz: %6.3f unk2:%6.3f\n",
@@ -366,30 +254,31 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 				   (CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
 				   33, 34);
 
+	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1];
 	switch (touch->state) {
 	case 1: // FIXME: Constants
-		if (deviceInfo->fingers[touch->identifier-1].state)
+		if ([thisFinger isActive])
 			return;
-		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
-		deviceInfo->fingers[touch->identifier-1].state = YES;
-		deviceInfo->fingers[touch->identifier-1].tapView = [[NSImageView alloc] initWithFrame:imgBox];
-		[deviceInfo->fingers[touch->identifier-1].tapView setImage:tap];
-		[keyboardView addSubview:deviceInfo->fingers[touch->identifier-1].tapView];
+		[thisFinger setLast:touch->timestamp];
+		[thisFinger setActive:YES];
+		NSImageView *tapView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
+		[tapView setImage:tap];
+		[keyboardView addSubview:tapView];
+		[thisFinger setTapView:tapView];
 		return;
 	case 7:
-		if (!deviceInfo->fingers[touch->identifier-1].state)
+		if (![thisFinger isActive])
 			return;
-		deviceInfo->fingers[touch->identifier-1].state = NO;
-		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
-		[deviceInfo->fingers[touch->identifier-1].tapView removeFromSuperview];
-		[deviceInfo->fingers[touch->identifier-1].tapView autorelease];
-		deviceInfo->fingers[touch->identifier-1].tapView = nil;
+		[thisFinger setActive:NO];
+		[thisFinger setLast:touch->timestamp];
+		[[thisFinger tapView] removeFromSuperview];
+		[thisFinger setTapView:nil];
 		break;
 	default:
-		if (touch->timestamp < deviceInfo->fingers[touch->identifier-1].last + kSamplingInterval)
+		if (touch->timestamp < [thisFinger last] + kSamplingInterval)
 			return;
-		deviceInfo->fingers[touch->identifier-1].last = touch->timestamp;
-		[deviceInfo->fingers[touch->identifier-1].tapView setFrame:imgBox];
+		[thisFinger setLast:touch->timestamp];
+		[[thisFinger tapView] setFrame:imgBox];
 		return;
 	}
 	for (NSUInteger i = 0; i < [[currentLayout currentButtons] count] ; i++) {
@@ -627,12 +516,12 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 #pragma mark Utilities
 - (NSArray *)deviceInfoList {
 	NSMutableArray *devs = [NSMutableArray array];
-	for (NSMutableData *eachDeviceData in [self devices]) {
-		MKDevice *eachDevice = [eachDeviceData mutableBytes];
-		NSDictionary *thisDeviceInfo = [NSDictionary dictionaryWithObjects:
-						[NSArray arrayWithObjects: [NSNumber numberWithBool:eachDevice->state],
-						 [[self class] getInfoForDevice:eachDevice->device], nil] forKeys:
-						[NSArray arrayWithObjects:@"State", @"Info", nil]];
+	for (MKDevice *eachDevice in [self devices]) {
+		NSDictionary *thisDeviceInfo = [NSDictionary
+						dictionaryWithObjects:[NSArray arrayWithObjects:
+								       [NSNumber numberWithBool:[eachDevice isEnabled]],
+								       [eachDevice getInfo], nil]
+						forKeys:[NSArray arrayWithObjects:@"State", @"Info", nil]];
 		[devs addObject:thisDeviceInfo];
 	}
 	return devs;

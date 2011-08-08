@@ -87,7 +87,11 @@ NSString * const kDefinitionYEnd = @"yEnd";
 	
 	NSDictionary *background = [definition valueForKey:kDefinitionBackground];
 	if (background) {
-		[self setKeyboardImage:[NSImage imageNamed:[background valueForKey:kDefinitionFileName]]];
+		NSString *imageName = [background valueForKey:kDefinitionFileName];
+		[self setKeyboardImage:[[[NSImage alloc] initWithData:
+					 [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
+									 pathForResource:imageName ofType:@"png"
+									 inDirectory:@"Definitions"]]] autorelease]];
 		[self setLayoutSize:NSMakeSize([[background valueForKey:kDefinitionWidth] integerValue],
 					       [[background valueForKey:kDefinitionHeight] integerValue])];
 	}

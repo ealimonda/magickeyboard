@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MKKeyboard.h                                                                                  *
+ * File:             MKController.h                                                                                *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -17,25 +17,6 @@
 
 @class MKWindow;
 @class MKLayout;
-
-#pragma mark Definitions
-#define kMultitouchFingers 11
-
-#pragma mark Private structures
-typedef struct MTDeviceX MTDeviceX;
-
-typedef struct {
-	BOOL state;
-	NSImageView *tapView;
-	double last;
-} MKFinger;
-
-typedef struct {
-	NSUInteger dev_id;
-	BOOL state;
-	struct MTDeviceX *device;
-	MKFinger fingers[kMultitouchFingers];
-} MKDevice;
 
 #pragma mark Interface
 @interface MKController : NSObject {
