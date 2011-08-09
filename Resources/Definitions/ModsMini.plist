@@ -40,6 +40,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -52,6 +54,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -64,6 +68,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -76,6 +82,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -88,6 +96,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -100,6 +110,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -112,6 +124,8 @@
 			<integer>129</integer>
 			<key>yEnd</key>
 			<integer>177</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -124,6 +138,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -136,6 +152,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -148,6 +166,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -160,6 +180,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -172,6 +194,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -184,6 +208,8 @@
 			<integer>67</integer>
 			<key>yEnd</key>
 			<integer>117</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -196,6 +222,8 @@
 			<integer>8</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -208,6 +236,8 @@
 			<integer>8</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -220,6 +250,8 @@
 			<integer>8</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -232,6 +264,8 @@
 			<integer>8</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -244,6 +278,8 @@
 			<integer>8</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -256,6 +292,8 @@
 			<integer>60</integer>
 			<key>yEnd</key>
 			<integer>115</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -268,6 +306,8 @@
 			<integer>2</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -280,6 +320,8 @@
 			<integer>2</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -292,6 +334,8 @@
 			<integer>2</integer>
 			<key>yEnd</key>
 			<integer>57</integer>
+			<key>SpecialButton</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

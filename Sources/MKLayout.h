@@ -18,6 +18,7 @@
 
 #pragma mark Interface
 @interface MKLayout : NSObject {
+	NSString *layoutIdentifier;
 	NSString *layoutName;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
@@ -38,6 +39,7 @@
 - (NSArray *)createLabels;
 
 #pragma mark Properties
+@property (retain) NSString *layoutIdentifier;
 @property (retain) NSString *layoutName;
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;

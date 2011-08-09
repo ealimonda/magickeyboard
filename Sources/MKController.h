@@ -56,7 +56,7 @@
 @property (retain) NSImage *tap;
 @property (assign) BOOL shift;
 @property (assign,getter=isTracking) BOOL tracking;
-@property (retain) MKLayout *currentLayout;
+@property (retain,nonatomic) MKLayout *currentLayout;
 @property (retain) NSMutableArray *devices;
 
 @end

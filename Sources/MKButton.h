@@ -30,29 +30,26 @@ extern NSString * const kButtonTypeSpecial;
 	NSInteger yStart;
 	NSInteger yEnd;
 	NSString *type;
-	NSInteger keycode;
 	NSString *value;
+	BOOL specialButton;
 }
 
 #pragma mark Methods
 - (id)initWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
-	    yEnd:(NSInteger)aYEnd;
+	    yEnd:(NSInteger)aYEnd special:(BOOL)isSpecial;
 
 + (id)button;
 + (id)buttonWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
-	      yEnd:(NSInteger)aYEnd;
-+ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)type value:(NSString *)aValue keycode:(NSInteger)aKeycode;
+	      yEnd:(NSInteger)aYEnd special:(BOOL)isSpecial;
++ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)type value:(NSString *)aValue;
 
-- (id)assignType:(NSString *)type value:(NSString *)aValue keycode:(NSInteger)aKeyCode;
+- (id)assignType:(NSString *)type value:(NSString *)aValue;
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;
 
 + (BOOL)isValidType:(NSString *)aType;
 
 - (BOOL)isSingleKeypress;
-//- (BOOL)isSymbol;
-//- (BOOL)isKeypad;
-//- (BOOL)isSpecial;
 
 #pragma mark Properties
 @property (assign) NSInteger buttonID;
@@ -60,8 +57,8 @@ extern NSString * const kButtonTypeSpecial;
 @property (assign) NSInteger xEnd;
 @property (assign) NSInteger yStart;
 @property (assign) NSInteger yEnd;
-@property (assign) NSInteger keycode;
 @property (retain) NSString *value;
 @property (retain) NSString *type;
+@property (assign,getter=isSpecialButton) BOOL specialButton;
 
 @end

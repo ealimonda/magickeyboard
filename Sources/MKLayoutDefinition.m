@@ -30,6 +30,7 @@ NSString * const kDefinitionXStart = @"xStart";
 NSString * const kDefinitionYStart = @"yStart";
 NSString * const kDefinitionXEnd = @"xEnd";
 NSString * const kDefinitionYEnd = @"yEnd";
+NSString * const kDefinitionSpecialButton = @"SpecialButton";
 
 #pragma mark -
 #pragma mark Implementation
@@ -113,8 +114,9 @@ NSString * const kDefinitionYEnd = @"yEnd";
 			NSInteger xEnd = [[eachButton valueForKey:kDefinitionXEnd] integerValue];
 			NSInteger yStart = [[eachButton valueForKey:kDefinitionYStart] integerValue];
 			NSInteger yEnd = [[eachButton valueForKey:kDefinitionYEnd] integerValue];
+			BOOL specialButton = [[eachButton valueForKey:kDefinitionSpecialButton] boolValue];
 			MKButton *newButton = [MKButton buttonWithID:buttonID xStart:xStart xEnd:xEnd yStart:yStart
-								yEnd:yEnd];
+								yEnd:yEnd special:specialButton];
 			[currentButtons addObject:newButton];
 		}
 	}

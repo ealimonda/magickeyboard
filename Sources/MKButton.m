@@ -29,17 +29,17 @@ NSString * const kButtonTypeSpecial = @"Special";
 	if (self) {
 		type = nil;
 		value = nil;
-		keycode = -1;
 		xStart = 0;
 		xEnd = 0;
 		yStart = 0;
 		yEnd = 0;
+		specialButton = NO;
 	}
 	return self;
 }
 
 - (id)initWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
-	    yEnd:(NSInteger)aYEnd {
+	    yEnd:(NSInteger)aYEnd special:(BOOL)isSpecial {
 	self = [self init];
 	if (self) {
 		buttonID = aButtonID;
@@ -47,6 +47,7 @@ NSString * const kButtonTypeSpecial = @"Special";
 		xEnd = aXEnd;
 		yStart = aYStart;
 		yEnd = aYEnd;
+		specialButton = isSpecial;
 	}
 	return self;
 }
@@ -62,24 +63,23 @@ NSString * const kButtonTypeSpecial = @"Special";
 }
 
 + (id)buttonWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
-	      yEnd:(NSInteger)aYEnd {
-	return [[[[self class] alloc] initWithID:aButtonID xStart:aXStart xEnd:aXEnd yStart:aYStart yEnd:aYEnd]
-		autorelease];
+	      yEnd:(NSInteger)aYEnd special:(BOOL)isSpecial {
+	return [[[[self class] alloc] initWithID:aButtonID xStart:aXStart xEnd:aXEnd yStart:aYStart yEnd:aYEnd
+					 special:isSpecial] autorelease];
 }
 
-+ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)aType value:(NSString *)aValue keycode:(NSInteger)aKeycode {
++ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)aType value:(NSString *)aValue {
 	MKButton *thisButton = [aButton copy];
 	if (![[self class] isValidType:aType])
 		return nil;
-	[thisButton assignType:aType value:aValue keycode:aKeycode];
+	[thisButton assignType:aType value:aValue];
 	return [thisButton autorelease];
 }
 
 #pragma mark Special setters
-- (id)assignType:(NSString *)aType value:(NSString *)aValue keycode:(NSInteger)aKeyCode {
+- (id)assignType:(NSString *)aType value:(NSString *)aValue {
 	[self setType:aType];
 	[self setValue:aValue];
-	[self setKeycode:aKeyCode];
 	return self;
 }
 
@@ -115,22 +115,11 @@ NSString * const kButtonTypeSpecial = @"Special";
 	return NO;
 }
 
-/*- (BOOL)isSymbol {
-	return [[self type] isEqualToString:kButtonTypeSymbol];
-}
-
-- (BOOL)isKeypad {
-	return [[self type] isEqualToString:kButtonTypeKeypad];
-}
-
-- (BOOL)isSpecial {
-	return [[self type] isEqualToString:kButtonTypeSpecial];
-}*/
-
 #pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone {
 	return [[[self class] allocWithZone:zone] initWithID:[self buttonID] xStart:[self xStart] xEnd:[self xEnd]
-						      yStart:[self yStart] yEnd:[self yEnd]];
+						      yStart:[self yStart] yEnd:[self yEnd]
+						     special:[self isSpecialButton]];
 }
 
 #pragma mark -
@@ -140,8 +129,8 @@ NSString * const kButtonTypeSpecial = @"Special";
 @synthesize xEnd;
 @synthesize yStart;
 @synthesize yEnd;
-@synthesize keycode;
 @synthesize value;
 @synthesize type;
+@synthesize specialButton;
 
 @end

@@ -89,7 +89,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		ctrl = NO;
 		shift = NO;
 		lastKeyWasModifier = NO;
-		currentLayout = [[MKLayout layoutWithName:kDefaultLayout] retain];
+		currentLayout = nil;
 		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
 		tapSound = [[NSSound soundNamed:@"Tock"] retain];
@@ -100,21 +100,22 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
-		
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys: kQwertyMini, kLayout, nil]];
-		NSString *layout = [defaults stringForKey:kLayout];
-		[selQwerty setState:0];
-		[selFullNum setState:0];
-		if ([layout isEqualToString:kQwertyMini])
-			[self switchLayout:selQwerty];
-		else if ([layout isEqualToString:kNumPadFull])
-			[self switchLayout:selFullNum];
 	}
 	return self;
 }
 
 - (void)awakeFromNib {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys: kQwertyMini, kLayout, nil]];
+	NSString *layout = [defaults stringForKey:kLayout];
+	[selQwerty setState:0];
+	[selFullNum setState:0];
+	NSLog(@"Default layout is: %@", layout);
+	if ([layout isEqualToString:kQwertyMini])
+		[self switchLayout:selQwerty];
+	else if ([layout isEqualToString:kNumPadFull])
+		[self switchLayout:selFullNum];
+
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
 	for (NSUInteger i = 0; i < [deviceList count]; i++) {
 		MKDevice *thisDevice = [MKDevice deviceWithMTDeviceRef:(MTDeviceInfo *)[deviceList objectAtIndex:i] ID:i];
@@ -360,33 +361,39 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (IBAction)switchLayout:(id)sender {
 	if ([sender state])
 		return;
-	while ([keyLabels count] > 0) {
-		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
-		[thisLabel removeFromSuperview];
-		[keyLabels removeObject:thisLabel];
-	}
 	
 	if (sender == selQwerty) {
 		[selQwerty setState:1];
 		[selFullNum setState:0];
 		[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
-		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
-		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	} else if (sender == selFullNum) {
 		[selQwerty setState:0];
 		[selFullNum setState:1];
 		[self setCurrentLayout:[MKLayout layoutWithName:kNumPadFull]];
-		[self resizeWindowOnSpotWithSize:[[self currentLayout] layoutSize]];
-		[keyboardImage setImage:[[self currentLayout] keyboardImage]];
 	}
-	NSArray *layoutLabels = [[self currentLayout] createLabels];
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setValue:[[self currentLayout] layoutIdentifier] forKey:kLayout];
+	[defaults synchronize];
+}
+
+- (void)setCurrentLayout:(MKLayout *)newLayout {
+	NSLog(@"Switching to layout: %@", [newLayout layoutName]);
+	while ([keyLabels count] > 0) {
+		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
+		[thisLabel removeFromSuperview];
+		[keyLabels removeObject:thisLabel];
+	}
+
+	[currentLayout autorelease];
+	currentLayout = [newLayout retain];
+	[self resizeWindowOnSpotWithSize:[newLayout layoutSize]];
+	[keyboardImage setImage:[newLayout keyboardImage]];
+	
+	NSArray *layoutLabels = [newLayout createLabels];
 	for (NSTextField *eachLabel in layoutLabels) {
 		[keyLabels addObject:eachLabel];
 		[keyboardView addSubview:eachLabel];
 	}
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setValue:[[self currentLayout] layoutName] forKey:kLayout];
-	[defaults synchronize];
 }
 
 - (void)animateImage:(NSImageView *)imageView {

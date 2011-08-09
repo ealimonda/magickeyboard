@@ -19,13 +19,13 @@
 
 #pragma mark Constants
 NSString * const kUntitledLayout = @"Untitled Layout";
+NSString * const kUndefinedLayout = @"Undefined";
 
 NSString * const kLayoutLayoutName = @"LayoutName";
 NSString * const kLayoutDefinition = @"Definition";
 NSString * const kLayoutKeys = @"Keys";
 NSString * const kLayoutButtonID = @"Button";
 NSString * const kLayoutValue = @"Value";
-NSString * const kLayoutKeycode = @"Keycode";
 NSString * const kLayoutType = @"Type";
 
 #pragma mark -
@@ -36,6 +36,7 @@ NSString * const kLayoutType = @"Type";
 - (id)init {
 	self = [super init];
 	if (self) {
+		layoutIdentifier = [[NSString alloc] initWithString:kUndefinedLayout];
 		layoutName = [[NSString alloc] initWithString:kUntitledLayout];
 		layoutSize = NSMakeSize(0, 0);
 		keyboardImage = nil;
@@ -49,12 +50,15 @@ NSString * const kLayoutType = @"Type";
 - (id)initWithName:(NSString *)loadName {
 	self = [self init];
 	if (self) {
+		[layoutIdentifier release];
+		layoutIdentifier = [[NSString alloc] initWithString:loadName];
 		[self loadPlist:loadName];
 	}
 	return self;
 }
 
 - (void)dealloc {
+	[layoutIdentifier release];
 	[layoutName release];
 	[keyboardImage release];
 	[currentButtons release];
@@ -109,11 +113,9 @@ NSString * const kLayoutType = @"Type";
 			}
 			NSString *type = [eachKey valueForKey:kLayoutType];
 			NSString *value = [eachKey valueForKey:kLayoutValue];
-			NSInteger keycode = [[eachKey valueForKey:kLayoutKeycode] integerValue];
-			MKButton *newButton = [MKButton buttonWithButton:button type:type value:value keycode:keycode];
+			MKButton *newButton = [MKButton buttonWithButton:button type:type value:value];
 			if (!newButton) {
-				NSLog(@"Invalid button (id: %ld type: %@ value: %@ keycode: %@",
-				      buttonID, type, value, keycode);
+				NSLog(@"Invalid button (id: %ld type: %@ value: %@", buttonID, type, value);
 				[self setValid:NO];
 				return;
 			}
@@ -138,7 +140,10 @@ NSString * const kLayoutType = @"Type";
 }
 
 - (NSArray *)createLabels {
+	NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
+
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
+
 	for (MKButton *eachKey in currentButtons) {
 		NSDictionary *keySymbolReplacements = [NSDictionary dictionaryWithObjectsAndKeys:
 						       @"⏎", @"RETURN",
@@ -164,13 +169,12 @@ NSString * const kLayoutType = @"Type";
 						       @"⌘", @"CMD",
 						       nil];
 		
-		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
 		NSString *label = [[eachKey value] uppercaseString];
-		if ([keySymbolReplacements valueForKey:label])
+		if (![label isEqualToString:@"@"] && [keySymbolReplacements valueForKey:label]) // "@" as key makes it crash
 			label = [keySymbolReplacements valueForKey:label];
 
-		NSSize labelSize = [label sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
-							NSFontAttributeName, nil]];
+		NSSize labelSize = [label sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+							      font, NSFontAttributeName, nil]];
 		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
 						(CGFloat)(([eachKey yStart]+[eachKey yEnd]-labelSize.height)/2), // S+(E-S)/2-h/2
 						(CGFloat)[eachKey xEnd] - [eachKey xStart],
@@ -180,8 +184,8 @@ NSString * const kLayoutType = @"Type";
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
-//		if (![eachKey isSymbol])
-//			[textField setTextColor:[NSColor whiteColor]];
+		if ([eachKey isSpecialButton])
+			[textField setTextColor:[NSColor whiteColor]];
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];
 		[textField setFont:font];
@@ -193,6 +197,7 @@ NSString * const kLayoutType = @"Type";
 
 #pragma mark -
 #pragma mark Properties
+@synthesize layoutIdentifier;
 @synthesize layoutName;
 @synthesize layoutSize;
 @synthesize keyboardImage;
