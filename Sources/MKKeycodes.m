@@ -17,8 +17,10 @@
 #import <Carbon/Carbon.h> /* For kVK_ constants, and TIS functions. */
 #import "MKButton.h"
 
+#pragma mark Implementation
 @implementation MKKeycodes
 
+#pragma mark Utilities
 /** Returns string representation of key, if it is printable.
  * Ownership follows the Create Rule; that is, it is the caller's
  * responsibility to release the returned object. */
@@ -38,6 +40,7 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 	return CFStringCreateWithCharacters(kCFAllocatorDefault, chars, 1);
 }
 
+#pragma mark Keycodes
 + (NSInteger)keycodeForCharacter:(NSString *)aCharacter {
 	if ([aCharacter length] < 1)
 		return -1;
@@ -234,6 +237,7 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 	return character;
 }
 
+#pragma mark Sending
 + (void)sendKeycodeForKey:(NSString *)aSymbol type:(NSString *)aType {
 	if ([aType isEqualToString:kButtonTypeKeypad])
 		[self sendKeycode:[self keycodeForKeypadCharacter:aSymbol]];

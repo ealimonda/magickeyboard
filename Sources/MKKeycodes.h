@@ -16,9 +16,10 @@
 #import <Foundation/Foundation.h>
 #import "MKButton.h"
 
+#pragma mark Interface
 @interface MKKeycodes : NSObject
 
-
+#pragma mark Methods
 + (NSInteger)keycodeForCharacter:(NSString *)aCharacter;
 + (NSInteger)keycodeForKeypadCharacter:(NSString *)aCharacter;
 + (NSInteger)keycodeForSpecialKey:(NSString *)aKey;

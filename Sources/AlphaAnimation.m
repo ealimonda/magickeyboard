@@ -16,7 +16,7 @@
 #import "AlphaAnimation.h"
 
 #pragma mark Constants
-NSString * const AAFadeIn = @"AAFadeIn";
+NSString * const AAFadeIn  = @"AAFadeIn";
 NSString * const AAFadeOut = @"AAFadeOut";
 
 #pragma mark -
@@ -26,12 +26,10 @@ NSString * const AAFadeOut = @"AAFadeOut";
 #pragma mark Initialization
 - (id)initWithDuration:(NSTimeInterval)aDuration effect:(NSString *)anEffect object:(NSView *)anObject {
 	self = [super initWithDuration:aDuration animationCurve:0];
-
 	if (self) {
 		animatedObject = [anObject retain];
 		effect = [anEffect retain];
 	}
-
 	return self;
 }
 

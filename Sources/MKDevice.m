@@ -94,6 +94,7 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	return [[[[self class] alloc] initSampleDevice] autorelease];
 }
 
+#pragma mark Utilities
 - (NSString *)getInfo {
 	return [NSString stringWithFormat:@"MultiTouchDevice: {\n"
 		"\t unk_v0 = %08x\n"
@@ -136,6 +137,7 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	];
 }
 
+#pragma mark Special accessors
 - (BOOL)isValid {
 	MKDevice *sampleDevice = [MKDevice sampleDevice];
 	if ([self unk_k0] != [sampleDevice unk_k0]

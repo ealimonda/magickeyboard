@@ -20,17 +20,17 @@
 NSString * const kUntitledLayoutDefinition = @"Untitled Layout Definition";
 
 NSString * const kDefinitionDefinitionName = @"DefinitionName";
-NSString * const kDefinitionBackground = @"Background";
-NSString * const kDefinitionFileName = @"FileName";
-NSString * const kDefinitionHeight = @"Height";
-NSString * const kDefinitionWidth = @"Width";
-NSString * const kDefinitionButtons = @"Buttons";
-NSString * const kDefinitionButtonID = @"ID";
-NSString * const kDefinitionXStart = @"xStart";
-NSString * const kDefinitionYStart = @"yStart";
-NSString * const kDefinitionXEnd = @"xEnd";
-NSString * const kDefinitionYEnd = @"yEnd";
-NSString * const kDefinitionSpecialButton = @"SpecialButton";
+NSString * const kDefinitionBackground     = @"Background";
+NSString * const kDefinitionFileName       = @"FileName";
+NSString * const kDefinitionHeight         = @"Height";
+NSString * const kDefinitionWidth          = @"Width";
+NSString * const kDefinitionButtons        = @"Buttons";
+NSString * const kDefinitionButtonID       = @"ID";
+NSString * const kDefinitionXStart         = @"xStart";
+NSString * const kDefinitionYStart         = @"yStart";
+NSString * const kDefinitionXEnd           = @"xEnd";
+NSString * const kDefinitionYEnd           = @"yEnd";
+NSString * const kDefinitionSpecialButton  = @"SpecialButton";
 
 #pragma mark -
 #pragma mark Implementation
@@ -73,7 +73,6 @@ NSString * const kDefinitionSpecialButton = @"SpecialButton";
 	return [[[[self class] alloc] initWithName:loadName] autorelease];
 }
 
-#pragma mark Utilities
 - (void)loadPlist:(NSString *)fileName {
 #ifdef __DEBUGGING__
 	NSLog(@"Loading: %@", fileName);
@@ -90,9 +89,9 @@ NSString * const kDefinitionSpecialButton = @"SpecialButton";
 	if (background) {
 		NSString *imageName = [background valueForKey:kDefinitionFileName];
 		[self setKeyboardImage:[[[NSImage alloc] initWithData:
-					 [NSData dataWithContentsOfFile:[[NSBundle mainBundle]
-									 pathForResource:imageName ofType:@"png"
-									 inDirectory:@"Definitions"]]] autorelease]];
+					 [NSData dataWithContentsOfFile:
+					  [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"
+								     inDirectory:@"Definitions"]]] autorelease]];
 		[self setLayoutSize:NSMakeSize([[background valueForKey:kDefinitionWidth] integerValue],
 					       [[background valueForKey:kDefinitionHeight] integerValue])];
 	}
@@ -130,6 +129,7 @@ NSString * const kDefinitionSpecialButton = @"SpecialButton";
 		[self setValid:NO];
 }
 
+#pragma mark Special accessors
 - (MKButton *)buttonWithID:(NSInteger)buttonID {
 	for (MKButton *eachButton in currentButtons) {
 		if ([eachButton buttonID] == buttonID)

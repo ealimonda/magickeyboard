@@ -15,14 +15,17 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark Interface
 @interface MKFinger : NSObject {
 	BOOL active;
 	NSImageView *tapView;
 	double last;
 }
 
+#pragma mark Methods
 + (id)finger;
 
+#pragma mark Properties
 @property (assign,getter=isActive) BOOL active;
 @property (retain) NSImageView *tapView;
 @property (assign) double last;

@@ -28,24 +28,22 @@ id refToSelf;
 dispatch_queue_t myQueue;
 
 #pragma mark Constants
-NSString * const keyNUMS = @"NUMS";
-NSString * const keyQWERTY = @"QWERTY";
-NSString * const keySYMS = @"SYMS";
+NSString * const keyNUMS      = @"NUMS";
+NSString * const keyQWERTY    = @"QWERTY";
+NSString * const keySYMS      = @"SYMS";
 NSString * const keyMODIFIERS = @"MODIFIERS";
-NSString * const keySHIFT = @"SHIFT";
-NSString * const keyCTRL = @"CTRL";
-NSString * const keyALT = @"ALT";
-NSString * const keyCMD = @"CMD";
+NSString * const keySHIFT     = @"SHIFT";
+NSString * const keyCTRL      = @"CTRL";
+NSString * const keyALT       = @"ALT";
+NSString * const keyCMD       = @"CMD";
 
-NSString * const kLayout = @"layout";
+NSString * const kLayout      = @"layout";
 
-NSString * const kQwertyMini = @"QwertyMini";
-NSString * const kNumPadFull = @"NumPadFull";
-NSString * const kNumsMini = @"NumsMini";
+NSString * const kQwertyMini  = @"QwertyMini";
+NSString * const kNumPadFull  = @"NumPadFull";
+NSString * const kNumsMini    = @"NumsMini";
 NSString * const kSymbolsMini = @"SymbolsMini";
-NSString * const kModsMini = @"ModsMini";
-
-NSString * const kPreferencesFolder = @"~/Library/Preferences";
+NSString * const kModsMini    = @"ModsMini";
 
 NSString * const kDefaultLayout = @"QwertyMini";
 
@@ -80,9 +78,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	self = [super init];
 	if (self) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
-		mtSize = NSZeroSize;
-		mtSize.height = 311;
-		mtSize.width = 368;
+		mtSize = NSMakeSize(311, 368);
 		tracking = YES;
 		cmd = NO;
 		alt = NO;
@@ -168,7 +164,9 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		
 	[keyboardView setAcceptsTouchEvents:NO];
 	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc]
-					 initWithRect:[keyboardView frame] options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow owner:keyboardView userInfo:nil] autorelease];
+					 initWithRect:[keyboardView frame]
+					 options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow
+					 owner:keyboardView userInfo:nil] autorelease];
 	[keyboardView addTrackingArea:trackingArea];
 	[keyboardView becomeFirstResponder];
 }
@@ -180,13 +178,13 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	[keyLabels release];
 	[currentLayout release];
 	[devices release];
+
 	[super dealloc];
 }
 
 #pragma mark Touch handling
-
 int callback( int device, Touch *data, int nTouches, double timestamp, int frame ) {
-#pragma unused (device, timestamp, frame)
+#pragma unused (timestamp, frame)
 	// This is to avoid leaks
 	NSAutoreleasePool *thePool = [[NSAutoreleasePool alloc] init];
 	for( int i = 0; i < nTouches; i++ ) {
@@ -214,26 +212,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		return;
 	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
-#if 0
-	NSLog(@"Frame %7d: TS:%6.3f ID:%d St:%d foo3:%d foo4:%d norm.pos: [%6.3f,%6.3f] sz: %6.3f unk2:%6.3f\n",
-	      touch->frame, touch->timestamp, touch->identifier, touch->state, touch->foo3, touch->foo4,
-	      touch->normalized.pos.x, touch->normalized.pos.y, touch->size, touch->unk2);
-#endif // 0
-#if 0
-	NSLog([NSString stringWithFormat:@"Frame %7d: Angle %6.2f, ellipse %6.3f x%6.3f; "
-	       "position (%6.3f,%6.3f) vel (%6.3f,%6.3f) "
-	       "ID %d, state %d [%d %d?] size %6.3f, %6.3f?",
-	       touch->frame,
-	       touch->angle * 90 / atan2(1,0),
-	       touch->majorAxis,
-	       touch->minorAxis,
-	       touch->normalized.pos.x,
-	       touch->normalized.pos.y,
-	       touch->normalized.vel.x,
-	       touch->normalized.vel.y,
-	       touch->identifier, touch->state, touch->foo3, touch->foo4,
-	       touch->size, touch->unk2]);
-#endif // 0
 
 	NSRect imgBox = NSMakeRect((CGFloat)((mtSize.width*(touch->normalized.pos.x))*1.25),
 				   (CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
@@ -273,16 +251,16 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		if ([button isSingleKeypress]) {
 			[MKKeycodes sendKeycodeForKey:[button value] type:[button type]];
 			lastKeyWasModifier = NO;
-		} else if ([[button value]isEqualToString:keyNUMS]) {
+		} else if ([[button value]isEqualToString:keyNUMS]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-		} else if ([[button value]isEqualToString:keyQWERTY]) {
+		} else if ([[button value]isEqualToString:keyQWERTY]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-		} else if ([[button value] isEqualToString:keySYMS]) {
+		} else if ([[button value] isEqualToString:keySYMS]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-		} else if ([[button value] isEqualToString:keyMODIFIERS]) {
+		} else if ([[button value] isEqualToString:keyMODIFIERS]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 		} else {
@@ -359,6 +337,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 }
 
 - (IBAction)switchLayout:(id)sender {
+	// FIXME: Add layouts
 	if ([sender state])
 		return;
 	
@@ -377,7 +356,9 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 }
 
 - (void)setCurrentLayout:(MKLayout *)newLayout {
+#ifdef __DEBUGGING__
 	NSLog(@"Switching to layout: %@", [newLayout layoutName]);
+#endif // __DEBUGGING__
 	while ([keyLabels count] > 0) {
 		NSTextField *thisLabel = [keyLabels objectAtIndex:0];
 		[thisLabel removeFromSuperview];
@@ -412,11 +393,10 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (NSArray *)deviceInfoList {
 	NSMutableArray *devs = [NSMutableArray array];
 	for (MKDevice *eachDevice in [self devices]) {
-		NSDictionary *thisDeviceInfo = [NSDictionary
-						dictionaryWithObjects:[NSArray arrayWithObjects:
-								       [NSNumber numberWithBool:[eachDevice isEnabled]],
-								       [eachDevice getInfo], nil]
-						forKeys:[NSArray arrayWithObjects:@"State", @"Info", nil]];
+		NSDictionary *thisDeviceInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+						[NSNumber numberWithBool:[eachDevice isEnabled]], @"State",
+						[eachDevice getInfo], @"Info",
+						nil];
 		[devs addObject:thisDeviceInfo];
 	}
 	return devs;
@@ -424,8 +404,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 #pragma mark -
 #pragma mark Properties
-@synthesize tap;
-@synthesize shift;
 @synthesize tracking;
 @synthesize currentLayout;
 @synthesize devices;

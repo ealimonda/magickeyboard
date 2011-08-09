@@ -18,15 +18,15 @@
 #import "MKButton.h"
 
 #pragma mark Constants
-NSString * const kUntitledLayout = @"Untitled Layout";
-NSString * const kUndefinedLayout = @"Undefined";
+NSString * const kUntitledLayout   = @"Untitled Layout";
+NSString * const kUndefinedLayout  = @"Undefined";
 
 NSString * const kLayoutLayoutName = @"LayoutName";
 NSString * const kLayoutDefinition = @"Definition";
-NSString * const kLayoutKeys = @"Keys";
-NSString * const kLayoutButtonID = @"Button";
-NSString * const kLayoutValue = @"Value";
-NSString * const kLayoutType = @"Type";
+NSString * const kLayoutKeys       = @"Keys";
+NSString * const kLayoutButtonID   = @"Button";
+NSString * const kLayoutValue      = @"Value";
+NSString * const kLayoutType       = @"Type";
 
 #pragma mark -
 #pragma mark Implementation
@@ -75,14 +75,13 @@ NSString * const kLayoutType = @"Type";
 	return [[[[self class] alloc] initWithName:loadName] autorelease];
 }
 
-#pragma mark Utilities
 - (void)loadPlist:(NSString *)fileName {
 #ifdef __DEBUGGING__
 	NSLog(@"Parsing: %@", fileName);
 #endif // __DEBUGGING__
-	NSDictionary *layout = [[NSDictionary alloc] initWithContentsOfFile:
-				[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
-							   inDirectory:@"Layouts"]];
+	NSDictionary *layout = [[NSDictionary alloc]
+				initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
+										  inDirectory:@"Layouts"]];
 	if (layout)
 		[self setValid:YES];
 	
@@ -139,6 +138,7 @@ NSString * const kLayoutType = @"Type";
 	[self setKeyboardImage:[[self layoutDefinition] keyboardImage]];
 }
 
+#pragma mark Utilities
 - (NSArray *)createLabels {
 	NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
 

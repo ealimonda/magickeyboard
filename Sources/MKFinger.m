@@ -15,8 +15,10 @@
 
 #import "MKFinger.h"
 
+#pragma mark Implementation
 @implementation MKFinger
 
+#pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if (self) {
@@ -36,6 +38,8 @@
 	return [[[[self class] alloc] init] autorelease];
 }
 
+#pragma mark -
+#pragma mark Properties
 @synthesize active;
 @synthesize tapView;
 @synthesize last;

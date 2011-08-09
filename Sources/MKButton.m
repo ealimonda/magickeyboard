@@ -16,8 +16,8 @@
 #import "MKButton.h"
 
 #pragma mark Constants
-NSString * const kButtonTypeSymbol = @"Symbol";
-NSString * const kButtonTypeKeypad = @"Keypad";
+NSString * const kButtonTypeSymbol  = @"Symbol";
+NSString * const kButtonTypeKeypad  = @"Keypad";
 NSString * const kButtonTypeSpecial = @"Special";
 
 #pragma mark Implementation
@@ -76,7 +76,7 @@ NSString * const kButtonTypeSpecial = @"Special";
 	return [thisButton autorelease];
 }
 
-#pragma mark Special setters
+#pragma mark Special accessors
 - (id)assignType:(NSString *)aType value:(NSString *)aValue {
 	[self setType:aType];
 	[self setValue:aValue];
@@ -95,13 +95,16 @@ NSString * const kButtonTypeSpecial = @"Special";
 }
 
 + (BOOL)isValidType:(NSString *)aType {
-	if ([aType isEqualToString:kButtonTypeSymbol]
+	if (
+	    [aType isEqualToString:kButtonTypeSymbol]
 	    ||[aType isEqualToString:kButtonTypeKeypad]
 	    ||[aType isEqualToString:kButtonTypeSpecial]
 	    )
 		return YES;
-	if ([aType isEqualToString:@"NYI"]) // FIXME
+	if ([aType isEqualToString:@"NYI"]) { // FIXME
+		NSLog(@"FIXME: NYI button type");
 		return YES;
+	}
 	return NO;
 }
 

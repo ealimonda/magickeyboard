@@ -20,7 +20,6 @@
 
 #pragma mark Interface
 @interface MKController : NSObject {
-	NSImage *tap;
 	IBOutlet MKWindow *window;
 	IBOutlet NSButton *shiftChk;
 	IBOutlet NSButton *cmdChk;
@@ -41,6 +40,7 @@
 	NSMutableArray *keyLabels;
 
 	NSSound *tapSound;
+	NSImage *tap;
 
 	MKLayout *currentLayout;
 
@@ -53,8 +53,6 @@
 - (NSArray *)deviceInfoList;
 
 #pragma mark Properties
-@property (retain) NSImage *tap;
-@property (assign) BOOL shift;
 @property (assign,getter=isTracking) BOOL tracking;
 @property (retain,nonatomic) MKLayout *currentLayout;
 @property (retain) NSMutableArray *devices;
