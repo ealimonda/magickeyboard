@@ -140,21 +140,45 @@ NSString * const kLayoutType = @"Type";
 - (NSArray *)createLabels {
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 	for (MKButton *eachKey in currentButtons) {
+		NSDictionary *keySymbolReplacements = [NSDictionary dictionaryWithObjectsAndKeys:
+						       @"⌧", @"CLEAR",
+						       @"⏎", @"RETURN",
+						       @"⇧", @"SHIFT",
+						       @"⌫", @"DELETE",
+						       @"⌤", @"ENTER",
+						       @"①", @"NUMS",
+						       @"⌨", @"MODIFIERS",
+						       @"⁉", @"SYMS",
+						       @"Ⓐ", @"QWERTY",
+						       @"⎋", @"ESC",
+						       @"⌃", @"CTRL",
+						       @"⌥", @"ALT",
+						       @"⌘", @"CMD",
+						       @"⇥", @"TAB",
+						       @"↑", @"UP",
+						       @"↓", @"DOWN",
+						       @"←", @"LEFT",
+						       @"→", @"RIGHT",
+						       nil];
 		
 		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
-		NSSize labelSize = [[[eachKey value] uppercaseString]
-				    sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
+		NSString *label = [[eachKey value] uppercaseString];
+		if ([keySymbolReplacements valueForKey:label])
+			label = [keySymbolReplacements valueForKey:label];
+
+		NSSize labelSize = [label sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
 							NSFontAttributeName, nil]];
 		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
 						(CGFloat)(([eachKey yStart]+[eachKey yEnd]-labelSize.height)/2), // S+(E-S)/2-h/2
 						(CGFloat)[eachKey xEnd] - [eachKey xStart],
 						(CGFloat)(labelSize.height));
 		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
-		[textField setStringValue:[[eachKey value] uppercaseString]];
+		[textField setStringValue:label];
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
-// TODO		[textField setTextColor:(NSColor *)];
+		if (![eachKey isSymbol])
+			[textField setTextColor:[NSColor whiteColor]];
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];
 		[textField setFont:font];
