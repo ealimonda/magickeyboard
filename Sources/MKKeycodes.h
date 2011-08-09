@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MKFinger.m                                                                                    *
+ * File:             MKKeycodes.h                                                                                  *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -13,31 +13,20 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  *******************************************************************************************************************/
 
-#import "MKFinger.h"
+#import <Foundation/Foundation.h>
+#import "MKButton.h"
 
-@implementation MKFinger
+@interface MKKeycodes : NSObject
 
-- (id)init {
-	self = [super init];
-	if (self) {
-		active = NO;
-		tapView = nil;
-		last = 0L;
-	}
-	return self;
-}
 
-- (void)dealloc {
-	[tapView release];
-	[super dealloc];
-}
++ (NSInteger)keycodeForCharacter:(NSString *)aCharacter;
++ (NSInteger)keycodeForKeypadCharacter:(NSString *)aCharacter;
++ (NSInteger)keycodeForSpecialKey:(NSString *)aKey;
++ (NSString *)characterforKeyCode:(NSInteger)aKeyCode;
 
-+ (id)finger {
-	return [[[[self class] alloc] init] autorelease];
-}
-
-@synthesize active;
-@synthesize tapView;
-@synthesize last;
++ (void)sendKeycodeForKey:(NSString *)aKey type:(NSString *)aType;
++ (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol;
++ (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol;
++ (void)sendKeycode:(CGKeyCode)keycode;
 
 @end

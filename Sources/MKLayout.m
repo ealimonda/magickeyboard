@@ -177,8 +177,8 @@ NSString * const kLayoutType = @"Type";
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
-		if (![eachKey isSymbol])
-			[textField setTextColor:[NSColor whiteColor]];
+//		if (![eachKey isSymbol])
+//			[textField setTextColor:[NSColor whiteColor]];
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];
 		[textField setFont:font];

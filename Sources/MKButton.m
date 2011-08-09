@@ -17,6 +17,8 @@
 
 #pragma mark Constants
 NSString * const kButtonTypeSymbol = @"Symbol";
+NSString * const kButtonTypeKeypad = @"Keypad";
+NSString * const kButtonTypeSpecial = @"Special";
 
 #pragma mark Implementation
 @implementation MKButton
@@ -93,16 +95,37 @@ NSString * const kButtonTypeSymbol = @"Symbol";
 }
 
 + (BOOL)isValidType:(NSString *)aType {
-	if ([aType isEqualToString:kButtonTypeSymbol])
+	if ([aType isEqualToString:kButtonTypeSymbol]
+	    ||[aType isEqualToString:kButtonTypeKeypad]
+	    ||[aType isEqualToString:kButtonTypeSpecial]
+	    )
 		return YES;
 	if ([aType isEqualToString:@"NYI"]) // FIXME
 		return YES;
 	return NO;
 }
 
-- (BOOL)isSymbol {
+- (BOOL)isSingleKeypress {
+	if ([[self type] isEqualToString:kButtonTypeSymbol])
+		return YES;
+	if ([[self type] isEqualToString:kButtonTypeKeypad])
+		return YES;
+	if ([[self type] isEqualToString:kButtonTypeSpecial])
+		return YES; // FIXME
+	return NO;
+}
+
+/*- (BOOL)isSymbol {
 	return [[self type] isEqualToString:kButtonTypeSymbol];
 }
+
+- (BOOL)isKeypad {
+	return [[self type] isEqualToString:kButtonTypeKeypad];
+}
+
+- (BOOL)isSpecial {
+	return [[self type] isEqualToString:kButtonTypeSpecial];
+}*/
 
 #pragma mark NSCopying
 - (id)copyWithZone:(NSZone *)zone {

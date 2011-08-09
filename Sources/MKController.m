@@ -14,13 +14,13 @@
  *******************************************************************************************************************/
 
 #import "MKController.h"
-#import <Carbon/Carbon.h> /* For kVK_ constants, and TIS functions. */
 #import <FeedbackReporter/FRFeedbackReporter.h>
 #import "AlphaAnimation.h"
 #import "MKButton.h"
 #import "MKLayout.h"
 #import "MKDevice.h"
 #import "MKFinger.h"
+#import "MKKeycodes.h"
 
 #pragma mark Global Variables
 // FIXME: Eww, globals
@@ -56,10 +56,6 @@ const double kSamplingInterval = 0.02;
 @interface MKController ()
 #pragma mark Private methods and properties
 
-- (void)sendKeycodeForSymbol:(NSString *)aSymbol;
-- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol;
-- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol;
-- (void)sendKeycode:(CGKeyCode)keycode;
 - (void)animateImage:(NSImageView *)image;
 - (void)processTouch:(Touch *)touch onDevice:(MKDevice *)device;
 typedef void *MTDeviceRef;
@@ -275,17 +271,8 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 			continue;
 		BOOL doSend = YES;
 		int keycode = 0;
-		if ([button isSymbol]) {
-//			if ([[button keycode] characterAtIndex:0] == 'S') {
-//				// FIXME: Ugly
-//				keycode = (CGKeyCode)[[[button keycode]
-//						       stringByReplacingOccurrencesOfString:@"S" withString:@""]
-//						      integerValue];
-//				keycode += 300;
-//			} else {
-				[self sendKeycodeForSymbol:[button value]];
-//				keycode = (CGKeyCode)[[button keycode] integerValue];
-//			}
+		if ([button isSingleKeypress]) {
+			[MKKeycodes sendKeycodeForKey:[button value] type:[button type]];
 			lastKeyWasModifier = NO;
 			doSend = NO;
 		} else if ([[button value]isEqualToString:keyNUMS]) {
@@ -337,7 +324,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 			}
 		}
 		if (doSend) {
-			[self sendKeycode:keycode];
+			[MKKeycodes sendKeycode:keycode];
 		}
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
 		[tapImageView setImage:tap];
@@ -356,149 +343,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 			[ctrlChk setState:0];
 		}
 		break;
-	}
-}
-
-/** Returns string representation of key, if it is printable.
- * Ownership follows the Create Rule; that is, it is the caller's
- * responsibility to release the returned object. */
-CFStringRef createStringForKey(CGKeyCode keyCode) {
-	TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
-	CFDataRef layoutData = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
-	const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
-	
-	UInt32 keysDown = 0;
-	UniChar chars[4];
-	UniCharCount realLength;
-	
-	UCKeyTranslate(keyboardLayout, keyCode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit,
-		       &keysDown, sizeof(chars)/sizeof(chars[0]), &realLength, chars);
-	CFRelease(currentKeyboard);
-	
-	return CFStringCreateWithCharacters(kCFAllocatorDefault, chars, 1);
-}
-
-- (void)sendKeycodeForSymbol:(NSString *)aSymbol {
-	if (![self sendKeycodeForLayoutSymbol:aSymbol])
-		[self sendKeycodeForUnicodeSymbol:aSymbol];
-}
-
-- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol {
-	if ([aSymbol length] < 1)
-		return NO;
-	
-	static CFMutableDictionaryRef charToCodeDict = NULL;
-	CGKeyCode code;
-	UniChar character = [aSymbol characterAtIndex:0];
-	CFStringRef charStr = NULL;
-	
-	/* Generate table of keycodes and characters. */
-	if (!charToCodeDict) {
-		size_t i;
-		charToCodeDict = CFDictionaryCreateMutable(kCFAllocatorDefault, 128,
-							   &kCFCopyStringDictionaryKeyCallBacks, NULL);
-		if (!charToCodeDict)
-			return NO;
-		
-		/* Loop through every keycode (0 - 127) to find its current mapping. */
-		for (i = 0; i < 128; ++i) {
-			CFStringRef string = createStringForKey((CGKeyCode)i);
-			if (string != NULL) {
-				CFDictionaryAddValue(charToCodeDict, string, (const void *)i);
-				CFRelease(string);
-			}
-		}
-	}
-	
-	charStr = CFStringCreateWithCharacters(kCFAllocatorDefault, &character, 1);
-	
-	/* Our values may be NULL (0), so we need to use this function. */
-	if (!CFDictionaryGetValueIfPresent(charToCodeDict, charStr, (const void **)&code)) {
-		CFRelease(charStr);
-		return NO;
-	}
-	
-	CFRelease(charStr);
-	[self sendKeycode:code];
-	return YES;
-}
-
-- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol {
-	if ([aSymbol length] < 1)
-		return;
-	CGEventRef eventDown = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, true);
-	CGEventRef eventUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, false);
-	unichar unisymbol = [aSymbol characterAtIndex:0];
-	CGEventKeyboardSetUnicodeString(eventDown, 1, &unisymbol);
-	CGEventKeyboardSetUnicodeString(eventUp, 1, &unisymbol);
-
-	CGEventPost(kCGHIDEventTap, eventDown);
-	CFRelease(eventDown);
-	usleep(50);
-	CGEventPost(kCGHIDEventTap, eventUp);
-	CFRelease(eventUp);
-	usleep(50);
-}
-
-- (void)sendKeycode:(CGKeyCode)keycode {
-	// TODO: http://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode
-	BOOL needsShift = keycode >= 300;
-	long flags = 0;
-	if (needsShift) {
-		keycode -= 300;
-	}
-	if (shift || needsShift) {
-		flags |= kCGEventFlagMaskShift;
-	}	
-	if (cmd) {
-		flags |= kCGEventFlagMaskCommand;
-	}
-	if (alt) {
-		flags |= kCGEventFlagMaskAlternate;
-	}
-	if (ctrl) {
-		flags |= kCGEventFlagMaskControl;
-	}
-	//NSLog([NSString stringWithFormat:@"%d",keycode]);
-	CGEventRef event1, event2;
-	event1 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, YES); //'z' keydown event
-	event2 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, NO);
-	if (flags > 0) {
-		CGEventSetFlags(event1, flags);//set shift key down for above event
-		CGEventSetFlags(event2, flags);//set shift key down for above event
-	} else {
-		CGEventSetFlags(event1, 0);//set shift key down for above event
-		CGEventSetFlags(event2, 0);//set shift key down for above event
-	}
-	CGEventPost(kCGHIDEventTap, event1);//post event
-	CFRelease(event1);
-	usleep(50);
-	CGEventPost(kCGHIDEventTap, event2);//post event
-	CFRelease(event2);
-	usleep(50);
-	if (shift || needsShift) {
-		CGEventRef shiftUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)56, NO);//'z' keydown event
-		CGEventPost(kCGHIDEventTap, shiftUp);//post event
-		CFRelease(shiftUp);
-		usleep(50);
-	}
-	if (cmd) {
-		CGEventRef cmdUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)55, NO);//'z' keydown event
-		CGEventPost(kCGHIDEventTap, cmdUp);//post event
-		CFRelease(cmdUp);
-		usleep(50);
-	}
-	if (alt) {
-		CGEventRef altUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)58, NO);//'z' keydown event
-		CGEventPost(kCGHIDEventTap, altUp);//post event
-		CFRelease(altUp);
-		usleep(50);
-	}
-	if (ctrl) {
-		CGEventRef ctrlUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)59, NO);//'z' keydown event
-		CGEventPost(kCGHIDEventTap, ctrlUp);//post event
-		CFRelease(ctrlUp);
-		usleep(50);
 	}
 }
 

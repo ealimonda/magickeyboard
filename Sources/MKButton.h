@@ -15,6 +15,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+
+#pragma mark Constants
+extern NSString * const kButtonTypeSymbol;
+extern NSString * const kButtonTypeKeypad;
+extern NSString * const kButtonTypeSpecial;
+
+
 #pragma mark Interface
 @interface MKButton : NSObject <NSCopying> {
 	NSInteger buttonID;
@@ -42,7 +49,10 @@
 
 + (BOOL)isValidType:(NSString *)aType;
 
-- (BOOL)isSymbol;
+- (BOOL)isSingleKeypress;
+//- (BOOL)isSymbol;
+//- (BOOL)isKeypad;
+//- (BOOL)isSpecial;
 
 #pragma mark Properties
 @property (assign) NSInteger buttonID;
