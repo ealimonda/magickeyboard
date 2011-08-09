@@ -141,24 +141,27 @@ NSString * const kLayoutType = @"Type";
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 	for (MKButton *eachKey in currentButtons) {
 		NSDictionary *keySymbolReplacements = [NSDictionary dictionaryWithObjectsAndKeys:
-						       @"⌧", @"CLEAR",
 						       @"⏎", @"RETURN",
-						       @"⇧", @"SHIFT",
 						       @"⌫", @"DELETE",
-						       @"⌤", @"ENTER",
-						       @"①", @"NUMS",
-						       @"⌨", @"MODIFIERS",
-						       @"⁉", @"SYMS",
-						       @"Ⓐ", @"QWERTY",
-						       @"⎋", @"ESC",
-						       @"⌃", @"CTRL",
-						       @"⌥", @"ALT",
-						       @"⌘", @"CMD",
+						       @"⌧", @"KP_CLEAR",
+						       @"⌤", @"KP_ENTER",
+						       @"⎋", @"ESCAPE",
 						       @"⇥", @"TAB",
 						       @"↑", @"UP",
 						       @"↓", @"DOWN",
 						       @"←", @"LEFT",
 						       @"→", @"RIGHT",
+
+						       @"⌧", @"CLEAR",
+						       @"⇧", @"SHIFT",
+						       @"⌤", @"ENTER",
+						       @"①", @"NUMS",
+						       @"⌨", @"MODIFIERS",
+						       @"⁉", @"SYMS",
+						       @"Ⓐ", @"QWERTY",
+						       @"⌃", @"CTRL",
+						       @"⌥", @"ALT",
+						       @"⌘", @"CMD",
 						       nil];
 		
 		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];

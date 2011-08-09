@@ -26,157 +26,131 @@
 			<key>Button</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
-			<string>ESC</string>
-			<key>Keycode</key>
-			<integer>53</integer>
+			<string>ESCAPE</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Escape key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>2</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F1</string>
-			<key>Keycode</key>
-			<integer>122</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F1 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>3</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F2</string>
-			<key>Keycode</key>
-			<integer>120</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F2 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>4</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F3</string>
-			<key>Keycode</key>
-			<integer>99</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F3 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>5</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F4</string>
-			<key>Keycode</key>
-			<integer>118</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F4 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>6</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F5</string>
-			<key>Keycode</key>
-			<integer>96</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F5 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>7</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F6</string>
-			<key>Keycode</key>
-			<integer>97</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F6 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>8</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F7</string>
-			<key>Keycode</key>
-			<integer>98</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F7 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>9</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F8</string>
-			<key>Keycode</key>
-			<integer>100</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F8 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>10</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F9</string>
-			<key>Keycode</key>
-			<integer>101</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F9 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>11</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F10</string>
-			<key>Keycode</key>
-			<integer>109</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F10 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>12</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F11</string>
-			<key>Keycode</key>
-			<integer>103</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F11 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>13</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>F12</string>
-			<key>Keycode</key>
-			<integer>111</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>F12 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -185,8 +159,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>QWERTY</string>
-			<key>Keycode</key>
-			<integer>0</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -197,8 +169,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>CTRL</string>
-			<key>Keycode</key>
-			<integer>59</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -209,8 +179,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>ALT</string>
-			<key>Keycode</key>
-			<integer>58</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -221,8 +189,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>CMD</string>
-			<key>Keycode</key>
-			<integer>55</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -230,61 +196,51 @@
 			<key>Button</key>
 			<integer>18</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>TAB</string>
-			<key>Keycode</key>
-			<integer>48</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Tab key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>19</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>UP</string>
-			<key>Keycode</key>
-			<integer>126</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Arrow Up key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>20</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>DOWN</string>
-			<key>Keycode</key>
-			<integer>125</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Arrow Down key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>21</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>LEFT</string>
-			<key>Keycode</key>
-			<integer>123</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Arrow Left key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>22</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>RIGHT</string>
-			<key>Keycode</key>
-			<integer>124</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Arrow Right key</string>
 		</dict>
 	</array>
 </dict>

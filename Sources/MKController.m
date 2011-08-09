@@ -269,34 +269,26 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
 		if (![button containsPoint:imgBox.origin size:imgBox.size])
 			continue;
-		BOOL doSend = YES;
-		int keycode = 0;
 		if ([button isSingleKeypress]) {
 			[MKKeycodes sendKeycodeForKey:[button value] type:[button type]];
 			lastKeyWasModifier = NO;
-			doSend = NO;
 		} else if ([[button value]isEqualToString:keyNUMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-			doSend = NO;
 		} else if ([[button value]isEqualToString:keyQWERTY]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-			doSend = NO;
 		} else if ([[button value] isEqualToString:keySYMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-			doSend = NO;
 		} else if ([[button value] isEqualToString:keyMODIFIERS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-			doSend = NO;
 		} else {
 			if ([[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"]) { // FIXME: String
 				if ([[button value] isEqualToString:keySHIFT]) {
 					shift = !shift;
 					[shiftChk setState:shift];
-					doSend = NO;
 					lastKeyWasModifier = YES;
 				}
 			} else if ([[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
@@ -305,26 +297,20 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 				if ([[button value] isEqualToString:keyCTRL]) {
 					ctrl = !ctrl;
 					[ctrlChk setState:ctrl];
-					doSend = NO;
 					lastKeyWasModifier = YES;
 				} else if ([[button value] isEqualToString:keyALT]) {
 					alt = !alt;
-					doSend = NO;
 					[altChk setState:alt];
 					lastKeyWasModifier = YES;
 				} else if ([[button value] isEqualToString:keyCMD]) {
 					cmd = !cmd;
 					[cmdChk setState:cmd];
-					doSend = NO;
 					lastKeyWasModifier = YES;
 				}
 				if (!ctrl && !cmd && !alt) {
 					lastKeyWasModifier = NO;
 				}
 			}
-		}
-		if (doSend) {
-			[MKKeycodes sendKeycode:keycode];
 		}
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
 		[tapImageView setImage:tap];

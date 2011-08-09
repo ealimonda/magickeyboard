@@ -29,10 +29,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>1</string>
-			<key>Keycode</key>
-			<integer>18</integer>
 			<key>Comment</key>
-			<string>1 key (keycode 18)</string>
+			<string>1 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -41,10 +39,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>2</string>
-			<key>Keycode</key>
-			<integer>19</integer>
 			<key>Comment</key>
-			<string>2 key (keycode 19)</string>
+			<string>2 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -53,10 +49,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>3</string>
-			<key>Keycode</key>
-			<integer>20</integer>
 			<key>Comment</key>
-			<string>3 key (keycode 20)</string>
+			<string>3 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -65,10 +59,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>4</string>
-			<key>Keycode</key>
-			<integer>21</integer>
 			<key>Comment</key>
-			<string>4 key (keycode 21)</string>
+			<string>4 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -77,10 +69,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>5</string>
-			<key>Keycode</key>
-			<integer>23</integer>
 			<key>Comment</key>
-			<string>5 key (keycode 23)</string>
+			<string>5 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -89,10 +79,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>6</string>
-			<key>Keycode</key>
-			<integer>22</integer>
 			<key>Comment</key>
-			<string>6 key (keycode 22)</string>
+			<string>6 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -101,10 +89,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>7</string>
-			<key>Keycode</key>
-			<integer>26</integer>
 			<key>Comment</key>
-			<string>7 key (keycode 26)</string>
+			<string>7 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -113,10 +99,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>8</string>
-			<key>Keycode</key>
-			<integer>28</integer>
 			<key>Comment</key>
-			<string>8 key (keycode 28)</string>
+			<string>8 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -125,10 +109,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>9</string>
-			<key>Keycode</key>
-			<integer>25</integer>
 			<key>Comment</key>
-			<string>9 key (keycode 25)</string>
+			<string>9 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -137,10 +119,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>0</string>
-			<key>Keycode</key>
-			<integer>29</integer>
 			<key>Comment</key>
-			<string>0 key (keycode 29)</string>
+			<string>0 key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -149,10 +129,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>-</string>
-			<key>Keycode</key>
-			<integer>27</integer>
 			<key>Comment</key>
-			<string>- key (keycode 27)</string>
+			<string>- key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -161,10 +139,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>/</string>
-			<key>Keycode</key>
-			<integer>44</integer>
 			<key>Comment</key>
-			<string>/ key (keycode 44)</string>
+			<string>/ key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -173,10 +149,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>:</string>
-			<key>Keycode</key>
-			<integer>41</integer>
 			<key>Comment</key>
-			<string>: key (keycode SHIFT-41)</string>
+			<string>: key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -185,10 +159,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>;</string>
-			<key>Keycode</key>
-			<integer>41</integer>
 			<key>Comment</key>
-			<string>; key (keycode 41)</string>
+			<string>; key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -197,10 +169,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>(</string>
-			<key>Keycode</key>
-			<integer>25</integer>
 			<key>Comment</key>
-			<string>( key (keycode SHIFT-25)</string>
+			<string>( key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -209,10 +179,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>)</string>
-			<key>Keycode</key>
-			<integer>29</integer>
 			<key>Comment</key>
-			<string>) key (keycode SHIFT-29)</string>
+			<string>) key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -221,10 +189,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>$</string>
-			<key>Keycode</key>
-			<integer>21</integer>
 			<key>Comment</key>
-			<string>$ key (keycode SHIFT-21)</string>
+			<string>$ key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -233,10 +199,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>&amp;</string>
-			<key>Keycode</key>
-			<integer>26</integer>
 			<key>Comment</key>
-			<string>&amp; key (keycode SHIFT-26)</string>
+			<string>&amp; key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -245,10 +209,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>@</string>
-			<key>Keycode</key>
-			<integer>19</integer>
 			<key>Comment</key>
-			<string>@ key (keycode SHIFT-19)</string>
+			<string>@ key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -257,10 +219,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>&quot;</string>
-			<key>Keycode</key>
-			<integer>39</integer>
 			<key>Comment</key>
-			<string>&quot; key (keycode SHIFT-39)</string>
+			<string>&quot; key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -269,8 +229,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>SYMS</string>
-			<key>Keycode</key>
-			<integer>-1</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -281,10 +239,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>.</string>
-			<key>Keycode</key>
-			<integer>47</integer>
 			<key>Comment</key>
-			<string>. key (keycode 47)</string>
+			<string>. key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -293,10 +249,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>,</string>
-			<key>Keycode</key>
-			<integer>43</integer>
 			<key>Comment</key>
-			<string>, key (keycode 43)</string>
+			<string>, key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -305,10 +259,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>?</string>
-			<key>Keycode</key>
-			<integer>44</integer>
 			<key>Comment</key>
-			<string>? key (keycode SHIFT-44)</string>
+			<string>? key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -317,10 +269,8 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>!</string>
-			<key>Keycode</key>
-			<integer>18</integer>
 			<key>Comment</key>
-			<string>! key (keycode SHIFT-18)</string>
+			<string>! key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -329,22 +279,18 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string>&apos;</string>
-			<key>Keycode</key>
-			<integer>39</integer>
 			<key>Comment</key>
-			<string>&apos; key (keycode 39)</string>
+			<string>&apos; key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>27</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>DELETE</string>
-			<key>Keycode</key>
-			<integer>51</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Delete key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -353,8 +299,6 @@
 			<string>NYI</string>
 			<key>Value</key>
 			<string>QWERTY</string>
-			<key>Keycode</key>
-			<integer>-1</integer>
 			<key>Comment</key>
 			<string>TODO</string>
 		</dict>
@@ -365,22 +309,18 @@
 			<string>Symbol</string>
 			<key>Value</key>
 			<string> </string>
-			<key>Keycode</key>
-			<integer>49</integer>
 			<key>Comment</key>
-			<string>Space key (keycode 49)</string>
+			<string>Space key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>30</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Special</string>
 			<key>Value</key>
 			<string>RETURN</string>
-			<key>Keycode</key>
-			<integer>36</integer>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Return key</string>
 		</dict>
 	</array>
 </dict>
