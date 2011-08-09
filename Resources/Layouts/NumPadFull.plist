@@ -3,7 +3,7 @@
 <!-- ***************************************************************************************************************
  *                                                MagicKeyboard                                                    *
  *******************************************************************************************************************
- * File:             Lay_NumsMini.plist                                                                            *
+ * File:             NumsMini.plist                                                                                *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -25,138 +25,206 @@
 		<dict>
 			<key>Button</key>
 			<integer>1</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>0</string>
 			<key>Keycode</key>
 			<integer>82</integer>
+			<key>Comment</key>
+			<string>0 key (keycode 82)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>2</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>.</string>
 			<key>Keycode</key>
 			<integer>65</integer>
+			<key>Comment</key>
+			<string>. key (keycode 65)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>3</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>1</string>
 			<key>Keycode</key>
 			<integer>83</integer>
+			<key>Comment</key>
+			<string>1 key (keycode 83)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>4</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>2</string>
 			<key>Keycode</key>
 			<integer>84</integer>
+			<key>Comment</key>
+			<string>2 key (keycode 84)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>5</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>3</string>
 			<key>Keycode</key>
 			<integer>85</integer>
+			<key>Comment</key>
+			<string>3 key (keycode 85)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>6</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>4</string>
 			<key>Keycode</key>
 			<integer>86</integer>
+			<key>Comment</key>
+			<string>4 key (keycode 86)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>7</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>5</string>
 			<key>Keycode</key>
 			<integer>87</integer>
+			<key>Comment</key>
+			<string>5 key (keycode 87)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>8</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>6</string>
 			<key>Keycode</key>
 			<integer>88</integer>
+			<key>Comment</key>
+			<string>6 key (keycode 88)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>9</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>7</string>
 			<key>Keycode</key>
 			<integer>89</integer>
+			<key>Comment</key>
+			<string>7 key (keycode 89)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>10</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>8</string>
 			<key>Keycode</key>
 			<integer>91</integer>
+			<key>Comment</key>
+			<string>8 key (keycode 91)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>11</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>9</string>
 			<key>Keycode</key>
 			<integer>92</integer>
+			<key>Comment</key>
+			<string>9 key (keycode 92)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>12</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>RETURN</string>
 			<key>Keycode</key>
 			<integer>76</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>13</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>+</string>
 			<key>Keycode</key>
 			<integer>69</integer>
+			<key>Comment</key>
+			<string>+ key (keycode 69)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>14</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>-</string>
 			<key>Keycode</key>
 			<integer>78</integer>
+			<key>Comment</key>
+			<string>- key (keycode 78)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>15</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>*</string>
 			<key>Keycode</key>
 			<integer>67</integer>
+			<key>Comment</key>
+			<string>* key (keycode 67)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>16</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>/</string>
 			<key>Keycode</key>
 			<integer>75</integer>
+			<key>Comment</key>
+			<string>/ key (keycode 75)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>17</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>CLEAR</string>
 			<key>Keycode</key>
 			<integer>71</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 	</array>
 </dict>

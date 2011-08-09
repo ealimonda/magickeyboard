@@ -24,8 +24,9 @@ NSString * const kLayoutLayoutName = @"LayoutName";
 NSString * const kLayoutDefinition = @"Definition";
 NSString * const kLayoutKeys = @"Keys";
 NSString * const kLayoutButtonID = @"Button";
-NSString * const kLayoutLetter = @"Letter";
+NSString * const kLayoutValue = @"Value";
 NSString * const kLayoutKeycode = @"Keycode";
+NSString * const kLayoutType = @"Type";
 
 #pragma mark -
 #pragma mark Implementation
@@ -106,9 +107,17 @@ NSString * const kLayoutKeycode = @"Keycode";
 				[self setValid:NO];
 				return;
 			}
-			NSString *letter = [eachKey valueForKey:kLayoutLetter];
-			NSString *keycode = [eachKey valueForKey:kLayoutKeycode];
-			[currentButtons addObject:[MKButton buttonWithButton:button letter:letter keycode:keycode]];
+			NSString *type = [eachKey valueForKey:kLayoutType];
+			NSString *value = [eachKey valueForKey:kLayoutValue];
+			NSInteger keycode = [[eachKey valueForKey:kLayoutKeycode] integerValue];
+			MKButton *newButton = [MKButton buttonWithButton:button type:type value:value keycode:keycode];
+			if (!newButton) {
+				NSLog(@"Invalid button (id: %ld type: %@ value: %@ keycode: %@",
+				      buttonID, type, value, keycode);
+				[self setValid:NO];
+				return;
+			}
+			[currentButtons addObject:newButton];
 		}
 	}
 
@@ -133,7 +142,7 @@ NSString * const kLayoutKeycode = @"Keycode";
 	for (MKButton *eachKey in currentButtons) {
 		
 		NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
-		NSSize labelSize = [[[eachKey letter] uppercaseString]
+		NSSize labelSize = [[[eachKey value] uppercaseString]
 				    sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,
 							NSFontAttributeName, nil]];
 		NSRect textBoxRect = NSMakeRect((CGFloat)[eachKey xStart],
@@ -141,7 +150,7 @@ NSString * const kLayoutKeycode = @"Keycode";
 						(CGFloat)[eachKey xEnd] - [eachKey xStart],
 						(CGFloat)(labelSize.height));
 		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
-		[textField setStringValue:[[eachKey letter] uppercaseString]];
+		[textField setStringValue:[[eachKey value] uppercaseString]];
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];

@@ -15,6 +15,9 @@
 
 #import "MKButton.h"
 
+#pragma mark Constants
+NSString * const kButtonTypeSymbol = @"Symbol";
+
 #pragma mark Implementation
 @implementation MKButton
 
@@ -22,8 +25,9 @@
 - (id)init {
 	self = [super init];
 	if (self) {
-		letter = nil;
-		keycode = nil;
+		type = nil;
+		value = nil;
+		keycode = -1;
 		xStart = 0;
 		xEnd = 0;
 		yStart = 0;
@@ -36,8 +40,6 @@
 	    yEnd:(NSInteger)aYEnd {
 	self = [self init];
 	if (self) {
-		letter = nil;
-		keycode = nil;
 		buttonID = aButtonID;
 		xStart = aXStart;
 		xEnd = aXEnd;
@@ -48,8 +50,8 @@
 }
 
 - (void)dealloc {
-	[letter release];
-	[keycode release];
+	[type release];
+	[value release];
 	[super dealloc];
 }
 
@@ -63,15 +65,18 @@
 		autorelease];
 }
 
-+ (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode {
++ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)aType value:(NSString *)aValue keycode:(NSInteger)aKeycode {
 	MKButton *thisButton = [aButton copy];
-	[thisButton assignLetter:aLetter keycode:aKeycode];
+	if (![[self class] isValidType:aType])
+		return nil;
+	[thisButton assignType:aType value:aValue keycode:aKeycode];
 	return [thisButton autorelease];
 }
 
 #pragma mark Special setters
-- (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode {
-	[self setLetter:aLetter];
+- (id)assignType:(NSString *)aType value:(NSString *)aValue keycode:(NSInteger)aKeyCode {
+	[self setType:aType];
+	[self setValue:aValue];
 	[self setKeycode:aKeyCode];
 	return self;
 }
@@ -85,6 +90,18 @@
 		return YES;
 	}
 	return NO;
+}
+
++ (BOOL)isValidType:(NSString *)aType {
+	if ([aType isEqualToString:kButtonTypeSymbol])
+		return YES;
+	if ([aType isEqualToString:@"NYI"]) // FIXME
+		return YES;
+	return NO;
+}
+
+- (BOOL)isSymbol {
+	return [[self type] isEqualToString:kButtonTypeSymbol];
 }
 
 #pragma mark NSCopying
@@ -101,6 +118,7 @@
 @synthesize yStart;
 @synthesize yEnd;
 @synthesize keycode;
-@synthesize letter;
+@synthesize value;
+@synthesize type;
 
 @end

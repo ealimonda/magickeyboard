@@ -15,6 +15,7 @@
 		165ECD121330420000AD0A0D /* MagicKeyboardMenuDis.png in Resources */ = {isa = PBXBuildFile; fileRef = 165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */; };
 		166DE03A13EF61E9007326C3 /* MKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DE03913EF61E9007326C3 /* MKDevice.m */; };
 		166DE03D13EF84BB007326C3 /* MKFinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DE03C13EF84BB007326C3 /* MKFinger.m */; };
+		1674C8D013F107EB0069DA1E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1674C8CF13F107EB0069DA1E /* Carbon.framework */; };
 		16A01DB4132B106D00116980 /* MKdsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 16A01DB3132B106D00116980 /* MKdsa_pub.pem */; };
 		16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
 		16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
@@ -67,6 +68,7 @@
 		166DE03913EF61E9007326C3 /* MKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKDevice.m; sourceTree = "<group>"; };
 		166DE03B13EF84BB007326C3 /* MKFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFinger.h; sourceTree = "<group>"; };
 		166DE03C13EF84BB007326C3 /* MKFinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFinger.m; sourceTree = "<group>"; };
+		1674C8CF13F107EB0069DA1E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		16A01DB3132B106D00116980 /* MKdsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKdsa_pub.pem; sourceTree = "<group>"; };
 		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
 		16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FRFeedbackReporter.sh; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1674C8D013F107EB0069DA1E /* Carbon.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2891A6571218670E0058CD9C /* MultitouchSupport.framework in Frameworks */,
 				16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */,
@@ -167,6 +170,7 @@
 		29B97314FDCFA39411CA2CEA /* MagicKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				1674C8CF13F107EB0069DA1E /* Carbon.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,

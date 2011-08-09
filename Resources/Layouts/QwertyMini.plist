@@ -3,7 +3,7 @@
 <!-- ***************************************************************************************************************
  *                                                MagicKeyboard                                                    *
  *******************************************************************************************************************
- * File:             Lay_QwertyMini.plist                                                                          *
+ * File:             QwertyMini.plist                                                                              *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -25,258 +25,386 @@
 		<dict>
 			<key>Button</key>
 			<integer>1</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>q</string>
 			<key>Keycode</key>
 			<integer>12</integer>
+			<key>Comment</key>
+			<string>Q key (keycode 12)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>2</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>w</string>
 			<key>Keycode</key>
 			<integer>13</integer>
+			<key>Comment</key>
+			<string>W key (keycode 13)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>3</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>e</string>
 			<key>Keycode</key>
 			<integer>14</integer>
+			<key>Comment</key>
+			<string>E key (keycode 14)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>4</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>r</string>
 			<key>Keycode</key>
 			<integer>15</integer>
+			<key>Comment</key>
+			<string>R key (keycode 15)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>5</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>t</string>
 			<key>Keycode</key>
 			<integer>17</integer>
+			<key>Comment</key>
+			<string>T key (keycode 17)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>6</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>y</string>
 			<key>Keycode</key>
 			<integer>16</integer>
+			<key>Comment</key>
+			<string>Y key (keycode 16)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>7</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>u</string>
 			<key>Keycode</key>
 			<integer>32</integer>
+			<key>Comment</key>
+			<string>U key (keycode 32)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>8</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>i</string>
 			<key>Keycode</key>
 			<integer>34</integer>
+			<key>Comment</key>
+			<string>I key (keycode 34)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>9</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>o</string>
 			<key>Keycode</key>
 			<integer>31</integer>
+			<key>Comment</key>
+			<string>O key (keycode 31)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>10</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>p</string>
 			<key>Keycode</key>
 			<integer>35</integer>
+			<key>Comment</key>
+			<string>P key (keycode 35)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>11</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>a</string>
 			<key>Keycode</key>
 			<integer>0</integer>
+			<key>Comment</key>
+			<string>A key (keycode 0)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>12</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>s</string>
 			<key>Keycode</key>
 			<integer>1</integer>
+			<key>Comment</key>
+			<string>S key (keycode 1)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>13</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>d</string>
 			<key>Keycode</key>
 			<integer>2</integer>
+			<key>Comment</key>
+			<string>D key (keycode 2)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>14</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>f</string>
 			<key>Keycode</key>
 			<integer>3</integer>
+			<key>Comment</key>
+			<string>F key (keycode 3)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>15</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>g</string>
 			<key>Keycode</key>
 			<integer>5</integer>
+			<key>Comment</key>
+			<string>G key (keycode 5)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>16</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>h</string>
 			<key>Keycode</key>
 			<integer>4</integer>
+			<key>Comment</key>
+			<string>H key (keycode 4)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>17</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>j</string>
 			<key>Keycode</key>
 			<integer>38</integer>
+			<key>Comment</key>
+			<string>J key (keycode 38)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>18</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>k</string>
 			<key>Keycode</key>
 			<integer>40</integer>
+			<key>Comment</key>
+			<string>K key (keycode 40)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>19</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>l</string>
 			<key>Keycode</key>
 			<integer>37</integer>
+			<key>Comment</key>
+			<string>L key (keycode 37)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>20</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>SHIFT</string>
 			<key>Keycode</key>
 			<integer>56</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>21</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>z</string>
 			<key>Keycode</key>
 			<integer>6</integer>
+			<key>Comment</key>
+			<string>Z key (keycode 6)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>22</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>x</string>
 			<key>Keycode</key>
 			<integer>7</integer>
+			<key>Comment</key>
+			<string>X key (keycode 7)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>23</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>c</string>
 			<key>Keycode</key>
 			<integer>8</integer>
+			<key>Comment</key>
+			<string>C key (keycode 8)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>24</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>v</string>
 			<key>Keycode</key>
 			<integer>9</integer>
+			<key>Comment</key>
+			<string>V key (keycode 9)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>25</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>b</string>
 			<key>Keycode</key>
 			<integer>11</integer>
+			<key>Comment</key>
+			<string>B key (keycode 11)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>26</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>n</string>
 			<key>Keycode</key>
 			<integer>45</integer>
+			<key>Comment</key>
+			<string>N key (keycode 45)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>27</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string>m</string>
 			<key>Keycode</key>
 			<integer>46</integer>
+			<key>Comment</key>
+			<string>M key (keycode 46)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>28</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>DELETE</string>
 			<key>Keycode</key>
 			<integer>51</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>29</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>NUMS</string>
 			<key>Keycode</key>
 			<integer>0</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>30</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>MODIFIERS</string>
 			<key>Keycode</key>
 			<integer>0</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>31</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
 			<string> </string>
 			<key>Keycode</key>
 			<integer>49</integer>
+			<key>Comment</key>
+			<string>Space key (keycode 49)</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>32</integer>
-			<key>Letter</key>
+			<key>Type</key>
+			<string>NYI</string>
+			<key>Value</key>
 			<string>RETURN</string>
 			<key>Keycode</key>
 			<integer>36</integer>
+			<key>Comment</key>
+			<string>TODO</string>
 		</dict>
 	</array>
 </dict>

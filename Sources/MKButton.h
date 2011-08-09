@@ -22,8 +22,9 @@
 	NSInteger xEnd;
 	NSInteger yStart;
 	NSInteger yEnd;
-	NSString *keycode;
-	NSString *letter;
+	NSString *type;
+	NSInteger keycode;
+	NSString *value;
 }
 
 #pragma mark Methods
@@ -33,11 +34,15 @@
 + (id)button;
 + (id)buttonWithID:(NSInteger)aButtonID xStart:(NSInteger)aXStart xEnd:(NSInteger)aXEnd yStart:(NSInteger)aYStart
 	      yEnd:(NSInteger)aYEnd;
-+ (id)buttonWithButton:(MKButton *)aButton letter:(NSString *)aLetter keycode:(NSString *)aKeycode;
++ (id)buttonWithButton:(MKButton *)aButton type:(NSString *)type value:(NSString *)aValue keycode:(NSInteger)aKeycode;
 
-- (id)assignLetter:(NSString *)aLetter keycode:(NSString *)aKeyCode;
+- (id)assignType:(NSString *)type value:(NSString *)aValue keycode:(NSInteger)aKeyCode;
 
 - (BOOL)containsPoint:(NSPoint)aPoint size:(NSSize)circleSize;
+
++ (BOOL)isValidType:(NSString *)aType;
+
+- (BOOL)isSymbol;
 
 #pragma mark Properties
 @property (assign) NSInteger buttonID;
@@ -45,7 +50,8 @@
 @property (assign) NSInteger xEnd;
 @property (assign) NSInteger yStart;
 @property (assign) NSInteger yEnd;
-@property (retain) NSString *keycode;
-@property (retain) NSString *letter;
+@property (assign) NSInteger keycode;
+@property (retain) NSString *value;
+@property (retain) NSString *type;
 
 @end

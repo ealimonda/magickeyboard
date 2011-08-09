@@ -14,6 +14,7 @@
  *******************************************************************************************************************/
 
 #import "MKController.h"
+#import <Carbon/Carbon.h> /* For kVK_ constants, and TIS functions. */
 #import <FeedbackReporter/FRFeedbackReporter.h>
 #import "AlphaAnimation.h"
 #import "MKButton.h"
@@ -55,6 +56,9 @@ const double kSamplingInterval = 0.02;
 @interface MKController ()
 #pragma mark Private methods and properties
 
+- (void)sendKeycodeForSymbol:(NSString *)aSymbol;
+- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol;
+- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol;
 - (void)sendKeycode:(CGKeyCode)keycode;
 - (void)animateImage:(NSImageView *)image;
 - (void)processTouch:(Touch *)touch onDevice:(MKDevice *)device;
@@ -271,69 +275,65 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 			continue;
 		BOOL doSend = YES;
 		int keycode = 0;
-		if ([[button letter]isEqualToString:keyNUMS]) {
+		if ([button isSymbol]) {
+//			if ([[button keycode] characterAtIndex:0] == 'S') {
+//				// FIXME: Ugly
+//				keycode = (CGKeyCode)[[[button keycode]
+//						       stringByReplacingOccurrencesOfString:@"S" withString:@""]
+//						      integerValue];
+//				keycode += 300;
+//			} else {
+				[self sendKeycodeForSymbol:[button value]];
+//				keycode = (CGKeyCode)[[button keycode] integerValue];
+//			}
+			lastKeyWasModifier = NO;
+			doSend = NO;
+		} else if ([[button value]isEqualToString:keyNUMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if ([[button letter]isEqualToString:keyQWERTY]) {
+		} else if ([[button value]isEqualToString:keyQWERTY]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if ([[button letter] isEqualToString:keySYMS]) {
+		} else if ([[button value] isEqualToString:keySYMS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
-		} else if ([[button letter] isEqualToString:keyMODIFIERS]) {
+		} else if ([[button value] isEqualToString:keyMODIFIERS]) {
 			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 			doSend = NO;
 		} else {
 			if ([[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"]) { // FIXME: String
-				if ([[button letter] isEqualToString:keySHIFT]) {
+				if ([[button value] isEqualToString:keySHIFT]) {
 					shift = !shift;
 					[shiftChk setState:shift];
 					doSend = NO;
 					lastKeyWasModifier = YES;
-				} else {
-					keycode = (CGKeyCode)[[button keycode] integerValue];
-					lastKeyWasModifier = NO;
 				}
 			} else if ([[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
 				   || [[currentLayout layoutName] isEqualToString:@"Mini Symbols Keyboard"]
 				   || [[currentLayout layoutName] isEqualToString:@"Mini Modifiers Keyboard"]) {
-				if ([[button letter] isEqualToString:keyCTRL]) {
+				if ([[button value] isEqualToString:keyCTRL]) {
 					ctrl = !ctrl;
 					[ctrlChk setState:ctrl];
 					doSend = NO;
 					lastKeyWasModifier = YES;
-				} else if ([[button letter] isEqualToString:keyALT]) {
+				} else if ([[button value] isEqualToString:keyALT]) {
 					alt = !alt;
 					doSend = NO;
 					[altChk setState:alt];
 					lastKeyWasModifier = YES;
-				} else if ([[button letter] isEqualToString:keyCMD]) {
+				} else if ([[button value] isEqualToString:keyCMD]) {
 					cmd = !cmd;
 					[cmdChk setState:cmd];
 					doSend = NO;
 					lastKeyWasModifier = YES;
-				} else {
-					lastKeyWasModifier = NO;
 				}
 				if (!ctrl && !cmd && !alt) {
 					lastKeyWasModifier = NO;
 				}
-				if ([[button keycode] characterAtIndex:0] == 'S') {
-					// FIXME: Ugly
-					keycode = (CGKeyCode)[[[button keycode]
-							       stringByReplacingOccurrencesOfString:@"S"
-							       withString:@""] integerValue];
-					keycode += 300;
-				} else {
-					keycode = (CGKeyCode)[[button keycode] integerValue];
-				}
-			} else if ([[currentLayout layoutName] isEqualToString:@"Full Numeric Keypad"]) { // FIXME: String
-				lastKeyWasModifier = NO;
-				keycode = (CGKeyCode)[[button keycode] integerValue];
 			}
 		}
 		if (doSend) {
@@ -357,6 +357,87 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		}
 		break;
 	}
+}
+
+/** Returns string representation of key, if it is printable.
+ * Ownership follows the Create Rule; that is, it is the caller's
+ * responsibility to release the returned object. */
+CFStringRef createStringForKey(CGKeyCode keyCode) {
+	TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
+	CFDataRef layoutData = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
+	const UCKeyboardLayout *keyboardLayout = (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+	
+	UInt32 keysDown = 0;
+	UniChar chars[4];
+	UniCharCount realLength;
+	
+	UCKeyTranslate(keyboardLayout, keyCode, kUCKeyActionDisplay, 0, LMGetKbdType(), kUCKeyTranslateNoDeadKeysBit,
+		       &keysDown, sizeof(chars)/sizeof(chars[0]), &realLength, chars);
+	CFRelease(currentKeyboard);
+	
+	return CFStringCreateWithCharacters(kCFAllocatorDefault, chars, 1);
+}
+
+- (void)sendKeycodeForSymbol:(NSString *)aSymbol {
+	if (![self sendKeycodeForLayoutSymbol:aSymbol])
+		[self sendKeycodeForUnicodeSymbol:aSymbol];
+}
+
+- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol {
+	if ([aSymbol length] < 1)
+		return NO;
+	
+	static CFMutableDictionaryRef charToCodeDict = NULL;
+	CGKeyCode code;
+	UniChar character = [aSymbol characterAtIndex:0];
+	CFStringRef charStr = NULL;
+	
+	/* Generate table of keycodes and characters. */
+	if (!charToCodeDict) {
+		size_t i;
+		charToCodeDict = CFDictionaryCreateMutable(kCFAllocatorDefault, 128,
+							   &kCFCopyStringDictionaryKeyCallBacks, NULL);
+		if (!charToCodeDict)
+			return NO;
+		
+		/* Loop through every keycode (0 - 127) to find its current mapping. */
+		for (i = 0; i < 128; ++i) {
+			CFStringRef string = createStringForKey((CGKeyCode)i);
+			if (string != NULL) {
+				CFDictionaryAddValue(charToCodeDict, string, (const void *)i);
+				CFRelease(string);
+			}
+		}
+	}
+	
+	charStr = CFStringCreateWithCharacters(kCFAllocatorDefault, &character, 1);
+	
+	/* Our values may be NULL (0), so we need to use this function. */
+	if (!CFDictionaryGetValueIfPresent(charToCodeDict, charStr, (const void **)&code)) {
+		CFRelease(charStr);
+		return NO;
+	}
+	
+	CFRelease(charStr);
+	[self sendKeycode:code];
+	return YES;
+}
+
+- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol {
+	if ([aSymbol length] < 1)
+		return;
+	CGEventRef eventDown = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, true);
+	CGEventRef eventUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, false);
+	unichar unisymbol = [aSymbol characterAtIndex:0];
+	CGEventKeyboardSetUnicodeString(eventDown, 1, &unisymbol);
+	CGEventKeyboardSetUnicodeString(eventUp, 1, &unisymbol);
+
+	CGEventPost(kCGHIDEventTap, eventDown);
+	CFRelease(eventDown);
+	usleep(50);
+	CGEventPost(kCGHIDEventTap, eventUp);
+	CFRelease(eventUp);
+	usleep(50);
 }
 
 - (void)sendKeycode:(CGKeyCode)keycode {
