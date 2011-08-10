@@ -90,6 +90,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 						 NSASCIIStringEncoding], 0);
 		devices = [[NSMutableArray alloc] init];
 		keyboard = [[MKKeyboard alloc] init];
+		layouts = [[NSMutableDictionary alloc] init];
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
@@ -97,7 +98,20 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	return self;
 }
 
+- (void)loadLayouts {
+	[layouts removeAllObjects];
+	NSArray *foundLayouts = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"Layouts"];
+	for (NSString *eachLayout in foundLayouts) {
+		NSString *layoutName = [[eachLayout stringByDeletingPathExtension] lastPathComponent];
+		MKLayout *thisLayout = [MKLayout layoutWithName:layoutName];
+		if (thisLayout && [thisLayout isValid]) {
+			[layouts setObject:thisLayout forKey:layoutName];
+		}
+	}
+}
+
 - (void)awakeFromNib {
+	[self loadLayouts];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys: kQwertyMini, kLayout, nil]];
 	NSString *layout = [defaults stringForKey:kLayout];
@@ -170,6 +184,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 - (void)dealloc {
 	dispatch_release(myQueue);
+	[layouts release];
 	[tapSound release];
 	[tap release];
 	[keyLabels release];
@@ -248,17 +263,13 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		if ([button isSingleKeypress] || [button isModifier]) {
 			[keyboard sendKeycodeForKey:[button value] type:[button type]];
 		} else if ([[button value] isEqualToString:keyNUMS]) { // FIXME
-			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
-			[keyboardImage setImage:[currentLayout keyboardImage]];
+			[self switchToLayoutNamed:kNumsMini];
 		} else if ([[button value]isEqualToString:keyQWERTY]) { // FIXME
-			[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
-			[keyboardImage setImage:[currentLayout keyboardImage]];
+			[self switchToLayoutNamed:kQwertyMini];
 		} else if ([[button value] isEqualToString:keySYMS]) { // FIXME
-			[self setCurrentLayout:[MKLayout layoutWithName:kSymbolsMini]];
-			[keyboardImage setImage:[currentLayout keyboardImage]];
+			[self switchToLayoutNamed:kSymbolsMini];
 		} else if ([[button value] isEqualToString:keyMODIFIERS]) { // FIXME
-			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
-			[keyboardImage setImage:[currentLayout keyboardImage]];
+			[self switchToLayoutNamed:kModsMini];
 		}
 		[shiftChk setState:[keyboard isShiftDown]];
 		[cmdChk setState:[keyboard isCmdDown]];
@@ -309,15 +320,24 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	if (sender == selQwerty) {
 		[selQwerty setState:1];
 		[selFullNum setState:0];
-		[self setCurrentLayout:[MKLayout layoutWithName:kQwertyMini]];
+		[self switchToLayoutNamed:kQwertyMini];
 	} else if (sender == selFullNum) {
 		[selQwerty setState:0];
 		[selFullNum setState:1];
-		[self setCurrentLayout:[MKLayout layoutWithName:kNumPadFull]];
+		[self switchToLayoutNamed:kNumPadFull];
 	}
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setValue:[[self currentLayout] layoutIdentifier] forKey:kLayout];
 	[defaults synchronize];
+}
+
+- (BOOL)switchToLayoutNamed:(NSString *)layoutName {
+	MKLayout *layout = [layouts valueForKey:layoutName];
+	if (layout) {
+		[self setCurrentLayout:layout];
+		return YES;
+	}
+	return NO;
 }
 
 - (void)setCurrentLayout:(MKLayout *)newLayout {

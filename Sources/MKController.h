@@ -43,6 +43,7 @@
 	NSSound *tapSound;
 	NSImage *tap;
 
+	NSMutableDictionary *layouts;
 	MKLayout *currentLayout;
 	MKKeyboard *keyboard;
 
@@ -50,8 +51,10 @@
 }
 
 #pragma mark Methods
+- (void)loadLayouts;
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
 - (IBAction)switchLayout:(id)sender;
+- (BOOL)switchToLayoutNamed:(NSString *)layoutName;
 - (NSArray *)deviceInfoList;
 
 #pragma mark Properties
