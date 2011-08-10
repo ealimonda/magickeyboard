@@ -21,7 +21,7 @@
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>
-		<string>iOSNums</string>
+		<string>iOSSym</string>
 		<key>Width</key>
 		<integer>480</integer>
 		<key>Height</key>
