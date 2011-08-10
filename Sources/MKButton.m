@@ -20,6 +20,7 @@ NSString * const kButtonTypeSymbol   = @"Symbol";
 NSString * const kButtonTypeKeypad   = @"Keypad";
 NSString * const kButtonTypeSpecial  = @"Special";
 NSString * const kButtonTypeModifier = @"Modifier";
+NSString * const kButtonTypeLayout   = @"Layout";
 
 #pragma mark Implementation
 @implementation MKButton
@@ -101,12 +102,9 @@ NSString * const kButtonTypeModifier = @"Modifier";
 	    ||[aType isEqualToString:kButtonTypeKeypad]
 	    ||[aType isEqualToString:kButtonTypeSpecial]
 	    ||[aType isEqualToString:kButtonTypeModifier]
+	    ||[aType isEqualToString:kButtonTypeLayout]
 	    )
 		return YES;
-	if ([aType isEqualToString:@"NYI"]) { // FIXME
-		NSLog(@"FIXME: NYI button type");
-		return YES;
-	}
 	return NO;
 }
 
@@ -122,6 +120,12 @@ NSString * const kButtonTypeModifier = @"Modifier";
 
 - (BOOL)isModifier {
 	if ([[self type] isEqualToString:kButtonTypeModifier])
+		return YES;
+	return NO;
+}
+
+- (BOOL)isLayoutSwitch {
+	if ([[self type] isEqualToString:kButtonTypeLayout])
 		return YES;
 	return NO;
 }

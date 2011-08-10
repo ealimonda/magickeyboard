@@ -18,15 +18,17 @@
 #import "MKButton.h"
 
 #pragma mark Constants
-NSString * const kUntitledLayout   = @"Untitled Layout";
-NSString * const kUndefinedLayout  = @"Undefined";
+NSString * const kUntitledLayout        = @"Untitled Layout";
+NSString * const kUndefinedLayout       = @"Undefined";
+NSString * const kUndefinedLayoutSymbol = @"␀";
 
-NSString * const kLayoutLayoutName = @"LayoutName";
-NSString * const kLayoutDefinition = @"Definition";
-NSString * const kLayoutKeys       = @"Keys";
-NSString * const kLayoutButtonID   = @"Button";
-NSString * const kLayoutValue      = @"Value";
-NSString * const kLayoutType       = @"Type";
+NSString * const kLayoutLayoutName      = @"LayoutName";
+NSString * const kLayoutDefinition      = @"Definition";
+NSString * const kLayoutSymbol          = @"Symbol";
+NSString * const kLayoutKeys            = @"Keys";
+NSString * const kLayoutButtonID        = @"Button";
+NSString * const kLayoutValue           = @"Value";
+NSString * const kLayoutType            = @"Type";
 
 #pragma mark -
 #pragma mark Implementation
@@ -86,6 +88,7 @@ NSString * const kLayoutType       = @"Type";
 		[self setValid:YES];
 	
 	[self setLayoutName:[layout valueForKey:kLayoutLayoutName]];
+	[self setLayoutSymbol:[layout valueForKey:kLayoutSymbol]];
 	[self loadLayoutDefinition:[layout valueForKey:kLayoutDefinition]];
 	if (![self layoutDefinition] || ![[self layoutDefinition] isValid]) {
 		NSLog(@"Error: Invalid layout definition specified");
@@ -124,6 +127,8 @@ NSString * const kLayoutType       = @"Type";
 
 	if (![self layoutName])
 		[self setLayoutName:kUntitledLayout];
+	if (![self layoutSymbol])
+		[self setLayoutSymbol:kUndefinedLayoutSymbol];
 }
 
 - (void)loadLayoutDefinition:(NSString *)definitionName {
@@ -139,7 +144,7 @@ NSString * const kLayoutType       = @"Type";
 }
 
 #pragma mark Utilities
-- (NSArray *)createLabels {
+- (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts {
 	NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
 
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
@@ -180,14 +185,18 @@ NSString * const kLayoutType       = @"Type";
 						       @"⇞", @"PAGE_UP",
 						       @"⇟", @"PAGE_DOWN",
 						       @"⌦", @"FW_DELETE",
-
-						       @"①", @"NUMS",
-						       @"⌨", @"MODIFIERS",
-						       @"⁉", @"SYMS",
-						       @"Ⓐ", @"QWERTY",
 						       nil];
 
-		NSString *label = [[eachKey value] uppercaseString];
+		NSString *label = nil;
+		if ([eachKey isLayoutSwitch]) {
+			MKLayout *thisLayout = [layouts valueForKey:[eachKey value]];
+			if (thisLayout) {
+				label = [thisLayout layoutSymbol];
+			}
+		}
+		if (!label) {
+			label = [[eachKey value] uppercaseString];
+		}
 		if (![label isEqualToString:@"@"] && [keySymbolReplacements valueForKey:label]) // "@" as key makes it crash
 			label = [keySymbolReplacements valueForKey:label];
 
@@ -221,6 +230,7 @@ NSString * const kLayoutType       = @"Type";
 #pragma mark Properties
 @synthesize layoutIdentifier;
 @synthesize layoutName;
+@synthesize layoutSymbol;
 @synthesize layoutSize;
 @synthesize keyboardImage;
 @synthesize currentButtons;

@@ -20,6 +20,8 @@
 	<string>Full Numeric Keypad</string>
 	<key>Definition</key>
 	<string>NumPad</string>
+	<key>Symbol</key>
+	<string>①</string>
 	<key>Keys</key>
 	<array>
 		<dict>

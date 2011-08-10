@@ -20,6 +20,7 @@
 @interface MKLayout : NSObject {
 	NSString *layoutIdentifier;
 	NSString *layoutName;
+	NSString *layoutSymbol;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
 	NSMutableArray *currentButtons;
@@ -36,11 +37,12 @@
 
 - (void)loadLayoutDefinition:(NSString *)definitionName;
 
-- (NSArray *)createLabels;
+- (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts;
 
 #pragma mark Properties
 @property (retain) NSString *layoutIdentifier;
 @property (retain) NSString *layoutName;
+@property (retain) NSString *layoutSymbol;
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;
 @property (readonly,retain) NSMutableArray *currentButtons;

@@ -27,16 +27,10 @@
 	IBOutlet NSButton *ctrlChk;
 	IBOutlet NSButton *altChk;
 
-	IBOutlet NSMenuItem *selQwerty;
-	IBOutlet NSMenuItem *selFullNum;
-	BOOL cmd;
-	BOOL alt;
-	BOOL ctrl;
+	IBOutlet NSMenu *layoutsMenu;
 	BOOL tracking;
 	NSSize mtSize;
 	IBOutlet NSImageView *keyboardImage;
-	BOOL shift;
-	BOOL lastKeyWasModifier;
 	IBOutlet NSView *keyboardView;
 	NSMutableArray *keyLabels;
 

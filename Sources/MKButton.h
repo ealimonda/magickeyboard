@@ -21,7 +21,7 @@ extern NSString * const kButtonTypeSymbol;
 extern NSString * const kButtonTypeKeypad;
 extern NSString * const kButtonTypeSpecial;
 extern NSString * const kButtonTypeModifier;
-
+extern NSString * const kButtonTypeLayout;
 
 #pragma mark Interface
 @interface MKButton : NSObject <NSCopying> {
@@ -52,6 +52,7 @@ extern NSString * const kButtonTypeModifier;
 
 - (BOOL)isSingleKeypress;
 - (BOOL)isModifier;
+- (BOOL)isLayoutSwitch;
 
 #pragma mark Properties
 @property (assign) NSInteger buttonID;

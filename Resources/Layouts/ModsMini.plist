@@ -20,6 +20,8 @@
 	<string>Mini Modifiers Keyboard</string>
 	<key>Definition</key>
 	<string>ModsMini</string>
+	<key>Symbol</key>
+	<string>⌨</string>
 	<key>Keys</key>
 	<array>
 		<dict>
@@ -156,11 +158,11 @@
 			<key>Button</key>
 			<integer>14</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Layout</string>
 			<key>Value</key>
-			<string>QWERTY</string>
+			<string>QwertyMini</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Layout switch to QwertMini</string>
 		</dict>
 		<dict>
 			<key>Button</key>

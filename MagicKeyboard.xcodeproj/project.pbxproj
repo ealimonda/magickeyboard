@@ -70,7 +70,7 @@
 		166DE03B13EF84BB007326C3 /* MKFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFinger.h; sourceTree = "<group>"; };
 		166DE03C13EF84BB007326C3 /* MKFinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFinger.m; sourceTree = "<group>"; };
 		1674C8CF13F107EB0069DA1E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		1674C8D113F135330069DA1E /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MKKeyboard.h; sourceTree = "<group>"; };
+		1674C8D113F135330069DA1E /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboard.h; sourceTree = "<group>"; };
 		1674C8D213F135330069DA1E /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
 		16A01DB3132B106D00116980 /* MKdsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKdsa_pub.pem; sourceTree = "<group>"; };
 		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1674C8CF13F107EB0069DA1E /* Carbon.framework */,
 				16C96C301328DB85007A69C3 /* Sparkle.framework */,
 				16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */,
 				2891A6561218670E0058CD9C /* MultitouchSupport.framework */,
@@ -175,7 +176,6 @@
 		29B97314FDCFA39411CA2CEA /* MagicKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				1674C8CF13F107EB0069DA1E /* Carbon.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,

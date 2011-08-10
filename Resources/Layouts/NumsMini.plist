@@ -20,6 +20,8 @@
 	<string>Mini Numbers Keyboard</string>
 	<key>Definition</key>
 	<string>iOSNums</string>
+	<key>Symbol</key>
+	<string>①</string>
 	<key>Keys</key>
 	<array>
 		<dict>
@@ -226,11 +228,11 @@
 			<key>Button</key>
 			<integer>21</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Layout</string>
 			<key>Value</key>
-			<string>SYMS</string>
+			<string>SymbolsMini</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Layout switch to SymbolsMini</string>
 		</dict>
 		<dict>
 			<key>Button</key>
@@ -296,11 +298,11 @@
 			<key>Button</key>
 			<integer>28</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Layout</string>
 			<key>Value</key>
-			<string>QWERTY</string>
+			<string>QwertyMini</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Layout switch to QwertyMini</string>
 		</dict>
 		<dict>
 			<key>Button</key>
