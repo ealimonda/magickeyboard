@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MKKeycodes.h                                                                                  *
+ * File:             MKKeyboard.h                                                                                  *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -17,7 +17,12 @@
 #import "MKButton.h"
 
 #pragma mark Interface
-@interface MKKeycodes : NSObject
+@interface MKKeyboard : NSObject {
+	BOOL shiftDown;
+	BOOL optDown;
+	BOOL cmdDown;
+	BOOL ctrlDown;
+}
 
 #pragma mark Methods
 + (NSInteger)keycodeForCharacter:(NSString *)aCharacter;
@@ -25,9 +30,14 @@
 + (NSInteger)keycodeForSpecialKey:(NSString *)aKey;
 + (NSString *)characterforKeyCode:(NSInteger)aKeyCode;
 
-+ (void)sendKeycodeForKey:(NSString *)aKey type:(NSString *)aType;
-+ (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol;
-+ (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol;
-+ (void)sendKeycode:(CGKeyCode)keycode;
+- (void)sendKeycodeForKey:(NSString *)aKey type:(NSString *)aType;
+- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol;
+- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol;
+- (void)sendKeycode:(CGKeyCode)keycode sticky:(BOOL)isSticky;
+
+@property (assign,getter=isShiftDown) BOOL shiftDown;
+@property (assign,getter=isOptDown) BOOL optDown;
+@property (assign,getter=isCmdDown) BOOL cmdDown;
+@property (assign,getter=isCtrlDown) BOOL ctrlDown;
 
 @end

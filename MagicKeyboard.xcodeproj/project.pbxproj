@@ -16,7 +16,7 @@
 		166DE03A13EF61E9007326C3 /* MKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DE03913EF61E9007326C3 /* MKDevice.m */; };
 		166DE03D13EF84BB007326C3 /* MKFinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DE03C13EF84BB007326C3 /* MKFinger.m */; };
 		1674C8D013F107EB0069DA1E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1674C8CF13F107EB0069DA1E /* Carbon.framework */; };
-		1674C8D313F135330069DA1E /* MKKeycodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674C8D213F135330069DA1E /* MKKeycodes.m */; };
+		1674C8D313F135330069DA1E /* MKKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674C8D213F135330069DA1E /* MKKeyboard.m */; };
 		16A01DB4132B106D00116980 /* MKdsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 16A01DB3132B106D00116980 /* MKdsa_pub.pem */; };
 		16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
 		16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
@@ -70,8 +70,8 @@
 		166DE03B13EF84BB007326C3 /* MKFinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKFinger.h; sourceTree = "<group>"; };
 		166DE03C13EF84BB007326C3 /* MKFinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKFinger.m; sourceTree = "<group>"; };
 		1674C8CF13F107EB0069DA1E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		1674C8D113F135330069DA1E /* MKKeycodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeycodes.h; sourceTree = "<group>"; };
-		1674C8D213F135330069DA1E /* MKKeycodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeycodes.m; sourceTree = "<group>"; };
+		1674C8D113F135330069DA1E /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MKKeyboard.h; sourceTree = "<group>"; };
+		1674C8D213F135330069DA1E /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
 		16A01DB3132B106D00116980 /* MKdsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKdsa_pub.pem; sourceTree = "<group>"; };
 		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
 		16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FRFeedbackReporter.sh; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 				166DE03913EF61E9007326C3 /* MKDevice.m */,
 				166DE03B13EF84BB007326C3 /* MKFinger.h */,
 				166DE03C13EF84BB007326C3 /* MKFinger.m */,
-				1674C8D113F135330069DA1E /* MKKeycodes.h */,
-				1674C8D213F135330069DA1E /* MKKeycodes.m */,
+				1674C8D113F135330069DA1E /* MKKeyboard.h */,
+				1674C8D213F135330069DA1E /* MKKeyboard.m */,
 			);
 			name = Classes;
 			path = Sources;
@@ -329,7 +329,7 @@
 				16FFCB3C13E253F200ACE2D4 /* MKLayoutDefinition.m in Sources */,
 				166DE03A13EF61E9007326C3 /* MKDevice.m in Sources */,
 				166DE03D13EF84BB007326C3 /* MKFinger.m in Sources */,
-				1674C8D313F135330069DA1E /* MKKeycodes.m in Sources */,
+				1674C8D313F135330069DA1E /* MKKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

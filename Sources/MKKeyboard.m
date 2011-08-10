@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
  *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MKKeycodes.m                                                                                  *
+ * File:             MKKeyboard.m                                                                                  *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -13,14 +13,33 @@
  *                       If not, see <http://www.gnu.org/licenses/>                                                *
  *******************************************************************************************************************/
 
-#import "MKKeycodes.h"
+#import "MKKeyboard.h"
 #import <Carbon/Carbon.h> /* For kVK_ constants, and TIS functions. */
 #import "MKButton.h"
 
+#pragma mark Constants
+NSString * const kModifierNameShift   = @"SHIFT";
+NSString * const kModifierNameOption  = @"OPTION";
+NSString * const kModifierNameCommand = @"COMMAND";
+NSString * const kModifierNameControl = @"CONTROL";
+
+
 #pragma mark Implementation
-@implementation MKKeycodes
+@implementation MKKeyboard
 
 #pragma mark Utilities
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		shiftDown = NO;
+		optDown = NO;
+		cmdDown = NO;
+		ctrlDown = NO;
+	}
+	return self;
+}
+
 /** Returns string representation of key, if it is printable.
  * Ownership follows the Create Rule; that is, it is the caller's
  * responsibility to release the returned object. */
@@ -141,7 +160,7 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 		return kVK_Option;
 	if ([aKey isEqualToString:@"CONTROL"])
 		return kVK_Control;
-	if ([aKey isEqualToString:@"SHIFT"])
+	if ([aKey isEqualToString:@"SHIFTR"])
 		return kVK_RightShift;
 	if ([aKey isEqualToString:@"OPTIONR"])
 		return kVK_RightOption;
@@ -238,33 +257,48 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 }
 
 #pragma mark Sending
-+ (void)sendKeycodeForKey:(NSString *)aSymbol type:(NSString *)aType {
+- (void)sendKeycodeForKey:(NSString *)aSymbol type:(NSString *)aType {
+	if ([aType isEqualToString:kButtonTypeModifier])
+		[self sendKeycode:[[self class] keycodeForSpecialKey:aSymbol] sticky:YES];
 	if ([aType isEqualToString:kButtonTypeKeypad])
-		[self sendKeycode:[self keycodeForKeypadCharacter:aSymbol]];
+		[self sendKeycode:[[self class] keycodeForKeypadCharacter:aSymbol] sticky:NO];
 	else if ([aType isEqualToString:kButtonTypeSpecial])
-		[self sendKeycode:[self keycodeForSpecialKey:aSymbol]];
+		[self sendKeycode:[[self class] keycodeForSpecialKey:aSymbol] sticky:NO];
 	else if ([aType isEqualToString:kButtonTypeSymbol]) {
 		if (![self sendKeycodeForLayoutSymbol:aSymbol])
 			[self sendKeycodeForUnicodeSymbol:aSymbol];
 	}
 }
 
-+ (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol {
-	NSInteger code = [self keycodeForCharacter:aSymbol];
+- (BOOL)sendKeycodeForLayoutSymbol:(NSString *)aSymbol {
+	NSInteger code = [[self class] keycodeForCharacter:aSymbol];
 	if (code <= -1)
 		return NO;
-	[self sendKeycode:code];
+	[self sendKeycode:code sticky:NO];
 	return YES;
 }
 
-+ (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol {
+- (void)sendKeycodeForUnicodeSymbol:(NSString *)aSymbol {
 	if ([aSymbol length] < 1)
 		return;
+
 	CGEventRef eventDown = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, true);
 	CGEventRef eventUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)kVK_ANSI_A, false);
 	unichar unisymbol = [aSymbol characterAtIndex:0];
 	CGEventKeyboardSetUnicodeString(eventDown, 1, &unisymbol);
 	CGEventKeyboardSetUnicodeString(eventUp, 1, &unisymbol);
+
+	long flags = 0;
+	if ([self isCmdDown])
+		flags |= kCGEventFlagMaskCommand;
+	if ([self isOptDown])
+		flags |= kCGEventFlagMaskAlternate;
+	if ([self isCtrlDown])
+		flags |= kCGEventFlagMaskControl;
+	if (flags > 0) {
+		CGEventSetFlags(eventDown, CGEventGetFlags(eventDown)|flags); //set modifier keys down for above event
+		CGEventSetFlags(eventUp, CGEventGetFlags(eventUp)|flags); //set modifier keys down for above event
+	}
 	
 	CGEventPost(kCGHIDEventTap, eventDown);
 	CFRelease(eventDown);
@@ -274,35 +308,47 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 	usleep(50);
 }
 
-+ (void)sendKeycode:(CGKeyCode)keycode {
-	// TODO: http://stackoverflow.com/questions/1918841/how-to-convert-ascii-character-to-cgkeycode
-	BOOL needsShift = keycode >= 300;
-	long flags = 0;
-	if (needsShift) {
-		keycode -= 300;
+- (void)sendKeycode:(CGKeyCode)keycode sticky:(BOOL)isSticky {
+	if (isSticky) {
+		switch (keycode) {
+		case kVK_Shift:
+		case kVK_RightShift:
+			[self setShiftDown:![self isShiftDown]];
+			return;
+		case kVK_Option:
+		case kVK_RightOption:
+			[self setOptDown:![self isOptDown]];
+			return;
+		case kVK_Command:
+			[self setCmdDown:![self isCmdDown]];
+			return;
+		case kVK_Control:
+		case kVK_RightControl:
+			[self setCtrlDown:![self isCtrlDown]];
+			return;
+		default:
+			return;
+		}
 	}
-//	if (shift || needsShift) {
-//		flags |= kCGEventFlagMaskShift;
-//	}	
-//	if (cmd) {
-//		flags |= kCGEventFlagMaskCommand;
-//	}
-//	if (alt) {
-//		flags |= kCGEventFlagMaskAlternate;
-//	}
-//	if (ctrl) {
-//		flags |= kCGEventFlagMaskControl;
-//	}
-	//NSLog([NSString stringWithFormat:@"%d",keycode]);
+	long flags = 0;
+	if ([self isShiftDown])
+		flags |= kCGEventFlagMaskShift;
+	if ([self isCmdDown])
+		flags |= kCGEventFlagMaskCommand;
+	if ([self isOptDown])
+		flags |= kCGEventFlagMaskAlternate;
+	if ([self isCtrlDown])
+		flags |= kCGEventFlagMaskControl;
+
 	CGEventRef event1, event2;
-	event1 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, YES); //'z' keydown event
+	event1 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, YES);
 	event2 = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)keycode, NO);
 	if (flags > 0) {
-		CGEventSetFlags(event1, flags);//set shift key down for above event
-		CGEventSetFlags(event2, flags);//set shift key down for above event
+		CGEventSetFlags(event1, flags);//set modifier keys down for above event
+		CGEventSetFlags(event2, flags);//set modifier keys down for above event
 	} else {
-		CGEventSetFlags(event1, 0);//set shift key down for above event
-		CGEventSetFlags(event2, 0);//set shift key down for above event
+		CGEventSetFlags(event1, 0);
+		CGEventSetFlags(event2, 0);
 	}
 	CGEventPost(kCGHIDEventTap, event1);//post event
 	CFRelease(event1);
@@ -310,30 +356,11 @@ CFStringRef createStringForKey(CGKeyCode keyCode) {
 	CGEventPost(kCGHIDEventTap, event2);//post event
 	CFRelease(event2);
 	usleep(50);
-//	if (shift || needsShift) {
-//		CGEventRef shiftUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)56, NO);//'z' keydown event
-//		CGEventPost(kCGHIDEventTap, shiftUp);//post event
-//		CFRelease(shiftUp);
-//		usleep(50);
-//	}
-//	if (cmd) {
-//		CGEventRef cmdUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)55, NO);//'z' keydown event
-//		CGEventPost(kCGHIDEventTap, cmdUp);//post event
-//		CFRelease(cmdUp);
-//		usleep(50);
-//	}
-//	if (alt) {
-//		CGEventRef altUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)58, NO);//'z' keydown event
-//		CGEventPost(kCGHIDEventTap, altUp);//post event
-//		CFRelease(altUp);
-//		usleep(50);
-//	}
-//	if (ctrl) {
-//		CGEventRef ctrlUp = CGEventCreateKeyboardEvent(NULL, (CGKeyCode)59, NO);//'z' keydown event
-//		CGEventPost(kCGHIDEventTap, ctrlUp);//post event
-//		CFRelease(ctrlUp);
-//		usleep(50);
-//	}
 }
+
+@synthesize shiftDown;
+@synthesize optDown;
+@synthesize cmdDown;
+@synthesize ctrlDown;
 
 @end

@@ -166,31 +166,31 @@
 			<key>Button</key>
 			<integer>15</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Modifier</string>
 			<key>Value</key>
-			<string>CTRL</string>
+			<string>CONTROL</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Control key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>16</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Modifier</string>
 			<key>Value</key>
-			<string>ALT</string>
+			<string>OPTION</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Option key</string>
 		</dict>
 		<dict>
 			<key>Button</key>
 			<integer>17</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Modifier</string>
 			<key>Value</key>
-			<string>CMD</string>
+			<string>COMMAND</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Command key</string>
 		</dict>
 		<dict>
 			<key>Button</key>

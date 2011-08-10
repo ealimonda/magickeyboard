@@ -17,6 +17,7 @@
 
 @class MKWindow;
 @class MKLayout;
+@class MKKeyboard;
 
 #pragma mark Interface
 @interface MKController : NSObject {
@@ -43,6 +44,7 @@
 	NSImage *tap;
 
 	MKLayout *currentLayout;
+	MKKeyboard *keyboard;
 
 	NSMutableArray *devices;
 }
@@ -56,5 +58,6 @@
 @property (assign,getter=isTracking) BOOL tracking;
 @property (retain,nonatomic) MKLayout *currentLayout;
 @property (retain) NSMutableArray *devices;
+@property (retain,readonly) MKKeyboard *keyboard;
 
 @end

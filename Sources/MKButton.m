@@ -16,9 +16,10 @@
 #import "MKButton.h"
 
 #pragma mark Constants
-NSString * const kButtonTypeSymbol  = @"Symbol";
-NSString * const kButtonTypeKeypad  = @"Keypad";
-NSString * const kButtonTypeSpecial = @"Special";
+NSString * const kButtonTypeSymbol   = @"Symbol";
+NSString * const kButtonTypeKeypad   = @"Keypad";
+NSString * const kButtonTypeSpecial  = @"Special";
+NSString * const kButtonTypeModifier = @"Modifier";
 
 #pragma mark Implementation
 @implementation MKButton
@@ -99,6 +100,7 @@ NSString * const kButtonTypeSpecial = @"Special";
 	    [aType isEqualToString:kButtonTypeSymbol]
 	    ||[aType isEqualToString:kButtonTypeKeypad]
 	    ||[aType isEqualToString:kButtonTypeSpecial]
+	    ||[aType isEqualToString:kButtonTypeModifier]
 	    )
 		return YES;
 	if ([aType isEqualToString:@"NYI"]) { // FIXME
@@ -114,7 +116,13 @@ NSString * const kButtonTypeSpecial = @"Special";
 	if ([[self type] isEqualToString:kButtonTypeKeypad])
 		return YES;
 	if ([[self type] isEqualToString:kButtonTypeSpecial])
-		return YES; // FIXME
+		return YES;
+	return NO;
+}
+
+- (BOOL)isModifier {
+	if ([[self type] isEqualToString:kButtonTypeModifier])
+		return YES;
 	return NO;
 }
 

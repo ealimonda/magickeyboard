@@ -216,11 +216,11 @@
 			<key>Button</key>
 			<integer>20</integer>
 			<key>Type</key>
-			<string>NYI</string>
+			<string>Modifier</string>
 			<key>Value</key>
 			<string>SHIFT</string>
 			<key>Comment</key>
-			<string>TODO</string>
+			<string>Shift key</string>
 		</dict>
 		<dict>
 			<key>Button</key>

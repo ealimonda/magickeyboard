@@ -145,30 +145,48 @@ NSString * const kLayoutType       = @"Type";
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 
 	for (MKButton *eachKey in currentButtons) {
+		NSString *volMuteSymbol = [NSString stringWithCharacters:(unichar[]){0xD83D, 0xDD08} length:2];
+		NSString *volDownSymbol = [NSString stringWithCharacters:(unichar[]){0xD83D, 0xDD09} length:2];
+		NSString *volUpSymbol = [NSString stringWithCharacters:(unichar[]){0xD83D, 0xDD0A} length:2];
 		NSDictionary *keySymbolReplacements = [NSDictionary dictionaryWithObjectsAndKeys:
 						       @"⏎", @"RETURN",
 						       @"⌫", @"DELETE",
 						       @"⌧", @"KP_CLEAR",
+						       @"⌧", @"CLEAR",
 						       @"⌤", @"KP_ENTER",
+						       @"⌤", @"ENTER",
 						       @"⎋", @"ESCAPE",
 						       @"⇥", @"TAB",
 						       @"↑", @"UP",
 						       @"↓", @"DOWN",
 						       @"←", @"LEFT",
 						       @"→", @"RIGHT",
-
-						       @"⌧", @"CLEAR",
+						       @"space", @"SPACE",
+						       @"⌘", @"COMMAND",
 						       @"⇧", @"SHIFT",
-						       @"⌤", @"ENTER",
+						       @"⇧", @"SHIFTR",
+						       @"⇪", @"CAPS_LOCK",
+						       @"⌥", @"OPTION",
+						       @"⌥", @"OPTIONR",
+						       @"⌃", @"CONTROL",
+						       @"⌃", @"CONTROLR",
+						       @"Fn", @"FN",
+						       volUpSymbol, @"VOL_UP",
+						       volDownSymbol, @"VOL_DOWN",
+						       volMuteSymbol, @"VOL_MUTE",
+						       @"⒣", @"HELP",
+						       @"↖", @"HOME",
+						       @"↘", @"END",
+						       @"⇞", @"PAGE_UP",
+						       @"⇟", @"PAGE_DOWN",
+						       @"⌦", @"FW_DELETE",
+
 						       @"①", @"NUMS",
 						       @"⌨", @"MODIFIERS",
 						       @"⁉", @"SYMS",
 						       @"Ⓐ", @"QWERTY",
-						       @"⌃", @"CTRL",
-						       @"⌥", @"ALT",
-						       @"⌘", @"CMD",
 						       nil];
-		
+
 		NSString *label = [[eachKey value] uppercaseString];
 		if (![label isEqualToString:@"@"] && [keySymbolReplacements valueForKey:label]) // "@" as key makes it crash
 			label = [keySymbolReplacements valueForKey:label];

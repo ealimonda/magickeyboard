@@ -20,7 +20,7 @@
 #import "MKLayout.h"
 #import "MKDevice.h"
 #import "MKFinger.h"
-#import "MKKeycodes.h"
+#import "MKKeyboard.h"
 
 #pragma mark Global Variables
 // FIXME: Eww, globals
@@ -32,10 +32,6 @@ NSString * const keyNUMS      = @"NUMS";
 NSString * const keyQWERTY    = @"QWERTY";
 NSString * const keySYMS      = @"SYMS";
 NSString * const keyMODIFIERS = @"MODIFIERS";
-NSString * const keySHIFT     = @"SHIFT";
-NSString * const keyCTRL      = @"CTRL";
-NSString * const keyALT       = @"ALT";
-NSString * const keyCMD       = @"CMD";
 
 NSString * const kLayout      = @"layout";
 
@@ -93,6 +89,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 						  [[NSBundle mainBundle] bundleIdentifier]] cStringUsingEncoding:
 						 NSASCIIStringEncoding], 0);
 		devices = [[NSMutableArray alloc] init];
+		keyboard = [[MKKeyboard alloc] init];
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
@@ -248,10 +245,9 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		MKButton *button = [[currentLayout currentButtons] objectAtIndex:i];
 		if (![button containsPoint:imgBox.origin size:imgBox.size])
 			continue;
-		if ([button isSingleKeypress]) {
-			[MKKeycodes sendKeycodeForKey:[button value] type:[button type]];
-			lastKeyWasModifier = NO;
-		} else if ([[button value]isEqualToString:keyNUMS]) { // FIXME
+		if ([button isSingleKeypress] || [button isModifier]) {
+			[keyboard sendKeycodeForKey:[button value] type:[button type]];
+		} else if ([[button value] isEqualToString:keyNUMS]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kNumsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
 		} else if ([[button value]isEqualToString:keyQWERTY]) { // FIXME
@@ -263,34 +259,11 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		} else if ([[button value] isEqualToString:keyMODIFIERS]) { // FIXME
 			[self setCurrentLayout:[MKLayout layoutWithName:kModsMini]];
 			[keyboardImage setImage:[currentLayout keyboardImage]];
-		} else {
-			if ([[currentLayout layoutName] isEqualToString:@"Mini QWERTY Keyboard"]) { // FIXME: String
-				if ([[button value] isEqualToString:keySHIFT]) {
-					shift = !shift;
-					[shiftChk setState:shift];
-					lastKeyWasModifier = YES;
-				}
-			} else if ([[currentLayout layoutName] isEqualToString:@"Mini Numbers Keyboard"] // FIXME: Strings
-				   || [[currentLayout layoutName] isEqualToString:@"Mini Symbols Keyboard"]
-				   || [[currentLayout layoutName] isEqualToString:@"Mini Modifiers Keyboard"]) {
-				if ([[button value] isEqualToString:keyCTRL]) {
-					ctrl = !ctrl;
-					[ctrlChk setState:ctrl];
-					lastKeyWasModifier = YES;
-				} else if ([[button value] isEqualToString:keyALT]) {
-					alt = !alt;
-					[altChk setState:alt];
-					lastKeyWasModifier = YES;
-				} else if ([[button value] isEqualToString:keyCMD]) {
-					cmd = !cmd;
-					[cmdChk setState:cmd];
-					lastKeyWasModifier = YES;
-				}
-				if (!ctrl && !cmd && !alt) {
-					lastKeyWasModifier = NO;
-				}
-			}
 		}
+		[shiftChk setState:[keyboard isShiftDown]];
+		[cmdChk setState:[keyboard isCmdDown]];
+		[altChk setState:[keyboard isOptDown]];
+		[ctrlChk setState:[keyboard isCtrlDown]];
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
 		[tapImageView setImage:tap];
 		[tapSound play];
@@ -299,14 +272,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		});
 		[keyboardView addSubview:tapImageView];
 		tapImageView = nil;
-		if (!lastKeyWasModifier) {
-			cmd = NO;
-			[cmdChk setState:0];
-			alt = NO;
-			[altChk setState:0];
-			ctrl = NO;
-			[ctrlChk setState:0];
-		}
 		break;
 	}
 }
@@ -407,5 +372,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 @synthesize tracking;
 @synthesize currentLayout;
 @synthesize devices;
+@synthesize keyboard;
 
 @end

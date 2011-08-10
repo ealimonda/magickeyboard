@@ -20,6 +20,7 @@
 extern NSString * const kButtonTypeSymbol;
 extern NSString * const kButtonTypeKeypad;
 extern NSString * const kButtonTypeSpecial;
+extern NSString * const kButtonTypeModifier;
 
 
 #pragma mark Interface
@@ -50,6 +51,7 @@ extern NSString * const kButtonTypeSpecial;
 + (BOOL)isValidType:(NSString *)aType;
 
 - (BOOL)isSingleKeypress;
+- (BOOL)isModifier;
 
 #pragma mark Properties
 @property (assign) NSInteger buttonID;
