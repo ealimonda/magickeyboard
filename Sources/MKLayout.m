@@ -202,8 +202,12 @@ NSString * const kLayoutType       = @"Type";
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
-		if ([eachKey isSpecialButton])
-			[textField setTextColor:[NSColor whiteColor]];
+		if ([eachKey isSpecialButton]) {
+			if ([[[eachKey value] uppercaseString] isEqualToString:@"SPACE"])
+				[textField setTextColor:[NSColor darkGrayColor]];
+			else
+				[textField setTextColor:[NSColor whiteColor]];
+		}
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];
 		[textField setFont:font];

@@ -326,9 +326,9 @@
 			<key>Button</key>
 			<integer>31</integer>
 			<key>Type</key>
-			<string>Symbol</string>
+			<string>Special</string>
 			<key>Value</key>
-			<string> </string>
+			<string>SPACE</string>
 			<key>Comment</key>
 			<string>Space key</string>
 		</dict>
