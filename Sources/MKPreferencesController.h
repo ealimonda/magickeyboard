@@ -1,7 +1,7 @@
 /*******************************************************************************************************************
- *                                     MagicKeyboard :: MagicKeyboardAppDelegate                                   *
+ *                                     MagicKeyboard :: MKKeyboard                                                 *
  *******************************************************************************************************************
- * File:             MagicKeyboardAppDelegate.h                                                                    *
+ * File:             MKPreferencesController.h                                                                     *
  * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
  *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
  *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -14,23 +14,8 @@
  *******************************************************************************************************************/
 
 #import <Cocoa/Cocoa.h>
-#import <FeedbackReporter/FRFeedbackReporter.h>
-#import "MKController.h"
-
-@class MKPreferencesController;
 
 #pragma mark Interface
-@interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate, FRFeedbackReporterDelegate> {
-	MKPreferencesController *prefsController;
-	IBOutlet NSWindow *window;
-	IBOutlet NSMenu* statusMenu;
-	IBOutlet MKController* magicKeyboardController;
-	NSStatusItem *statusBarItem;
-}
-
-#pragma mark Methods
-- (IBAction)disableTrackingSelector:(id)sender;
-- (IBAction)quitSelector:(id)sender;
-- (IBAction)submitFeedback:(id)sender;
+@interface MKPreferencesController : NSWindowController
 
 @end

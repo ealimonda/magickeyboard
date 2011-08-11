@@ -15,6 +15,7 @@
 
 #import "MagicKeyboardAppDelegate.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
+#import "MKPreferencesController.h"
 
 #pragma mark Implementation
 @implementation MagicKeyboardAppDelegate
@@ -29,6 +30,7 @@
 }
 
 - (void)dealloc {
+	[prefsController release];
 	[statusBarItem release];
 	[super dealloc];
 }
@@ -84,6 +86,14 @@
 	if (magicKeyboardController)
 		[dict setObject:[magicKeyboardController deviceInfoList] forKey:@"Devices"];
 	return dict;
+}
+
+#pragma mark Preferences
+- (IBAction)showPreferences:(id)sender {
+#pragma unused (sender)
+	if (!prefsController)
+		prefsController = [[MKPreferencesController alloc] init];
+	[prefsController showWindow:self];
 }
 
 @end
