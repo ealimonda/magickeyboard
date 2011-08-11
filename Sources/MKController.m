@@ -383,5 +383,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 @synthesize currentLayout;
 @synthesize devices;
 @synthesize keyboard;
+@synthesize layouts;
 
 @end

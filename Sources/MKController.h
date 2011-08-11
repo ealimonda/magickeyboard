@@ -56,5 +56,6 @@
 @property (retain,nonatomic) MKLayout *currentLayout;
 @property (retain) NSMutableArray *devices;
 @property (retain,readonly) MKKeyboard *keyboard;
+@property (retain,readonly) NSMutableDictionary *layouts;
 
 @end

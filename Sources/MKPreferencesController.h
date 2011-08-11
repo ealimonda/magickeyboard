@@ -16,6 +16,11 @@
 #import <Cocoa/Cocoa.h>
 
 #pragma mark Interface
-@interface MKPreferencesController : NSWindowController
+@interface MKPreferencesController : NSWindowController <NSTableViewDataSource> {
+	IBOutlet NSTableView *layoutsTableView;
+	IBOutlet NSTableColumn *layoutsTableSymbol;
+	IBOutlet NSTableColumn *layoutsTableEnabled;
+	IBOutlet NSTableColumn *layoutsTableLayoutName;
+}
 
 @end

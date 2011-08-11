@@ -75,6 +75,7 @@
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+#pragma unused (theApplication)
 	return YES;
 }
 
@@ -98,6 +99,11 @@
 	if (!prefsController)
 		prefsController = [[MKPreferencesController alloc] init];
 	[prefsController showWindow:self];
+}
+
+#pragma mark Properties
+- (MKController *)controller {
+	return magicKeyboardController;
 }
 
 @end

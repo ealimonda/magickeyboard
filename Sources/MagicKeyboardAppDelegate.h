@@ -33,4 +33,7 @@
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
 
+#pragma mark Properties
+@property (retain,readonly) MKController *controller;
+
 @end

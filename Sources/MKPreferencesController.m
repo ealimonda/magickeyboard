@@ -14,6 +14,9 @@
  *******************************************************************************************************************/
 
 #import "MKPreferencesController.h"
+#import "MagicKeyboardAppDelegate.h"
+#import "MKController.h"
+#import "MKLayout.h"
 
 #pragma mark Implementation
 @implementation MKPreferencesController
@@ -30,6 +33,48 @@
 
 - (void)windowDidLoad {
 	[super windowDidLoad];
+}
+
+
+#pragma mark NSTableViewDataSource
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn
+	    row:(NSInteger)rowIndex {
+	MagicKeyboardAppDelegate *sharedAppDelegate = (MagicKeyboardAppDelegate *)[[NSApplication
+										    sharedApplication] delegate];
+	MKController *sharedController = [sharedAppDelegate controller];
+	if (aTableView == layoutsTableView) {
+		NSArray *layouts = [[sharedController layouts] allValues];
+		MKLayout *currentItem = [layouts objectAtIndex:rowIndex];
+		if (aTableColumn == layoutsTableSymbol)
+			return [currentItem layoutSymbol];
+		if (aTableColumn == layoutsTableLayoutName)
+			return [currentItem layoutName];
+		if (aTableColumn == layoutsTableEnabled)
+			return [NSNumber numberWithBool:[[[sharedController currentLayout] layoutIdentifier]
+							 isEqualToString:[currentItem layoutIdentifier]]];
+	}
+	// Unknown table!
+	return nil;
+}
+
+- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn
+	      row:(NSInteger)rowIndex {
+#pragma unused (anObject, aTableColumn, rowIndex)
+	if (aTableView == layoutsTableView) {
+		return;
+	}
+	// Unknown table!
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+	MagicKeyboardAppDelegate *sharedAppDelegate = (MagicKeyboardAppDelegate *)[[NSApplication
+										    sharedApplication] delegate];
+	MKController *sharedController = [sharedAppDelegate controller];
+	if (aTableView == layoutsTableView) {
+		return [[[sharedController layouts] allValues] count];
+	}
+	// Unknown table!
+	return 0;
 }
 
 @end
