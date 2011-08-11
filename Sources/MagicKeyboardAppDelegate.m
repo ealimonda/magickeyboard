@@ -74,6 +74,10 @@
 	[magicKeyboardController setTracking:![sender state]];
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+	return YES;
+}
+
 #pragma mark FRFeedbackReportDelegate
 - (IBAction)submitFeedback:(id)sender {
 #pragma unused (sender)
