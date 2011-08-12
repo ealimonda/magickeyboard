@@ -17,6 +17,7 @@
 #import "MagicKeyboardAppDelegate.h"
 #import "MKController.h"
 #import "MKLayout.h"
+#import "MKDevice.h"
 
 #pragma mark Implementation
 @implementation MKPreferencesController
@@ -52,6 +53,17 @@
 		if (aTableColumn == layoutsTableEnabled)
 			return [NSNumber numberWithBool:[[[sharedController currentLayout] layoutIdentifier]
 							 isEqualToString:[currentItem layoutIdentifier]]];
+	} else if (aTableView == devicesTableView) {
+		NSArray *devices = [sharedController devices];
+		MKDevice *currentItem = [devices objectAtIndex:rowIndex];
+		if (aTableColumn == devicesTableCurrent)
+			return [NSNumber numberWithBool:[currentItem isEnabled]];
+		if (aTableColumn == devicesTableEnabled)
+			return [NSNumber numberWithBool:[currentItem isUsable]];
+		if (aTableColumn == devicesTableType)
+			return [currentItem deviceType];
+		if (aTableColumn == devicesTableID)
+			return [NSString stringWithFormat:@"0x%X", [currentItem address]];
 	}
 	// Unknown table!
 	return nil;
@@ -61,6 +73,8 @@
 	      row:(NSInteger)rowIndex {
 #pragma unused (anObject, aTableColumn, rowIndex)
 	if (aTableView == layoutsTableView) {
+		return;
+	} else if (aTableView == devicesTableView) {
 		return;
 	}
 	// Unknown table!
@@ -72,6 +86,8 @@
 	MKController *sharedController = [sharedAppDelegate controller];
 	if (aTableView == layoutsTableView) {
 		return [[[sharedController layouts] allValues] count];
+	} else if (aTableView == devicesTableView) {
+		return [[sharedController devices] count];
 	}
 	// Unknown table!
 	return 0;

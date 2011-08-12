@@ -21,6 +21,12 @@
 	IBOutlet NSTableColumn *layoutsTableSymbol;
 	IBOutlet NSTableColumn *layoutsTableEnabled;
 	IBOutlet NSTableColumn *layoutsTableLayoutName;
+	
+	IBOutlet NSTableView *devicesTableView;
+	IBOutlet NSTableColumn *devicesTableCurrent;
+	IBOutlet NSTableColumn *devicesTableEnabled;
+	IBOutlet NSTableColumn *devicesTableType;
+	IBOutlet NSTableColumn *devicesTableID;
 }
 
 @end

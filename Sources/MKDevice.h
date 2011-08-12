@@ -89,7 +89,10 @@ typedef struct MTDeviceInfo MTDeviceInfo;
 
 - (NSString *)getInfo;
 
+- (NSString *)deviceType;
+
 - (BOOL)isValid;
+- (BOOL)isUsable;
 
 //- (uint32)unk_v0;
 - (uint32)unk_k0;
@@ -97,7 +100,7 @@ typedef struct MTDeviceInfo MTDeviceInfo;
 - (uint32)unk_k1;
 //- (uint32)unk_v2;
 - (uint32)unk_k2;
-//- (uint32)address;
+- (uint32)address;
 //- (uint32)unk_v3;
 - (uint32)family;
 //- (uint32)bcdver;

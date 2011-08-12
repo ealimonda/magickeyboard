@@ -137,6 +137,19 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	];
 }
 
+- (NSString *)deviceType {
+	switch ([self family]) {
+	case kDeviceFamilyMBPTrackpad:
+		return @"MacBook Pro Trackpad";
+	case kDeviceFamilyMagicTrackpad:
+		return @"Magic Trackpad";
+	case kDeviceFamilyMagicMouse:
+		return @"Magic Mouse";
+	default:
+		return [NSString stringWithFormat:@"Unknown Device (family 0x%x)", [self family]];
+	}
+}
+
 #pragma mark Special accessors
 - (BOOL)isValid {
 	MKDevice *sampleDevice = [MKDevice sampleDevice];
@@ -150,6 +163,19 @@ const MTDeviceInfo multiTouchSampleDevice = {
 		return NO;
 	return YES;
 
+}
+
+- (BOOL)isUsable {
+	if (![self isValid])
+		return NO;
+	switch ([self family]) {
+	case kDeviceFamilyMBPTrackpad:
+	case kDeviceFamilyMagicTrackpad:
+		return YES;
+	case kDeviceFamilyMagicMouse:
+	default:
+		return NO;
+	}
 }
 
 //- (uint32)unk_v0;
@@ -167,7 +193,9 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	return device.unk_k2;
 }
 
-//- (uint32)address;
+- (uint32)address {
+	return device.address;
+}
 //- (uint32)unk_v3;
 - (uint32)family {
 	return device.family;

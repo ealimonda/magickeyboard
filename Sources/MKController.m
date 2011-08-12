@@ -113,31 +113,20 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
 	for (NSUInteger i = 0; i < [deviceList count]; i++) {
 		MKDevice *thisDevice = [MKDevice deviceWithMTDeviceRef:(MTDeviceInfo *)[deviceList objectAtIndex:i] ID:i];
+		if (!thisDevice)
+			continue;
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [thisDevice getInfo]);
 #endif // __DEBUGGING__
+		NSLog(@"Detected %@ (#%lu).", [thisDevice deviceType], i);
+		if ([thisDevice  isUsable])
+			[thisDevice setEnabled:YES];
+		[[self devices] addObject:thisDevice];
 		if (![thisDevice isValid]) {
 			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [thisDevice getInfo]);
-			if (!thisDevice)
-				continue;
 		}
-		switch ([thisDevice family]) {
-		case kDeviceFamilyMBPTrackpad:
-			NSLog(@"Detected MacBook Pro trackpad (#%lu).", i);
-			break;
-		case kDeviceFamilyMagicMouse:
-			NSLog(@"Detected Magic Mouse (#%lu).  Ignoring it.", i);
+		if (![thisDevice isUsable])
 			continue;
-		case kDeviceFamilyMagicTrackpad:
-			NSLog(@"Detected Magic Trackpad (#%lu).", i);
-			break;
-		default:
-			NSLog(@"Detected device (#%lu) family %d.  Ignoring it.", i, [thisDevice family]);
-			NSLog(@"Device info: %@", [thisDevice getInfo]);
-			continue;
-		}
-		[thisDevice setEnabled:YES];
-		[[self devices] addObject:thisDevice];
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
