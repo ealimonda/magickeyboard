@@ -198,6 +198,15 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 - (void)processTouch:(Touch *)touch onDevice:(MKDevice *)device {
 	if (![self isTracking])
 		return;
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if ([defaults boolForKey:@"HoldFnToTrack"]) {
+		CGEventRef event = CGEventCreate(NULL);
+		CGEventFlags modifiers = CGEventGetFlags(event);
+		CFRelease(event);
+		if (!(modifiers&kCGEventFlagMaskSecondaryFn))
+			return;
+	}
+
 	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
 

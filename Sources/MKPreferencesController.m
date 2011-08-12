@@ -27,7 +27,6 @@
 	self = [super initWithWindowNibName:@"Preferences"];
 	if (self) {
 		[[self window] setLevel:NSModalPanelWindowLevel];
-		// Initialization code here.
 	}
 	return self;
 }
@@ -35,7 +34,6 @@
 - (void)windowDidLoad {
 	[super windowDidLoad];
 }
-
 
 #pragma mark NSTableViewDataSource
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn
