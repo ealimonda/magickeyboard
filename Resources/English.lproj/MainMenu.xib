@@ -1553,14 +1553,6 @@
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
 					</object>
-					<object class="NSMenuItem" id="981883809">
-						<reference key="NSMenu" ref="671178036"/>
-						<string key="NSTitle">Automatically Check for Updates</string>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="35465992"/>
-						<reference key="NSMixedImage" ref="502551668"/>
-					</object>
 					<object class="NSMenuItem" id="924163043">
 						<reference key="NSMenu" ref="671178036"/>
 						<bool key="NSIsDisabled">YES</bool>
@@ -1590,11 +1582,11 @@
 			<object class="NSCustomObject" id="5274994">
 				<string key="NSClassName">MKController</string>
 			</object>
-			<object class="NSCustomObject" id="904437037">
-				<string key="NSClassName">SUUpdater</string>
-			</object>
 			<object class="NSUserDefaultsController" id="457728991">
 				<bool key="NSSharedInstance">YES</bool>
+			</object>
+			<object class="NSCustomObject" id="904437037">
+				<string key="NSClassName">SUUpdater</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -2377,30 +2369,6 @@
 					<int key="connectionID">626</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdates:</string>
-						<reference key="source" ref="904437037"/>
-						<reference key="destination" ref="392461927"/>
-					</object>
-					<int key="connectionID">629</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: automaticallyChecksForUpdates</string>
-						<reference key="source" ref="981883809"/>
-						<reference key="destination" ref="904437037"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="981883809"/>
-							<reference key="NSDestination" ref="904437037"/>
-							<string key="NSLabel">value: automaticallyChecksForUpdates</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">automaticallyChecksForUpdates</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">634</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">layoutsMenu</string>
 						<reference key="source" ref="5274994"/>
@@ -2423,6 +2391,14 @@
 						<reference key="destination" ref="5274994"/>
 					</object>
 					<int key="connectionID">638</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">checkForUpdates:</string>
+						<reference key="source" ref="904437037"/>
+						<reference key="destination" ref="392461927"/>
+					</object>
+					<int key="connectionID">641</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3487,7 +3463,6 @@
 							<reference ref="520595333"/>
 							<reference ref="488510288"/>
 							<reference ref="392461927"/>
-							<reference ref="981883809"/>
 							<reference ref="776090370"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -3613,11 +3588,6 @@
 						<reference key="parent" ref="671178036"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">627</int>
-						<reference key="object" ref="904437037"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">625</int>
 						<reference key="object" ref="488510288"/>
 						<reference key="parent" ref="671178036"/>
@@ -3625,11 +3595,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">628</int>
 						<reference key="object" ref="392461927"/>
-						<reference key="parent" ref="671178036"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">630</int>
-						<reference key="object" ref="981883809"/>
 						<reference key="parent" ref="671178036"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -3641,6 +3606,11 @@
 						<int key="objectID">636</int>
 						<reference key="object" ref="776090370"/>
 						<reference key="parent" ref="671178036"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">640</int>
+						<reference key="object" ref="904437037"/>
+						<reference key="parent" ref="0"/>
 					</object>
 				</object>
 			</object>
@@ -3814,11 +3784,10 @@
 					<string>607.IBPluginDependency</string>
 					<string>623.IBPluginDependency</string>
 					<string>625.IBPluginDependency</string>
-					<string>627.IBPluginDependency</string>
 					<string>628.IBPluginDependency</string>
-					<string>630.IBPluginDependency</string>
 					<string>631.IBPluginDependency</string>
 					<string>636.IBPluginDependency</string>
+					<string>640.IBPluginDependency</string>
 					<string>72.IBPluginDependency</string>
 					<string>73.IBPluginDependency</string>
 					<string>74.IBPluginDependency</string>
@@ -4019,7 +3988,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -4034,7 +4002,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">638</int>
+			<int key="maxID">643</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4147,12 +4115,14 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>checkForUpdates:</string>
 							<string>disableTrackingSelector:</string>
 							<string>quitSelector:</string>
 							<string>submitFeedback:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4162,12 +4132,17 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>checkForUpdates:</string>
 							<string>disableTrackingSelector:</string>
 							<string>quitSelector:</string>
 							<string>submitFeedback:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">checkForUpdates:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">disableTrackingSelector:</string>
 								<string key="candidateClassName">id</string>
