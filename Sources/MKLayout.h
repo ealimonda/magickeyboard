@@ -16,6 +16,9 @@
 #import <Cocoa/Cocoa.h>
 #import "MKLayoutDefinition.h"
 
+#pragma mark Constants
+extern NSString * const kLayoutsDirectory;
+
 #pragma mark Interface
 @interface MKLayout : NSObject {
 	NSString *layoutIdentifier;

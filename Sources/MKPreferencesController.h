@@ -16,8 +16,20 @@
 #import <Cocoa/Cocoa.h>
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
+#pragma mark Constants
+extern NSString * const kSettingCurrentLayout;
+extern NSString * const kSettingGlobalHotkey;
+extern NSString * const kSettingGlobalHotkeyEnabled;
+extern NSString * const kSettingHoldFnToTrack;
+extern NSString * const kSettingSUAutomaticallyUpdate;
+extern NSString * const kSettingSUEnableAutomaticChecks;
+extern NSString * const kSettingSUScheduledCheckInterval;
+extern NSString * const kSettingSUSendProfileInfo;
+
 #pragma mark Interface
 @interface MKPreferencesController : NSWindowController <NSTableViewDataSource> {
+	IBOutlet SRRecorderControl *shortcutRecorder;
+	
 	IBOutlet NSTableView *layoutsTableView;
 	IBOutlet NSTableColumn *layoutsTableSymbol;
 	IBOutlet NSTableColumn *layoutsTableEnabled;
@@ -35,5 +47,6 @@
 //		  reason:(NSString **)aReason;
 //- (BOOL)shortcutRecorderShouldCheckMenu:(SRRecorderControl *)aRecorder;
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
+- (IBAction)setHotkey:(id)sender;
 
 @end

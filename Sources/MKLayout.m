@@ -29,6 +29,7 @@ NSString * const kLayoutKeys            = @"Keys";
 NSString * const kLayoutButtonID        = @"Button";
 NSString * const kLayoutValue           = @"Value";
 NSString * const kLayoutType            = @"Type";
+NSString * const kLayoutsDirectory      = @"Layouts";
 
 #pragma mark -
 #pragma mark Implementation
@@ -83,7 +84,7 @@ NSString * const kLayoutType            = @"Type";
 #endif // __DEBUGGING__
 	NSDictionary *layout = [[NSDictionary alloc]
 				initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
-										  inDirectory:@"Layouts"]];
+										  inDirectory:kLayoutsDirectory]];
 	if (layout)
 		[self setValid:YES];
 	

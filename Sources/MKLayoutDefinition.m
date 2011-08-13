@@ -31,6 +31,7 @@ NSString * const kDefinitionYStart         = @"yStart";
 NSString * const kDefinitionXEnd           = @"xEnd";
 NSString * const kDefinitionYEnd           = @"yEnd";
 NSString * const kDefinitionSpecialButton  = @"SpecialButton";
+NSString * const kDefinitionsDirectory     = @"Definitions";
 
 #pragma mark -
 #pragma mark Implementation
@@ -79,7 +80,7 @@ NSString * const kDefinitionSpecialButton  = @"SpecialButton";
 #endif // __DEBUGGING__
 	NSDictionary *definition = [[NSDictionary alloc] initWithContentsOfFile:
 				    [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"
-							       inDirectory:@"Definitions"]];
+							       inDirectory:kDefinitionsDirectory]];
 	if (definition)
 		[self setValid:YES];
 
@@ -91,7 +92,7 @@ NSString * const kDefinitionSpecialButton  = @"SpecialButton";
 		[self setKeyboardImage:[[[NSImage alloc] initWithData:
 					 [NSData dataWithContentsOfFile:
 					  [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"
-								     inDirectory:@"Definitions"]]] autorelease]];
+								     inDirectory:kDefinitionsDirectory]]] autorelease]];
 		[self setLayoutSize:NSMakeSize([[background valueForKey:kDefinitionWidth] integerValue],
 					       [[background valueForKey:kDefinitionHeight] integerValue])];
 	}

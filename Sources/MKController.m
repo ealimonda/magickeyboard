@@ -15,6 +15,7 @@
 
 #import "MKController.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
+#import "MKPreferencesController.h"
 #import "AlphaAnimation.h"
 #import "MKButton.h"
 #import "MKLayout.h"
@@ -28,8 +29,6 @@ id refToSelf;
 dispatch_queue_t myQueue;
 
 #pragma mark Constants
-NSString * const kLayout      = @"layout";
-
 NSString * const kDefaultLayout = @"QwertyMini";
 
 const double kSamplingInterval = 0.02;
@@ -85,7 +84,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 - (void)loadLayouts {
 	[layoutsMenu removeAllItems];
 	[layouts removeAllObjects];
-	NSArray *foundLayouts = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"Layouts"];
+	NSArray *foundLayouts = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:kLayoutsDirectory];
 	for (NSString *eachLayout in foundLayouts) {
 		NSString *layoutName = [[eachLayout stringByDeletingPathExtension] lastPathComponent];
 		MKLayout *thisLayout = [MKLayout layoutWithName:layoutName];
@@ -100,8 +99,9 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 - (void)awakeFromNib {
 	[self loadLayouts];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:kDefaultLayout, kLayout, nil]];
-	NSString *layout = [defaults stringForKey:kLayout];
+	[defaults registerDefaults:[NSDictionary
+				    dictionaryWithObjectsAndKeys:kDefaultLayout, kSettingCurrentLayout, nil]];
+	NSString *layout = [defaults stringForKey:kSettingCurrentLayout];
 	for (NSMenuItem *eachItem in [layoutsMenu itemArray]) {
 		[eachItem setState:0];
 	}
@@ -199,7 +199,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	if (![self isTracking])
 		return;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if ([defaults boolForKey:@"HoldFnToTrack"]) {
+	if ([defaults boolForKey:kSettingHoldFnToTrack]) {
 		CGEventRef event = CGEventCreate(NULL);
 		CGEventFlags modifiers = CGEventGetFlags(event);
 		CFRelease(event);
@@ -309,7 +309,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		return;
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setValue:[[self currentLayout] layoutIdentifier] forKey:kLayout];
+	[defaults setValue:[[self currentLayout] layoutIdentifier] forKey:kSettingCurrentLayout];
 	[defaults synchronize];
 }
 

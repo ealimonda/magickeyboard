@@ -19,6 +19,16 @@
 #import "MKLayout.h"
 #import "MKDevice.h"
 
+#pragma mark Constants
+NSString * const kSettingCurrentLayout            = @"CurrentLayout";
+NSString * const kSettingGlobalHotkey             = @"GlobalHotkey";
+NSString * const kSettingGlobalHotkeyEnabled      = @"GlobalHotkeyEnabled";
+NSString * const kSettingHoldFnToTrack            = @"HoldFnToTrack";
+NSString * const kSettingSUAutomaticallyUpdate    = @"SUAutomaticallyUpdate";
+NSString * const kSettingSUEnableAutomaticChecks  = @"SUEnableAutomaticChecks";
+NSString * const kSettingSUScheduledCheckInterval = @"SUScheduledCheckInterval";
+NSString * const kSettingSUSendProfileInfo        = @"SUSendProfileInfo";
+
 #pragma mark Implementation
 @implementation MKPreferencesController
 
@@ -32,7 +42,10 @@
 }
 
 - (void)windowDidLoad {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[super windowDidLoad];
+	[shortcutRecorder setCanCaptureGlobalHotKeys:YES];
+	[shortcutRecorder bind:@"value" toObject:defaults withKeyPath:kSettingGlobalHotkey options:nil];
 }
 
 #pragma mark NSTableViewDataSource
@@ -93,11 +106,8 @@
 
 #pragma mark SRRecorder
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo {
-#pragma unused (aRecorder)
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setValue:[NSNumber numberWithInteger:newKeyCombo.code] forKey:@"ShortcutKey"];
-	[defaults setValue:[NSNumber numberWithUnsignedInteger:newKeyCombo.flags] forKey:@"ShortcutFlags"];
-	[defaults synchronize];
+#pragma unused (aRecorder, newKeyCombo)
+	[self setHotkey:nil];
 }
 
 #if 0
@@ -109,8 +119,14 @@
 
 - (BOOL)shortcutRecorderShouldCheckMenu:(SRRecorderControl *)aRecorder {
 #pragma unused (aRecorder)
-	return NO;
+	return YES;
 }
 #endif // 0
+
+- (IBAction)setHotkey:(id)sender {
+#pragma unused (sender)
+	MagicKeyboardAppDelegate *delegate = (MagicKeyboardAppDelegate *)[[NSApplication sharedApplication] delegate];
+	[delegate setHotkey];
+}
 
 @end

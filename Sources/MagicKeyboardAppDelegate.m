@@ -51,23 +51,8 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 	[statusBarItem setHighlightMode:YES];
 	[statusBarItem setMenu:statusMenu];
 	[[FRFeedbackReporter sharedReporter] reportIfCrash];
-
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	KeyCombo globalShortcut = {0, 0};
-	globalShortcut.code = [defaults integerForKey:@"ShortcutKey"];
-	globalShortcut.flags = SRCocoaToCarbonFlags([[defaults valueForKey:@"ShortcutFlags"] unsignedIntValue]);
 	
-	//Register the Hotkeys
-	EventHotKeyRef gMyHotKeyRef;
-	EventHotKeyID gMyHotKeyID;
-	EventTypeSpec eventType;
-	eventType.eventClass=kEventClassKeyboard;
-	eventType.eventKind=kEventHotKeyPressed;
-	InstallApplicationEventHandler(&MKHotKeyHandler, 1, &eventType, self, NULL);
-	gMyHotKeyID.signature='htk1';
-	gMyHotKeyID.id = 1;
-	RegisterEventHotKey(0, (UInt32)globalShortcut.flags, gMyHotKeyID,
-			    GetApplicationEventTarget(), 0, &gMyHotKeyRef);
+	[self setHotkey];
 }
 
 - (IBAction)quitSelector:(id)sender {
@@ -118,6 +103,33 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 
 - (void)toggleTrackingSelector {
 	[self disableTrackingSelector:disableTrackingMenuItem];
+}
+
+- (IBAction)setHotkey {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSDictionary *globalHotkey = [defaults dictionaryForKey:kSettingGlobalHotkey];
+
+	static EventHotKeyRef globalHotKeyRef = NULL;
+	if (globalHotKeyRef)
+		UnregisterEventHotKey(globalHotKeyRef);
+	
+	if (!globalHotkey || ![defaults boolForKey:kSettingGlobalHotkeyEnabled])
+		return;
+	EventHotKeyID gMyHotKeyID;
+	EventTypeSpec eventType;
+	eventType.eventClass=kEventClassKeyboard;
+	eventType.eventKind=kEventHotKeyPressed;
+	InstallApplicationEventHandler(&MKHotKeyHandler, 1, &eventType, self, NULL);
+	gMyHotKeyID.signature='htk1';
+	gMyHotKeyID.id = 1;
+	
+	KeyCombo globalShortcut = {0, 0};
+	globalShortcut.code = [[globalHotkey valueForKey:@"keyCode"] integerValue];
+	globalShortcut.flags = SRCocoaToCarbonFlags([[globalHotkey valueForKey:@"modifierFlags"] unsignedIntValue]);
+	
+	//Register the Hotkeys
+	RegisterEventHotKey((UInt32)globalShortcut.code, (UInt32)globalShortcut.flags, gMyHotKeyID,
+			    GetApplicationEventTarget(), 0, &globalHotKeyRef);
 }
 
 #pragma Actions

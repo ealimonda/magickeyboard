@@ -34,6 +34,7 @@
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
 - (void)toggleTrackingSelector;
+- (IBAction)setHotkey;
 
 #pragma mark Properties
 @property (retain,readonly) MKController *controller;
