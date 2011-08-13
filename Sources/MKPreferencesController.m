@@ -91,4 +91,26 @@
 	return 0;
 }
 
+#pragma mark SRRecorder
+- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo {
+#pragma unused (aRecorder)
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setValue:[NSNumber numberWithInteger:newKeyCombo.code] forKey:@"ShortcutKey"];
+	[defaults setValue:[NSNumber numberWithUnsignedInteger:newKeyCombo.flags] forKey:@"ShortcutFlags"];
+	[defaults synchronize];
+}
+
+#if 0
+- (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder isKeyCode:(NSInteger)keyCode andFlagsTaken:(NSUInteger)flags
+		  reason:(NSString **)aReason {
+#pragma unused (aRecorder, keyCode, flags, aReason)
+	return NO;
+}
+
+- (BOOL)shortcutRecorderShouldCheckMenu:(SRRecorderControl *)aRecorder {
+#pragma unused (aRecorder)
+	return NO;
+}
+#endif // 0
+
 @end

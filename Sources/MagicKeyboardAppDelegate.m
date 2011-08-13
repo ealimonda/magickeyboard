@@ -15,10 +15,12 @@
 
 #import "MagicKeyboardAppDelegate.h"
 #import <FeedbackReporter/FRFeedbackReporter.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
 #import "MKPreferencesController.h"
 
 #pragma mark Implementation
 @implementation MagicKeyboardAppDelegate
+OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData);
 
 #pragma mark Initialization
 - (id)init {
@@ -49,6 +51,23 @@
 	[statusBarItem setHighlightMode:YES];
 	[statusBarItem setMenu:statusMenu];
 	[[FRFeedbackReporter sharedReporter] reportIfCrash];
+
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	KeyCombo globalShortcut = {0, 0};
+	globalShortcut.code = [defaults integerForKey:@"ShortcutKey"];
+	globalShortcut.flags = SRCocoaToCarbonFlags([[defaults valueForKey:@"ShortcutFlags"] unsignedIntValue]);
+	
+	//Register the Hotkeys
+	EventHotKeyRef gMyHotKeyRef;
+	EventHotKeyID gMyHotKeyID;
+	EventTypeSpec eventType;
+	eventType.eventClass=kEventClassKeyboard;
+	eventType.eventKind=kEventHotKeyPressed;
+	InstallApplicationEventHandler(&MKHotKeyHandler, 1, &eventType, self, NULL);
+	gMyHotKeyID.signature='htk1';
+	gMyHotKeyID.id = 1;
+	RegisterEventHotKey(0, (UInt32)globalShortcut.flags, gMyHotKeyID,
+			    GetApplicationEventTarget(), 0, &gMyHotKeyRef);
 }
 
 - (IBAction)quitSelector:(id)sender {
@@ -60,24 +79,12 @@
 	return NO;
 }
 
-- (IBAction)disableTrackingSelector:(id)sender {
-	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
-	
-	if ([sender state]) {
-		[window orderOut:self];
-		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
-	} else {
-		[window makeKeyAndOrderFront:self];
-		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
-	}
-
-	[magicKeyboardController setTracking:![sender state]];
-}
-
+#if 0 // Disabeld because for some not better known reason it'll terminate the app after [window orderOut:(id)]
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
 #pragma unused (theApplication)
 	return YES;
 }
+#endif // 0
 
 #pragma mark FRFeedbackReportDelegate
 - (IBAction)submitFeedback:(id)sender {
@@ -99,6 +106,33 @@
 	if (!prefsController)
 		prefsController = [[MKPreferencesController alloc] init];
 	[prefsController showWindow:self];
+}
+
+#pragma mark Hotkeys
+OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData) {
+#pragma unused (nextHandler, theEvent, userData)
+	MagicKeyboardAppDelegate *appDelegate = (MagicKeyboardAppDelegate *)userData;
+	[appDelegate toggleTrackingSelector];
+	return noErr;
+}
+
+- (void)toggleTrackingSelector {
+	[self disableTrackingSelector:disableTrackingMenuItem];
+}
+
+#pragma Actions
+- (IBAction)disableTrackingSelector:(id)sender {
+	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
+	
+	if ([sender state]) {
+		[window orderOut:self];
+		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
+	} else {
+		[window makeKeyAndOrderFront:self];
+		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
+	}
+	
+	[magicKeyboardController setTracking:![sender state]];
 }
 
 #pragma mark Properties

@@ -23,8 +23,9 @@
 @interface MagicKeyboardAppDelegate : NSObject <NSApplicationDelegate, FRFeedbackReporterDelegate> {
 	MKPreferencesController *prefsController;
 	IBOutlet NSWindow *window;
-	IBOutlet NSMenu* statusMenu;
-	IBOutlet MKController* magicKeyboardController;
+	IBOutlet NSMenu *statusMenu;
+	IBOutlet MKController *magicKeyboardController;
+	IBOutlet NSMenuItem *disableTrackingMenuItem;
 	NSStatusItem *statusBarItem;
 }
 
@@ -32,6 +33,7 @@
 - (IBAction)disableTrackingSelector:(id)sender;
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
+- (void)toggleTrackingSelector;
 
 #pragma mark Properties
 @property (retain,readonly) MKController *controller;

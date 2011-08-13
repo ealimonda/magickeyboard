@@ -14,6 +14,7 @@
  *******************************************************************************************************************/
 
 #import "MKWindow.h"
+#import "MagicKeyboardAppDelegate.h"
 
 #pragma mark Implementation
 @implementation MKWindow
@@ -43,6 +44,11 @@
 
 - (BOOL)acceptsFirstResponder {
 	return NO;
+}
+
+- (void)close {
+	MagicKeyboardAppDelegate *delegate = (MagicKeyboardAppDelegate *)[[NSApplication sharedApplication] delegate];
+	[delegate toggleTrackingSelector];
 }
 
 @end

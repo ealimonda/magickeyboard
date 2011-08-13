@@ -14,6 +14,7 @@
  *******************************************************************************************************************/
 
 #import <Cocoa/Cocoa.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 #pragma mark Interface
 @interface MKPreferencesController : NSWindowController <NSTableViewDataSource> {
@@ -28,5 +29,11 @@
 	IBOutlet NSTableColumn *devicesTableType;
 	IBOutlet NSTableColumn *devicesTableID;
 }
+
+#pragma mark Methods
+//- (BOOL)shortcutRecorder:(SRRecorderControl *)aRecorder isKeyCode:(NSInteger)keyCode andFlagsTaken:(NSUInteger)flags
+//		  reason:(NSString **)aReason;
+//- (BOOL)shortcutRecorderShouldCheckMenu:(SRRecorderControl *)aRecorder;
+- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 
 @end
