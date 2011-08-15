@@ -857,7 +857,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 											<object class="NSTextField" id="502638906">
 												<reference key="NSNextResponder" ref="800178872"/>
 												<int key="NSvFlags">266</int>
-												<string key="NSFrame">{{14, 310}, {645, 34}}</string>
+												<string key="NSFrame">{{14, 327}, {645, 17}}</string>
 												<reference key="NSSuperview" ref="800178872"/>
 												<reference key="NSNextKeyView" ref="348579616"/>
 												<string key="NSReuseIdentifierKey">_NS:3596</string>
@@ -865,7 +865,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<object class="NSTextFieldCell" key="NSCell" id="770835427">
 													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">205520896</int>
-													<string key="NSContents">This list shows all the multitouch devices that were detected.  Please drag the one you wish to use to the top of the list and uncheck any devices you wish to ignore.</string>
+													<string key="NSContents">This list shows all the multitouch devices that were detected.</string>
 													<object class="NSFont" key="NSSupport">
 														<string key="NSName">LucidaGrande</string>
 														<double key="NSSize">13</double>
@@ -890,9 +890,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 															<object class="NSTableView" id="120264171">
 																<reference key="NSNextResponder" ref="866058542"/>
 																<int key="NSvFlags">256</int>
-																<string key="NSFrameSize">{637, 238}</string>
+																<string key="NSFrameSize">{637, 255}</string>
 																<reference key="NSSuperview" ref="866058542"/>
-																<reference key="NSNextKeyView" ref="242298809"/>
+																<reference key="NSNextKeyView" ref="987921652"/>
 																<string key="NSReuseIdentifierKey">_NS:1197</string>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTableHeaderView" key="NSHeaderView" id="969868392">
@@ -1051,7 +1051,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 																<int key="NSTableViewGroupRowStyle">1</int>
 															</object>
 														</object>
-														<string key="NSFrame">{{1, 17}, {637, 238}}</string>
+														<string key="NSFrame">{{1, 17}, {637, 255}}</string>
 														<reference key="NSSuperview" ref="348579616"/>
 														<reference key="NSNextKeyView" ref="120264171"/>
 														<string key="NSReuseIdentifierKey">_NS:1195</string>
@@ -1098,15 +1098,16 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 													</object>
 													<reference ref="1048848768"/>
 												</object>
-												<string key="NSFrame">{{17, 46}, {639, 256}}</string>
+												<string key="NSFrame">{{17, 46}, {639, 273}}</string>
 												<reference key="NSSuperview" ref="800178872"/>
-												<reference key="NSNextKeyView" ref="866058542"/>
+												<reference key="NSNextKeyView" ref="242298809"/>
 												<string key="NSReuseIdentifierKey">_NS:1193</string>
 												<int key="NSsFlags">133682</int>
 												<reference key="NSVScroller" ref="987921652"/>
 												<reference key="NSHScroller" ref="344232805"/>
 												<reference key="NSContentView" ref="866058542"/>
 												<reference key="NSHeaderClipView" ref="242298809"/>
+												<reference key="NSCornerView" ref="1048848768"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 											<object class="NSButton" id="648049524">
@@ -1138,6 +1139,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<int key="NSvFlags">289</int>
 												<string key="NSFrame">{{557, 16}, {99, 23}}</string>
 												<reference key="NSSuperview" ref="800178872"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:1566</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="81983619">
@@ -2203,6 +2205,17 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<object class="IBPartialClassDescription">
 					<string key="className">MKPreferencesController</string>
 					<string key="superclassName">NSWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">setHotkey:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">setHotkey:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">setHotkey:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">

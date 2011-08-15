@@ -26,6 +26,7 @@
 		16C96C3C1328DBB0007A69C3 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16C96C301328DB85007A69C3 /* Sparkle.framework */; };
 		16CD143513F39F9100F60DF6 /* MKPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CD143413F39F9100F60DF6 /* MKPreferencesController.m */; };
 		16CD143713F3A31200F60DF6 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CD143613F3A31200F60DF6 /* Preferences.xib */; };
+		16D177AA13F98B300026EFE2 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16D177A913F98B300026EFE2 /* Defaults.plist */; };
 		16DB7DE413EE80B4002D0F2D /* Definitions in Resources */ = {isa = PBXBuildFile; fileRef = 16DB7DE313EE80B4002D0F2D /* Definitions */; };
 		16DB7DE613EE80C6002D0F2D /* Layouts in Resources */ = {isa = PBXBuildFile; fileRef = 16DB7DE513EE80C6002D0F2D /* Layouts */; };
 		16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 16F53919131B1678003AE6F1 /* Credits.rtf */; };
@@ -83,6 +84,7 @@
 		16CD143313F39F9100F60DF6 /* MKPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKPreferencesController.h; sourceTree = "<group>"; };
 		16CD143413F39F9100F60DF6 /* MKPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKPreferencesController.m; sourceTree = "<group>"; };
 		16CD143613F3A31200F60DF6 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		16D177A913F98B300026EFE2 /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		16DB7DE313EE80B4002D0F2D /* Definitions */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Definitions; sourceTree = "<group>"; };
 		16DB7DE513EE80C6002D0F2D /* Layouts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Layouts; sourceTree = "<group>"; };
 		16F53919131B1678003AE6F1 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				16DB7DE313EE80B4002D0F2D /* Definitions */,
 				165ECD061330415B00AD0A0D /* MagicKeyboard.icns */,
 				16A01DB3132B106D00116980 /* MKdsa_pub.pem */,
+				16D177A913F98B300026EFE2 /* Defaults.plist */,
 				16F53919131B1678003AE6F1 /* Credits.rtf */,
 				165ECD0D1330420000AD0A0D /* MagicKeyboardMenu.png */,
 				165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */,
@@ -303,6 +306,7 @@
 				16DB7DE413EE80B4002D0F2D /* Definitions in Resources */,
 				16DB7DE613EE80C6002D0F2D /* Layouts in Resources */,
 				16CD143713F3A31200F60DF6 /* Preferences.xib in Resources */,
+				16D177AA13F98B300026EFE2 /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,8 +29,6 @@ id refToSelf;
 dispatch_queue_t myQueue;
 
 #pragma mark Constants
-NSString * const kDefaultLayout = @"QwertyMini";
-
 const double kSamplingInterval = 0.02;
 
 #pragma mark -
@@ -99,8 +97,8 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 - (void)awakeFromNib {
 	[self loadLayouts];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults registerDefaults:[NSDictionary
-				    dictionaryWithObjectsAndKeys:kDefaultLayout, kSettingCurrentLayout, nil]];
+	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
+				    [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"]]];
 	NSString *layout = [defaults stringForKey:kSettingCurrentLayout];
 	for (NSMenuItem *eachItem in [layoutsMenu itemArray]) {
 		[eachItem setState:0];

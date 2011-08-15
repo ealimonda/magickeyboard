@@ -45,6 +45,6 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>MKdsa_pub.pem</string>
 	<key>SUScheduledCheckInterval</key>
-	<integer>7200</integer>
+	<integer>86400</integer>
 </dict>
 </plist>
