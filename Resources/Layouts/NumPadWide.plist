@@ -7,7 +7,7 @@
 *******************************************************************************************************************
 *                                                MagicKeyboard                                                    *
 *******************************************************************************************************************
-* File:             NumPadFull.plist                                                                              *
+* File:             NumPadWide.plist                                                                              *
 * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
 *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
 *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -20,9 +20,9 @@
 *******************************************************************************************************************
  	</string>
 	<key>LayoutName</key>
-	<string>Full Numeric Keypad</string>
+	<string>Wide Numeric Keypad</string>
 	<key>Definition</key>
-	<string>NumPad</string>
+	<string>WideNumPad</string>
 	<key>Symbol</key>
 	<string>①</string>
 	<key>Keys</key>
