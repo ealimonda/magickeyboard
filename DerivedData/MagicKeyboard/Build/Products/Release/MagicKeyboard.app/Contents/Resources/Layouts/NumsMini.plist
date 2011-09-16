@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Header</key>
+	<string>
+*******************************************************************************************************************
+*                                                MagicKeyboard                                                    *
+*******************************************************************************************************************
+* File:             NumsMini.plist                                                                                *
+* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+*                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+*                       the GNU General Public License as published by the Free Software Foundation, either       *
+*                       version 3 of the License, or (at your option) any later version.                          *
+*                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+*                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+*                   See the GNU General Public License for more details.                                          *
+*                   You should have received a copy of the GNU General Public License along with this program.    *
+*                       If not, see http://www.gnu.org/licenses/                                                  *
+*******************************************************************************************************************
+ 	</string>
+	<key>LayoutName</key>
+	<string>Mini Numbers Keyboard</string>
+	<key>Definition</key>
+	<string>iOSNums</string>
+	<key>Symbol</key>
+	<string>①</string>
+	<key>Keys</key>
+	<array>
+		<dict>
+			<key>Button</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>1</string>
+			<key>Comment</key>
+			<string>1 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>2</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>2</string>
+			<key>Comment</key>
+			<string>2 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>3</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>3</string>
+			<key>Comment</key>
+			<string>3 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>4</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>4</string>
+			<key>Comment</key>
+			<string>4 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>5</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>5</string>
+			<key>Comment</key>
+			<string>5 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>6</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>6</string>
+			<key>Comment</key>
+			<string>6 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>7</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>7</string>
+			<key>Comment</key>
+			<string>7 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>8</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>8</string>
+			<key>Comment</key>
+			<string>8 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>9</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>9</string>
+			<key>Comment</key>
+			<string>9 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>10</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>0</string>
+			<key>Comment</key>
+			<string>0 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>11</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>-</string>
+			<key>Comment</key>
+			<string>- key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>12</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>/</string>
+			<key>Comment</key>
+			<string>/ key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>13</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>:</string>
+			<key>Comment</key>
+			<string>: key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>14</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>;</string>
+			<key>Comment</key>
+			<string>; key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>15</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>(</string>
+			<key>Comment</key>
+			<string>( key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>16</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>)</string>
+			<key>Comment</key>
+			<string>) key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>17</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>$</string>
+			<key>Comment</key>
+			<string>$ key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>18</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>&amp;</string>
+			<key>Comment</key>
+			<string>&amp; key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>19</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>@</string>
+			<key>Comment</key>
+			<string>@ key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>20</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>&quot;</string>
+			<key>Comment</key>
+			<string>&quot; key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>21</integer>
+			<key>Type</key>
+			<string>Layout</string>
+			<key>Value</key>
+			<string>SymbolsMini</string>
+			<key>Comment</key>
+			<string>Layout switch to SymbolsMini</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>22</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>.</string>
+			<key>Comment</key>
+			<string>. key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>23</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>,</string>
+			<key>Comment</key>
+			<string>, key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>24</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>?</string>
+			<key>Comment</key>
+			<string>? key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>25</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>!</string>
+			<key>Comment</key>
+			<string>! key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>26</integer>
+			<key>Type</key>
+			<string>Symbol</string>
+			<key>Value</key>
+			<string>&apos;</string>
+			<key>Comment</key>
+			<string>&apos; key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>27</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>DELETE</string>
+			<key>Comment</key>
+			<string>Delete key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>28</integer>
+			<key>Type</key>
+			<string>Layout</string>
+			<key>Value</key>
+			<string>QwertyMini</string>
+			<key>Comment</key>
+			<string>Layout switch to QwertyMini</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>29</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>SPACE</string>
+			<key>Comment</key>
+			<string>Space key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>30</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>RETURN</string>
+			<key>Comment</key>
+			<string>Return key</string>
+		</dict>
+	</array>
+</dict>
+</plist>

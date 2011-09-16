@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDateString</key>
-	<string>2011-07-27 20:50:07</string>
+	<string>2011-09-16 03:06:41</string>
 	<key>BuildMachineOSBuild</key>
-	<string>11A511</string>
+	<string>11B26</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -21,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.2</string>
+	<string>0.2.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.1.2.20110727.205007</string>
+	<string>0.2.0.20110916.030641</string>
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
@@ -61,6 +61,6 @@
 	<key>SUPublicDSAKeyFile</key>
 	<string>MKdsa_pub.pem</string>
 	<key>SUScheduledCheckInterval</key>
-	<integer>7200</integer>
+	<integer>86400</integer>
 </dict>
 </plist>
