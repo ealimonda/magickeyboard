@@ -109,6 +109,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	[self switchToLayoutNamed:layout];
 
 	NSMutableArray *deviceList = (NSMutableArray *)MTDeviceCreateList(); //grab our device list
+	BOOL foundUsableDevice = NO;
 	for (NSUInteger i = 0; i < [deviceList count]; i++) {
 		MKDevice *thisDevice = [MKDevice deviceWithMTDeviceRef:(MTDeviceInfo *)[deviceList objectAtIndex:i] ID:i];
 		if (!thisDevice)
@@ -125,11 +126,12 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		}
 		if (![thisDevice isUsable])
 			continue;
+		foundUsableDevice = YES;
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
-	if ([[self devices] count] < 1) {
+	if (!foundUsableDevice) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
 				@"We couldn't detect any compatible multitouch device connected to your system.\n"
 				"If a multitouch devie is connected but not detected, please inform us, so that it'll "
