@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Header</key>
+	<string>
+*******************************************************************************************************************
+*                                                MagicKeyboard                                                    *
+*******************************************************************************************************************
+* File:             ModsMini.plist                                                                                *
+* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+*                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+*                       the GNU General Public License as published by the Free Software Foundation, either       *
+*                       version 3 of the License, or (at your option) any later version.                          *
+*                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+*                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+*                   See the GNU General Public License for more details.                                          *
+*                   You should have received a copy of the GNU General Public License along with this program.    *
+*                       If not, see http://www.gnu.org/licenses/                                                  *
+*******************************************************************************************************************
+ 	</string>
+	<key>LayoutName</key>
+	<string>Mini Modifiers Keyboard</string>
+	<key>Definition</key>
+	<string>ModsMini</string>
+	<key>Symbol</key>
+	<string>⌨</string>
+	<key>Keys</key>
+	<array>
+		<dict>
+			<key>Button</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>ESCAPE</string>
+			<key>Comment</key>
+			<string>Escape key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>2</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F1</string>
+			<key>Comment</key>
+			<string>F1 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>3</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F2</string>
+			<key>Comment</key>
+			<string>F2 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>4</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F3</string>
+			<key>Comment</key>
+			<string>F3 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>5</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F4</string>
+			<key>Comment</key>
+			<string>F4 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>6</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F5</string>
+			<key>Comment</key>
+			<string>F5 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>7</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F6</string>
+			<key>Comment</key>
+			<string>F6 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>8</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F7</string>
+			<key>Comment</key>
+			<string>F7 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>9</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F8</string>
+			<key>Comment</key>
+			<string>F8 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>10</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F9</string>
+			<key>Comment</key>
+			<string>F9 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>11</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F10</string>
+			<key>Comment</key>
+			<string>F10 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>12</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F11</string>
+			<key>Comment</key>
+			<string>F11 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>13</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F12</string>
+			<key>Comment</key>
+			<string>F12 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>14</integer>
+			<key>Type</key>
+			<string>Layout</string>
+			<key>Value</key>
+			<string>QwertyMini</string>
+			<key>Comment</key>
+			<string>Layout switch to QwertMini</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>15</integer>
+			<key>Type</key>
+			<string>Modifier</string>
+			<key>Value</key>
+			<string>CONTROL</string>
+			<key>Comment</key>
+			<string>Control key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>16</integer>
+			<key>Type</key>
+			<string>Modifier</string>
+			<key>Value</key>
+			<string>OPTION</string>
+			<key>Comment</key>
+			<string>Option key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>17</integer>
+			<key>Type</key>
+			<string>Modifier</string>
+			<key>Value</key>
+			<string>COMMAND</string>
+			<key>Comment</key>
+			<string>Command key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>18</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>TAB</string>
+			<key>Comment</key>
+			<string>Tab key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>19</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>UP</string>
+			<key>Comment</key>
+			<string>Arrow Up key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>20</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>DOWN</string>
+			<key>Comment</key>
+			<string>Arrow Down key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>21</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>LEFT</string>
+			<key>Comment</key>
+			<string>Arrow Left key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>22</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>RIGHT</string>
+			<key>Comment</key>
+			<string>Arrow Right key</string>
+		</dict>
+	</array>
+</dict>
+</plist>
