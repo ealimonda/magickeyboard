@@ -227,6 +227,10 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 	return keys;
 }
 
+- (CGFloat)ratio {
+	return [self layoutSize].width / [self layoutSize].height;
+}
+
 #pragma mark -
 #pragma mark Properties
 @synthesize layoutIdentifier;

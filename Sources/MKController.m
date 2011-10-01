@@ -60,7 +60,6 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 	self = [super init];
 	if (self) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
-		mtSize = NSMakeSize(311, 368);
 		tracking = YES;
 		currentLayout = nil;
 		keyLabels = [[NSMutableArray alloc] init];
@@ -209,9 +208,17 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
+	
+	CGFloat verticalMultiplier = [currentLayout ratio] / [device ratio];
+	if (verticalMultiplier < 1)
+		verticalMultiplier = 1.0;
+	CGFloat horizontalMultiplier = [device ratio] / [currentLayout ratio];
+	if (horizontalMultiplier < 1)
+		horizontalMultiplier = 1.0;
+	CGFloat horizontalOrigin = ([currentLayout layoutSize].width - (horizontalMultiplier * [currentLayout layoutSize].width))*0.5;
 
-	NSRect imgBox = NSMakeRect((CGFloat)((mtSize.width*(touch->normalized.pos.x))*1.25),
-				   (CGFloat)((mtSize.height*(touch->normalized.pos.y))*1.10),
+	NSRect imgBox = NSMakeRect((CGFloat)([currentLayout layoutSize].width*touch->normalized.pos.x*horizontalMultiplier+horizontalOrigin),
+				   (CGFloat)([currentLayout layoutSize].height*touch->normalized.pos.y*verticalMultiplier),
 				   33, 34);
 
 	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1];

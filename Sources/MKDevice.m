@@ -219,6 +219,10 @@ const MTDeviceInfo multiTouchSampleDevice = {
 	return device.unk_k5;
 }
 
+- (CGFloat)ratio {
+	return (CGFloat)device.width / (CGFloat)device.height;
+}
+
 
 #pragma mark Properties
 @synthesize deviceID;

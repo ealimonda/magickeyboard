@@ -112,6 +112,7 @@ typedef struct MTDeviceInfo MTDeviceInfo;
 - (uint32)unk_k4;
 //- (uint32)unk_v4;
 - (uint32)unk_k5;
+- (CGFloat)ratio;
 
 @property (assign) NSUInteger deviceID;
 @property (assign,getter=isEnabled) BOOL enabled;
