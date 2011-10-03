@@ -42,6 +42,8 @@ extern NSString * const kLayoutsDirectory;
 
 - (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts;
 
+- (CGFloat)ratio;
+
 #pragma mark Properties
 @property (retain) NSString *layoutIdentifier;
 @property (retain) NSString *layoutName;

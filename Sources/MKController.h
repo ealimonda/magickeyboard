@@ -29,7 +29,6 @@
 
 	IBOutlet NSMenu *layoutsMenu;
 	BOOL tracking;
-	NSSize mtSize;
 	IBOutlet NSImageView *keyboardImage;
 	IBOutlet NSView *keyboardView;
 	NSMutableArray *keyLabels;
