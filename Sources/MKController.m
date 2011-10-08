@@ -55,6 +55,38 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 #pragma mark Implementation
 @implementation MKController
 
+CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRef event, void *refcon) {
+#pragma unused (tapProxy)
+// TODO: Add a pref for this (and a warning about it being experimental)
+	MKController *controller = refcon;
+	if (![controller isTracking])
+		return event;
+	NSEvent *myEvent = [NSEvent eventWithCGEvent:event];
+	switch (type) {
+	case kCGEventLeftMouseDown:
+	case kCGEventLeftMouseUp:
+		if ([myEvent subtype] == 3) {
+			return NULL; // Ignore clicks
+		}
+		break;
+	case kCGEventMouseMoved:
+		if ([myEvent subtype] == 3) {
+			CGAssociateMouseAndMouseCursorPosition(false);
+//			if ([myEvent deltaX] == 0 || [myEvent deltaY] == 0)
+//				break;
+//			NSPoint mouseLocation = [NSEvent mouseLocation];
+//			NSInteger x = CGEventGetIntegerValueField(event, kCGMouseEventDeltaX);
+//			NSInteger y = CGEventGetIntegerValueField(event, kCGMouseEventDeltaY);
+//			NSLog(@"%f,%f / %f,%f", mouseLocation.x, mouseLocation.y, [myEvent deltaX], [myEvent deltaY]);
+//			CGWarpMouseCursorPosition(CGPointMake(mouseLocation.x/*+[myEvent deltaX]*/, mouseLocation.y/*-[myEvent deltaY]*/));
+		} else
+			CGAssociateMouseAndMouseCursorPosition(true);
+		break;
+	}
+	return event;   // return the tapped event (might have been modified, or set to NULL)
+	// returning NULL means the event isn't passed forward
+}
+
 #pragma mark Initialization
 - (id)init {
 	self = [super init];
@@ -129,6 +161,21 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
+	CFMachPortRef tapg = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault,
+					      CGEventMaskBit(kCGEventLeftMouseDown)
+					      |CGEventMaskBit(kCGEventLeftMouseUp)
+					      |CGEventMaskBit(kCGEventMouseMoved),
+					      processEventTap, self);
+
+	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tapg, 0);
+	if (!source) {   // bail out if the run loop source couldn't be created
+		NSLog(@"runloop source failed");
+		[NSApp terminate:nil];
+	}
+	CFRelease(tapg);   // can release the tap here as the source will retain it; see below, however
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
+	CFRelease(source);  // can release the source here as the run loop will retain it
+	
 	CFRelease((CFMutableArrayRef)deviceList);
 	if (!foundUsableDevice) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
@@ -221,7 +268,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 				   (CGFloat)([currentLayout layoutSize].height*touch->normalized.pos.y*verticalMultiplier),
 				   33, 34);
 
-	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1];
+	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1]; // FIXME: Make sure it exists
 	switch (touch->state) {
 	case 1: // FIXME: Constants
 		if ([thisFinger isActive])
