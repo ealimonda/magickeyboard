@@ -96,6 +96,7 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	if (self) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
 		tracking = YES;
+		holdingCorner = NO;
 		currentLayout = nil;
 		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
@@ -278,8 +279,40 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	NSRect imgBox = NSMakeRect((CGFloat)(deviceWidth*touch->normalized.pos.x-horizontalOrigin),
 				   (CGFloat)(deviceHeight*touch->normalized.pos.y-verticalOrigin),
 				   33, 34);
-
+	
 	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1]; // FIXME: Make sure it exists
+
+	// Check for corner touch
+	if ([defaults boolForKey:kSettingHoldCornerToTrack]) {
+		NSInteger st = touch->state;
+		if (st == 1 || st == 7 || touch->timestamp < [thisFinger last] + kSamplingInterval) {
+			// Position is a bitmask where the 0x1 bit means "right" and the 0x2 bit means "top"
+			NSInteger position = [defaults integerForKey:kSettingHoldCornerPosition];
+			NSInteger positionX = (position&0x1) ? 1 : 0;
+			NSInteger positionY = (position&0x2) ? 1 : 0;
+			MKButton *corner = [MKButton buttonWithID:0
+							   xStart:positionX*deviceWidth-horizontalOrigin
+							     xEnd:positionX*deviceWidth-horizontalOrigin+40
+							   yStart:positionY*deviceHeight-verticalOrigin
+							     yEnd:positionY*deviceHeight-verticalOrigin+40
+							  special:NO];
+			if ([corner containsPoint:imgBox.origin size:imgBox.size]) {
+				if (st == 7)
+					[self setHoldingCorner:NO];
+				else
+					[self setHoldingCorner:YES];
+				[thisFinger setLast:touch->timestamp];
+				return;
+			}
+		}
+	} else {
+		[self setHoldingCorner:YES];
+	}
+	
+	if (![self isHoldingCorner]) {
+		return;
+	}
+
 	switch (touch->state) {
 	case 1: // FIXME: Constants
 		if ([thisFinger isActive])
@@ -443,6 +476,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 #pragma mark -
 #pragma mark Properties
 @synthesize tracking;
+@synthesize holdingCorner;
 @synthesize currentLayout;
 @synthesize devices;
 @synthesize keyboard;

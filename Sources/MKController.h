@@ -29,6 +29,7 @@
 
 	IBOutlet NSMenu *layoutsMenu;
 	BOOL tracking;
+	BOOL holdingCorner;
 	IBOutlet NSImageView *keyboardImage;
 	IBOutlet NSView *keyboardView;
 	NSMutableArray *keyLabels;
@@ -52,6 +53,7 @@
 
 #pragma mark Properties
 @property (assign,getter=isTracking) BOOL tracking;
+@property (assign,getter=isHoldingCorner) BOOL holdingCorner;
 @property (retain,nonatomic) MKLayout *currentLayout;
 @property (retain) NSMutableArray *devices;
 @property (retain,readonly) MKKeyboard *keyboard;
