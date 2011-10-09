@@ -57,11 +57,11 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 
 CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRef event, void *refcon) {
 #pragma unused (tapProxy)
-// TODO: Add a pref for this (and a warning about it being experimental)
 	MKController *controller = refcon;
 	if (![controller isTracking])
 		return event;
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:kSettingIgnoreTrackpadInput])
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if (![defaults boolForKey:kSettingIgnoreTrackpadInput] || ![defaults boolForKey:kSettingGlobalHotkeyEnabled])
 		return event;
 
 	NSEvent *myEvent = [NSEvent eventWithCGEvent:event];
@@ -179,7 +179,6 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	CFRelease(tapg);   // can release the tap here as the source will retain it; see below, however
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
 	CFRelease(source);  // can release the source here as the run loop will retain it
-	// TODO: Make sure there's a terminate hotkey!!!
 	
 	if (!foundUsableDevice) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
