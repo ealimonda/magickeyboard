@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">11A511</string>
+		<string key="IBDocument.SystemVersion">11B26</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
 		<string key="IBDocument.AppKitVersion">1138</string>
 		<string key="IBDocument.HIToolboxVersion">566.00</string>
@@ -1353,6 +1353,7 @@
 							<string key="NSFrameSize">{480, 186}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="1019195323">
 								<int key="NSCellFlags">130560</int>
@@ -1371,7 +1372,7 @@
 						<object class="NSButton" id="250503779">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{362, 189}, {87, 18}}</string>
+							<string key="NSFrame">{{123, 189}, {35, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1051665696"/>
@@ -1379,7 +1380,7 @@
 							<object class="NSButtonCell" key="NSCell" id="636452080">
 								<int key="NSCellFlags">604110336</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Command</string>
+								<string key="NSContents">⌘</string>
 								<object class="NSFont" key="NSSupport" id="843742656">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -1404,7 +1405,7 @@
 						<object class="NSButton" id="850944972">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{8, 189}, {128, 18}}</string>
+							<string key="NSFrame">{{8, 189}, {35, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="920919994"/>
@@ -1412,7 +1413,7 @@
 							<object class="NSButtonCell" key="NSCell" id="454676581">
 								<int key="NSCellFlags">604110336</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Shift (Caps Lock)</string>
+								<string key="NSContents">⇧</string>
 								<reference key="NSSupport" ref="843742656"/>
 								<reference key="NSControlView" ref="850944972"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -1428,7 +1429,7 @@
 						<object class="NSButton" id="920919994">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{156, 189}, {69, 18}}</string>
+							<string key="NSFrame">{{47, 189}, {33, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="796793267"/>
@@ -1436,7 +1437,7 @@
 							<object class="NSButtonCell" key="NSCell" id="764181209">
 								<int key="NSCellFlags">604110336</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Control</string>
+								<string key="NSContents">⌃</string>
 								<reference key="NSSupport" ref="843742656"/>
 								<reference key="NSControlView" ref="920919994"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -1452,7 +1453,7 @@
 						<object class="NSButton" id="796793267">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{250, 189}, {90, 18}}</string>
+							<string key="NSFrame">{{84, 189}, {35, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="250503779"/>
@@ -1460,7 +1461,7 @@
 							<object class="NSButtonCell" key="NSCell" id="523238871">
 								<int key="NSCellFlags">604110336</int>
 								<int key="NSCellFlags2">0</int>
-								<string key="NSContents">Alt/Option</string>
+								<string key="NSContents">⌥</string>
 								<reference key="NSSupport" ref="843742656"/>
 								<reference key="NSControlView" ref="796793267"/>
 								<int key="NSButtonFlags">1211912703</int>
@@ -2962,11 +2963,11 @@
 						<reference key="object" ref="439893737"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="796793267"/>
-							<reference ref="920919994"/>
 							<reference ref="850944972"/>
-							<reference ref="250503779"/>
 							<reference ref="1051665696"/>
+							<reference ref="920919994"/>
+							<reference ref="796793267"/>
+							<reference ref="250503779"/>
 						</object>
 						<reference key="parent" ref="972006081"/>
 						<string key="objectName">keyboardView</string>

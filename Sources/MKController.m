@@ -259,16 +259,24 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
 	
-	CGFloat verticalMultiplier = [currentLayout ratio] / [device ratio];
-	if (verticalMultiplier < 1)
-		verticalMultiplier = 1.0;
-	CGFloat horizontalMultiplier = [device ratio] / [currentLayout ratio];
-	if (horizontalMultiplier < 1)
-		horizontalMultiplier = 1.0;
-	CGFloat horizontalOrigin = ([currentLayout layoutSize].width - (horizontalMultiplier * [currentLayout layoutSize].width))*0.5;
+	// layout height * verticalMultiplier => (virtual) device height
+	CGFloat layoutHeight = [currentLayout layoutSize].height;
+	CGFloat verticalMultiplier = MAX(1.0, [currentLayout ratio] / [device ratio]);
+	CGFloat deviceHeight = verticalMultiplier * layoutHeight;
+	CGFloat verticalPosition = [defaults integerForKey:kSettingVerticalPosition] / 100.0;
+	CGFloat verticalOrigin = MAX(0.0, deviceHeight * verticalPosition - 0.5 * layoutHeight);
+	verticalOrigin = floor(MIN(deviceHeight-layoutHeight, verticalOrigin));
 
-	NSRect imgBox = NSMakeRect((CGFloat)([currentLayout layoutSize].width*touch->normalized.pos.x*horizontalMultiplier+horizontalOrigin),
-				   (CGFloat)([currentLayout layoutSize].height*touch->normalized.pos.y*verticalMultiplier),
+	// layout height * horizontalMultiplier => (virtual) device height
+	CGFloat layoutWidth = [currentLayout layoutSize].width;
+	CGFloat horizontalMultiplier = MAX(1.0, [device ratio] / [currentLayout ratio]);
+	CGFloat deviceWidth = horizontalMultiplier * layoutWidth;
+	CGFloat horizontalPosition = [defaults integerForKey:kSettingHorizontalPosition] / 100.0;
+	CGFloat horizontalOrigin = MAX(0.0, deviceWidth * horizontalPosition - 0.5 * layoutWidth);
+	horizontalOrigin = floor(MIN(deviceWidth-layoutWidth, horizontalOrigin));
+
+	NSRect imgBox = NSMakeRect((CGFloat)(deviceWidth*touch->normalized.pos.x-horizontalOrigin),
+				   (CGFloat)(deviceHeight*touch->normalized.pos.y-verticalOrigin),
 				   33, 34);
 
 	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1]; // FIXME: Make sure it exists
