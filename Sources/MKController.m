@@ -61,6 +61,9 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	MKController *controller = refcon;
 	if (![controller isTracking])
 		return event;
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:kSettingIgnoreTrackpadInput])
+		return event;
+
 	NSEvent *myEvent = [NSEvent eventWithCGEvent:event];
 	switch (type) {
 	case kCGEventLeftMouseDown:
@@ -161,12 +164,13 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
+	CFRelease((CFMutableArrayRef)deviceList);
+
 	CFMachPortRef tapg = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault,
 					      CGEventMaskBit(kCGEventLeftMouseDown)
 					      |CGEventMaskBit(kCGEventLeftMouseUp)
 					      |CGEventMaskBit(kCGEventMouseMoved),
 					      processEventTap, self);
-
 	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tapg, 0);
 	if (!source) {   // bail out if the run loop source couldn't be created
 		NSLog(@"runloop source failed");
@@ -175,8 +179,8 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	CFRelease(tapg);   // can release the tap here as the source will retain it; see below, however
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
 	CFRelease(source);  // can release the source here as the run loop will retain it
+	// TODO: Make sure there's a terminate hotkey!!!
 	
-	CFRelease((CFMutableArrayRef)deviceList);
 	if (!foundUsableDevice) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
 				@"We couldn't detect any compatible multitouch device connected to your system.\n"

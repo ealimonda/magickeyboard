@@ -323,7 +323,7 @@
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="558199223">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">272630784</int>
 													<string key="NSContents">Position on the Trackpad:</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -369,7 +369,7 @@
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="888583767">
-													<int key="NSCellFlags">-1543373312</int>
+													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents">Require a finger on a corner of the trackpad:</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -393,17 +393,17 @@
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="775802908"/>
 												<string key="NSReuseIdentifierKey">_NS:266</string>
+												<bool key="NSEnabled">YES</bool>
 												<int key="NSNumRows">2</int>
 												<int key="NSNumCols">2</int>
 												<object class="NSMutableArray" key="NSCells">
 													<bool key="EncodedWithXMLCoder">YES</bool>
 													<object class="NSButtonCell" id="983083121">
-														<int key="NSCellFlags">-1543373312</int>
+														<int key="NSCellFlags">-2080244224</int>
 														<int key="NSCellFlags2">0</int>
 														<string key="NSContents">Top Left</string>
 														<reference key="NSSupport" ref="979813708"/>
 														<reference key="NSControlView" ref="65656916"/>
-														<int key="NSTag">1</int>
 														<int key="NSButtonFlags">1211912703</int>
 														<int key="NSButtonFlags2">0</int>
 														<object class="NSButtonImageSource" key="NSAlternateImage" id="1058391857">
@@ -415,11 +415,12 @@
 														<int key="NSPeriodicInterval">25</int>
 													</object>
 													<object class="NSButtonCell" id="1003441296">
-														<int key="NSCellFlags">604110336</int>
+														<int key="NSCellFlags">67239424</int>
 														<int key="NSCellFlags2">0</int>
 														<string key="NSContents">Top Right</string>
 														<reference key="NSSupport" ref="979813708"/>
 														<reference key="NSControlView" ref="65656916"/>
+														<int key="NSTag">1</int>
 														<int key="NSButtonFlags">1211912703</int>
 														<int key="NSButtonFlags2">0</int>
 														<reference key="NSAlternateImage" ref="1058391857"/>
@@ -427,11 +428,12 @@
 														<int key="NSPeriodicInterval">75</int>
 													</object>
 													<object class="NSButtonCell" id="906197184">
-														<int key="NSCellFlags">604110336</int>
+														<int key="NSCellFlags">67239424</int>
 														<int key="NSCellFlags2">0</int>
 														<string key="NSContents">Bottom Left</string>
 														<reference key="NSSupport" ref="979813708"/>
 														<reference key="NSControlView" ref="65656916"/>
+														<int key="NSTag">2</int>
 														<int key="NSButtonFlags">1211912703</int>
 														<int key="NSButtonFlags2">0</int>
 														<object class="NSImage" key="NSNormalImage">
@@ -483,11 +485,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 														<int key="NSPeriodicInterval">75</int>
 													</object>
 													<object class="NSButtonCell" id="962352211">
-														<int key="NSCellFlags">604110336</int>
+														<int key="NSCellFlags">67239424</int>
 														<int key="NSCellFlags2">0</int>
 														<string key="NSContents">Bottom Right</string>
 														<reference key="NSSupport" ref="979813708"/>
 														<reference key="NSControlView" ref="65656916"/>
+														<int key="NSTag">3</int>
 														<int key="NSButtonFlags">1211912703</int>
 														<int key="NSButtonFlags2">0</int>
 														<reference key="NSAlternateImage" ref="1058391857"/>
@@ -500,7 +503,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<int key="NSMatrixFlags">1151868928</int>
 												<string key="NSCellClass">NSActionCell</string>
 												<object class="NSButtonCell" key="NSProtoCell" id="422256811">
-													<int key="NSCellFlags">604110336</int>
+													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents">Radio</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -625,7 +628,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:51</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSSliderCell" key="NSCell" id="875875109">
-													<int key="NSCellFlags">-1543373312</int>
+													<int key="NSCellFlags">-2080244224</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents"/>
 													<string key="NSCellIdentifier">_NS:51</string>
@@ -650,14 +653,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:40</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSSliderCell" key="NSCell" id="609875899">
-													<int key="NSCellFlags">604110336</int>
+													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents"/>
 													<string key="NSCellIdentifier">_NS:40</string>
 													<reference key="NSControlView" ref="227866770"/>
 													<double key="NSMaxValue">100</double>
 													<double key="NSMinValue">1</double>
-													<double key="NSValue">50</double>
+													<double key="NSValue">100</double>
 													<double key="NSAltIncValue">0.0</double>
 													<int key="NSNumberOfTickMarks">3</int>
 													<int key="NSTickMarkPosition">0</int>
@@ -675,7 +678,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="749069809">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">4195328</int>
 													<string key="NSContents">Top</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -695,7 +698,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="436854131">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">4195328</int>
 													<string key="NSContents">Left</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -715,7 +718,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="172288589">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">138413056</int>
 													<string key="NSContents">Centered</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -735,7 +738,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="648191224">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">71304192</int>
 													<string key="NSContents">Right</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -755,7 +758,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="123147396">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">4195328</int>
 													<string key="NSContents">Center</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -775,7 +778,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:3936</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="902526939">
-													<int key="NSCellFlags">605158976</int>
+													<int key="NSCellFlags">68288064</int>
 													<int key="NSCellFlags2">4195328</int>
 													<string key="NSContents">Bottom</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -795,7 +798,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="253335000">
-													<int key="NSCellFlags">604110336</int>
+													<int key="NSCellFlags">67239424</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents">Ignore trackpad input (Use trackpad as a keyboard only)</string>
 													<reference key="NSSupport" ref="979813708"/>
@@ -843,7 +846,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 																<int key="NSvFlags">256</int>
 																<string key="NSFrameSize">{637, 300}</string>
 																<reference key="NSSuperview" ref="56899428"/>
-																<reference key="NSNextKeyView" ref="615871222"/>
+																<reference key="NSNextKeyView" ref="768590621"/>
 																<string key="NSReuseIdentifierKey">_NS:1197</string>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSTableHeaderView" key="NSHeaderView" id="656747920">
@@ -1047,14 +1050,13 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 												</object>
 												<string key="NSFrame">{{17, 26}, {639, 318}}</string>
 												<reference key="NSSuperview" ref="533648422"/>
-												<reference key="NSNextKeyView" ref="768590621"/>
+												<reference key="NSNextKeyView" ref="56899428"/>
 												<string key="NSReuseIdentifierKey">_NS:1193</string>
 												<int key="NSsFlags">133682</int>
 												<reference key="NSVScroller" ref="615871222"/>
 												<reference key="NSHScroller" ref="57077274"/>
 												<reference key="NSContentView" ref="56899428"/>
 												<reference key="NSHeaderClipView" ref="768590621"/>
-												<reference key="NSCornerView" ref="477013749"/>
 												<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 											</object>
 										</object>
@@ -1664,6 +1666,102 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="destination" ref="190527993"/>
 					</object>
 					<int key="connectionID">132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.HoldCornerToTrack</string>
+						<reference key="source" ref="364990856"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="364990856"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">value: values.HoldCornerToTrack</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.HoldCornerToTrack</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">156</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">enabled: values.HoldCornerToTrack</string>
+						<reference key="source" ref="65656916"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="65656916"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">enabled: values.HoldCornerToTrack</string>
+							<string key="NSBinding">enabled</string>
+							<string key="NSKeyPath">values.HoldCornerToTrack</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">158</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedTag: values.HoldCornerPosition</string>
+						<reference key="source" ref="65656916"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="65656916"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">selectedTag: values.HoldCornerPosition</string>
+							<string key="NSBinding">selectedTag</string>
+							<string key="NSKeyPath">values.HoldCornerPosition</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">160</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.IgnoreTrackpadInput</string>
+						<reference key="source" ref="775802908"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="775802908"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">value: values.IgnoreTrackpadInput</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.IgnoreTrackpadInput</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">162</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.HorizontalPosition</string>
+						<reference key="source" ref="169861483"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="169861483"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">value: values.HorizontalPosition</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.HorizontalPosition</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">164</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.VerticalPosition</string>
+						<reference key="source" ref="227866770"/>
+						<reference key="destination" ref="879199257"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="227866770"/>
+							<reference key="NSDestination" ref="879199257"/>
+							<string key="NSLabel">value: values.VerticalPosition</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.VerticalPosition</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">166</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2603,7 +2701,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">152</int>
+			<int key="maxID">166</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
