@@ -146,7 +146,7 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 
 #pragma mark Utilities
 - (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts {
-	NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
+	NSFont *font = [NSFont fontWithName:@"Futura" size:20];
 
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 
