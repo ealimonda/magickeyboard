@@ -21,6 +21,8 @@
  	</string>
 	<key>DefinitionName</key>
 	<string>Wide Numeric Keypad Layout</string>
+	<key>Style</key>
+	<string>Default</string>
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>

@@ -20,6 +20,7 @@
 NSString * const kUntitledLayoutDefinition = @"Untitled Layout Definition";
 
 NSString * const kDefinitionDefinitionName = @"DefinitionName";
+NSString * const kDefinitionStyle          = @"Style";
 NSString * const kDefinitionBackground     = @"Background";
 NSString * const kDefinitionFileName       = @"FileName";
 NSString * const kDefinitionHeight         = @"Height";
@@ -33,6 +34,10 @@ NSString * const kDefinitionYEnd           = @"yEnd";
 NSString * const kDefinitionSpecialButton  = @"SpecialButton";
 NSString * const kDefinitionsDirectory     = @"Definitions";
 
+NSString * const kStyleDefault             = @"Default";
+NSString * const kStyleIOs                 = @"iOS";
+NSString * const kStyleAluminium           = @"Aluminium";
+
 #pragma mark -
 #pragma mark Implementation
 @implementation MKLayoutDefinition
@@ -45,6 +50,7 @@ NSString * const kDefinitionsDirectory     = @"Definitions";
 		layoutSize = NSMakeSize(0, 0);
 		keyboardImage = nil;
 		currentButtons = [[NSMutableArray alloc] init];
+		style = [[NSString alloc] initWithString:@"Default"];
 		valid = NO;
 	}
 	return self;
@@ -62,6 +68,7 @@ NSString * const kDefinitionsDirectory     = @"Definitions";
 	[layoutDefinitionName release];
 	[keyboardImage release];
 	[currentButtons release];
+	[style release];
 
 	[super dealloc];
 }
@@ -85,6 +92,7 @@ NSString * const kDefinitionsDirectory     = @"Definitions";
 		[self setValid:YES];
 
 	[self setLayoutDefinitionName:[definition valueForKey:kDefinitionDefinitionName]];
+	[self setStyle:[definition valueForKey:kDefinitionStyle]];
 	
 	NSDictionary *background = [definition valueForKey:kDefinitionBackground];
 	if (background) {
@@ -123,6 +131,8 @@ NSString * const kDefinitionsDirectory     = @"Definitions";
 	
 	if (![self layoutDefinitionName])
 		[self setLayoutDefinitionName:kUntitledLayoutDefinition];
+	if (![self style])
+		[self setStyle:kStyleDefault];
 	if (![self keyboardImage])
 		[self setValid:NO];
 	NSSize size = [self layoutSize];
@@ -145,6 +155,7 @@ NSString * const kDefinitionsDirectory     = @"Definitions";
 @synthesize layoutSize;
 @synthesize keyboardImage;
 @synthesize currentButtons;
+@synthesize style;
 @synthesize valid;
 
 @end
