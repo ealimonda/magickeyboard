@@ -30,10 +30,10 @@
 }
 
 #pragma mark Methods
-- (IBAction)disableTrackingSelector:(id)sender;
+- (IBAction)toggleTrackingSelector:(id)sender;
+- (void)enableTrackingSelector:(BOOL)state;
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
-- (void)toggleTrackingSelector;
 - (IBAction)setHotkey;
 
 #pragma mark Properties

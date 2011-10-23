@@ -42,6 +42,7 @@
 	MKKeyboard *keyboard;
 
 	NSMutableArray *devices;
+	CFMachPortRef eventTap;
 }
 
 #pragma mark Methods

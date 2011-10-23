@@ -58,8 +58,10 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRef event, void *refcon) {
 #pragma unused (tapProxy)
 	MKController *controller = refcon;
-	if (![controller isTracking])
+	if (![controller isTracking]) {
+		CGAssociateMouseAndMouseCursorPosition(true);
 		return event;
+	}
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	if (![defaults boolForKey:kSettingIgnoreTrackpadInput] || ![defaults boolForKey:kSettingGlobalHotkeyEnabled])
 		return event;
@@ -110,6 +112,7 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
+		eventTap = NULL;
 	}
 	return self;
 }
@@ -167,17 +170,17 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
 
-	CFMachPortRef tapg = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault,
+	eventTap = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault,
 					      CGEventMaskBit(kCGEventLeftMouseDown)
 					      |CGEventMaskBit(kCGEventLeftMouseUp)
 					      |CGEventMaskBit(kCGEventMouseMoved),
 					      processEventTap, self);
-	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tapg, 0);
+	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
 	if (!source) {   // bail out if the run loop source couldn't be created
 		NSLog(@"runloop source failed");
 		[NSApp terminate:nil];
 	}
-	CFRelease(tapg);   // can release the tap here as the source will retain it; see below, however
+//	CFRelease(eventTap);   // can release the tap here as the source will retain it; see below, however
 	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
 	CFRelease(source);  // can release the source here as the run loop will retain it
 	
@@ -475,7 +478,23 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 #pragma mark -
 #pragma mark Properties
-@synthesize tracking;
+- (BOOL)isTracking {
+	return tracking;
+}
+
+- (void)setTracking:(BOOL)trackingState {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	tracking = trackingState;
+	BOOL tapState = (trackingState
+			 && [defaults boolForKey:kSettingIgnoreTrackpadInput]
+			 && [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
+	NSLog(@"%d%d%d", trackingState
+	      , [defaults boolForKey:kSettingIgnoreTrackpadInput]
+	      , [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
+	CGEventTapEnable(eventTap, tapState);
+	CGAssociateMouseAndMouseCursorPosition(!tapState);
+}
+
 @synthesize holdingCorner;
 @synthesize currentLayout;
 @synthesize devices;
