@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Header</key>
+	<string>
+*******************************************************************************************************************
+*                                                MagicKeyboard                                                    *
+*******************************************************************************************************************
+* File:             NumPadApple.plist                                                                             *
+* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+*                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+*                       the GNU General Public License as published by the Free Software Foundation, either       *
+*                       version 3 of the License, or (at your option) any later version.                          *
+*                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+*                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+*                   See the GNU General Public License for more details.                                          *
+*                   You should have received a copy of the GNU General Public License along with this program.    *
+*                       If not, see http://www.gnu.org/licenses/                                                  *
+*******************************************************************************************************************
+ 	</string>
+	<key>LayoutName</key>
+	<string>Apple Keyboard Numeric Keypad</string>
+	<key>Definition</key>
+	<string>NumPadApple</string>
+	<key>Symbol</key>
+	<string>①</string>
+	<key>Keys</key>
+	<array>
+		<dict>
+			<key>Button</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>0</string>
+			<key>Comment</key>
+			<string>0 key (keycode 82)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>2</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>.</string>
+			<key>Comment</key>
+			<string>. key (keycode 65)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>3</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>1</string>
+			<key>Comment</key>
+			<string>1 key (keycode 83)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>4</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>2</string>
+			<key>Comment</key>
+			<string>2 key (keycode 84)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>5</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>3</string>
+			<key>Comment</key>
+			<string>3 key (keycode 85)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>6</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>4</string>
+			<key>Comment</key>
+			<string>4 key (keycode 86)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>7</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>5</string>
+			<key>Comment</key>
+			<string>5 key (keycode 87)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>8</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>6</string>
+			<key>Comment</key>
+			<string>6 key (keycode 88)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>9</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>7</string>
+			<key>Comment</key>
+			<string>7 key (keycode 89)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>10</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>8</string>
+			<key>Comment</key>
+			<string>8 key (keycode 91)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>11</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>9</string>
+			<key>Comment</key>
+			<string>9 key (keycode 92)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>12</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>KP_ENTER</string>
+			<key>Comment</key>
+			<string>Keypad Enter key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>13</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>+</string>
+			<key>Comment</key>
+			<string>+ key (keycode 69)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>14</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>-</string>
+			<key>Comment</key>
+			<string>- key (keycode 78)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>15</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>*</string>
+			<key>Comment</key>
+			<string>* key (keycode 67)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>16</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>/</string>
+			<key>Comment</key>
+			<string>/ key (keycode 75)</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>17</integer>
+			<key>Type</key>
+			<string>Keypad</string>
+			<key>Value</key>
+			<string>=</string>
+			<key>Comment</key>
+			<string>= key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>18</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>KP_CLEAR</string>
+			<key>Comment</key>
+			<string>Keypad Clear key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>19</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F16</string>
+			<key>Comment</key>
+			<string>F16 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>20</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F17</string>
+			<key>Comment</key>
+			<string>F17 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>21</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F18</string>
+			<key>Comment</key>
+			<string>F18 key</string>
+		</dict>
+		<dict>
+			<key>Button</key>
+			<integer>22</integer>
+			<key>Type</key>
+			<string>Special</string>
+			<key>Value</key>
+			<string>F19</string>
+			<key>Comment</key>
+			<string>F19 key</string>
+		</dict>
+	</array>
+</dict>
+</plist>

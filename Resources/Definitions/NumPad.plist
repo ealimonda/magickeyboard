@@ -21,12 +21,14 @@
  	</string>
 	<key>DefinitionName</key>
 	<string>Full Numeric Keypad Layout</string>
+	<key>Style</key>
+	<string>Default</string>
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>
 		<string>NumPad</string>
 		<key>Width</key>
-		<integer>480</integer>
+		<integer>305</integer>
 		<key>Height</key>
 		<integer>360</integer>
 	</dict>
@@ -36,9 +38,9 @@
 			<key>ID</key>
 			<integer>1</integer>
 			<key>xStart</key>
-			<integer>95</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>240</integer>
+			<integer>150</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -50,9 +52,9 @@
 			<key>ID</key>
 			<integer>2</integer>
 			<key>xStart</key>
-			<integer>247</integer>
+			<integer>157</integer>
 			<key>xEnd</key>
-			<integer>315</integer>
+			<integer>225</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -64,9 +66,9 @@
 			<key>ID</key>
 			<integer>3</integer>
 			<key>xStart</key>
-			<integer>95</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>162</integer>
+			<integer>72</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -78,9 +80,9 @@
 			<key>ID</key>
 			<integer>4</integer>
 			<key>xStart</key>
-			<integer>172</integer>
+			<integer>82</integer>
 			<key>xEnd</key>
-			<integer>240</integer>
+			<integer>150</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -92,9 +94,9 @@
 			<key>ID</key>
 			<integer>5</integer>
 			<key>xStart</key>
-			<integer>247</integer>
+			<integer>157</integer>
 			<key>xEnd</key>
-			<integer>315</integer>
+			<integer>225</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -106,9 +108,9 @@
 			<key>ID</key>
 			<integer>6</integer>
 			<key>xStart</key>
-			<integer>95</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>162</integer>
+			<integer>72</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -120,9 +122,9 @@
 			<key>ID</key>
 			<integer>7</integer>
 			<key>xStart</key>
-			<integer>172</integer>
+			<integer>82</integer>
 			<key>xEnd</key>
-			<integer>240</integer>
+			<integer>150</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -134,9 +136,9 @@
 			<key>ID</key>
 			<integer>8</integer>
 			<key>xStart</key>
-			<integer>247</integer>
+			<integer>157</integer>
 			<key>xEnd</key>
-			<integer>315</integer>
+			<integer>225</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -148,9 +150,9 @@
 			<key>ID</key>
 			<integer>9</integer>
 			<key>xStart</key>
-			<integer>95</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>162</integer>
+			<integer>72</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -162,9 +164,9 @@
 			<key>ID</key>
 			<integer>10</integer>
 			<key>xStart</key>
-			<integer>172</integer>
+			<integer>82</integer>
 			<key>xEnd</key>
-			<integer>240</integer>
+			<integer>150</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -176,9 +178,9 @@
 			<key>ID</key>
 			<integer>11</integer>
 			<key>xStart</key>
-			<integer>247</integer>
+			<integer>157</integer>
 			<key>xEnd</key>
-			<integer>315</integer>
+			<integer>225</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -190,9 +192,9 @@
 			<key>ID</key>
 			<integer>12</integer>
 			<key>xStart</key>
-			<integer>323</integer>
+			<integer>233</integer>
 			<key>xEnd</key>
-			<integer>391</integer>
+			<integer>301</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -204,9 +206,9 @@
 			<key>ID</key>
 			<integer>13</integer>
 			<key>xStart</key>
-			<integer>323</integer>
+			<integer>233</integer>
 			<key>xEnd</key>
-			<integer>391</integer>
+			<integer>301</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -218,9 +220,9 @@
 			<key>ID</key>
 			<integer>14</integer>
 			<key>xStart</key>
-			<integer>323</integer>
+			<integer>233</integer>
 			<key>xEnd</key>
-			<integer>391</integer>
+			<integer>301</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -232,9 +234,9 @@
 			<key>ID</key>
 			<integer>15</integer>
 			<key>xStart</key>
-			<integer>247</integer>
+			<integer>157</integer>
 			<key>xEnd</key>
-			<integer>315</integer>
+			<integer>225</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -246,9 +248,9 @@
 			<key>ID</key>
 			<integer>16</integer>
 			<key>xStart</key>
-			<integer>172</integer>
+			<integer>82</integer>
 			<key>xEnd</key>
-			<integer>240</integer>
+			<integer>150</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -260,9 +262,9 @@
 			<key>ID</key>
 			<integer>17</integer>
 			<key>xStart</key>
-			<integer>95</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>162</integer>
+			<integer>72</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>

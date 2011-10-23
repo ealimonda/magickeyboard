@@ -51,6 +51,7 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 	[statusBarItem setHighlightMode:YES];
 	[statusBarItem setMenu:statusMenu];
 	[[FRFeedbackReporter sharedReporter] reportIfCrash];
+	[self enableTrackingSelector:YES];
 	
 	[self setHotkey];
 }
@@ -97,12 +98,8 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData) {
 #pragma unused (nextHandler, theEvent, userData)
 	MagicKeyboardAppDelegate *appDelegate = (MagicKeyboardAppDelegate *)userData;
-	[appDelegate toggleTrackingSelector];
+	[appDelegate toggleTrackingSelector:nil];
 	return noErr;
-}
-
-- (void)toggleTrackingSelector {
-	[self disableTrackingSelector:disableTrackingMenuItem];
 }
 
 - (IBAction)setHotkey {
@@ -132,19 +129,24 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 			    GetApplicationEventTarget(), 0, &globalHotKeyRef);
 }
 
-#pragma Actions
-- (IBAction)disableTrackingSelector:(id)sender {
-	[((NSMenuItem *)sender) setState:!((BOOL)[sender state])];
+- (void)enableTrackingSelector:(BOOL)state {
+	[magicKeyboardController setTracking:state];
+	[disableTrackingMenuItem setState:state];
 	
-	if ([sender state]) {
-		[window orderOut:self];
-		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
-	} else {
+	if (state) {
 		[window makeKeyAndOrderFront:self];
 		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
+	} else {
+		[window orderOut:self];
+		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenuDis.png"]];
 	}
-	
-	[magicKeyboardController setTracking:![sender state]];
+}
+
+#pragma Actions
+
+- (IBAction)toggleTrackingSelector:(id)sender {
+#pragma unused (sender)
+	[self enableTrackingSelector:![magicKeyboardController isTracking]];
 }
 
 #pragma mark Properties

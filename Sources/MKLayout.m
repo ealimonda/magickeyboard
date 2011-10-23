@@ -146,7 +146,7 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 
 #pragma mark Utilities
 - (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts {
-	NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:20];
+	NSFont *font = [NSFont fontWithName:@"Futura" size:20];
 
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 
@@ -207,20 +207,32 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 						(CGFloat)(([eachKey yStart]+[eachKey yEnd]-labelSize.height)/2), // S+(E-S)/2-h/2
 						(CGFloat)[eachKey xEnd] - [eachKey xStart],
 						(CGFloat)(labelSize.height));
+		if ([[[self layoutDefinition] style] isEqualToString:kStyleAluminium] && [eachKey isSpecialButton])
+			textBoxRect = NSMakeRect((CGFloat)([eachKey xEnd] - labelSize.width - 10),
+						 (CGFloat)([eachKey yStart]-3),
+						 (CGFloat)(labelSize.width+5),
+						 (CGFloat)(labelSize.height));
 		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
 		[textField setStringValue:label];
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
-		if ([eachKey isSpecialButton]) {
+		if ([[[self layoutDefinition] style] isEqualToString:kStyleAluminium]) {
+			[textField setTextColor:[NSColor colorWithSRGBRed:0.40 green:0.45 blue:0.50 alpha:1.0]];
+			if ([eachKey isSpecialButton]) {
+				[textField setFont:[NSFont fontWithName:@"Futura" size:11]];
+			} else {
+				[textField setFont:[NSFont fontWithName:@"Futura" size:16]];
+			}
+		} else if ([eachKey isSpecialButton]) {
 			if ([[[eachKey value] uppercaseString] isEqualToString:@"SPACE"])
 				[textField setTextColor:[NSColor darkGrayColor]];
 			else
 				[textField setTextColor:[NSColor whiteColor]];
+			[textField setFont:font];
 		}
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];
-		[textField setFont:font];
 		[textField setAlignment:NSCenterTextAlignment];
 		[keys addObject:textField];
 	}

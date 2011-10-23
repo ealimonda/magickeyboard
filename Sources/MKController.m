@@ -55,12 +55,50 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 #pragma mark Implementation
 @implementation MKController
 
+CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRef event, void *refcon) {
+#pragma unused (tapProxy)
+	MKController *controller = refcon;
+	if (![controller isTracking]) {
+		CGAssociateMouseAndMouseCursorPosition(true);
+		return event;
+	}
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	if (![defaults boolForKey:kSettingIgnoreTrackpadInput] || ![defaults boolForKey:kSettingGlobalHotkeyEnabled])
+		return event;
+
+	NSEvent *myEvent = [NSEvent eventWithCGEvent:event];
+	switch (type) {
+	case kCGEventLeftMouseDown:
+	case kCGEventLeftMouseUp:
+		if ([myEvent subtype] == 3) {
+			return NULL; // Ignore clicks
+		}
+		break;
+	case kCGEventMouseMoved:
+		if ([myEvent subtype] == 3) {
+			CGAssociateMouseAndMouseCursorPosition(false);
+//			if ([myEvent deltaX] == 0 || [myEvent deltaY] == 0)
+//				break;
+//			NSPoint mouseLocation = [NSEvent mouseLocation];
+//			NSInteger x = CGEventGetIntegerValueField(event, kCGMouseEventDeltaX);
+//			NSInteger y = CGEventGetIntegerValueField(event, kCGMouseEventDeltaY);
+//			NSLog(@"%f,%f / %f,%f", mouseLocation.x, mouseLocation.y, [myEvent deltaX], [myEvent deltaY]);
+//			CGWarpMouseCursorPosition(CGPointMake(mouseLocation.x/*+[myEvent deltaX]*/, mouseLocation.y/*-[myEvent deltaY]*/));
+		} else
+			CGAssociateMouseAndMouseCursorPosition(true);
+		break;
+	}
+	return event;   // return the tapped event (might have been modified, or set to NULL)
+	// returning NULL means the event isn't passed forward
+}
+
 #pragma mark Initialization
 - (id)init {
 	self = [super init];
 	if (self) {
 		tap = [[NSImage imageNamed:@"Tap.png"] retain];
 		tracking = YES;
+		holdingCorner = NO;
 		currentLayout = nil;
 		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
@@ -74,6 +112,7 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		//MTDeviceRef dev = MTDeviceCreateDefault(1);
 		//MTRegisterContactFrameCallback(dev, callback);
 		//MTDeviceStart(dev, 0);
+		eventTap = NULL;
 	}
 	return self;
 }
@@ -130,6 +169,21 @@ CFMutableArrayRef MTDeviceCreateList(void); //returns a CFMutableArrayRef array 
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
+
+	eventTap = CGEventTapCreate(kCGHIDEventTap, kCGTailAppendEventTap, kCGEventTapOptionDefault,
+					      CGEventMaskBit(kCGEventLeftMouseDown)
+					      |CGEventMaskBit(kCGEventLeftMouseUp)
+					      |CGEventMaskBit(kCGEventMouseMoved),
+					      processEventTap, self);
+	CFRunLoopSourceRef source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
+	if (!source) {   // bail out if the run loop source couldn't be created
+		NSLog(@"runloop source failed");
+		[NSApp terminate:nil];
+	}
+//	CFRelease(eventTap);   // can release the tap here as the source will retain it; see below, however
+	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopCommonModes);
+	CFRelease(source);  // can release the source here as the run loop will retain it
+	
 	if (!foundUsableDevice) {
 		NSInteger theResponse = NSRunAlertPanel(@"No supported devices detected",
 				@"We couldn't detect any compatible multitouch device connected to your system.\n"
@@ -209,19 +263,59 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	if (touch->identifier > kMultitouchFingersMax || touch->identifier <= 0) // Sanity check
 		return;
 	
-	CGFloat verticalMultiplier = [currentLayout ratio] / [device ratio];
-	if (verticalMultiplier < 1)
-		verticalMultiplier = 1.0;
-	CGFloat horizontalMultiplier = [device ratio] / [currentLayout ratio];
-	if (horizontalMultiplier < 1)
-		horizontalMultiplier = 1.0;
-	CGFloat horizontalOrigin = ([currentLayout layoutSize].width - (horizontalMultiplier * [currentLayout layoutSize].width))*0.5;
+	// layout height * verticalMultiplier => (virtual) device height
+	CGFloat layoutHeight = [currentLayout layoutSize].height;
+	CGFloat verticalMultiplier = MAX(1.0, [currentLayout ratio] / [device ratio]);
+	CGFloat deviceHeight = verticalMultiplier * layoutHeight;
+	CGFloat verticalPosition = [defaults integerForKey:kSettingVerticalPosition] / 100.0;
+	CGFloat verticalOrigin = MAX(0.0, deviceHeight * verticalPosition - 0.5 * layoutHeight);
+	verticalOrigin = floor(MIN(deviceHeight-layoutHeight, verticalOrigin));
 
-	NSRect imgBox = NSMakeRect((CGFloat)([currentLayout layoutSize].width*touch->normalized.pos.x*horizontalMultiplier+horizontalOrigin),
-				   (CGFloat)([currentLayout layoutSize].height*touch->normalized.pos.y*verticalMultiplier),
+	// layout height * horizontalMultiplier => (virtual) device height
+	CGFloat layoutWidth = [currentLayout layoutSize].width;
+	CGFloat horizontalMultiplier = MAX(1.0, [device ratio] / [currentLayout ratio]);
+	CGFloat deviceWidth = horizontalMultiplier * layoutWidth;
+	CGFloat horizontalPosition = [defaults integerForKey:kSettingHorizontalPosition] / 100.0;
+	CGFloat horizontalOrigin = MAX(0.0, deviceWidth * horizontalPosition - 0.5 * layoutWidth);
+	horizontalOrigin = floor(MIN(deviceWidth-layoutWidth, horizontalOrigin));
+
+	NSRect imgBox = NSMakeRect((CGFloat)(deviceWidth*touch->normalized.pos.x-horizontalOrigin),
+				   (CGFloat)(deviceHeight*touch->normalized.pos.y-verticalOrigin),
 				   33, 34);
+	
+	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1]; // FIXME: Make sure it exists
 
-	MKFinger *thisFinger = [[device fingers] objectAtIndex:touch->identifier-1];
+	// Check for corner touch
+	if ([defaults boolForKey:kSettingHoldCornerToTrack]) {
+		NSInteger st = touch->state;
+		if (st == 1 || st == 7 || touch->timestamp < [thisFinger last] + kSamplingInterval) {
+			// Position is a bitmask where the 0x1 bit means "right" and the 0x2 bit means "top"
+			NSInteger position = [defaults integerForKey:kSettingHoldCornerPosition];
+			NSInteger positionX = (position&0x1) ? 1 : 0;
+			NSInteger positionY = (position&0x2) ? 1 : 0;
+			MKButton *corner = [MKButton buttonWithID:0
+							   xStart:positionX*deviceWidth-horizontalOrigin
+							     xEnd:positionX*deviceWidth-horizontalOrigin+40
+							   yStart:positionY*deviceHeight-verticalOrigin
+							     yEnd:positionY*deviceHeight-verticalOrigin+40
+							  special:NO];
+			if ([corner containsPoint:imgBox.origin size:imgBox.size]) {
+				if (st == 7)
+					[self setHoldingCorner:NO];
+				else
+					[self setHoldingCorner:YES];
+				[thisFinger setLast:touch->timestamp];
+				return;
+			}
+		}
+	} else {
+		[self setHoldingCorner:YES];
+	}
+	
+	if (![self isHoldingCorner]) {
+		return;
+	}
+
 	switch (touch->state) {
 	case 1: // FIXME: Constants
 		if ([thisFinger isActive])
@@ -384,7 +478,24 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 
 #pragma mark -
 #pragma mark Properties
-@synthesize tracking;
+- (BOOL)isTracking {
+	return tracking;
+}
+
+- (void)setTracking:(BOOL)trackingState {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	tracking = trackingState;
+	BOOL tapState = (trackingState
+			 && [defaults boolForKey:kSettingIgnoreTrackpadInput]
+			 && [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
+	NSLog(@"%d%d%d", trackingState
+	      , [defaults boolForKey:kSettingIgnoreTrackpadInput]
+	      , [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
+	CGEventTapEnable(eventTap, tapState);
+	CGAssociateMouseAndMouseCursorPosition(!tapState);
+}
+
+@synthesize holdingCorner;
 @synthesize currentLayout;
 @synthesize devices;
 @synthesize keyboard;

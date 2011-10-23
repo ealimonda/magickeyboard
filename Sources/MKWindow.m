@@ -48,7 +48,7 @@
 
 - (void)close {
 	MagicKeyboardAppDelegate *delegate = (MagicKeyboardAppDelegate *)[[NSApplication sharedApplication] delegate];
-	[delegate toggleTrackingSelector];
+	[delegate enableTrackingSelector:NO];
 }
 
 @end

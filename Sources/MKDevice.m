@@ -166,8 +166,10 @@ const MTDeviceInfo multiTouchSampleDevice = {
 }
 
 - (BOOL)isUsable {
+#if 0 // Disable validity check  Only rely on the family check for the time being.
 	if (![self isValid])
 		return NO;
+#endif // 0
 	switch ([self family]) {
 	case kDeviceFamilyMBPTrackpad:
 	case kDeviceFamilyMagicTrackpad:

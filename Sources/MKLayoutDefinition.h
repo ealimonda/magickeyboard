@@ -16,12 +16,17 @@
 #import <Cocoa/Cocoa.h>
 #import "MKButton.h"
 
+extern NSString * const kStyleDefault;
+extern NSString * const kStyleIOs;
+extern NSString * const kStyleAluminium;
+
 #pragma mark Interface
 @interface MKLayoutDefinition : NSObject {
 	NSString *layoutDefinitionName;
 	NSSize layoutSize;
 	NSImage *keyboardImage;
 	NSMutableArray *currentButtons;
+	NSString *style;
 	BOOL valid;
 }
 
@@ -39,6 +44,7 @@
 @property (assign) NSSize layoutSize;
 @property (retain) NSImage *keyboardImage;
 @property (readonly,retain) NSMutableArray *currentButtons;
+@property (retain) NSString *style;
 @property (assign,getter=isValid) BOOL valid;
 
 @end
