@@ -7,7 +7,7 @@
 *******************************************************************************************************************
 *                                                MagicKeyboard                                                    *
 *******************************************************************************************************************
-* File:             iOSSym.plist                                                                                  *
+* File:             NumPadApple.plist                                                                             *
 * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
 *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
 *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -20,17 +20,17 @@
 *******************************************************************************************************************
  	</string>
 	<key>DefinitionName</key>
-	<string>iOS Symbols Layout</string>
+	<string>Apple Keyboard Numeric Keypad Layout</string>
 	<key>Style</key>
-	<string>iOS</string>
+	<string>Aluminium</string>
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>
-		<string>iOSSym</string>
+		<string>NumPadApple</string>
 		<key>Width</key>
-		<integer>480</integer>
+		<integer>296</integer>
 		<key>Height</key>
-		<integer>186</integer>
+		<integer>428</integer>
 	</dict>
 	<key>Buttons</key>
 	<array>
@@ -38,13 +38,13 @@
 			<key>ID</key>
 			<integer>1</integer>
 			<key>xStart</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>44</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>3</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>77</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -52,13 +52,13 @@
 			<key>ID</key>
 			<integer>2</integer>
 			<key>xStart</key>
-			<integer>51</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>92</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>3</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>77</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -66,13 +66,13 @@
 			<key>ID</key>
 			<integer>3</integer>
 			<key>xStart</key>
-			<integer>99</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>140</integer>
+			<integer>69</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>87</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>152</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -80,13 +80,13 @@
 			<key>ID</key>
 			<integer>4</integer>
 			<key>xStart</key>
-			<integer>147</integer>
+			<integer>79</integer>
 			<key>xEnd</key>
-			<integer>188</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>87</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>152</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -94,13 +94,13 @@
 			<key>ID</key>
 			<integer>5</integer>
 			<key>xStart</key>
-			<integer>195</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>236</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>87</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>152</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -108,13 +108,13 @@
 			<key>ID</key>
 			<integer>6</integer>
 			<key>xStart</key>
-			<integer>243</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>284</integer>
+			<integer>69</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>162</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>226</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -122,13 +122,13 @@
 			<key>ID</key>
 			<integer>7</integer>
 			<key>xStart</key>
-			<integer>291</integer>
+			<integer>79</integer>
 			<key>xEnd</key>
-			<integer>332</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>162</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>226</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -136,13 +136,13 @@
 			<key>ID</key>
 			<integer>8</integer>
 			<key>xStart</key>
-			<integer>339</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>380</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>162</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>226</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -150,13 +150,13 @@
 			<key>ID</key>
 			<integer>9</integer>
 			<key>xStart</key>
-			<integer>387</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>428</integer>
+			<integer>69</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>236</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>300</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -164,13 +164,13 @@
 			<key>ID</key>
 			<integer>10</integer>
 			<key>xStart</key>
-			<integer>435</integer>
+			<integer>79</integer>
 			<key>xEnd</key>
-			<integer>478</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>142</integer>
+			<integer>236</integer>
 			<key>yEnd</key>
-			<integer>179</integer>
+			<integer>300</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -178,13 +178,13 @@
 			<key>ID</key>
 			<integer>11</integer>
 			<key>xStart</key>
-			<integer>3</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>44</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>236</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>300</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -192,27 +192,27 @@
 			<key>ID</key>
 			<integer>12</integer>
 			<key>xStart</key>
-			<integer>51</integer>
+			<integer>227</integer>
 			<key>xEnd</key>
-			<integer>92</integer>
+			<integer>292</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>3</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>152</integer>
 			<key>SpecialButton</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>ID</key>
 			<integer>13</integer>
 			<key>xStart</key>
-			<integer>99</integer>
+			<integer>227</integer>
 			<key>xEnd</key>
-			<integer>140</integer>
+			<integer>292</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>162</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>226</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -220,13 +220,13 @@
 			<key>ID</key>
 			<integer>14</integer>
 			<key>xStart</key>
-			<integer>147</integer>
+			<integer>227</integer>
 			<key>xEnd</key>
-			<integer>188</integer>
+			<integer>292</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>236</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>300</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -234,13 +234,13 @@
 			<key>ID</key>
 			<integer>15</integer>
 			<key>xStart</key>
-			<integer>195</integer>
+			<integer>227</integer>
 			<key>xEnd</key>
-			<integer>236</integer>
+			<integer>292</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>310</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>375</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -248,13 +248,13 @@
 			<key>ID</key>
 			<integer>16</integer>
 			<key>xStart</key>
-			<integer>243</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>284</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>310</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>375</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -262,13 +262,13 @@
 			<key>ID</key>
 			<integer>17</integer>
 			<key>xStart</key>
-			<integer>291</integer>
+			<integer>79</integer>
 			<key>xEnd</key>
-			<integer>332</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>310</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>375</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -276,13 +276,13 @@
 			<key>ID</key>
 			<integer>18</integer>
 			<key>xStart</key>
-			<integer>339</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>380</integer>
+			<integer>69</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>310</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>375</integer>
 			<key>SpecialButton</key>
 			<false/>
 		</dict>
@@ -290,41 +290,41 @@
 			<key>ID</key>
 			<integer>19</integer>
 			<key>xStart</key>
-			<integer>387</integer>
+			<integer>5</integer>
 			<key>xEnd</key>
-			<integer>428</integer>
+			<integer>69</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>385</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>425</integer>
 			<key>SpecialButton</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>ID</key>
 			<integer>20</integer>
 			<key>xStart</key>
-			<integer>435</integer>
+			<integer>79</integer>
 			<key>xEnd</key>
-			<integer>476</integer>
+			<integer>143</integer>
 			<key>yStart</key>
-			<integer>96</integer>
+			<integer>385</integer>
 			<key>yEnd</key>
-			<integer>133</integer>
+			<integer>425</integer>
 			<key>SpecialButton</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>ID</key>
 			<integer>21</integer>
 			<key>xStart</key>
-			<integer>3</integer>
+			<integer>153</integer>
 			<key>xEnd</key>
-			<integer>56</integer>
+			<integer>217</integer>
 			<key>yStart</key>
-			<integer>50</integer>
+			<integer>385</integer>
 			<key>yEnd</key>
-			<integer>87</integer>
+			<integer>425</integer>
 			<key>SpecialButton</key>
 			<true/>
 		</dict>
@@ -332,125 +332,13 @@
 			<key>ID</key>
 			<integer>22</integer>
 			<key>xStart</key>
-			<integer>75</integer>
+			<integer>227</integer>
 			<key>xEnd</key>
-			<integer>135</integer>
+			<integer>292</integer>
 			<key>yStart</key>
-			<integer>50</integer>
+			<integer>385</integer>
 			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>23</integer>
-			<key>xStart</key>
-			<integer>142</integer>
-			<key>xEnd</key>
-			<integer>202</integer>
-			<key>yStart</key>
-			<integer>50</integer>
-			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>24</integer>
-			<key>xStart</key>
-			<integer>209</integer>
-			<key>xEnd</key>
-			<integer>270</integer>
-			<key>yStart</key>
-			<integer>50</integer>
-			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>25</integer>
-			<key>xStart</key>
-			<integer>277</integer>
-			<key>xEnd</key>
-			<integer>337</integer>
-			<key>yStart</key>
-			<integer>50</integer>
-			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>26</integer>
-			<key>xStart</key>
-			<integer>344</integer>
-			<key>xEnd</key>
-			<integer>404</integer>
-			<key>yStart</key>
-			<integer>50</integer>
-			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>27</integer>
-			<key>xStart</key>
-			<integer>423</integer>
-			<key>xEnd</key>
-			<integer>476</integer>
-			<key>yStart</key>
-			<integer>50</integer>
-			<key>yEnd</key>
-			<integer>87</integer>
-			<key>SpecialButton</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>28</integer>
-			<key>xStart</key>
-			<integer>4</integer>
-			<key>xEnd</key>
-			<integer>91</integer>
-			<key>yStart</key>
-			<integer>3</integer>
-			<key>yEnd</key>
-			<integer>41</integer>
-			<key>SpecialButton</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>29</integer>
-			<key>xStart</key>
-			<integer>100</integer>
-			<key>xEnd</key>
-			<integer>379</integer>
-			<key>yStart</key>
-			<integer>3</integer>
-			<key>yEnd</key>
-			<integer>41</integer>
-			<key>SpecialButton</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<integer>30</integer>
-			<key>xStart</key>
-			<integer>388</integer>
-			<key>xEnd</key>
-			<integer>475</integer>
-			<key>yStart</key>
-			<integer>3</integer>
-			<key>yEnd</key>
-			<integer>41</integer>
+			<integer>425</integer>
 			<key>SpecialButton</key>
 			<true/>
 		</dict>

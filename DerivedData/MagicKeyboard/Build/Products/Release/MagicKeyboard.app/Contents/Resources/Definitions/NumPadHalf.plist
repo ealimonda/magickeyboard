@@ -7,7 +7,7 @@
 *******************************************************************************************************************
 *                                                MagicKeyboard                                                    *
 *******************************************************************************************************************
-* File:             NumPad.plist                                                                                  *
+* File:             NumPadHalf.plist                                                                              *
 * Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
 *                   This software is free software: you can redistribute it and/or modify it under the terms of   *
 *                       the GNU General Public License as published by the Free Software Foundation, either       *
@@ -20,15 +20,15 @@
 *******************************************************************************************************************
  	</string>
 	<key>DefinitionName</key>
-	<string>Full Numeric Keypad Layout</string>
+	<string>Half-Width Numeric Keypad Layout</string>
 	<key>Style</key>
 	<string>Default</string>
 	<key>Background</key>
 	<dict>
 		<key>FileName</key>
-		<string>NumPad</string>
+		<string>NumPadHalf</string>
 		<key>Width</key>
-		<integer>305</integer>
+		<integer>240</integer>
 		<key>Height</key>
 		<integer>360</integer>
 	</dict>
@@ -38,9 +38,9 @@
 			<key>ID</key>
 			<integer>1</integer>
 			<key>xStart</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>xEnd</key>
-			<integer>150</integer>
+			<integer>116</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -52,9 +52,9 @@
 			<key>ID</key>
 			<integer>2</integer>
 			<key>xStart</key>
-			<integer>157</integer>
+			<integer>122</integer>
 			<key>xEnd</key>
-			<integer>225</integer>
+			<integer>176</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -66,9 +66,9 @@
 			<key>ID</key>
 			<integer>3</integer>
 			<key>xStart</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>xEnd</key>
-			<integer>72</integer>
+			<integer>56</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -80,9 +80,9 @@
 			<key>ID</key>
 			<integer>4</integer>
 			<key>xStart</key>
-			<integer>82</integer>
+			<integer>62</integer>
 			<key>xEnd</key>
-			<integer>150</integer>
+			<integer>116</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -94,9 +94,9 @@
 			<key>ID</key>
 			<integer>5</integer>
 			<key>xStart</key>
-			<integer>157</integer>
+			<integer>122</integer>
 			<key>xEnd</key>
-			<integer>225</integer>
+			<integer>176</integer>
 			<key>yStart</key>
 			<integer>78</integer>
 			<key>yEnd</key>
@@ -108,9 +108,9 @@
 			<key>ID</key>
 			<integer>6</integer>
 			<key>xStart</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>xEnd</key>
-			<integer>72</integer>
+			<integer>56</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -122,9 +122,9 @@
 			<key>ID</key>
 			<integer>7</integer>
 			<key>xStart</key>
-			<integer>82</integer>
+			<integer>62</integer>
 			<key>xEnd</key>
-			<integer>150</integer>
+			<integer>116</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -136,9 +136,9 @@
 			<key>ID</key>
 			<integer>8</integer>
 			<key>xStart</key>
-			<integer>157</integer>
+			<integer>122</integer>
 			<key>xEnd</key>
-			<integer>225</integer>
+			<integer>176</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -150,9 +150,9 @@
 			<key>ID</key>
 			<integer>9</integer>
 			<key>xStart</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>xEnd</key>
-			<integer>72</integer>
+			<integer>56</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -164,9 +164,9 @@
 			<key>ID</key>
 			<integer>10</integer>
 			<key>xStart</key>
-			<integer>82</integer>
+			<integer>62</integer>
 			<key>xEnd</key>
-			<integer>150</integer>
+			<integer>116</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -178,9 +178,9 @@
 			<key>ID</key>
 			<integer>11</integer>
 			<key>xStart</key>
-			<integer>157</integer>
+			<integer>122</integer>
 			<key>xEnd</key>
-			<integer>225</integer>
+			<integer>176</integer>
 			<key>yStart</key>
 			<integer>220</integer>
 			<key>yEnd</key>
@@ -192,9 +192,9 @@
 			<key>ID</key>
 			<integer>12</integer>
 			<key>xStart</key>
-			<integer>233</integer>
+			<integer>182</integer>
 			<key>xEnd</key>
-			<integer>301</integer>
+			<integer>232</integer>
 			<key>yStart</key>
 			<integer>5</integer>
 			<key>yEnd</key>
@@ -206,9 +206,9 @@
 			<key>ID</key>
 			<integer>13</integer>
 			<key>xStart</key>
-			<integer>233</integer>
+			<integer>182</integer>
 			<key>xEnd</key>
-			<integer>301</integer>
+			<integer>232</integer>
 			<key>yStart</key>
 			<integer>149</integer>
 			<key>yEnd</key>
@@ -220,9 +220,9 @@
 			<key>ID</key>
 			<integer>14</integer>
 			<key>xStart</key>
-			<integer>233</integer>
+			<integer>182</integer>
 			<key>xEnd</key>
-			<integer>301</integer>
+			<integer>232</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -234,9 +234,9 @@
 			<key>ID</key>
 			<integer>15</integer>
 			<key>xStart</key>
-			<integer>157</integer>
+			<integer>122</integer>
 			<key>xEnd</key>
-			<integer>225</integer>
+			<integer>176</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -248,9 +248,9 @@
 			<key>ID</key>
 			<integer>16</integer>
 			<key>xStart</key>
-			<integer>82</integer>
+			<integer>62</integer>
 			<key>xEnd</key>
-			<integer>150</integer>
+			<integer>116</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
@@ -262,9 +262,9 @@
 			<key>ID</key>
 			<integer>17</integer>
 			<key>xStart</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>xEnd</key>
-			<integer>72</integer>
+			<integer>56</integer>
 			<key>yStart</key>
 			<integer>289</integer>
 			<key>yEnd</key>
