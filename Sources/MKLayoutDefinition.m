@@ -110,12 +110,12 @@ NSString * const kStyleAluminium           = @"Aluminium";
 		for (NSDictionary *eachButton in buttons) {
 			NSInteger buttonID = [[eachButton valueForKey:kDefinitionButtonID] integerValue];
 			if (buttonID < 1) {
-				NSLog(@"Invalid button definition ID: %ld", buttonID);
+				NSLog(@"Invalid button definition ID: %ld", (unsigned long)buttonID);
 				continue;
 			}
 			for (MKButton *eachExistingButton in currentButtons) {
 				if ([eachExistingButton buttonID] == buttonID) {
-					NSLog(@"Duplicate button definition ID: %ld", buttonID);
+					NSLog(@"Duplicate button definition ID: %ld", (unsigned long)buttonID);
 				}
 			}
 			NSInteger xStart = [[eachButton valueForKey:kDefinitionXStart] integerValue];
