@@ -103,14 +103,14 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 			NSInteger buttonID = [[eachKey valueForKey:kLayoutButtonID] integerValue];
 			for (MKButton *eachButton in currentButtons) {
 				if ([eachButton buttonID] == buttonID) {
-					NSLog(@"Duplicate key button ID: %ld", buttonID);
+					NSLog(@"Duplicate key button ID: %ld", (unsigned long)buttonID);
 					[self setValid:NO];
 					return;
 				}
 			}
 			MKButton *button = [layoutDefinition buttonWithID:buttonID];
 			if (!button) {
-				NSLog(@"Invalid key, button %ld does not exist", buttonID);
+				NSLog(@"Invalid key, button %ld does not exist", (unsigned long)buttonID);
 				[self setValid:NO];
 				return;
 			}
@@ -118,7 +118,8 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 			NSString *value = [eachKey valueForKey:kLayoutValue];
 			MKButton *newButton = [MKButton buttonWithButton:button type:type value:value];
 			if (!newButton) {
-				NSLog(@"Invalid button (id: %ld type: %@ value: %@", buttonID, type, value);
+				NSLog(@"Invalid button (id: %ld type: %@ value: %@",
+				      (unsigned long)buttonID, type, value);
 				[self setValid:NO];
 				return;
 			}
@@ -146,8 +147,6 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 
 #pragma mark Utilities
 - (NSArray *)createLabelsUsingSymbolsForLayouts:(NSDictionary *)layouts {
-	NSFont *font = [NSFont fontWithName:@"Futura" size:20];
-
 	NSMutableArray *keys = [[[NSMutableArray alloc] init] autorelease];
 
 	for (MKButton *eachKey in currentButtons) {
@@ -200,6 +199,15 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 		}
 		if (![label isEqualToString:@"@"] && [keySymbolReplacements valueForKey:label]) // "@" as key makes it crash
 			label = [keySymbolReplacements valueForKey:label];
+		
+		NSFont *font = [NSFont fontWithName:@"Futura" size:20];
+		if ([[[self layoutDefinition] style] isEqualToString:kStyleAluminium]) {
+			if ([eachKey isSpecialButton]) {
+				font = [NSFont fontWithName:@"Futura" size:11];
+			} else {
+				font = [NSFont fontWithName:@"Futura" size:16];
+			}
+		}
 
 		NSSize labelSize = [label sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 							      font, NSFontAttributeName, nil]];
@@ -209,27 +217,22 @@ NSString * const kLayoutsDirectory      = @"Layouts";
 						(CGFloat)(labelSize.height));
 		if ([[[self layoutDefinition] style] isEqualToString:kStyleAluminium] && [eachKey isSpecialButton])
 			textBoxRect = NSMakeRect((CGFloat)([eachKey xEnd] - labelSize.width - 10),
-						 (CGFloat)([eachKey yStart]-3),
-						 (CGFloat)(labelSize.width+5),
+						 (CGFloat)([eachKey yStart]),
+						 (CGFloat)(labelSize.width+10),
 						 (CGFloat)(labelSize.height));
 		NSTextField *textField = [[[NSTextField alloc] initWithFrame:textBoxRect] autorelease];
 		[textField setStringValue:label];
 
 		[textField setEditable:NO];
 		[textField setSelectable:NO];
+		[textField setFont:font];
 		if ([[[self layoutDefinition] style] isEqualToString:kStyleAluminium]) {
 			[textField setTextColor:[NSColor colorWithSRGBRed:0.40 green:0.45 blue:0.50 alpha:1.0]];
-			if ([eachKey isSpecialButton]) {
-				[textField setFont:[NSFont fontWithName:@"Futura" size:11]];
-			} else {
-				[textField setFont:[NSFont fontWithName:@"Futura" size:16]];
-			}
 		} else if ([eachKey isSpecialButton]) {
 			if ([[[eachKey value] uppercaseString] isEqualToString:@"SPACE"])
 				[textField setTextColor:[NSColor darkGrayColor]];
 			else
 				[textField setTextColor:[NSColor whiteColor]];
-			[textField setFont:font];
 		}
 		[textField setBackgroundColor:[NSColor clearColor]];
 		[textField setBordered:NO];

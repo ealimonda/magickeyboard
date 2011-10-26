@@ -155,12 +155,13 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 #ifdef __DEBUGGING__
 		NSLog(@"Checking device: %@", [thisDevice getInfo]);
 #endif // __DEBUGGING__
-		NSLog(@"Detected %@ (#%lu).", [thisDevice deviceType], i);
+		NSLog(@"Detected %@ (#%lu).", [thisDevice deviceType], (unsigned long)i);
 		if ([thisDevice  isUsable])
 			[thisDevice setEnabled:YES];
 		[[self devices] addObject:thisDevice];
 		if (![thisDevice isValid]) {
-			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@", i, [thisDevice getInfo]);
+			NSLog(@"Unrecognized device (#%lu), please report.\nDevice info: %@",
+			      (unsigned long)i, [thisDevice getInfo]);
 		}
 		if (![thisDevice isUsable])
 			continue;
@@ -488,9 +489,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	BOOL tapState = (trackingState
 			 && [defaults boolForKey:kSettingIgnoreTrackpadInput]
 			 && [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
-	NSLog(@"%d%d%d", trackingState
-	      , [defaults boolForKey:kSettingIgnoreTrackpadInput]
-	      , [defaults boolForKey:kSettingGlobalHotkeyEnabled]);
 	CGEventTapEnable(eventTap, tapState);
 	CGAssociateMouseAndMouseCursorPosition(!tapState);
 }
