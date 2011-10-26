@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildDateString</key>
-	<string>2011-10-23 03:22:31</string>
+	<string>2011-10-26 21:13:20</string>
 	<key>BuildMachineOSBuild</key>
 	<string>11C74</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -21,11 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.0</string>
+	<string>0.3.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.3.0.20111023.032231</string>
+	<string>0.3.1.20111026.211320</string>
 	<key>DTCompiler</key>
 	<string></string>
 	<key>DTPlatformBuild</key>
