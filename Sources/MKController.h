@@ -35,7 +35,7 @@
 	NSMutableArray *keyLabels;
 
 	NSSound *tapSound;
-	NSImage *tap;
+	NSImage *tapImage;
 
 	NSMutableDictionary *layouts;
 	MKLayout *currentLayout;
