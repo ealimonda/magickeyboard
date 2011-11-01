@@ -96,7 +96,12 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 - (id)init {
 	self = [super init];
 	if (self) {
-		tap = [[NSImage imageNamed:@"Tap.png"] retain];
+		NSImage *tapImageSrc = [NSImage imageNamed:@"Tap.png"];
+		tapImage = [[NSImage alloc] initWithSize:[tapImageSrc size]];
+		// Set tapImage's alpha opacity to 70%
+		[tapImage lockFocus];
+		[tapImageSrc drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.7];
+		[tapImage unlockFocus];
 		tracking = YES;
 		holdingCorner = NO;
 		currentLayout = nil;
@@ -216,7 +221,7 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	dispatch_release(myQueue);
 	[layouts release];
 	[tapSound release];
-	[tap release];
+	[tapImage release];
 	[keyLabels release];
 	[currentLayout release];
 	[devices release];
@@ -324,7 +329,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[thisFinger setLast:touch->timestamp];
 		[thisFinger setActive:YES];
 		NSImageView *tapView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
-		[tapView setImage:tap];
+		[tapView setImage:tapImage];
 		[keyboardImage addSubview:tapView];
 		[thisFinger setTapView:tapView];
 		return;
@@ -357,7 +362,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[altChk setState:[keyboard isOptDown]];
 		[ctrlChk setState:[keyboard isCtrlDown]];
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
-		[tapImageView setImage:tap];
+		[tapImageView setImage:tapImage];
 		[tapSound play];
 		dispatch_async(myQueue, ^{
 			[self animateImage:tapImageView];
