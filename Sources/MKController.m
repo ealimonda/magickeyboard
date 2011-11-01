@@ -203,13 +203,13 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 		}
 	}
 		
-	[keyboardView setAcceptsTouchEvents:NO];
+	[keyboardImage setAcceptsTouchEvents:NO];
 	NSTrackingArea *trackingArea = [[[NSTrackingArea alloc]
-					 initWithRect:[keyboardView frame]
+					 initWithRect:[keyboardImage frame]
 					 options:NSTrackingMouseMoved|NSTrackingActiveInKeyWindow
-					 owner:keyboardView userInfo:nil] autorelease];
-	[keyboardView addTrackingArea:trackingArea];
-	[keyboardView becomeFirstResponder];
+					 owner:keyboardImage userInfo:nil] autorelease];
+	[keyboardImage addTrackingArea:trackingArea];
+	[keyboardImage becomeFirstResponder];
 }
 
 - (void)dealloc {
@@ -270,7 +270,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	CGFloat deviceHeight = verticalMultiplier * layoutHeight;
 	CGFloat verticalPosition = [defaults integerForKey:kSettingVerticalPosition] / 100.0;
 	CGFloat verticalOrigin = MAX(0.0, deviceHeight * verticalPosition - 0.5 * layoutHeight);
-	verticalOrigin = floor(MIN(deviceHeight-layoutHeight, verticalOrigin));
+	verticalOrigin = floor(MIN(deviceHeight-layoutHeight, verticalOrigin))+17;
 
 	// layout height * horizontalMultiplier => (virtual) device height
 	CGFloat layoutWidth = [currentLayout layoutSize].width;
@@ -278,7 +278,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	CGFloat deviceWidth = horizontalMultiplier * layoutWidth;
 	CGFloat horizontalPosition = [defaults integerForKey:kSettingHorizontalPosition] / 100.0;
 	CGFloat horizontalOrigin = MAX(0.0, deviceWidth * horizontalPosition - 0.5 * layoutWidth);
-	horizontalOrigin = floor(MIN(deviceWidth-layoutWidth, horizontalOrigin));
+	horizontalOrigin = floor(MIN(deviceWidth-layoutWidth, horizontalOrigin))+17;
 
 	NSRect imgBox = NSMakeRect((CGFloat)(deviceWidth*touch->normalized.pos.x-horizontalOrigin),
 				   (CGFloat)(deviceHeight*touch->normalized.pos.y-verticalOrigin),
@@ -325,7 +325,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[thisFinger setActive:YES];
 		NSImageView *tapView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
 		[tapView setImage:tap];
-		[keyboardView addSubview:tapView];
+		[keyboardImage addSubview:tapView];
 		[thisFinger setTapView:tapView];
 		return;
 	case 7:
@@ -362,7 +362,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		dispatch_async(myQueue, ^{
 			[self animateImage:tapImageView];
 		});
-		[keyboardView addSubview:tapImageView];
+		[keyboardImage addSubview:tapImageView];
 		tapImageView = nil;
 		break;
 	}
@@ -448,7 +448,7 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 	NSArray *layoutLabels = [newLayout createLabelsUsingSymbolsForLayouts:layouts];
 	for (NSTextField *eachLabel in layoutLabels) {
 		[keyLabels addObject:eachLabel];
-		[keyboardView addSubview:eachLabel];
+		[keyboardImage addSubview:eachLabel];
 	}
 }
 
