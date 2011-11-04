@@ -131,7 +131,7 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 
 - (void)enableTrackingSelector:(BOOL)state {
 	[magicKeyboardController setTracking:state];
-	[disableTrackingMenuItem setState:state];
+	[disableTrackingMenuItem setState:!state];
 	
 	if (state) {
 		[window makeKeyAndOrderFront:self];
