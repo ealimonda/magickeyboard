@@ -18,6 +18,7 @@
 		1674C8D313F135330069DA1E /* MKKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674C8D213F135330069DA1E /* MKKeyboard.m */; };
 		169045D713F66922005720BD /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 169045D613F66922005720BD /* ShortcutRecorder.framework */; };
 		169045D813F66B1E005720BD /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 169045D613F66922005720BD /* ShortcutRecorder.framework */; };
+		16936D071464B5E500C596D5 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 16936D061464B5E500C596D5 /* Sounds */; };
 		16A01DB4132B106D00116980 /* MKdsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 16A01DB3132B106D00116980 /* MKdsa_pub.pem */; };
 		16AB15D31327ECE600B3D18E /* FeedbackReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
 		16AB15DD1327ECFD00B3D18E /* FeedbackReporter.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */; };
@@ -34,7 +35,6 @@
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* MagicKeyboardAppDelegate.m */; };
 		28110E67121870050026AA8D /* AlphaAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28110E66121870050026AA8D /* AlphaAnimation.m */; };
-		281EDBD812179D5500CC2197 /* Tock.aiff in Resources */ = {isa = PBXBuildFile; fileRef = 281EDBD712179D5500CC2197 /* Tock.aiff */; };
 		281EDBF41217AC9F00CC2197 /* MKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 281EDBF31217AC9F00CC2197 /* MKButton.m */; };
 		28531B111217816C001AB273 /* MKController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28531B101217816C001AB273 /* MKController.m */; };
 		28531BB912178EC4001AB273 /* Tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 28531BB812178EC4001AB273 /* Tap.png */; };
@@ -77,6 +77,7 @@
 		1674C8D113F135330069DA1E /* MKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboard.h; sourceTree = "<group>"; };
 		1674C8D213F135330069DA1E /* MKKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboard.m; sourceTree = "<group>"; };
 		169045D613F66922005720BD /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShortcutRecorder.framework; sourceTree = "<group>"; };
+		16936D061464B5E500C596D5 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		16A01DB3132B106D00116980 /* MKdsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MKdsa_pub.pem; sourceTree = "<group>"; };
 		16AB15D21327ECE600B3D18E /* FeedbackReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FeedbackReporter.framework; sourceTree = "<group>"; };
 		16AB15EA1327F63F00B3D18E /* FRFeedbackReporter.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FRFeedbackReporter.sh; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		256AC3F00F4B6AF500CF3369 /* MagicKeyboard_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicKeyboard_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		28110E65121870050026AA8D /* AlphaAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaAnimation.h; sourceTree = "<group>"; };
 		28110E66121870050026AA8D /* AlphaAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlphaAnimation.m; sourceTree = "<group>"; };
-		281EDBD712179D5500CC2197 /* Tock.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = Tock.aiff; sourceTree = "<group>"; };
 		281EDBF21217AC9F00CC2197 /* MKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKButton.h; sourceTree = "<group>"; };
 		281EDBF31217AC9F00CC2197 /* MKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKButton.m; sourceTree = "<group>"; };
 		28531B0F1217816C001AB273 /* MKController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKController.h; sourceTree = "<group>"; };
@@ -211,6 +211,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16936D061464B5E500C596D5 /* Sounds */,
 				16DB7DE513EE80C6002D0F2D /* Layouts */,
 				16DB7DE313EE80B4002D0F2D /* Definitions */,
 				165ECD061330415B00AD0A0D /* MagicKeyboard.icns */,
@@ -221,7 +222,6 @@
 				165ECD0E1330420000AD0A0D /* MagicKeyboardMenuAlt.png */,
 				165ECD0F1330420000AD0A0D /* MagicKeyboardMenuDis.png */,
 				28531BB812178EC4001AB273 /* Tap.png */,
-				281EDBD712179D5500CC2197 /* Tock.aiff */,
 				8D1107310486CEB800E47090 /* MagicKeyboard-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -295,7 +295,6 @@
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				28531BB912178EC4001AB273 /* Tap.png in Resources */,
-				281EDBD812179D5500CC2197 /* Tock.aiff in Resources */,
 				16F5391A131B1678003AE6F1 /* Credits.rtf in Resources */,
 				16AB15EB1327F63F00B3D18E /* FRFeedbackReporter.sh in Resources */,
 				16A01DB4132B106D00116980 /* MKdsa_pub.pem in Resources */,
@@ -307,6 +306,7 @@
 				16DB7DE613EE80C6002D0F2D /* Layouts in Resources */,
 				16CD143713F3A31200F60DF6 /* Preferences.xib in Resources */,
 				16D177AA13F98B300026EFE2 /* Defaults.plist in Resources */,
+				16936D071464B5E500C596D5 /* Sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

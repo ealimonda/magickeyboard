@@ -107,7 +107,7 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 		currentLayout = nil;
 		keyLabels = [[NSMutableArray alloc] init];
 		refToSelf = self;
-		tapSound = [[NSSound soundNamed:@"Tock"] retain];
+		tapSounds = [[NSMutableDictionary alloc] init];
 		myQueue = dispatch_queue_create([[NSString stringWithFormat:@"%@.myqueue",
 						  [[NSBundle mainBundle] bundleIdentifier]] cStringUsingEncoding:
 						 NSASCIIStringEncoding], 0);
@@ -137,7 +137,22 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 	}
 }
 
+- (void)loadSounds {
+	[tapSounds removeAllObjects];
+	NSArray *foundSounds = [[NSBundle mainBundle] pathsForResourcesOfType:@"aiff" inDirectory:kSoundsDirectory];
+	for (NSString *eachSound in foundSounds) {
+		NSSound *thisSound = [[[NSSound alloc] initWithContentsOfFile:eachSound byReference:YES] autorelease];
+		NSString *soundName = [[eachSound stringByDeletingPathExtension] lastPathComponent];
+		NSString *soundGroup = [soundName stringByDeletingPathExtension];
+		if ([tapSounds objectForKey:soundGroup] == nil)
+			[tapSounds setObject:[NSMutableArray arrayWithObject:thisSound] forKey:soundGroup];
+		else
+			[[tapSounds objectForKey:soundGroup] addObject:thisSound];
+	}
+}
+
 - (void)awakeFromNib {
+	[self loadSounds];
 	[self loadLayouts];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:
@@ -220,7 +235,7 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 - (void)dealloc {
 	dispatch_release(myQueue);
 	[layouts release];
-	[tapSound release];
+	[tapSounds release];
 	[tapImage release];
 	[keyLabels release];
 	[currentLayout release];
@@ -363,7 +378,9 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 		[ctrlChk setState:[keyboard isCtrlDown]];
 		NSImageView *tapImageView = [[[NSImageView alloc] initWithFrame:imgBox] autorelease];
 		[tapImageView setImage:tapImage];
-		[tapSound play];
+		NSArray *sound = [tapSounds objectForKey:[defaults stringForKey:kSettingTapSound]];
+		if (sound != nil && [sound count] > 0)
+			[[sound objectAtIndex:arc4random()%[sound count]] play];
 		dispatch_async(myQueue, ^{
 			[self animateImage:tapImageView];
 		});
@@ -503,5 +520,6 @@ int callback( int device, Touch *data, int nTouches, double timestamp, int frame
 @synthesize devices;
 @synthesize keyboard;
 @synthesize layouts;
+@synthesize tapSounds;
 
 @end

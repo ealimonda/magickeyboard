@@ -33,6 +33,7 @@ NSString * const kSettingSUAutomaticallyUpdate    = @"SUAutomaticallyUpdate";
 NSString * const kSettingSUEnableAutomaticChecks  = @"SUEnableAutomaticChecks";
 NSString * const kSettingSUScheduledCheckInterval = @"SUScheduledCheckInterval";
 NSString * const kSettingSUSendProfileInfo        = @"SUSendProfileInfo";
+NSString * const kSettingTapSound                 = @"TapSound";
 
 #pragma mark Implementation
 @implementation MKPreferencesController
@@ -51,6 +52,19 @@ NSString * const kSettingSUSendProfileInfo        = @"SUSendProfileInfo";
 	[super windowDidLoad];
 	[shortcutRecorder setCanCaptureGlobalHotKeys:YES];
 	[shortcutRecorder bind:@"value" toObject:defaults withKeyPath:kSettingGlobalHotkey options:nil];
+
+	[tapSoundsPopUp removeAllItems];
+	[tapSoundsPopUp addItemWithTitle:@"(none)"];
+	MagicKeyboardAppDelegate *sharedAppDelegate = (MagicKeyboardAppDelegate*)[[NSApplication sharedApplication]
+										  delegate];
+	MKController *sharedController = [sharedAppDelegate controller];
+	for (NSString *eachTapSound in [[sharedController tapSounds] allKeys]) {
+		[tapSoundsPopUp addItemWithTitle:eachTapSound];
+	}
+	NSString *currentSound = [[NSUserDefaults standardUserDefaults] valueForKey:kSettingTapSound];
+	if (currentSound != nil) {
+		[tapSoundsPopUp selectItemWithTitle:currentSound];
+	}
 }
 
 #pragma mark NSTableViewDataSource

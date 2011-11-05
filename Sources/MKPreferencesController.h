@@ -30,6 +30,7 @@ extern NSString * const kSettingSUAutomaticallyUpdate;
 extern NSString * const kSettingSUEnableAutomaticChecks;
 extern NSString * const kSettingSUScheduledCheckInterval;
 extern NSString * const kSettingSUSendProfileInfo;
+extern NSString * const kSettingTapSound;
 
 #pragma mark Interface
 @interface MKPreferencesController : NSWindowController <NSTableViewDataSource> {
@@ -45,6 +46,8 @@ extern NSString * const kSettingSUSendProfileInfo;
 	IBOutlet NSTableColumn *devicesTableEnabled;
 	IBOutlet NSTableColumn *devicesTableType;
 	IBOutlet NSTableColumn *devicesTableID;
+	
+	IBOutlet NSPopUpButton *tapSoundsPopUp;
 }
 
 #pragma mark Methods

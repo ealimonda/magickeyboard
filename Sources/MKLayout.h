@@ -18,6 +18,7 @@
 
 #pragma mark Constants
 extern NSString * const kLayoutsDirectory;
+extern NSString * const kSoundsDirectory;
 
 #pragma mark Interface
 @interface MKLayout : NSObject {

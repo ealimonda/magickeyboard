@@ -30,6 +30,7 @@ NSString * const kLayoutButtonID        = @"Button";
 NSString * const kLayoutValue           = @"Value";
 NSString * const kLayoutType            = @"Type";
 NSString * const kLayoutsDirectory      = @"Layouts";
+NSString * const kSoundsDirectory       = @"Sounds";
 
 #pragma mark -
 #pragma mark Implementation

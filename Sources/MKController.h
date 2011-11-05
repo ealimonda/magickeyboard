@@ -34,7 +34,7 @@
 	IBOutlet NSView *keyboardView;
 	NSMutableArray *keyLabels;
 
-	NSSound *tapSound;
+	NSMutableDictionary *tapSounds;
 	NSImage *tapImage;
 
 	NSMutableDictionary *layouts;
@@ -47,6 +47,7 @@
 
 #pragma mark Methods
 - (void)loadLayouts;
+- (void)loadSounds;
 - (void)resizeWindowOnSpotWithSize:(NSSize)newSize;
 - (IBAction)switchLayout:(id)sender;
 - (BOOL)switchToLayoutNamed:(NSString *)layoutName;
@@ -59,5 +60,6 @@
 @property (retain) NSMutableArray *devices;
 @property (retain,readonly) MKKeyboard *keyboard;
 @property (retain,readonly) NSMutableDictionary *layouts;
+@property (retain) NSMutableDictionary *tapSounds;
 
 @end
