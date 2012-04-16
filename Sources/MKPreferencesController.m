@@ -29,6 +29,7 @@ NSString * const kSettingHoldCornerPosition       = @"HoldCornerPosition";
 NSString * const kSettingIgnoreTrackpadInput      = @"IgnoreTrackpadInput";
 NSString * const kSettingVerticalPosition         = @"VerticalPosition";
 NSString * const kSettingHorizontalPosition       = @"HorizontalPosition";
+NSString * const kSettingShowKeyboardWindow       = @"ShowKeyboardWindow";
 NSString * const kSettingSUAutomaticallyUpdate    = @"SUAutomaticallyUpdate";
 NSString * const kSettingSUEnableAutomaticChecks  = @"SUEnableAutomaticChecks";
 NSString * const kSettingSUScheduledCheckInterval = @"SUScheduledCheckInterval";
@@ -133,5 +134,12 @@ NSString * const kSettingSUSendProfileInfo        = @"SUSendProfileInfo";
 	MagicKeyboardAppDelegate *delegate = (MagicKeyboardAppDelegate *)[[NSApplication sharedApplication] delegate];
 	[delegate setHotkey];
 }
+
+- (IBAction)setShowKeyboardWindow:(id)sender {
+#pragma unused (sender)
+	MagicKeyboardAppDelegate *delegate = (MagicKeyboardAppDelegate *)[[NSApplication sharedApplication] delegate];
+	[delegate showKeyboardWindow];
+}
+
 
 @end

@@ -35,6 +35,7 @@
 - (IBAction)quitSelector:(id)sender;
 - (IBAction)submitFeedback:(id)sender;
 - (IBAction)setHotkey;
+- (IBAction)showKeyboardWindow;
 
 #pragma mark Properties
 @property (retain,readonly) MKController *controller;

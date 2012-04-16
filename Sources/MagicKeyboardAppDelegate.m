@@ -65,7 +65,7 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 	return NO;
 }
 
-#if 0 // Disabeld because for some not better known reason it'll terminate the app after [window orderOut:(id)]
+#if 0 // Disabled because for some not better known reason it'll terminate the app after [window orderOut:(id)]
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
 #pragma unused (theApplication)
 	return YES;
@@ -134,7 +134,10 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 	[disableTrackingMenuItem setState:!state];
 	
 	if (state) {
-		[window makeKeyAndOrderFront:self];
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:kSettingShowKeyboardWindow])
+			[window makeKeyAndOrderFront:self];
+		else
+			[window orderOut:self];
 		[statusBarItem setImage:[NSImage imageNamed:@"MagicKeyboardMenu.png"]];
 	} else {
 		[window orderOut:self];
@@ -147,6 +150,16 @@ OSStatus MKHotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, voi
 - (IBAction)toggleTrackingSelector:(id)sender {
 #pragma unused (sender)
 	[self enableTrackingSelector:![magicKeyboardController isTracking]];
+}
+
+- (IBAction)showKeyboardWindow {
+	if (![magicKeyboardController isTracking])
+		return;
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kSettingShowKeyboardWindow])
+		[window makeKeyAndOrderFront:self];
+    else
+		[window orderOut:self];
 }
 
 #pragma mark Properties

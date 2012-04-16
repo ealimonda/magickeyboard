@@ -26,6 +26,7 @@ extern NSString * const kSettingHoldCornerPosition;
 extern NSString * const kSettingIgnoreTrackpadInput;
 extern NSString * const kSettingVerticalPosition;
 extern NSString * const kSettingHorizontalPosition;
+extern NSString * const kSettingShowKeyboardWindow;
 extern NSString * const kSettingSUAutomaticallyUpdate;
 extern NSString * const kSettingSUEnableAutomaticChecks;
 extern NSString * const kSettingSUScheduledCheckInterval;
@@ -53,5 +54,6 @@ extern NSString * const kSettingSUSendProfileInfo;
 //- (BOOL)shortcutRecorderShouldCheckMenu:(SRRecorderControl *)aRecorder;
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 - (IBAction)setHotkey:(id)sender;
+- (IBAction)setShowKeyboardWindow:(id)sender;
 
 @end
