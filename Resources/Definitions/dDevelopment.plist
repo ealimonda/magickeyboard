@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Header</key>
+	<string>
+*******************************************************************************************************************
+*                                                MagicKeyboard                                                    *
+*******************************************************************************************************************
+* File:             WideNumPad.plist                                                                              *
+* Copyright:        (c) 2011 alimonda.com; Emanuele Alimonda                                                      *
+*                   This software is free software: you can redistribute it and/or modify it under the terms of   *
+*                       the GNU General Public License as published by the Free Software Foundation, either       *
+*                       version 3 of the License, or (at your option) any later version.                          *
+*                   This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;    *
+*                       without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. *
+*                   See the GNU General Public License for more details.                                          *
+*                   You should have received a copy of the GNU General Public License along with this program.    *
+*                       If not, see http://www.gnu.org/licenses/                                                  *
+*******************************************************************************************************************
+ 	</string>
+	<key>DefinitionName</key>
+	<string>Development Keypad Layout</string>
+	<key>Style</key>
+	<string>Default</string>
+	<key>Background</key>
+	<dict>
+		<key>FileName</key>
+		<string>dDevelopment</string>
+		<key>Width</key>
+		<integer>480</integer>
+		<key>Height</key>
+		<integer>70</integer>
+	</dict>
+	<key>Buttons</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<integer>1</integer>
+			<key>xStart</key>
+			<integer>10</integer>
+			<key>xEnd</key>
+			<integer>115</integer>
+			<key>yStart</key>
+			<integer>4</integer>
+			<key>yEnd</key>
+			<integer>68</integer>
+			<key>SpecialButton</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<integer>2</integer>
+			<key>xStart</key>
+			<integer>128</integer>
+			<key>xEnd</key>
+			<integer>233</integer>
+			<key>yStart</key>
+			<integer>4</integer>
+			<key>yEnd</key>
+			<integer>68</integer>
+			<key>SpecialButton</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<integer>3</integer>
+			<key>xStart</key>
+			<integer>246</integer>
+			<key>xEnd</key>
+			<integer>351</integer>
+			<key>yStart</key>
+			<integer>4</integer>
+			<key>yEnd</key>
+			<integer>68</integer>
+			<key>SpecialButton</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<integer>4</integer>
+			<key>xStart</key>
+			<integer>364</integer>
+			<key>xEnd</key>
+			<integer>469</integer>
+			<key>yStart</key>
+			<integer>2</integer>
+			<key>yEnd</key>
+			<integer>68</integer>
+			<key>SpecialButton</key>
+			<false/>
+		</dict>
+	</array>
+</dict>
+</plist>
