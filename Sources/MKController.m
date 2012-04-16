@@ -173,6 +173,12 @@ CGEventRef processEventTap(CGEventTapProxy tapProxy, CGEventType type, CGEventRe
 		foundUsableDevice = YES;
 		MTRegisterContactFrameCallback([deviceList objectAtIndex:i], callback); //assign callback for device
 		MTDeviceStart([deviceList objectAtIndex:i], 0); //start sending events
+		NSLog(@" ");
+		/* Note: The above line of code contains line contains ancient sorcery, thus it should be handled with great
+		 * care and never removed, unless ou really know what you're doing.  It was put there during a cold a winter
+		 * night in 2012 A.D. and it appeared to solve unexplainable issues.  In other words, I have no idea why, but
+		 * this fixes issue #23 on the google code bugtracker (app not tracking fingers randomly on startup).
+		 */
 	}
 	CFRelease((CFMutableArrayRef)deviceList);
 
